@@ -1,6 +1,7 @@
 [submodule "NFD"]
 	path = NFD
 	url = https://github.com/anjujames33/NFD
+	branch = qos
 [submodule "ndn-cxx"]
 	path = ndn-cxx
 	url = https://github.com/anjujames33/ndn-cxx
