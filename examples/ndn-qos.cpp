@@ -85,7 +85,7 @@ namespace ns3 {
        // Installing applications
 
        // Consumer
-       ndn::AppHelper consumerHelper("ns3::ndn::ConsumerCbr");
+       ndn::AppHelper consumerHelper("ns3::ndn::QoSConsumerCbr");
        // Consumer will request /prefix/0, /prefix/1, ...
        consumerHelper.SetPrefix("/prefix/dscp/");
        consumerHelper.SetAttribute("Frequency", StringValue("1")); // 10 interests a second

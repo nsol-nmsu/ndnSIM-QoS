@@ -182,6 +182,8 @@ QoSConsumer::SendPacket()
   }
 
   shared_ptr<Name> nameWithSequence = make_shared<Name>(m_interestName);
+  uint32_t dscp = rand() % 64 + 1; // dscp in the range 1 to 64
+  nameWithSequence->append(std::to_string(dscp));
   nameWithSequence->appendSequenceNumber(seq);
 
   shared_ptr<Interest> interest = make_shared<Interest>();
