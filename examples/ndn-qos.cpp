@@ -60,12 +60,14 @@ namespace ns3 {
 
        // Creating nodes
        NodeContainer nodes;
-       nodes.Create(3);
+       nodes.Create(5);
 
        // Connecting nodes using two links
        PointToPointHelper p2p;
-       p2p.Install(nodes.Get(0), nodes.Get(1));
-       p2p.Install(nodes.Get(1), nodes.Get(2));
+       p2p.Install(nodes.Get(0), nodes.Get(3));
+       p2p.Install(nodes.Get(1), nodes.Get(3));
+       p2p.Install(nodes.Get(2), nodes.Get(3));
+       p2p.Install(nodes.Get(3), nodes.Get(4));
 
        // Install NDN stack on all nodes
        ndn::StackHelper ndnHelper;
@@ -78,31 +80,49 @@ namespace ns3 {
 
        // Choosing forwarding strategy
        ndn::StrategyChoiceHelper::Install(nodes.Get(0), "/prefix/dscp", "/localhost/nfd/strategy/multicast");
-       ndn::StrategyChoiceHelper::Install(nodes.Get(1), "/prefix/dscp", "/localhost/nfd/strategy/qos");
+       ndn::StrategyChoiceHelper::Install(nodes.Get(1), "/prefix/dscp", "/localhost/nfd/strategy/multicast");
        ndn::StrategyChoiceHelper::Install(nodes.Get(2), "/prefix/dscp", "/localhost/nfd/strategy/multicast");
+
+       ndn::StrategyChoiceHelper::Install(nodes.Get(3), "/prefix/dscp", "/localhost/nfd/strategy/qos");
+       ndn::StrategyChoiceHelper::Install(nodes.Get(4), "/prefix/dscp", "/localhost/nfd/strategy/multicast");
 
 
        // Installing applications
 
        // Consumer
-       ndn::AppHelper consumerHelper("ns3::ndn::QoSConsumerCbr");
+       ndn::AppHelper consumerHelper("ns3::ndn::ConsumerCbr");
        // Consumer will request /prefix/0, /prefix/1, ...
-       consumerHelper.SetPrefix("/prefix/dscp/");
-       consumerHelper.SetAttribute("Frequency", StringValue("1")); // 10 interests a second
+       consumerHelper.SetPrefix("/prefix/dscp/1");
+       consumerHelper.SetAttribute("Frequency", StringValue("10")); // 10 interests a second
        //consumerHelper.Install(nodes.Get(0));                        // first node
        auto apps = consumerHelper.Install(nodes.Get(0));
-       apps.Stop(Seconds(10.0)); // stop the consumer app at 10 seconds mark
+       apps.Stop(Seconds(0.5)); // stop the consumer app at 10 seconds mark
+
+       // Consumer will request /prefix/0, /prefix/1, ...
+       consumerHelper.SetPrefix("/prefix/dscp/21");
+       consumerHelper.SetAttribute("Frequency", StringValue("10")); // 10 interests a second
+       //consumerHelper.Install(nodes.Get(0));                        // first node
+       apps = consumerHelper.Install(nodes.Get(1));
+       apps.Stop(Seconds(0.5)); // stop the consumer app at 10 seconds mark
+
+       // Consumer will request /prefix/0, /prefix/1, ...
+       consumerHelper.SetPrefix("/prefix/dscp/60");
+       consumerHelper.SetAttribute("Frequency", StringValue("10")); // 10 interests a second
+       //consumerHelper.Install(nodes.Get(0));                        // first node
+       apps = consumerHelper.Install(nodes.Get(2));
+       apps.Stop(Seconds(0.5)); // stop the consumer app at 10 seconds mark
+
 
        // Producer
        ndn::AppHelper producerHelper("ns3::ndn::Producer");
        // Producer will reply to all requests starting with /prefix
        producerHelper.SetPrefix("/prefix/dscp/");
        producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
-       producerHelper.Install(nodes.Get(2)); // last node
+       producerHelper.Install(nodes.Get(4)); // last node
 
        ndn::GlobalRoutingHelper::CalculateAllPossibleRoutes();
 
-       Simulator::Stop(Seconds(7.0));
+       Simulator::Stop(Seconds(1.0));
        Simulator::Run();
        Simulator::Destroy();
 
