@@ -36,6 +36,7 @@
 
 #include <boost/lexical_cast.hpp>
 #include <boost/ref.hpp>
+#include "../NFD/daemon/fw/TBucket.cpp"
 
 NS_LOG_COMPONENT_DEFINE("ndn.Consumer");
 
@@ -61,7 +62,7 @@ Consumer::GetTypeId(void)
 
       .AddAttribute("RetxTimer",
                     "Timeout defining how frequent retransmission timeouts should be checked",
-                    StringValue("50ms"),
+                    StringValue("50s"),
                     MakeTimeAccessor(&Consumer::GetRetxTimer, &Consumer::SetRetxTimer),
                     MakeTimeChecker())
 
@@ -195,7 +196,17 @@ Consumer::SendPacket()
   interest->setInterestLifetime(interestLifeTime);
 
   // NS_LOG_INFO ("Requesting Interest: \n" << *interest);
+  // Traces
   NS_LOG_INFO("> Interest for " << seq);
+  if (interest->getName().getSubName(2,1) == "/1") {
+      TB.HSent++;
+  } else if (interest->getName().getSubName(2,1) == "/21") {
+      TB.MSent++;
+  } else {
+      TB.LSent++;
+  }
+
+  std::cout << "***Stats***\n" << TB.HSent << "\n" << TB.MSent << "\n" << TB.LSent << "\n" << TB.HRecv << "\n" << TB.MRecv << "\n" << TB.LRecv << "\n\n\n";
 
   WillSendOutInterest(seq);
 
@@ -218,6 +229,17 @@ Consumer::OnData(shared_ptr<const Data> data)
   App::OnData(data); // tracing inside
 
   NS_LOG_FUNCTION(this << data);
+  // Traces
+  if (data->getName().getSubName(2,1) == "/1") {
+      TB.HRecv++;
+  } else if (data->getName().getSubName(2,1) == "/21") {
+      TB.MRecv++;
+  } else {
+      TB.LRecv++;
+      std::cout << data->getName() << std::endl;
+  }
+
+  std::cout << "***Stats***\n" << TB.HSent << "\n" << TB.MSent << "\n" << TB.LSent << "\n" << TB.HRecv << "\n" << TB.MRecv << "\n" << TB.LRecv << "\n\n\n";
 
   // NS_LOG_INFO ("Received content object: " << boost::cref(*data));
 
@@ -265,7 +287,7 @@ Consumer::OnNack(shared_ptr<const lp::Nack> nack)
 void
 Consumer::OnTimeout(uint32_t sequenceNumber)
 {
-  NS_LOG_FUNCTION(sequenceNumber);
+  /*NS_LOG_FUNCTION(sequenceNumber);
   // std::cout << Simulator::Now () << ", TO: " << sequenceNumber << ", current RTO: " <<
   // m_rtt->RetransmitTimeout ().ToDouble (Time::S) << "s\n";
 
@@ -273,7 +295,7 @@ Consumer::OnTimeout(uint32_t sequenceNumber)
   m_rtt->SentSeq(SequenceNumber32(sequenceNumber),
                  1); // make sure to disable RTT calculation for this sample
   m_retxSeqs.insert(sequenceNumber);
-  ScheduleNextPacket();
+  ScheduleNextPacket();*/
 }
 
 void
