@@ -112,6 +112,7 @@ Aggregator::Aggregator()
   , m_rand(CreateObject<UniformRandomVariable>())
 {
     NS_LOG_FUNCTION_NOARGS();
+
     m_rtt = CreateObject<RttMeanDeviation>();
 }
 
@@ -123,6 +124,7 @@ Aggregator::StartApplication()
     App::StartApplication();
 
     FibHelper::AddRoute(GetNode(), m_prefix, m_face, 0);
+
     ScheduleAggPackets();
 }
 
@@ -130,13 +132,13 @@ void
 Aggregator::StopApplication()
 {
     NS_LOG_FUNCTION_NOARGS();
+
     App::StopApplication();
 }
 
 void
 Aggregator::OnInterest(shared_ptr<const Interest> interest)
 {
-
     App::OnInterest(interest); // tracing inside
 
     //NS_LOG_FUNCTION(this << interest);
@@ -147,7 +149,6 @@ Aggregator::OnInterest(shared_ptr<const Interest> interest)
 
     //Aggregate payload size
     m_totalpayload += interest->getPayloadLength();
-
 }
 
 void
@@ -160,23 +161,23 @@ Aggregator::ScheduleAggPackets()
 		//Schedule next interest with aggreagated payload
 		//Set the offset for AMI/PMU traffic to milliseconds
 		m_txEvent = Simulator::Schedule(Seconds( double(m_offset)/1000 ), &Aggregator::ScheduleAggPackets, this);
-	} else {
-        //Schedule next interest with aggregated payload
-        if (!m_txEvent.IsRunning()) {
-            m_txEvent = Simulator::Schedule(m_frequency, &Aggregator::SendAggInterest, this);
-        }
-    }
+	}
+	else {
+		//Schedule next interest with aggregated payload
+                if (!m_txEvent.IsRunning())
+			m_txEvent = Simulator::Schedule(m_frequency, &Aggregator::SendAggInterest, this);
+	}
 }
 
 void
 Aggregator::SendAggInterest()
 {
     //If no payloaded interest received, do not send an interest with zero payload
-    if (m_totalpayload > 0) {
+    if (m_totalpayload > 0)
     {
-        if (!m_active) {
+
+        if (!m_active)
             return;
-        }
 
         uint32_t seq = std::numeric_limits<uint32_t>::max();
 
@@ -193,15 +194,19 @@ Aggregator::SendAggInterest()
         }
 
         seq = m_seq++;
+
         uint8_t payload[1] = {1};
+
 
         //Append source aggregation node ID to the aggregated prefix
         std::stringstream ss;
         ss << m_upstream_prefix;
         std::string dst_com_prefix = ss.str() + "/agg" + std::to_string(GetNode()->GetId());
 
+        //
         shared_ptr<Name> nameWithSequence = make_shared<Name>(dst_com_prefix);
         nameWithSequence->appendSequenceNumber(seq);
+        //
 
         shared_ptr<Interest> interest = make_shared<Interest>();
         interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
@@ -244,7 +249,6 @@ Aggregator::WillSendOutInterest(uint32_t sequenceNumber)
     m_seqRetxCounts[sequenceNumber]++;
 
     m_rtt->SentSeq(SequenceNumber32(sequenceNumber), 1);
-
 }
 
 Time
@@ -271,21 +275,22 @@ void
 Aggregator::CheckRetxTimeout()
 {
     Time now = Simulator::Now();
-    Time rto = m_rtt->RetransmitTimeout();
 
+    Time rto = m_rtt->RetransmitTimeout();
     // NS_LOG_DEBUG ("Current RTO: " << rto.ToDouble (Time::S) << "s");
 
     while (!m_seqTimeouts.empty()) {
         SeqTimeoutsContainer::index<i_timestamp>::type::iterator entry =
             m_seqTimeouts.get<i_timestamp>().begin();
 
-        if (entry->time + rto <= now) { // timeout expired?
+        if (entry->time + rto <= now) // timeout expired?
+        {
             uint32_t seqNo = entry->seq;
             m_seqTimeouts.get<i_timestamp>().erase(entry);
             OnTimeout(seqNo);
-        } else {
-            break; // nothing else to do. All later packets need not be retransmitted
         }
+        else
+            break; // nothing else to do. All later packets need not be retransmitted
     }
 
     m_retxEvent = Simulator::Schedule(m_retxTimer, &Aggregator::CheckRetxTimeout, this);
@@ -306,9 +311,8 @@ Aggregator::OnTimeout(uint32_t sequenceNumber)
 void
 Aggregator::OnData(shared_ptr<const Data> data)
 {
-    if (!m_active) {
+    if (!m_active)
         return;
-    }
 
     App::OnData(data); // tracing inside
 
@@ -327,7 +331,6 @@ Aggregator::OnData(shared_ptr<const Data> data)
     }
 
     NS_LOG_DEBUG("Hop count: " << hopCount);
-
 }
 
 
