@@ -85,6 +85,9 @@ namespace ns3 {
        ndn::StrategyChoiceHelper::Install(nodes.Get(3), "/prefix/dscp", "/localhost/nfd/strategy/qos");
        ndn::StrategyChoiceHelper::Install(nodes.Get(4), "/prefix/dscp", "/localhost/nfd/strategy/multicast");
 
+       ndn::StrategyChoiceHelper::Install(nodes.Get(3), "/prefix/dscp", "/localhost/nfd/strategy/qos");
+       ndn::StrategyChoiceHelper::Install(nodes.Get(4), "/prefix/dscp", "/localhost/nfd/strategy/multicast");
+
 
        // Installing applications
 
