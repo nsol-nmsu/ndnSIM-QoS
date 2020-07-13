@@ -105,8 +105,8 @@ main ( int argc, char* argv[] )
 	cmd.Parse( argc, argv );
 
 	// Open the configuration files for reading - //TODO: Remove hard coding
-	ifstream configFile ( "/home/anju/anju/NDN_QoS/topology/interface/case.txt", std::ios::in );	// Topology file
-	ifstream jsonFile ( "/home/anju/anju/NDN_QoS/topology/interface/data.txt", std::ios::in );		// Device - Node mapping
+	ifstream configFile ( "/home/anju/anju/NDN_QoS/topology/interface/case123.txt", std::ios::in );	// Topology file
+	ifstream jsonFile ( "/home/anju/anju/NDN_QoS/topology/interface/data123.txt", std::ios::in );		// Device - Node mapping
 	ifstream mFile ( "/home/anju/anju/NDN_QoS/topology/interface/measurments.json", std::ios::in );	// Basic measurement json to update duting simulation.
 
 	json jf = json::parse( jsonFile );
