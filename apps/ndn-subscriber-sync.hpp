@@ -17,8 +17,8 @@
  * ndnSIM, e.g., in COPYING.md file.  If not, see <http://www.gnu.org/licenses/>.
  **/
 
-#ifndef NDN_SUBSCRIBER_H
-#define NDN_SUBSCRIBER_H
+#ifndef NDN_CONSUMER_QOS_H
+#define NDN_CONSUMER_QOS_H
 
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
@@ -47,7 +47,7 @@ namespace ndn {
  * \brief NDN application for sending out Interest packets. Installed on nodes at physical layer (prosumers)
  * of the Smart Grid architecture (iCenS)
  */
-class Subscriber : public App {
+class ConsumerQos : public App {
 public:
   static TypeId
   GetTypeId();
@@ -56,8 +56,8 @@ public:
    * \brief Default constructor
    * Sets up randomizer function and packet sequence number
    */
-  Subscriber();
-  virtual ~Subscriber();
+  ConsumerQos();
+  virtual ~ConsumerQos();
 
   // From App
   virtual void
@@ -74,8 +74,7 @@ public:
    * @brief Actually send packet. Subscription interests do not carry payload information
    */
   void
-  SendPacket();
-
+  SendPacket(std::string deviceName, std::string payload);
    /**
    * @brief An event that is fired just before an Interest packet is actually send out (send is
    *inevitable)
@@ -89,15 +88,16 @@ public:
   virtual void
   WillSendOutInterest(uint32_t sequenceNumber);
 
-public:
+  void
+  ScheduleNextPacket();
 
+
+public:
   //typedef void (*FirstInterestDataDelayCallback)(Ptr<App> app, uint32_t seqno, Time delay, uint32_t retxCount, int32_t hopCount);
 
   typedef void (*SentInterestTraceCallback)( uint32_t, shared_ptr<const Interest> );
   typedef void (*ReceivedDataTraceCallback)( uint32_t, shared_ptr<const Data> );
-
 protected:
-
   // from App
   virtual void
   StartApplication();
@@ -109,8 +109,6 @@ protected:
    * \brief Constructs the Interest packet and sends it using a callback to the underlying NDN
    * protocol
    */
-  void
-  ScheduleNextPacket();
 
   /**
    * \brief Checks if the packet need to be retransmitted becuase of retransmission timer expiration
@@ -133,7 +131,6 @@ protected:
   GetRetxTimer() const;
 
 protected:
-
   Ptr<UniformRandomVariable> m_rand; ///< @brief nonce generator
   uint32_t m_seq;      ///< @brief currently requested sequence number
   uint32_t m_seqMax;   ///< @brief maximum number of sequence number
@@ -214,7 +211,7 @@ protected:
 
 
   TracedCallback<Ptr<App> /* app */, uint32_t /* seqno */, Time /* delay */, int32_t /*hop count*/>
-    m_lastRetransmittedInterestDataDelay;
+  m_lastRetransmittedInterestDataDelay;
   TracedCallback<Ptr<App> /* app */, uint32_t /* seqno */, Time /* delay */,
                  uint32_t /*retx count*/, int32_t /*hop count*/> m_firstInterestDataDelay;
 

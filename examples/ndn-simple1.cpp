@@ -23,6 +23,16 @@
 #include "ns3/network-module.h"
 #include "ns3/point-to-point-module.h"
 #include "ns3/ndnSIM-module.h"
+#include <fstream>
+#include <iomanip>
+#include <iostream>
+#include <stdlib.h>
+
+
+#include "../apps/ndn-subscriber-sync.hpp"
+//#include "../apps/ndn-synchronizer.hpp"
+#include "../apps/ndn-synchronizer-socket.hpp"
+
 
 namespace ns3 {
 
@@ -45,6 +55,9 @@ namespace ns3 {
  *
  *     NS_LOG=ndn.Consumer:ndn.Producer ./waf --run=ndn-simple
  */
+void ReceivedInterestCallback( uint32_t, shared_ptr<const ndn::Interest> );
+void ReceivedDataCallback( uint32_t, shared_ptr<const ndn::Data> );
+ ns3::ndn::SyncSocket sync;//= new  ns3::ndn::Synchronizer();
 
 int
 main(int argc, char* argv[])
@@ -64,13 +77,10 @@ main(int argc, char* argv[])
 
   // Connecting nodes using two links
   PointToPointHelper p2p;
-  p2p.Install(nodes.Get(0), nodes.Get(1));
-  p2p.SetChannelAttribute("Delay", StringValue("800ms"));
-  p2p.Install(nodes.Get(1), nodes.Get(2));
-  p2p.SetChannelAttribute("Delay", StringValue("1ms"));
-  p2p.Install(nodes.Get(1), nodes.Get(3));
+  p2p.Install(nodes.Get(0), nodes.Get(3));
   p2p.Install(nodes.Get(3), nodes.Get(4));
-  p2p.Install(nodes.Get(4), nodes.Get(2));
+  p2p.Install(nodes.Get(1), nodes.Get(3));
+  p2p.Install(nodes.Get(2), nodes.Get(3));
 
 
   // Install NDN stack on all nodes
@@ -84,25 +94,49 @@ main(int argc, char* argv[])
   ndnGlobalRoutingHelper.Install(nodes);
 
   // Installing applications
+ std::string strcallback;
 
-  // Consumer
-  ndn::AppHelper consumerHelper("ns3::ndn::ConsumerCbr");
+// ns3::ndn::Synchronizer sync;//= new  ns3::ndn::Synchronizer();
+ sync.setTimeStep(1.0);
+ //sync.numberOfPackets(1);
+ // Consumer
+  ndn::AppHelper consumerHelper("ns3::ndn::ConsumerQos");
+//  ndn::AppHelper consumerHelper("ns3::ndn::Subscriber");
+
   // Consumer will request /prefix/0, /prefix/1, ...
   consumerHelper.SetPrefix("/prefix");
   consumerHelper.SetAttribute("Frequency", StringValue("10")); // 10 interests a second
-  auto apps = consumerHelper.Install(nodes.Get(0));                        // first node
-  apps.Stop(Seconds(10.0)); // stop the consumer app at 10 seconds mark
+  consumerHelper.Install(nodes.Get(0));                        // first node
+  strcallback = "/NodeList/" + std::to_string( 0 ) + "/ApplicationList/" + "*/ReceivedData";
+  Config::ConnectWithoutContext( strcallback, MakeCallback( &ReceivedDataCallback ) );
+  auto apps = nodes.Get(0)->GetApplication(0)->GetObject<ns3::ndn::ConsumerQos>();
+  sync.addSender(0,apps);
+  consumerHelper.Install(nodes.Get(1));                        // first node
+  strcallback = "/NodeList/" + std::to_string( 1 ) + "/ApplicationList/" + "*/ReceivedData";
+  Config::ConnectWithoutContext( strcallback, MakeCallback( &ReceivedDataCallback ) );
+  apps = nodes.Get(1)->GetApplication(0)->GetObject<ns3::ndn::ConsumerQos>();
+  sync.addSender(1,apps);
+  consumerHelper.Install(nodes.Get(2));                        // first node
+  strcallback = "/NodeList/" + std::to_string( 2 ) + "/ApplicationList/" + "*/ReceivedData";
+  Config::ConnectWithoutContext( strcallback, MakeCallback( &ReceivedDataCallback ) );
+  apps = nodes.Get(2)->GetApplication(0)->GetObject<ns3::ndn::ConsumerQos>();
+  sync.addSender(2,apps);
+
+  sync.beginSync();
 
   // Producer
   ndn::AppHelper producerHelper("ns3::ndn::Producer");
   // Producer will reply to all requests starting with /prefix
   producerHelper.SetPrefix("/prefix");
   producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
-  producerHelper.Install(nodes.Get(2)); // last node
-  ndnGlobalRoutingHelper.AddOrigins("/prefix/", nodes.Get(2));
+  producerHelper.Install(nodes.Get(4)); // last node
+  strcallback = "/NodeList/" + std::to_string( 4 ) + "/ApplicationList/" + "*/ReceivedInterest";
+  Config::ConnectWithoutContext( strcallback, MakeCallback( &ReceivedInterestCallback ) );
 
+  ndnGlobalRoutingHelper.AddOrigins("/prefix/", nodes.Get(4));
 
   ndn::GlobalRoutingHelper::CalculateRoutes();
+
   Simulator::Stop(Seconds(20.0));
 
   Simulator::Run();
@@ -110,6 +144,17 @@ main(int argc, char* argv[])
 
   return 0;
 }
+
+void ReceivedInterestCallback( uint32_t nodeid, shared_ptr<const ndn::Interest> interest ){
+	std::cout<< nodeid << ", " << interest->getName() << ", " << std::fixed << setprecision( 9 )
+      << ( Simulator::Now().GetNanoSeconds() )/1000000000.0 << std::endl;
+}
+void ReceivedDataCallback( uint32_t nodeid, shared_ptr<const ndn::Data> data ){
+        std::string str = std::to_string(nodeid) + ", " + data->getName().toUri() + ", " + std::to_string(( Simulator::Now().GetNanoSeconds() )/1000000000.0);
+        sync.addArrivedPackets(str);      
+}
+
+
 
 } // namespace ns3
 
