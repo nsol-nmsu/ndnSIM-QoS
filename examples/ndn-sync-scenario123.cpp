@@ -41,6 +41,7 @@ namespace ns3 {
 using json = nlohmann::json;	// Library used for json parsing.
 
 void SentInterestCallbackPhy( uint32_t, shared_ptr<const ndn::Interest> );
+void ReceivedInterestCallbackPhy( uint32_t, shared_ptr<const ndn::Interest> );
 void ReceivedInterestCallbackCom( uint32_t, shared_ptr<const ndn::Interest> );
 
 bool NodeInComm( int );
@@ -109,12 +110,15 @@ main ( int argc, char* argv[] )
 	ifstream jsonFile ( "/home/anju/anju/NDN_QoS/topology/interface/data123.txt", std::ios::in );		// Device - Node mapping
 	ifstream mFile ( "/home/anju/anju/NDN_QoS/topology/interface/measurments.json", std::ios::in );	// Basic measurement json to update duting simulation.
 
+	unordered_map<int,std::vector<std::string>> nameMap;
+
 	json jf = json::parse( jsonFile );
 	json::iterator it = jf.begin();
 
-	// Debug print
-	while ( it !=  jf.end() ) {
-		//std::cout << it.keyg << " : " << it.value( ) << "\n";
+	while ( it !=  jf.end() )
+	{
+		nameMap[it.value()].push_back(it.key());
+		//std::cout << it.key() << " : " << it.value( ) << "\n";
 		it++;
 	}
 
@@ -216,6 +220,26 @@ main ( int argc, char* argv[] )
 				// Install app on unique LC WACs
 				if ( IsLCAppInstalled( netParams[0] ) == false ) {
 
+					char temp[10];
+					sprintf( temp, "%lf", 1.0/( float( rand()%40+80 ) ) );
+					std::cout << netParams[1] << "\n";
+
+					// Install consumer
+					consumerHelper.SetPrefix( "/power/typeI" );
+					consumerHelper.SetAttribute( "Subscription", IntegerValue( 0 ) );
+					consumerHelper.SetAttribute( "PayloadSize", StringValue( "200" ) );
+					consumerHelper.SetAttribute( "RetransmitPackets", IntegerValue( 0 ) );
+					consumerHelper.SetAttribute( "LifeTime", StringValue( "100ms" ) );
+
+					consumerHelper.Install( nodes.Get( std::stoi( netParams[0] ) ) );
+					used[std::stoi( netParams[0] )] = 1;
+					//Config::ConnectWithoutContext( strcallback, MakeCallback( &SentInterestCallbackPhy ) );
+					//usedS[std::stoi( netParams[0] )] = 1;
+
+					auto apps = nodes.Get( std::stoi( netParams[0] ) )->GetApplication( 0 )->GetObject<ns3::ndn::ConsumerQos>();
+					sync.addSender( std::stoi( netParams[0] ),apps );
+
+					// Install producer
 					producerHelper.SetPrefix( "/power/typeI/data" );
 					producerHelper.SetAttribute( "Frequency", StringValue( "0" ) );
 					producerHelper.Install( nodes.Get( std::stoi( netParams[0] ) ) );
@@ -224,6 +248,7 @@ main ( int argc, char* argv[] )
 					// Setup node to originate prefixes for dynamic routing
 					ndnGlobalRoutingHelper.AddOrigin( "/power/typeI/data", nodes.Get( std::stoi( netParams[0] ) ) );
 					usedR[std::stoi( netParams[0] )] = 1;
+					sync.setPVNode(std::stoi( netParams[0] ));
 				}
 
 				// Install flow app on PMUs to send data to LCs
@@ -232,9 +257,7 @@ main ( int argc, char* argv[] )
 					char temp[10];
 					sprintf( temp, "%lf", 1.0/( float( rand()%40+80 ) ) );
 
-					std::cout<<netParams[1]<<"\n";
-
-					consumerHelper.SetPrefix( "/power/typeI/data" );
+					consumerHelper.SetPrefix( "/power/typeI" );
 					consumerHelper.SetAttribute( "Subscription", IntegerValue( 0 ) );
 					consumerHelper.SetAttribute( "PayloadSize", StringValue( "200" ) );
 					consumerHelper.SetAttribute( "RetransmitPackets", IntegerValue( 0 ) );
@@ -246,8 +269,21 @@ main ( int argc, char* argv[] )
 					usedS[std::stoi( netParams[1] )] = 1;
 
 					auto apps = nodes.Get( std::stoi( netParams[1] ) )->GetApplication( 0 )->GetObject<ns3::ndn::ConsumerQos>();
-
 					sync.addSender( std::stoi( netParams[1] ),apps );
+
+					producerHelper.SetPrefix( "/power/typeI/phy"+ netParams[1] );
+					producerHelper.SetAttribute( "Frequency", StringValue( "0" ) );
+					producerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
+					used[std::stoi( netParams[1] )] = 1;
+
+					// Setup node to originate prefixes for dynamic routing
+					for (int i = 0; i< nameMap[std::stoi( netParams[1] )].size(); i++) {
+						std::cout << "Adding origin " << "/power/typeI/phy" + netParams[1] + "/"+nameMap[std::stoi( netParams[1] )][i] << " at node " <<netParams[1] << std::endl;
+						ndnGlobalRoutingHelper.AddOrigin( "/power/typeI/phy" + netParams[1] + "/"+nameMap[std::stoi( netParams[1] )][i], nodes.Get( std::stoi( netParams[1] ) ) );
+					}
+
+					//ndnGlobalRoutingHelper.AddOrigin( "/power/typeII/data", nodes.Get( std::stoi( netParams[1] ) ) );
+					//usedR[std::stoi( netParams[1] )] = 1;
 				}
 
 				// Save the flow
@@ -414,6 +450,8 @@ main ( int argc, char* argv[] )
 
 			strcallback = "/NodeList/" + std::to_string( i ) + "/ApplicationList/" + "*/SentInterest";
 			Config::ConnectWithoutContext( strcallback, MakeCallback( &SentInterestCallbackPhy ) );
+			strcallback = "/NodeList/" + std::to_string( i ) + "/ApplicationList/" + "*/ReceivedInterest";
+			Config::ConnectWithoutContext( strcallback, MakeCallback( &ReceivedInterestCallbackPhy ) );
 		}
 	}
 
@@ -572,6 +610,48 @@ SentInterestCallbackPhy( uint32_t nodeid, shared_ptr<const ndn::Interest> intere
 }
 
 
+void
+ReceivedInterestCallbackPhy( uint32_t nodeid, shared_ptr<const ndn::Interest> interest ) {
+
+	if ( interest->getSubscription() == 1 || interest->getSubscription( ) == 2 ) {
+
+		// Do not log subscription interests received at com nodes
+	} else {
+
+		std::stringstream sstr;
+		std::string iname;
+		//std::cout<<Simulator::Nowg.GetSeconds( )<<std::endl;
+
+		if ( interest->getName().getSubName( 1,1 ).toUri( ) == "/typeI" ) {
+
+			sstr << interest->getName().getSubName( 1 );
+			sstr >> iname;
+			interest->getPayload();
+			std::vector<uint8_t> payloadVector( &interest->getPayload()[0], &interest->getPayload()[interest->getPayloadLength()] );
+			std::string payload( payloadVector.begin(), payloadVector.end() );
+			std::string str = std::to_string( interest->getPayloadLength() ) + " " + interest->getName( ).getSubName( 3,1 ).toUri( ).substr( 1 ) + " " + std::to_string( ( Simulator::Now( ).GetSeconds( ) ) ) + " RedisPV " + payload;
+			bool lead = sync.sendDirect( payload, nodeid );
+
+			if ( !lead ) {
+				sync.addArrivedPackets( str );
+			}
+
+			std::cout<< "Received Setpoint: " << payload <<std::endl;
+
+		} else  {
+
+			sstr << interest->getName();
+			sstr >> iname;
+		}
+
+		//Only log flows that are permitted in config file ( eliminates redundant interests received from multiple interfaces and to other nodes )
+		//if ( FlowPermitted( ( int )nodeid, ( int )GetSourceNodeID( iname ) ) == true ) {
+		tracefile << nodeid << ", recv, " << interest->getName() << ", " << interest->getPayloadLength( ) << ", " << std::fixed << setprecision( 9 )
+			<< ( Simulator::Now().GetNanoSeconds( ) )/1000000000.0 << std::endl;
+	}
+}
+
+
 void 
 ReceivedInterestCallbackCom( uint32_t nodeid, shared_ptr<const ndn::Interest> interest ) {
 
@@ -587,7 +667,7 @@ ReceivedInterestCallbackCom( uint32_t nodeid, shared_ptr<const ndn::Interest> in
 		if ( interest->getName().getSubName( 1,1 ).toUri( ) == "/typeI" ) {
 			sstr << interest->getName().getSubName( 1 );
 			sstr >> iname;
-			std::string str = /*std::to_string( nodeid )*/std::to_string( interest->getPayloadLength() ) + " " + interest->getName( ).getSubName( 3,1 ).toUri( ).substr( 1 ) + " " + std::to_string( ( Simulator::Now( ).GetSeconds( ) ) );
+			std::string str = /*std::to_string( nodeid )*/std::to_string( interest->getPayloadLength() ) + " " + interest->getName( ).getSubName( 3,1 ).toUri( ).substr( 1 ) + " " + std::to_string( ( Simulator::Now( ).GetSeconds( ) ) ) + " OpenDSS";
 			sync.addArrivedPackets( str );
 
 			std::cout<< "Received: " << str <<std::endl;

@@ -31,8 +31,11 @@ public:
   void
   beginSync();
 
+  void
+  injectInterests();
+
   std::vector<std::string>
-  SplitString( std::string strLine );
+  SplitString( std::string strLine, int limit );
 
   virtual void
   sendSync()=0;

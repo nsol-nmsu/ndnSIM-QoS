@@ -73,19 +73,23 @@ Synchronizer::syncEvent(){
 	//}
 	//std::cout<<packetNames.size()<<std::endl;
 
-	while (!packetNames.empty()) { 
-		std::vector<std::string> packetInfo = SplitString( packetNames.back() );
-		//std::cout<<packetInfo[1]<<" "<<packetInfo[0]<<std::endl;
-		Simulator::ScheduleWithContext(std::stoi(packetInfo[1]),Seconds(0.0), &ConsumerQos::SendPacket, senders[std::stoi(packetInfo[1])], packetInfo[0], packetInfo[2] );
-		packetNames.pop_back();
-	}	
-
+	injectInterests();
 	Simulator::Schedule(Seconds(timestep), &Synchronizer::syncEvent, this);
 }
 
+void
+Synchronizer::injectInterests() {
+
+	while ( !packetNames.empty() ) {
+
+		std::vector<std::string> packetInfo = SplitString( packetNames.back(), 2 );
+		Simulator::ScheduleWithContext( std::stoi( packetInfo[1] ), Seconds( 0.0 ), &ConsumerQos::SendPacket, senders[std::stoi( packetInfo[1] )], packetInfo[0], packetInfo[2] );
+		packetNames.pop_back();
+	}
+}
 
 std::vector<std::string> 
-Synchronizer::SplitString( std::string strLine ) {
+Synchronizer::SplitString( std::string strLine, int limit ) {
 
 	std::string str = strLine;
 	std::vector<std::string> result;
@@ -95,7 +99,7 @@ Synchronizer::SplitString( std::string strLine ) {
 
 	for ( std::string str; isstr >> str;  ) {
 
-		if ( i<2 ) {     
+		if ( i < limit || limit == 0 ) {
 			result.push_back( str );
 		} else { 
 			finalStr += str;

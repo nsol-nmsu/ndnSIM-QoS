@@ -241,12 +241,12 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload )
 	std::vector<uint8_t> myVector( payload.begin(), payload.end() );
 	uint8_t *p = &myVector[0];
 	//uint8_t payloa[1] = {1};
-	shared_ptr<Name> nameWithSequence = make_shared<Name>( m_interestName );
+	shared_ptr<Name> nameWithSequence = make_shared<Name>( m_interestName.toUri() + "/" + deviceName );
 
 	shared_ptr<Interest> interest = make_shared<Interest>();
 	interest->setNonce( m_rand->GetValue( 0, std::numeric_limits<uint32_t>::max() ) );
 	interest->setSubscription( m_subscription );
-	nameWithSequence->append( deviceName.c_str() );
+	//nameWithSequence->append( deviceName.c_str() );
 	nameWithSequence->appendSequenceNumber( seq );
 
 	if ( m_subscription == 0 ) {
@@ -256,8 +256,8 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload )
 	interest->setName( *nameWithSequence );
 	time::milliseconds interestLifeTime( m_interestLifeTime.GetMilliSeconds() );
 	interest->setInterestLifetime( interestLifeTime );
-	//std::cout<<"Sending...\n";
-	//std::cout<<interest->getName()<<" "<<ns3::Simulator::GetContext()<<std::endl;
+	std::cout<<"Sending...\n";
+	std::cout<<interest->getName()<<" "<<ns3::Simulator::GetContext()<<std::endl;
 
 	NS_LOG_INFO( "node( " << GetNode()->GetId() << " ) > sending Interest: " << interest->getName() /*m_interestName*/ << " with Payload = " << interest->getPayloadLength() << "bytes" );
 
