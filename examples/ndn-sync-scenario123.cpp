@@ -105,10 +105,10 @@ main ( int argc, char* argv[] )
 	cmd.AddValue( "Run", "Run", run );
 	cmd.Parse( argc, argv );
 
-	// Open the configuration files for reading - //TODO: Remove hard coding
-	ifstream configFile ( "/home/anju/anju/NDN_QoS/topology/interface/case123.txt", std::ios::in );	// Topology file
-	ifstream jsonFile ( "/home/anju/anju/NDN_QoS/topology/interface/data123.txt", std::ios::in );		// Device - Node mapping
-	ifstream mFile ( "/home/anju/anju/NDN_QoS/topology/interface/measurments.json", std::ios::in );	// Basic measurement json to update duting simulation.
+	// Open the configuration files for reading 
+	ifstream configFile ( "topology/interface/case123.txt", std::ios::in );	// Topology file
+	ifstream jsonFile ( "topology/interface/data123.txt", std::ios::in );	// Device - Node mapping
+	ifstream mFile ( "topology/interface/measurments.json", std::ios::in );	// Basic measurement json to update duting simulation.
 
 	unordered_map<int,std::vector<std::string>> nameMap;
 
