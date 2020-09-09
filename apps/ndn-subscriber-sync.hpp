@@ -38,6 +38,7 @@
 #include <boost/multi_index/tag.hpp>
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index/member.hpp>
+#include "nlohmann/json.hpp"
 
 namespace ns3 {
 namespace ndn {
@@ -74,7 +75,7 @@ public:
    * @brief Actually send packet. Subscription interests do not carry payload information
    */
   void
-  SendPacket(std::string deviceName, std::string payload);
+  SendPacket(std::string deviceName, std::string payload, bool agg);
    /**
    * @brief An event that is fired just before an Interest packet is actually send out (send is
    *inevitable)
@@ -89,14 +90,34 @@ public:
   WillSendOutInterest(uint32_t sequenceNumber);
 
   void
-  ScheduleNextPacket();
+  ScheduleNextPacket(std::string deviceName, std::string payload, bool agg);
 
+  void
+  updateLeadMeasurements(std::string newM, std::string device){
+     leadMeasurements[device] = newM;
+  }
+
+  void
+  setAsLead(std::string Name){
+     resetLead();
+     auto it = m_payloads.begin();
+     while(it != m_payloads.end()){
+        leadMeasurements[it->first]=it->second;
+	it++;
+     }
+  }
+
+  void
+  resetLead(){
+     leadMeasurements.clear();
+  }
 
 public:
   //typedef void (*FirstInterestDataDelayCallback)(Ptr<App> app, uint32_t seqno, Time delay, uint32_t retxCount, int32_t hopCount);
 
   typedef void (*SentInterestTraceCallback)( uint32_t, shared_ptr<const Interest> );
   typedef void (*ReceivedDataTraceCallback)( uint32_t, shared_ptr<const Data> );
+
 protected:
   // from App
   virtual void
@@ -147,7 +168,10 @@ protected:
   uint32_t m_doRetransmission; //retransmit lost interest packets if set to 1
   uint32_t m_offset; //random offset
 
+  nlohmann::json leadMeasurements;
+  std::unordered_map<std::string, std::string> m_payloads;
   Ptr<RttEstimator> m_rtt; ///< @brief RTT estimator
+  int packetsToSend = 3;
 
   /// @cond include_hidden
   /**

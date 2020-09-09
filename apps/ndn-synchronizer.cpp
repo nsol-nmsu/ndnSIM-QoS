@@ -15,43 +15,50 @@ namespace ns3 {
 namespace ndn {
 
   
-Synchronizer::Synchronizer(){
+Synchronizer::Synchronizer() {
 	timestep = 0;
 }	  
 
 
 void
-Synchronizer::addSender(int node, Ptr<ConsumerQos> sender){
+Synchronizer::addSender( int node, Ptr<ConsumerQos> sender ) {
+
 	senders[node] = sender;
 }
 
-void
-Synchronizer::printListAndTime(){
-	std::cout<<"Current Time is: "<<Simulator::Now()<<std::endl;
-	Simulator::Schedule(Seconds(1.0), &Synchronizer::printListAndTime, this);
-}
 
 void
-Synchronizer::setTimeStep(double step){
+Synchronizer::printListAndTime() {
+
+	std::cout << "Current Time is: " << Simulator::Now() << std::endl;
+	Simulator::Schedule( Seconds( 1.0 ), &Synchronizer::printListAndTime, this );
+}
+
+
+void
+Synchronizer::setTimeStep( double step ) {
 	timestep = step;
 }
 
+
 void
-Synchronizer::addArrivedPackets(std::string str){
-	arrivedPackets.push_back(str);
+Synchronizer::addArrivedPackets( std::string str ) {
+	arrivedPackets.push_back( str );
 }
 
+
 void
-Synchronizer::beginSync(){
-	Simulator::Schedule(Seconds(0.0), &Synchronizer::syncEvent, this);
+Synchronizer::beginSync() {
+	Simulator::Schedule( Seconds( 0.0 ), &Synchronizer::syncEvent, this );
 }
 
-void
-Synchronizer::syncEvent(){
 
-	std::cout<<"Syncing at time "<<Simulator::Now().GetSeconds()<<std::endl;
+void
+Synchronizer::syncEvent() {
+
+	std::cout << "Syncing at time " << Simulator::Now().GetSeconds() << std::endl;
 	//std::unordered_map<std::string,int>::iterator nm = nameMap.begin();
-	//while (nm != nameMap.end()) {
+	//while ( nm != nameMap.end() ) {
 	//	std::cout<<nm->first<<": "<<nm->second<<"  ";
 	//	nm++;
 	//}
@@ -60,33 +67,36 @@ Synchronizer::syncEvent(){
 	sendSync();
 	receiveSync();
 
-	//int count = std::stoi(packetNames.back());
+	//int count = std::stoi( packetNames.back() );
 	//packetNames.pop_back();
 
-	//while (itt != senders.end()) {
+	//while ( itt != senders.end() ) {
 	//	int i = 0;
-	//  while (i<count) {
-	//  	Simulator::ScheduleWithContext(itt->first,Seconds(i*(timestep/count)), &ConsumerQos::SendPacket, senders[itt->first]/*, packetNames.back()*/);
+	//  while ( i<count ) {
+	//  	Simulator::ScheduleWithContext( itt->first,Seconds( i*( timestep/count ) ), &ConsumerQos::SendPacket, senders[itt->first]/*, packetNames.back()*/ );
 	//	   	i++;
 	//	}
 	//	itt++;
 	//}
 	//std::cout<<packetNames.size()<<std::endl;
 
-	injectInterests();
-	Simulator::Schedule(Seconds(timestep), &Synchronizer::syncEvent, this);
+	injectInterests( false );
+	Simulator::Schedule( Seconds( timestep ), &Synchronizer::syncEvent, this );
 }
 
+
 void
-Synchronizer::injectInterests() {
+Synchronizer::injectInterests( bool agg ) {
 
 	while ( !packetNames.empty() ) {
 
 		std::vector<std::string> packetInfo = SplitString( packetNames.back(), 2 );
-		Simulator::ScheduleWithContext( std::stoi( packetInfo[1] ), Seconds( 0.0 ), &ConsumerQos::SendPacket, senders[std::stoi( packetInfo[1] )], packetInfo[0], packetInfo[2] );
+		//std::cout<<packetInfo[1]<<" "<<packetInfo[0]<<std::endl;
+		Simulator::ScheduleWithContext( std::stoi( packetInfo[1] ), Seconds( 0.0 ), &ConsumerQos::SendPacket, senders[std::stoi( packetInfo[1] )], packetInfo[0], packetInfo[2], agg );
 		packetNames.pop_back();
 	}
 }
+
 
 std::vector<std::string> 
 Synchronizer::SplitString( std::string strLine, int limit ) {
@@ -94,7 +104,7 @@ Synchronizer::SplitString( std::string strLine, int limit ) {
 	std::string str = strLine;
 	std::vector<std::string> result;
 	std::istringstream isstr( str );
-	int i =0;
+	int i = 0;
 	std::string finalStr = "";
 
 	for ( std::string str; isstr >> str;  ) {

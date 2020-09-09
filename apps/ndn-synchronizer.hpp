@@ -32,10 +32,10 @@ public:
   beginSync();
 
   void
-  injectInterests();
+  injectInterests(bool agg);
 
   std::vector<std::string>
-  SplitString( std::string strLine, int limit );
+  SplitString(std::string strLine, int limit);
 
   virtual void
   sendSync()=0;
@@ -48,9 +48,9 @@ private:
   void
   printListAndTime();
 
-  std::unordered_map<int,Ptr<ConsumerQos>> senders;
-
 protected:
+
+  std::unordered_map<int,Ptr<ConsumerQos>> senders;
 
   std::vector<std::string> arrivedPackets;
 

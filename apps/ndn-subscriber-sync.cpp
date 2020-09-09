@@ -37,6 +37,8 @@
 #include <boost/ref.hpp>
 
 #include <fstream>
+using json = nlohmann::json;
+
 
 NS_LOG_COMPONENT_DEFINE( "ndn.ConsumerQos" );
 
@@ -202,8 +204,11 @@ ConsumerQos::StopApplication() // Called at time specified by Stop
 }
 
 void
-ConsumerQos::SendPacket( std::string deviceName, std::string payload )
+ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg )
 {
+	shared_ptr<Name> DName = make_shared<Name>( deviceName );
+	m_payloads[DName->getSubName( -1, 1 ).toUri()] = payload;
+
 	// Set default size for payload interets
 	if ( m_subscription == 0 && m_virtualPayloadSize == 0 ) {
 
@@ -214,6 +219,14 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload )
 
 	if ( !m_active ) {
 		return;
+	}
+
+	std::string leadPayload = leadMeasurements.dump();
+
+	if ( agg && leadPayload.length() > 10 ) {
+
+		std::cout << "Let us see this \n\n" << leadPayload << "\n\n\n";
+		payload = leadPayload;
 	}
 
 	NS_LOG_FUNCTION_NOARGS();
@@ -256,8 +269,8 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload )
 	interest->setName( *nameWithSequence );
 	time::milliseconds interestLifeTime( m_interestLifeTime.GetMilliSeconds() );
 	interest->setInterestLifetime( interestLifeTime );
-	std::cout<<"Sending...\n";
-	std::cout<<interest->getName()<<" "<<ns3::Simulator::GetContext()<<std::endl;
+	std::cout << "Sending...\n";
+	std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
 
 	NS_LOG_INFO( "node( " << GetNode()->GetId() << " ) > sending Interest: " << interest->getName() /*m_interestName*/ << " with Payload = " << interest->getPayloadLength() << "bytes" );
 
@@ -268,21 +281,37 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload )
 
 	// Callback for sent payload interests
 	m_sentInterest( GetNode()->GetId(), interest );
+
+	/*
+	if ( packetsToSend == 0 ) {
+
+		packetsToSend =2;
+		ScheduleNextPacket( deviceName, payload, agg );
+	}
+	else {
+
+		packetsToSend--;
+
+		if ( packetsToSend != 0 ) {
+			ScheduleNextPacket( deviceName, payload, agg );
+		}
+	}
+	*/
+
 }
 
 
 void
-ConsumerQos::ScheduleNextPacket()
+ConsumerQos::ScheduleNextPacket(std::string deviceName, std::string payload, bool agg)
 {
-	//auto  apps = GetNode()->GetApplication( 0 )->GetObject<ns3::ndn::ConsumerQos>();
 
 	//if ( m_firstTime ) {
-	//  m_sendEvent = Simulator::Schedule( Seconds( double( m_offset ) ), &ConsumerQos::SendPacket, apps );
-
+	//	m_sendEvent = Simulator::Schedule( Seconds( double( m_offset ) ), &ConsumerQos::SendPacket, apps );
 	//	m_firstTime = false;
-	//} else if ( !m_sendEvent.IsRunning() ) {
-	//	m_sendEvent = Simulator::Schedule( m_txInterval, &SubSync::SendPacket, this );
-	//}
+	//} else
+	if ( !m_sendEvent.IsRunning() ) {
+		m_sendEvent = Simulator::Schedule( Seconds(0.1), &ConsumerQos::SendPacket, this, deviceName, payload, agg );
+	}
 }
 
 
@@ -346,11 +375,6 @@ ConsumerQos::OnData( shared_ptr<const Data> data )
 
 		m_rtt->AckSeq( SequenceNumber32( seq ) );
 	}
-
-	//data = nullptr;
-
-	//data.reset();
-	//std::cout << "data received at APP in subscriber " << data->getName() << " count " << data.use_count() << std::endl;
 }
 
 

@@ -31,7 +31,6 @@ namespace ndn {
 
 using json = nlohmann::json;
 
-
 SyncSocket::SyncSocket() {
 
 	std::cout<<"Start\n";
@@ -57,21 +56,22 @@ SyncSocket::SyncSocket() {
 	sockaddr_in clientAddr;
 	socklen_t sin_size = sizeof( struct sockaddr_in );
 
-	// Accept a connection - Connect 2 clients(1. openDSS, 2. ReDisPV)
+	// Accept a connection
 	client_socket[0] = accept( server_socket, ( struct sockaddr* )&clientAddr, &sin_size );
 	client_socket[1] = accept( server_socket, ( struct sockaddr* )&clientAddr, &sin_size );
-
 	std::string output;
 	output.resize( 8 );
 
 	// Client 1
 	ret = read( client_socket[0], &output[0], 8-1 );
+
 	if ( ret > 0 ) {
 
 		cout << "Confirmation code  " << ret << endl;
 		cout << "Server received from 1:  " << output << endl;
 
 		if(output[0] == 'O'){
+
 			cout << "First" << endl;
 			OpenDSS = 0;
 			RedisPv = 1;
@@ -83,6 +83,7 @@ SyncSocket::SyncSocket() {
 	}
 
 	// Client 2
+	//client_socket[1] = accept( server_socket, ( struct sockaddr* )&clientAddr, &sin_size );
 	ret = read( client_socket[1], &output[0], BUFFER_SIZE-1 );
 	if ( ret > 0 ) {
 		cout << "Confirmation code  " << ret << endl;
@@ -94,11 +95,11 @@ SyncSocket::SyncSocket() {
 void
 SyncSocket::addArrivedPackets( std::string str ) {
 
-	std::vector<std::string> updateInfo = SplitString( str, 2 );
+	std::vector<std::string> updateInfo = SplitString( str ,2 );
 
 	json::iterator it = rjf.begin();
 
-	while ( it !=  rjf.end() ) {
+	while ( LeadDERs[updateInfo[1]] == false && it !=  rjf.end() ) {
 
 		if ( it.key() != "Time" && it.value().find( updateInfo[1] ) != it.value().end() ) {
 
@@ -114,7 +115,7 @@ SyncSocket::addArrivedPackets( std::string str ) {
 
 
 bool
-SyncSocket::sendDirect( std::string send_json, int src ) {
+SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName ) {
 
 	json counter = json::parse( send_json );
 	json::iterator it = counter.begin();
@@ -123,35 +124,45 @@ SyncSocket::sendDirect( std::string send_json, int src ) {
 
 	while ( it !=  counter.end() ) {
 
-		if( it.key()=="P" ){
+		if ( it.key() == "P" ) {
+
 			lead = false;
+			senders[nameMap[deviceName]]->resetLead();
+		}
+
+		if ( it.key() == "Lead_DER" ) {
+
+			mapDER[deviceName] = it.value();
+			mapDER["PV"+deviceName.substr(4)] =  it.value();
 		}
 
 		elements++;
 		it++;
 	}
 
-	if( lead ) {
+	if ( lead ) {
 
+		mapDER.erase( deviceName );
+		mapDER.erase( "PV" + deviceName.substr( 4 ) );
+		senders[nameMap[deviceName]]->setAsLead( deviceName );
 		leads--;
 
-		if( elements >1 ) {
-			std::cout<<elements<<" Got some Lead data\n";
+		if ( elements > 1 ) {
+			std::cout << elements << " Got some Lead data\n";
 		} else {
-			std::cout<<elements<<" Got some non-lead data\n";
+			std::cout << elements << " Got some non-lead data\n";
 		}
 
 		sendData( send_json, OpenDSS );
-
 		std::cout << "Leads left " << leads << std::endl;
 	}
 
 	if ( elements > 1 && lead ) {
 
-		std::string data = receiveData(OpenDSS);
-		std::cout<<data<<std::endl;
-		json follower = json::parse(data);
-		processLeadJson(follower, src);
+		std::string data = receiveData( OpenDSS );
+		std::cout << data << std::endl;
+		json follower = json::parse( data );
+		processLeadJson( follower, src );
 	}
 
 	return lead;
@@ -159,7 +170,7 @@ SyncSocket::sendDirect( std::string send_json, int src ) {
 
 
 void
-SyncSocket::sendSync(){
+SyncSocket::sendSync() {
 
 	if ( Simulator::Now().GetSeconds() == 0 ) {
 
@@ -178,40 +189,65 @@ SyncSocket::sendSync(){
 
 	while ( !arrivedPackets.empty() ) {
 
-		std::vector<std::string> SendInfo = SplitString( arrivedPackets.back(), 0 );
+		std::vector<std::string> SendInfo = SplitString( arrivedPackets.back() , 0 );
 
-		if( SendInfo[3] == "RedisPV" ) {
+		if ( SendInfo[3] == "RedisPV" ) {
+
 			openSend[SendInfo[1]] = SendInfo[4];
+
+		} else if ( LeadDERs[SendInfo[1]] == true ) {
+
+			std::cout<<"............Updating................\n";
+			json leadJson = json::parse( SendInfo[4] );
+			json::iterator itLead = leadJson.begin();
+
+			while ( itLead != leadJson.end() ) {
+
+				if ( rjf["Storage"].find( itLead.key() ) != rjf["Storage"].end() ) {
+
+					rjf["Storage"][itLead.key()] = njf["Storage"][itLead.key()];
+					std::cout << rjf["Storage"][itLead.key()] << "\n...............Storage................\n";
+
+				}
+
+				if ( rjf["PVSystem"].find( itLead.key() ) != rjf["PVSystem"].end() ) {
+
+					rjf["PVSystem"][itLead.key()] = njf["PVSystem"][itLead.key()];
+					std::cout << rjf["PVSystem"][itLead.key()] << "\n..............PVSystem.................\n";
+
+				}
+
+				itLead++;
+			}
 		}
 
-		j[SendInfo[1]]["ArrivalTime"]= SendInfo[2];
-		j[SendInfo[1]]["PacketSize"]= SendInfo[0];
+		j[SendInfo[1]]["ArrivalTime"] = SendInfo[2];
+		j[SendInfo[1]]["PacketSize"] = SendInfo[0];
 		arrivedPackets.pop_back();
 	}
 
 	std::string send_json = rjf.dump();
-	//std::cout<<j.dump( 4 )<<std::endl;
-	std::cout<<send_json.size()<<std::endl;
+	//std::cout << j.dump( 4 ) << std::endl;
+	std::cout << send_json.size() << std::endl;
 
 	sendData( send_json, RedisPv );
 
 	send_json = openSend.dump();
 	sendData( send_json, OpenDSS );
 	std::cout << "Lets check\n";
-	std::cout << openSend.dump( 4 )<< std::endl;
+	std::cout << openSend.dump( 4 ) << std::endl;
 }
-
 
 void
 SyncSocket::sendData( std::string data, int socket ) {
 
 	json packet;
 	int i;
-	int n = ( data.size()/750 )+1;
+	int n = ( data.size()/750 ) + 1;
 	std::string chunks[n];
 
 	for ( i = 0; i<n; i++ ) {
-		chunks[i] = data.substr( i*750,750 );
+		chunks[i] = data.substr( i*750, 750 );
 	}
 
 	packet["size"] =  data.size();     // Set first key in packet dictionary - total size of one timestep data
@@ -245,6 +281,7 @@ SyncSocket::sendData( std::string data, int socket ) {
 		//std::cout << " PJ size : " << pj.size() << std::endl;
 
 		i += 1;
+		//ret = write( client_socket[OpenDSS],&pj[0],pj.size()  );
 		ret = write( client_socket[socket],&pj[0],pj.size() );
 		if ( ret < 0 ) {
 			cout << "Write failed" << endl;
@@ -260,10 +297,12 @@ SyncSocket::receiveSync() {
 	njf = json::parse( data );
 
 	std::cout << "OpenDSS json recieved with size " << njf.size() << std::endl;
+
 	data = receiveData( RedisPv );
 	processJson();
 	json test = json::parse( data );
 	processRPVJson( test );
+
 	std::cout << "RedisPv json recieved with size " << test.size() << std::endl;
 }
 
@@ -292,7 +331,6 @@ SyncSocket::receiveData( int socket ) {
 				int pret = read( client_socket[socket], &buff[ret], BUFFER_SIZE-( ret +1 ) );
 				//cout << "Building... " << pret << endl;
 				ret += pret;
-
 			}
 
 			json tempj = json::parse( buff );
@@ -349,7 +387,14 @@ SyncSocket::processJson(){
 					it2++;
 				}
 
-				packet_insert = "data/" + device + " " + std::to_string( consumer ) +  " " + payload;
+				if ( mapDER.find( it1.key() ) != mapDER.end() ) {
+
+					packet_insert = "phy" + std::to_string( nameMap[mapDER[it1.key()]] ) + "/" + mapDER[it1.key()] + "/data/" + device + " " + std::to_string( consumer ) +  " " + payload;
+				} else {
+
+					packet_insert = "data/" + device + " " + std::to_string( consumer ) +  " " + payload;
+				}
+
 				packetNames.push_back( packet_insert );
 				it1++;
 			}
@@ -357,8 +402,8 @@ SyncSocket::processJson(){
 
 		it++;
 	}
-}
 
+}
 
 void
 SyncSocket::processRPVJson( json jf ) {
@@ -377,7 +422,7 @@ SyncSocket::processRPVJson( json jf ) {
 		while ( it1 !=  it.value().end() ) {
 
 			if ( it1.key() == "Lead_DER" ) {
-				device = "phy"+ std::to_string(nameMap[it1.value()])+"/";
+				device = "phy" + std::to_string( nameMap[it1.value()] ) + "/";
 				device += it1.value();
 			} else {
 				payload = it1.value().dump();
@@ -387,7 +432,7 @@ SyncSocket::processRPVJson( json jf ) {
 			it1++;
 		}
 
-		packet_insert = device + " " +std::to_string( PVNode ) +  " " + payload;
+		packet_insert = device + " " + std::to_string( PVNode ) +  " " + payload;
 		std::cout << packet_insert << std::endl;
 		packetNames.push_back( packet_insert );
 		it++;
@@ -396,7 +441,6 @@ SyncSocket::processRPVJson( json jf ) {
 	std::string send = to_string(leads);
 	ret = write( client_socket[OpenDSS],&send[0],send.size() );
 }
-
 
 void
 SyncSocket::processLeadJson( json jf, int src ) {
@@ -410,20 +454,19 @@ SyncSocket::processLeadJson( json jf, int src ) {
 		int payloadSize;
 		std::string packet_insert;
 
-		device = "phy"+ std::to_string(nameMap[it.key()])+"/";
+		device = "phy"+ std::to_string( nameMap[it.key()] ) + "/";
 		device += it.key();
 		payload = it.value().dump();
 		payloadSize = payload.size();
 
-		packet_insert = device + " " +std::to_string( src ) +  " " + payload;
+		packet_insert = device + " " + std::to_string( src ) +  " " + payload;
 		std::cout << packet_insert << std::endl;
 		packetNames.push_back( packet_insert );
 		it++;
 	}
 
-	injectInterests();
+	injectInterests( false );
 }
-
 
 void
 SyncSocket::fillNameMap( json jf ) {
@@ -432,16 +475,41 @@ SyncSocket::fillNameMap( json jf ) {
 
 	while ( it !=  jf.end() ) {
 
-		nameMap[ it.key() ]=it.value();
+		nameMap[it.key()]=it.value();
+
+		if ( it.key().substr( 0, 4 ) == "BESS" ) {
+			std::cout << it.key().substr( 0, 4 ) << " should have ten\n";
+		}
+
 		it++;
 	}
 }
 
 
 void
-SyncSocket::initializeJson( json jf ) {
+SyncSocket::initializeJson( json jf ){
 
 	rjf =  jf;
+}
+
+
+void
+SyncSocket::setEntryDER( std::string der, std::string lead ) {
+}
+
+
+void
+SyncSocket::aggDER( std::string payload, int src, std::string follower, std::string lead ) {
+
+     senders[nameMap[lead]]->updateLeadMeasurements( payload, follower );
+     LeadDERs[lead] = true;
+     LeadDERs[follower] = false;
+     int consumer = nameMap[lead];
+
+     std::string packet_insert = "data/" + lead + " " + std::to_string( consumer ) +  " " + payload;
+     packetNames.push_back( packet_insert );
+
+     injectInterests( true );
 }
 
 
