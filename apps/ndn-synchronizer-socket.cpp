@@ -67,27 +67,21 @@ SyncSocket::SyncSocket() {
 	ret = read( client_socket[0], &output[0], 8-1 );
 
 	if ( ret > 0 ) {
-
-		cout << "Confirmation code  " << ret << endl;
 		cout << "Server received from 1:  " << output << endl;
 
+		//Set client references based on order of connections
 		if(output[0] == 'O'){
-
-			cout << "First" << endl;
 			OpenDSS = 0;
 			RedisPv = 1;
 		} else {
-			cout << "Second" << endl;
 			OpenDSS = 1;
 			RedisPv = 0;
 		}
 	}
 
 	// Client 2
-	//client_socket[1] = accept( server_socket, ( struct sockaddr* )&clientAddr, &sin_size );
 	ret = read( client_socket[1], &output[0], BUFFER_SIZE-1 );
 	if ( ret > 0 ) {
-		cout << "Confirmation code  " << ret << endl;
 		cout << "Server received from 2:  " << output << endl;
 	}
 }
@@ -100,17 +94,21 @@ SyncSocket::addArrivedPackets( std::string str ) {
 
 	json::iterator it = rjf.begin();
 
-	while ( LeadDERs[updateInfo[1]] == false && it !=  rjf.end() ) {
+	if (LeadDERs[updateInfo[1]] == false ){
+                std::cout<<"\nReDis-PV node (ns3) received measurement data from non-PV devices\n";
+		while ( it !=  rjf.end() ) {
 
-		if ( it.key() != "Time" && it.value().find( updateInfo[1] ) != it.value().end() ) {
+			if ( it.key() != "Time" && it.value().find( updateInfo[1] ) != it.value().end() ) {
 
-			it.value()[updateInfo[1]] = njf[it.key()][updateInfo[1]];
-			it = rjf.end();
-		} else {
-			it++;
+				it.value()[updateInfo[1]] = njf[it.key()][updateInfo[1]];
+				it = rjf.end();
+			} else {
+				it++;
+			}
 		}
+	} else {
+		std::cout<<"\nReDis-PV node (ns3) received measurement data from PV Lead DERs\n";
 	}
-
 	arrivedPackets.push_back( str );
 }
 
@@ -298,14 +296,14 @@ SyncSocket::receiveSync() {
 	std::string data = receiveData( OpenDSS );
 	njf = json::parse( data );
 
-	std::cout << "Measurement data received from OpenDSS, size: " << njf.size() << std::endl;
+	std::cout << "\nMeasurement data received from OpenDSS, size: " << data.size() << " bytes" << std::endl;
 
 	data = receiveData( RedisPv );
 	processJson();
 	json cluster_info = json::parse( data );
 	processRPVJson( cluster_info );
 
-	std::cout << "Clustering information (set points) received from ReDis-PV, size: " << cluster_info.size() << std::endl;
+	std::cout << "Clustering information (set points) received from ReDis-PV, size: " << data.size() << " bytes" << std::endl;
 }
 
 std::string
@@ -498,6 +496,7 @@ SyncSocket::setEntryDER( std::string der, std::string lead ) {
 void
 SyncSocket::aggDER( std::string payload, int src, std::string follower, std::string lead ) {
 
+     std::cout << "\nLead DER " << lead << " received  measurments from Follower DER " << follower << ", size: " << payload.size() << std::endl;
      senders[nameMap[lead]]->updateLeadMeasurements( payload, follower );
      LeadDERs[lead] = true;
      LeadDERs[follower] = false;

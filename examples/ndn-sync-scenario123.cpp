@@ -409,7 +409,6 @@ main ( int argc, char* argv[] )
 	}
 
 	configFile.close();
-	std::cout<<"All done\n";
 
 	// Define the routing strategies per prefix
 	ndn::StrategyChoiceHelper::InstallAll( "/power/typeI", "/localhost/nfd/strategy/multicast" );

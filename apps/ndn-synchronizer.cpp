@@ -56,7 +56,7 @@ Synchronizer::beginSync() {
 void
 Synchronizer::syncEvent() {
 
-	std::cout << "Syncing at time " << Simulator::Now().GetSeconds() << std::endl;
+	std::cout << "\n\n\nSyncing at time " << Simulator::Now().GetSeconds() << std::endl;
 	//std::unordered_map<std::string,int>::iterator nm = nameMap.begin();
 	//while ( nm != nameMap.end() ) {
 	//	std::cout<<nm->first<<": "<<nm->second<<"  ";

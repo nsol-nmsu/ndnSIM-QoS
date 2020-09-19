@@ -270,6 +270,7 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg )
 	interest->setName( *nameWithSequence );
 	time::milliseconds interestLifeTime( m_interestLifeTime.GetMilliSeconds() );
 	interest->setInterestLifetime( interestLifeTime );
+	interest->setCanBePrefix(false);
 	if ( DEBUG ) std::cout << "Sending...\n";
 	if ( DEBUG ) std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
 
