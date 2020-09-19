@@ -135,6 +135,7 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 
 			mapDER[deviceName] = it.value();
 			mapDER["PV"+deviceName.substr(4)] =  it.value();
+			std::cout << "Follower DER " << deviceName << " set with Lead DER " << it.value() << "\n";
 		}
 
 		elements++;
@@ -148,15 +149,18 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 		senders[nameMap[deviceName]]->setAsLead( deviceName );
 		leads--;
 
-    std::cout << "Lead DER " << deviceName << " set with " << elements-1 << " follower(s)\n";
+		std::cout << "Lead DER " << deviceName << " set with " << elements-1 << " follower(s)\n";
 
-    sendData( send_json, OpenDSS );
+		sendData( send_json, OpenDSS );
+                std::cout << "Sending clustering information for Lead DER " << deviceName << " to OpenDSS" << std::endl;
+
 		if ( DEBUG ) std::cout << "Leads left " << leads << std::endl;
 	}
 
 	if ( elements > 1 && lead ) {
 
 		std::string data = receiveData( OpenDSS );
+	        std::cout << "Follower DER  information (set points) received from Lead DER " << deviceName << " (OpenDSS) , size: " << data.size() << std::endl;
 		if ( DEBUG ) std::cout << data << std::endl;
 		json follower = json::parse( data );
 		processLeadJson( follower, src );
@@ -227,11 +231,11 @@ SyncSocket::sendSync() {
 	//std::cout << j.dump( 4 ) << std::endl;
 	//std::cout << send_json.size() << std::endl;
 
-  sendData( send_json, RedisPv );
-  std::cout << "Sending measurement.json to Redis-PV" << std::endl;
+	sendData( send_json, RedisPv );
+	std::cout << "Sending measurement.json to Redis-PV" << std::endl;
 	send_json = openSend.dump();
 	sendData( send_json, OpenDSS );
-  std::cout << "Sending clustering information to OpenDSS" << std::endl;
+	std::cout << "Sending arrived Following DER (at ns3) information to OpenDSS" << std::endl;
 	//std::cout << "Lets check\n";
 	//std::cout << openSend.dump( 4 ) << std::endl;
 }
@@ -301,7 +305,7 @@ SyncSocket::receiveSync() {
 	json cluster_info = json::parse( data );
 	processRPVJson( cluster_info );
 
-	std::cout << "Clustering information received from ReDis-PV, size: " << cluster_info.size() << std::endl;
+	std::cout << "Clustering information (set points) received from ReDis-PV, size: " << cluster_info.size() << std::endl;
 }
 
 std::string

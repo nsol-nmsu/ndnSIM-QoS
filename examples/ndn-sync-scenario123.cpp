@@ -653,7 +653,7 @@ ReceivedInterestCallbackPhy( uint32_t nodeid, shared_ptr<const ndn::Interest> in
 			std::string payload( payloadVector.begin(), payloadVector.end() );
 			std::string str = std::to_string( interest->getPayloadLength() ) + " " + interest->getName( ).getSubName( 3,1 ).toUri( ).substr( 1 ) + " " + std::to_string( ( Simulator::Now( ).GetSeconds( ) ) ) + " RedisPV " + payload;
 
-			std::cout<< "Received Setpoint: " << interest->getName() << "   " <<payload <<std::endl;
+			std::cout<< "\nReceived Setpoint: " << interest->getName() << "   " <<payload <<std::endl;
 			bool lead = sync.sendDirect( payload, nodeid,  interest->getName().getSubName( 3,1 ).toUri().substr( 1 ) );
 
 			if( !lead ) {
