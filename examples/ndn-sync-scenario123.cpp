@@ -34,6 +34,7 @@
 #include "apps/ndn-app.hpp"		// This header is required for Trace Sink
 #include "nlohmann/json.hpp"
 
+#define DEBUG 0
 
 
 namespace ns3 {
@@ -223,7 +224,7 @@ main ( int argc, char* argv[] )
 
 					char temp[10];
 					sprintf( temp, "%lf", 1.0/( float( rand()%40+80 ) ) );
-					std::cout << netParams[1] << "\n";
+					if ( DEBUG) std::cout << netParams[1] << "\n";
 
 					// Install consumer
 					consumerHelper.SetPrefix( "/power/typeI" );
@@ -281,7 +282,8 @@ main ( int argc, char* argv[] )
 
 					// Setup node to originate prefixes for dynamic routing
 					for(int i = 0; i < nameMap[std::stoi( netParams[1] )].size(); i++ ) {
-						std::cout << "Adding origin " << "/power/typeI/phy" + netParams[1] + "/" + nameMap[std::stoi( netParams[1] )][i] << " at node " << netParams[1] << std::endl;
+
+						if ( DEBUG) std::cout << "Adding origin " << "/power/typeI/phy" + netParams[1] + "/" + nameMap[std::stoi( netParams[1] )][i] << " at node " << netParams[1] << std::endl;
 						ndnGlobalRoutingHelper.AddOrigin( "/power/typeI/phy" + netParams[1] + "/" + nameMap[std::stoi( netParams[1] )][i], nodes.Get( std::stoi( netParams[1] ) ) );
 					}
 
@@ -619,7 +621,7 @@ ReceivedInterestCallbackPhy( uint32_t nodeid, shared_ptr<const ndn::Interest> in
 
 	if ( interest->getName( ).getSubName( -3,1 ).toUri( ).substr( 1 ) == "data" ) {
 
-		std::cout<<"We got it "<< interest->getName( ).toUri()<<std::endl;
+		if ( DEBUG) std::cout<<"We got it "<< interest->getName( ).toUri()<<std::endl;
 
 		// Do not log subscription interests received at com nodes
 		if ( interest->getName().getSubName( 1,1 ).toUri( ) == "/typeI" ) {
@@ -629,7 +631,7 @@ ReceivedInterestCallbackPhy( uint32_t nodeid, shared_ptr<const ndn::Interest> in
 			std::string str = /*std::to_string( nodeid )*/std::to_string( interest->getPayloadLength() ) + " " + interest->getName( ).getSubName( -2,1 ).toUri( ).substr( 1 ) + " " + std::to_string( ( Simulator::Now( ).GetSeconds( ) ) ) + " OpenDSS "+payload ;
 
 			sync.aggDER( payload, nodeid,  interest->getName().getSubName( -2,1 ).toUri().substr( 1 ), interest->getName().getSubName( 3,1 ).toUri().substr( 1 ) );
-			std::cout << "Received: " << str <<std::endl;
+			if ( DEBUG) std::cout << "Received: " << str <<std::endl;
 		}
 
 		tracefile << nodeid << ", recv, " << interest->getName() << ", " << interest->getPayloadLength( ) << ", " << std::fixed << setprecision( 9 ) 
@@ -697,7 +699,7 @@ ReceivedInterestCallbackCom( uint32_t nodeid, shared_ptr<const ndn::Interest> in
 			std::string str = /*std::to_string( nodeid )*/std::to_string( interest->getPayloadLength() ) + " " + interest->getName( ).getSubName( 3,1 ).toUri( ).substr( 1 ) + " " + std::to_string( ( Simulator::Now( ).GetSeconds( ) ) ) + " OpenDSS "+payload;
 
 			sync.addArrivedPackets( str );
-			std::cout<< "Received: " << str <<std::endl;
+			if ( DEBUG) std::cout<< "Received: " << str <<std::endl;
 
 		} else  {
 

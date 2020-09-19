@@ -39,6 +39,7 @@
 #include <fstream>
 using json = nlohmann::json;
 
+#define DEBUG 0
 
 NS_LOG_COMPONENT_DEFINE( "ndn.ConsumerQos" );
 
@@ -225,7 +226,7 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg )
 
 	if ( agg && leadPayload.length() > 10 ) {
 
-		std::cout << "Let us see this \n\n" << leadPayload << "\n\n\n";
+		if ( DEBUG ) std::cout << "Let us see this \n\n" << leadPayload << "\n\n\n";
 		payload = leadPayload;
 	}
 
@@ -269,8 +270,8 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg )
 	interest->setName( *nameWithSequence );
 	time::milliseconds interestLifeTime( m_interestLifeTime.GetMilliSeconds() );
 	interest->setInterestLifetime( interestLifeTime );
-	std::cout << "Sending...\n";
-	std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
+	if ( DEBUG ) std::cout << "Sending...\n";
+	if ( DEBUG ) std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
 
 	NS_LOG_INFO( "node( " << GetNode()->GetId() << " ) > sending Interest: " << interest->getName() /*m_interestName*/ << " with Payload = " << interest->getPayloadLength() << "bytes" );
 

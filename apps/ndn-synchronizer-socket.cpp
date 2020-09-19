@@ -24,6 +24,7 @@ using namespace std;
 
 #define SERVER_PORT htons( 5005 )
 #define CONNECTIONS 1
+#define DEBUG 0
 
 
 namespace ns3 {
@@ -147,20 +148,16 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 		senders[nameMap[deviceName]]->setAsLead( deviceName );
 		leads--;
 
-		if ( elements > 1 ) {
-			std::cout << elements << " Got some Lead data\n";
-		} else {
-			std::cout << elements << " Got some non-lead data\n";
-		}
+    std::cout << "Lead DER " << deviceName << " set with " << elements-1 << " follower(s)\n";
 
-		sendData( send_json, OpenDSS );
-		std::cout << "Leads left " << leads << std::endl;
+    sendData( send_json, OpenDSS );
+		if ( DEBUG ) std::cout << "Leads left " << leads << std::endl;
 	}
 
 	if ( elements > 1 && lead ) {
 
 		std::string data = receiveData( OpenDSS );
-		std::cout << data << std::endl;
+		if ( DEBUG ) std::cout << data << std::endl;
 		json follower = json::parse( data );
 		processLeadJson( follower, src );
 	}
@@ -172,17 +169,17 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 void
 SyncSocket::sendSync() {
 
-	if ( Simulator::Now().GetSeconds() == 0 ) {
+  if ( Simulator::Now().GetSeconds() == 0 ) {
 
-		ret = write( client_socket[OpenDSS],"ndnSIM Simulation Started",strlen( "ndnSIM Simulation Started" ) );
-		ret = write( client_socket[RedisPv],"Hello, Pv",strlen( "Hello, Pv" ) );
+    ret = write( client_socket[OpenDSS],"ndnSIM Simulation Started",strlen( "ndnSIM Simulation Started" ) );
+    ret = write( client_socket[RedisPv],"Hello, Pv",strlen( "Hello, Pv" ) );
 
-		if ( ret < 0 ) {
-			cout << "Write failed" << endl;
-		}
+    if ( ret < 0 ) {
+      cout << "Write failed" << endl;
+    }
 
-		return;
-	}
+    return;
+  }
 
 	json j;
 	json openSend;
@@ -197,7 +194,7 @@ SyncSocket::sendSync() {
 
 		} else if ( LeadDERs[SendInfo[1]] == true ) {
 
-			std::cout<<"............Updating................\n";
+			if ( DEBUG ) std::cout << "............Updating................\n";
 			json leadJson = json::parse( SendInfo[4] );
 			json::iterator itLead = leadJson.begin();
 
@@ -206,14 +203,14 @@ SyncSocket::sendSync() {
 				if ( rjf["Storage"].find( itLead.key() ) != rjf["Storage"].end() ) {
 
 					rjf["Storage"][itLead.key()] = njf["Storage"][itLead.key()];
-					std::cout << rjf["Storage"][itLead.key()] << "\n...............Storage................\n";
+					if ( DEBUG ) std::cout << rjf["Storage"][itLead.key()] << "\n...............Storage................\n";
 
 				}
 
 				if ( rjf["PVSystem"].find( itLead.key() ) != rjf["PVSystem"].end() ) {
 
 					rjf["PVSystem"][itLead.key()] = njf["PVSystem"][itLead.key()];
-					std::cout << rjf["PVSystem"][itLead.key()] << "\n..............PVSystem.................\n";
+					if ( DEBUG ) std::cout << rjf["PVSystem"][itLead.key()] << "\n..............PVSystem.................\n";
 
 				}
 
@@ -228,14 +225,15 @@ SyncSocket::sendSync() {
 
 	std::string send_json = rjf.dump();
 	//std::cout << j.dump( 4 ) << std::endl;
-	std::cout << send_json.size() << std::endl;
+	//std::cout << send_json.size() << std::endl;
 
-	sendData( send_json, RedisPv );
-
+  sendData( send_json, RedisPv );
+  std::cout << "Sending measurement.json to Redis-PV" << std::endl;
 	send_json = openSend.dump();
 	sendData( send_json, OpenDSS );
-	std::cout << "Lets check\n";
-	std::cout << openSend.dump( 4 ) << std::endl;
+  std::cout << "Sending clustering information to OpenDSS" << std::endl;
+	//std::cout << "Lets check\n";
+	//std::cout << openSend.dump( 4 ) << std::endl;
 }
 
 void
@@ -296,14 +294,14 @@ SyncSocket::receiveSync() {
 	std::string data = receiveData( OpenDSS );
 	njf = json::parse( data );
 
-	std::cout << "OpenDSS json recieved with size " << njf.size() << std::endl;
+	std::cout << "Measurement data received from OpenDSS, size: " << njf.size() << std::endl;
 
 	data = receiveData( RedisPv );
 	processJson();
-	json test = json::parse( data );
-	processRPVJson( test );
+	json cluster_info = json::parse( data );
+	processRPVJson( cluster_info );
 
-	std::cout << "RedisPv json recieved with size " << test.size() << std::endl;
+	std::cout << "Clustering information received from ReDis-PV, size: " << cluster_info.size() << std::endl;
 }
 
 std::string
@@ -433,7 +431,7 @@ SyncSocket::processRPVJson( json jf ) {
 		}
 
 		packet_insert = device + " " + std::to_string( PVNode ) +  " " + payload;
-		std::cout << packet_insert << std::endl;
+		if ( DEBUG ) std::cout << packet_insert << std::endl;
 		packetNames.push_back( packet_insert );
 		it++;
 	}
@@ -460,7 +458,7 @@ SyncSocket::processLeadJson( json jf, int src ) {
 		payloadSize = payload.size();
 
 		packet_insert = device + " " + std::to_string( src ) +  " " + payload;
-		std::cout << packet_insert << std::endl;
+		if ( DEBUG ) std::cout << packet_insert << std::endl;
 		packetNames.push_back( packet_insert );
 		it++;
 	}
@@ -476,11 +474,6 @@ SyncSocket::fillNameMap( json jf ) {
 	while ( it !=  jf.end() ) {
 
 		nameMap[it.key()]=it.value();
-
-		if ( it.key().substr( 0, 4 ) == "BESS" ) {
-			std::cout << it.key().substr( 0, 4 ) << " should have ten\n";
-		}
-
 		it++;
 	}
 }
