@@ -55,9 +55,6 @@ public:
   void
   processLeadJson(nlohmann::json jf, int src);
 
-  void
-  setEntryDER(std::string der, std::string lead);
-
   void setPVNode(int node){
      PVNode = node;
   };

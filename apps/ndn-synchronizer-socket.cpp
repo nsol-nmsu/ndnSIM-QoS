@@ -32,10 +32,12 @@ namespace ndn {
 
 using json = nlohmann::json;
 
+//On object construction create sockets and set references
 SyncSocket::SyncSocket() {
 
 	std::cout<<"Start\n";
 
+	//Initialize socket
 	sockaddr_in serverAddr;
 	server_socket=socket( AF_INET, SOCK_STREAM, 0 );
 	serverAddr.sin_family = AF_INET;
@@ -87,32 +89,50 @@ SyncSocket::SyncSocket() {
 }
 
 
+//Add a string to list of packets that arrived at ReDis-PV and follower DERs
+//Input: Str; string with information on the arriving interest.
 void
 SyncSocket::addArrivedPackets( std::string str ) {
 
-	std::vector<std::string> updateInfo = SplitString( str ,2 );
+  std::vector<std::string> updateInfo = SplitString( str, 3 );
 
-	json::iterator it = rjf.begin();
+  json::iterator it = rjf.begin();
 
-	if (LeadDERs[updateInfo[1]] == false ){
-                std::cout<<"\nReDis-PV node (ns3) received measurement data from non-PV devices\n";
-		while ( it !=  rjf.end() ) {
+  //Check if the sending packet is a lead DER
+  //If not update running measurment json
+  std::cout << str << std::endl;
 
-			if ( it.key() != "Time" && it.value().find( updateInfo[1] ) != it.value().end() ) {
+  if ( LeadDERs[updateInfo[1]] == false ) {
 
-				it.value()[updateInfo[1]] = njf[it.key()][updateInfo[1]];
-				it = rjf.end();
-			} else {
-				it++;
-			}
-		}
-	} else {
-		std::cout<<"\nReDis-PV node (ns3) received measurement data from PV Lead DERs\n";
-	}
-	arrivedPackets.push_back( str );
+    std::cout<<"\nReDis-PV node (ns3) received measurement data from non-PV devices\n";
+
+    while ( it !=  rjf.end() ) {
+
+      if ( it.key() != "Time" && it.value().find( updateInfo[1] ) != it.value().end() ) {
+
+        it.value()[updateInfo[1]] = njf[it.key()][updateInfo[1]];
+        it = rjf.end();
+
+      } else {
+        it++;
+      }
+
+    }
+
+  } else if ( updateInfo[3] != "RedisPV" ) {
+
+    std::cout<<"\nReDis-PV node (ns3) received measurement data from PV Lead DERs\n";
+  }
+
+  //Push packet information into vector for later processing
+  arrivedPackets.push_back( str );
 }
 
 
+//Process packets with set point data, that arrive at a follwer DER or a lead DER
+//	and injectnew interest as needed.
+//Input: Send_json; the data we will be sending. Src; the source node from which interests
+//	will be sent. Device Name; the name of the reciving interest.
 bool
 SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName ) {
 
@@ -121,18 +141,20 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 	int elements = 0;
 	bool lead = true;
 
+	//Check if receiving packet is a follwer DER, if it is update info for node
+	//If it is a lead DER count the number of followers it has
 	while ( it !=  counter.end() ) {
 
+		//If we find measurment Data that means this is a follower DER
 		if ( it.key() == "P" ) {
-
 			lead = false;
 			senders[nameMap[deviceName]]->resetLead();
 		}
 
+		//Update the lead DER information for this node
 		if ( it.key() == "Lead_DER" ) {
-
 			mapDER[deviceName] = it.value();
-			mapDER["PV"+deviceName.substr(4)] =  it.value();
+			mapDER["PV"+deviceName.substr( 4 )] =  it.value();
 			std::cout << "Follower DER " << deviceName << " set with Lead DER " << it.value() << "\n";
 		}
 
@@ -140,6 +162,7 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 		it++;
 	}
 
+	//If node is lead DER update tables for node and send data to OpenDSS
 	if ( lead ) {
 
 		mapDER.erase( deviceName );
@@ -155,6 +178,7 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 		if ( DEBUG ) std::cout << "Leads left " << leads << std::endl;
 	}
 
+	//If the lead DER has at least one follower wait for response from OpenDSS
 	if ( elements > 1 && lead ) {
 
 		std::string data = receiveData( OpenDSS );
@@ -164,13 +188,16 @@ SyncSocket::sendDirect( std::string send_json, int src, std::string deviceName )
 		processLeadJson( follower, src );
 	}
 
+	//Inform caller if the node was a lead DER or not
 	return lead;
 }
 
 
+//Send infromation gathered over span of the timestep to the co-simulators
 void
 SyncSocket::sendSync() {
 
+  //If this is time step zero send initialization messages
   if ( Simulator::Now().GetSeconds() == 0 ) {
 
     ret = write( client_socket[OpenDSS],"ndnSIM Simulation Started",strlen( "ndnSIM Simulation Started" ) );
@@ -183,61 +210,67 @@ SyncSocket::sendSync() {
     return;
   }
 
-	json j;
-	json openSend;
+  json j;
+  json openSend;
 
-	while ( !arrivedPackets.empty() ) {
+  //Process all the saved strings with packet arrival information and send any relevent data
+  while ( !arrivedPackets.empty() ) {
 
-		std::vector<std::string> SendInfo = SplitString( arrivedPackets.back() , 0 );
+    std::vector<std::string> SendInfo = SplitString( arrivedPackets.back() , 0 );
 
-		if ( SendInfo[3] == "RedisPV" ) {
+    //If data is from ReDis-PV add to json string for OpenDSS
+    if ( SendInfo[3] == "RedisPV" ) {
 
-			openSend[SendInfo[1]] = SendInfo[4];
+      openSend[SendInfo[1]] = SendInfo[4];
 
-		} else if ( LeadDERs[SendInfo[1]] == true ) {
+    } else if ( LeadDERs[SendInfo[1]] == true ) {
 
-			if ( DEBUG ) std::cout << "............Updating................\n";
-			json leadJson = json::parse( SendInfo[4] );
-			json::iterator itLead = leadJson.begin();
+      //update running json file with data that arrived at ReDis-PV from OpenDSS
+      if ( DEBUG ) std::cout << "............Updating................\n";
+      json leadJson = json::parse( SendInfo[4] );
+      json::iterator itLead = leadJson.begin();
 
-			while ( itLead != leadJson.end() ) {
+      while ( itLead != leadJson.end() ) {
 
-				if ( rjf["Storage"].find( itLead.key() ) != rjf["Storage"].end() ) {
+        if ( rjf["Storage"].find( itLead.key() ) != rjf["Storage"].end() ) {
 
-					rjf["Storage"][itLead.key()] = njf["Storage"][itLead.key()];
-					if ( DEBUG ) std::cout << rjf["Storage"][itLead.key()] << "\n...............Storage................\n";
+          rjf["Storage"][itLead.key()] = njf["Storage"][itLead.key()];
+          if ( DEBUG ) std::cout << rjf["Storage"][itLead.key()] << "\n...............Storage................\n";
 
-				}
+        }
 
-				if ( rjf["PVSystem"].find( itLead.key() ) != rjf["PVSystem"].end() ) {
+        if ( rjf["PVSystem"].find( itLead.key() ) != rjf["PVSystem"].end() ) {
 
-					rjf["PVSystem"][itLead.key()] = njf["PVSystem"][itLead.key()];
-					if ( DEBUG ) std::cout << rjf["PVSystem"][itLead.key()] << "\n..............PVSystem.................\n";
+          rjf["PVSystem"][itLead.key()] = njf["PVSystem"][itLead.key()];
+          if ( DEBUG ) std::cout << rjf["PVSystem"][itLead.key()] << "\n..............PVSystem.................\n";
 
-				}
+        }
 
-				itLead++;
-			}
-		}
+        itLead++;
+      }
+    }
 
-		j[SendInfo[1]]["ArrivalTime"] = SendInfo[2];
-		j[SendInfo[1]]["PacketSize"] = SendInfo[0];
-		arrivedPackets.pop_back();
-	}
+    j[SendInfo[1]]["ArrivalTime"] = SendInfo[2];
+    j[SendInfo[1]]["PacketSize"] = SendInfo[0];
+    arrivedPackets.pop_back();
+  }
 
-	std::string send_json = rjf.dump();
-	//std::cout << j.dump( 4 ) << std::endl;
-	//std::cout << send_json.size() << std::endl;
+  //Send updated json files to OpenDss and ReDis-PV
+  std::string send_json = rjf.dump();
+  //std::cout << j.dump( 4 ) << std::endl;
+  //std::cout << send_json.size() << std::endl;
 
-	sendData( send_json, RedisPv );
-	std::cout << "Sending measurement.json to Redis-PV" << std::endl;
-	send_json = openSend.dump();
-	sendData( send_json, OpenDSS );
-	std::cout << "Sending arrived Following DER (at ns3) information to OpenDSS" << std::endl;
-	//std::cout << "Lets check\n";
-	//std::cout << openSend.dump( 4 ) << std::endl;
+  sendData( send_json, RedisPv );
+  std::cout << "Sending measurement.json to Redis-PV" << std::endl;
+  send_json = openSend.dump();
+  sendData( send_json, OpenDSS );
+  std::cout << "Sending arrived Following DER (at ns3) information to OpenDSS" << std::endl;
+  //std::cout << "Lets check\n";
+  //std::cout << openSend.dump( 4 ) << std::endl;
 }
 
+//Implmentation of sending data over cpp socket
+//Input; Data; the data to be sent. Socket; the socket we will be sending over. 
 void
 SyncSocket::sendData( std::string data, int socket ) {
 
@@ -246,6 +279,7 @@ SyncSocket::sendData( std::string data, int socket ) {
 	int n = ( data.size()/750 ) + 1;
 	std::string chunks[n];
 
+	//Find nummber of chunks
 	for ( i = 0; i<n; i++ ) {
 		chunks[i] = data.substr( i*750, 750 );
 	}
@@ -253,6 +287,7 @@ SyncSocket::sendData( std::string data, int socket ) {
 	packet["size"] =  data.size();     // Set first key in packet dictionary - total size of one timestep data
 	i = 0;
 
+	//Create packets out of chunks and send ove socket
 	while ( i < n ) {
 
 		if ( i < n-1 ) {
@@ -289,7 +324,7 @@ SyncSocket::sendData( std::string data, int socket ) {
 	}
 }
 
-
+//Receive data from co-simulators
 void
 SyncSocket::receiveSync() {
 
@@ -297,15 +332,17 @@ SyncSocket::receiveSync() {
 	njf = json::parse( data );
 
 	std::cout << "\nMeasurement data received from OpenDSS, size: " << data.size() << " bytes" << std::endl;
-
 	data = receiveData( RedisPv );
 	processJson();
 	json cluster_info = json::parse( data );
 	processRPVJson( cluster_info );
 
 	std::cout << "Clustering information (set points) received from ReDis-PV, size: " << data.size() << " bytes" << std::endl;
+
 }
 
+//Implmentation of data recieving
+//Input: Socket; the reciving socket (for OpenDSS or ReDis-PV).
 std::string
 SyncSocket::receiveData( int socket ) {
 
@@ -316,6 +353,7 @@ SyncSocket::receiveData( int socket ) {
 	int rec = 0;
 	int size = 0;
 
+	//Read data from socket in pre-defined chunk sizes
 	while ( !done ) {
 
 		bzero( buffer, BUFFER_SIZE );
@@ -349,12 +387,13 @@ SyncSocket::receiveData( int socket ) {
 	return output;
 }
 
-
+//Process measurment Json from OipenDSS using gloabl njf as source.
 void
 SyncSocket::processJson(){
 
 	json::iterator it = njf.begin();
 
+	//Loop through received Json file and create packets for sending over ndnSIM
 	while ( it !=  njf.end() ) {
 
 		int consumer;
@@ -405,6 +444,8 @@ SyncSocket::processJson(){
 
 }
 
+//Process Json file from ReDis-PV, creating needed packets as well.
+//Input: jf; the recived json file from ReDis-PV.
 void
 SyncSocket::processRPVJson( json jf ) {
 
@@ -431,9 +472,8 @@ SyncSocket::processRPVJson( json jf ) {
 
 			it1++;
 		}
-
 		packet_insert = device + " " + std::to_string( PVNode ) +  " " + payload;
-		if ( DEBUG ) std::cout << packet_insert << std::endl;
+		if ( DEBUG )   std::cout << packet_insert << std::endl;
 		packetNames.push_back( packet_insert );
 		it++;
 	}
@@ -442,6 +482,8 @@ SyncSocket::processRPVJson( json jf ) {
 	ret = write( client_socket[OpenDSS],&send[0],send.size() );
 }
 
+//Process Json file from Lead DER (openDSS) and create appropriate packets
+//Input: jf; the recived json file from OpenDSS. Src; the ns-3 node that will be the source of new interests
 void
 SyncSocket::processLeadJson( json jf, int src ) {
 
@@ -456,6 +498,7 @@ SyncSocket::processLeadJson( json jf, int src ) {
 
 		device = "phy"+ std::to_string( nameMap[it.key()] ) + "/";
 		device += it.key();
+		device += "/Lead"+std::to_string( src );
 		payload = it.value().dump();
 		payloadSize = payload.size();
 
@@ -468,6 +511,8 @@ SyncSocket::processLeadJson( json jf, int src ) {
 	injectInterests( false );
 }
 
+//Fill out hash map where we link deivce names to ns-3 nodes
+//Input: Json; has information on what names go with what device
 void
 SyncSocket::fillNameMap( json jf ) {
 
@@ -480,19 +525,18 @@ SyncSocket::fillNameMap( json jf ) {
 	}
 }
 
-
+//Create the first instance of our running measumernt Json
+//Input: Json; An instance of th measurment data.
 void
 SyncSocket::initializeJson( json jf ){
 
 	rjf =  jf;
 }
 
-
-void
-SyncSocket::setEntryDER( std::string der, std::string lead ) {
-}
-
-
+//When packet arrives at Lead DER from follower update Lead payload
+//	and send new packet to ReDis-PV
+//Input: Payload; the payload of the arriving interest. follower; the source node for interest
+//	Lead; the node the recived the interest.
 void
 SyncSocket::aggDER( std::string payload, int src, std::string follower, std::string lead ) {
 
