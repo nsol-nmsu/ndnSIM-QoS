@@ -206,7 +206,7 @@ Consumer::SendPacket()
       TB.LSent++;
   }
 
-  std::cout << "***Stats***\n" << TB.HSent << "\n" << TB.MSent << "\n" << TB.LSent << "\n" << TB.HRecv << "\n" << TB.MRecv << "\n" << TB.LRecv << "\n\n\n";
+  //std::cout << "***Stats***\n" << TB.HSent << "\n" << TB.MSent << "\n" << TB.LSent << "\n" << TB.HRecv << "\n" << TB.MRecv << "\n" << TB.LRecv << "\n\n\n";
 
   WillSendOutInterest(seq);
 
@@ -239,7 +239,7 @@ Consumer::OnData(shared_ptr<const Data> data)
       std::cout << data->getName() << std::endl;
   }
 
-  std::cout << "***Stats***\n" << TB.HSent << "\n" << TB.MSent << "\n" << TB.LSent << "\n" << TB.HRecv << "\n" << TB.MRecv << "\n" << TB.LRecv << "\n\n\n";
+  //std::cout << "***Stats***\n" << TB.HSent << "\n" << TB.MSent << "\n" << TB.LSent << "\n" << TB.HRecv << "\n" << TB.MRecv << "\n" << TB.LRecv << "\n\n\n";
 
   // NS_LOG_INFO ("Received content object: " << boost::cref(*data));
 

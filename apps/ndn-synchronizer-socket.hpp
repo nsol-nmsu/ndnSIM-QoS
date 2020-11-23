@@ -6,8 +6,10 @@
 #include "ns3/point-to-point-module.h"
 #include "ns3/ndnSIM-module.h"
 #include "nlohmann/json.hpp"
-
 #include "ndn-synchronizer.hpp"
+#include "parser-OpenDSS.hpp"
+#include "parser-ReDisPv.hpp"
+
 #define BUFFER_SIZE 1024
 
 namespace ns3 {
@@ -20,43 +22,44 @@ public:
   SyncSocket();
 
   void
-  addArrivedPackets(std::string);
+  addArrivedPackets( std::string );
 
   bool
-  sendDirect(std::string send_json, int src, std::string deviceName);
+  sendDirect( std::string send_json, int src, std::string deviceName );
 
   void
-  aggDER(std::string payload, int src, std::string follower, std::string lead);
+  aggDER( std::string payload, int src, std::string follower, std::string lead );
 
   virtual void
   sendSync();
 
   void
-  sendData(std::string data, int socket);
+  sendData( std::string data, int socket );
 
   virtual void 
   receiveSync();
 
   std::string
-  receiveData(int socket);
+  receiveData( int socket );
+
+  //void
+  //processJson();
 
   void
-  processJson();	  
+  fillNameMap( nlohmann::json jf );
 
   void
-  fillNameMap(nlohmann::json jf);
+  initializeJson( nlohmann::json jf );
+
+  //void
+  //processRPVJson( nlohmann::json jf );
 
   void
-  initializeJson(nlohmann::json jf);
+  processLeadJson( nlohmann::json jf, int src );
 
-  void
-  processRPVJson(nlohmann::json jf);
-
-  void
-  processLeadJson(nlohmann::json jf, int src);
-
-  void setPVNode(int node){
+  void setPVNode( int node ){
      PVNode = node;
+     parRedis.setPVNode( node );
   };
 
 private:
@@ -73,7 +76,8 @@ private:
   std::unordered_map<std::string,std::string> mapDER;
   std::unordered_map<std::string,std::string> leadToFolDER;
   std::unordered_map<std::string,bool> LeadDERs;
-
+  ParserOpenDSS parOpen;
+  ParserReDisPv parRedis;
   nlohmann::json rjf;
   nlohmann::json njf;
 
