@@ -1,3 +1,20 @@
+/*Copyright (C) 2020 New Mexico State University
+ *
+ * George Torres, Anju Kunnumpurathu James
+ *This program is free software: you can redistribute it and/or modify
+ *it under the terms of the GNU General Public License as published by
+ *the Free Software Foundation, either version 3 of the License, or
+ *(at your option) any later version.
+
+ *This program is distributed in the hope that it will be useful,
+ *but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *GNU General Public License for more details.
+
+ *You should have received a copy of the GNU General Public License
+ *along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ **/
+
 #include "ndn-synchronizer.hpp"
 #include "ns3/ptr.h"
 #include "ns3/log.h"
@@ -57,31 +74,12 @@ void
 Synchronizer::syncEvent() {
 
 	std::cout << "\n\n\nSyncing at time " << Simulator::Now().GetSeconds() << std::endl;
-	//std::unordered_map<std::string,int>::iterator nm = nameMap.begin();
-	//while ( nm != nameMap.end() ) {
-	//	std::cout<<nm->first<<": "<<nm->second<<"  ";
-	//	nm++;
-	//}
-	//std::cout<<std::endl;
-	//std::unordered_map<int,Ptr<ns3::ndn::ConsumerQos>>::iterator itt = senders.begin();
 	sendSync();
 	receiveSync();
 
-	//int count = std::stoi( packetNames.back() );
-	//packetNames.pop_back();
-
-	//while ( itt != senders.end() ) {
-	//	int i = 0;
-	//  while ( i<count ) {
-	//  	Simulator::ScheduleWithContext( itt->first,Seconds( i*( timestep/count ) ), &ConsumerQos::SendPacket, senders[itt->first]/*, packetNames.back()*/ );
-	//	   	i++;
-	//	}
-	//	itt++;
-	//}
-	//std::cout<<packetNames.size()<<std::endl;
-
 	injectInterests( false );
 	Simulator::Schedule( Seconds( timestep ), &Synchronizer::syncEvent, this );
+
 }
 
 

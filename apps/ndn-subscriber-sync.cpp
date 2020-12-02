@@ -5,6 +5,8 @@
  * This file is part of ndnSIM. See AUTHORS for complete list of ndnSIM authors and
  * contributors.
  *
+ * Modified by George Torres 2020, New Mexico State University
+ *
  * ndnSIM is free software: you can redistribute it and/or modify it under the terms
  * of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or ( at your option ) any later version.

@@ -5,6 +5,8 @@
  * This file is part of ndnSIM. See AUTHORS for complete list of ndnSIM authors and
  * contributors.
  *
+ * Modifed by George Torres 2020, New Mexico State University
+ *
  * ndnSIM is free software: you can redistribute it and/or modify it under the terms
  * of the GNU General Public License as published by the Free Software Foundation,
  * either version 3 of the License, or (at your option) any later version.
@@ -119,7 +121,8 @@ public:
   typedef void (*ReceivedDataTraceCallback)( uint32_t, shared_ptr<const Data> );
 
 protected:
-  // from App
+
+  // From App
   virtual void
   StartApplication();
 
@@ -233,12 +236,10 @@ protected:
 
   std::map<uint32_t, uint32_t> m_seqRetxCounts;
 
-
   TracedCallback<Ptr<App> /* app */, uint32_t /* seqno */, Time /* delay */, int32_t /*hop count*/>
-  m_lastRetransmittedInterestDataDelay;
+    m_lastRetransmittedInterestDataDelay;
   TracedCallback<Ptr<App> /* app */, uint32_t /* seqno */, Time /* delay */,
-                 uint32_t /*retx count*/, int32_t /*hop count*/> m_firstInterestDataDelay;
-
+    uint32_t /*retx count*/, int32_t /*hop count*/> m_firstInterestDataDelay;
   TracedCallback < uint32_t, shared_ptr<const Interest> > m_sentInterest;
   TracedCallback < uint32_t, shared_ptr<const Data> > m_receivedData;
 

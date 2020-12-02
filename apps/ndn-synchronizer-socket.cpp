@@ -1,3 +1,22 @@
+/*
+ * Copyright ( C ) 2020 New Mexico State University
+ *
+ * George Torres, Anju Kunnumpurathu James
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * ( at your option ) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
 #include <iostream>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -392,103 +411,6 @@ SyncSocket::receiveData( int socket ) {
 
   return output;
 }
-
-
-// Process measurment Json from OipenDSS using gloabl njf as source.
-/*void
-SyncSocket::processJson(){
-
-	json::iterator it = njf.begin();
-
-	//Loop through received Json file and create packets for sending over ndnSIM
-	while ( it !=  njf.end() ) {
-
-		int consumer;
-		std::string device;
-		std::string packet_insert;
-		int payloadSize = 150;
-		//std::cout << it.key() << "\n";
-
-		if ( it.key() == "Transformer" || it.key() == "Capacitor" || it.key() == "PVSystem" || it.key() == "Storage" ) {
-
-			json::iterator it1 = it.value().begin();
-
-			while ( it1 != it.value().end() ) {
-
-				consumer = nameMap[it1.key()];
-				device = it1.key();
-				json::iterator it2 = it1.value().begin();
-				std::string payload = it1.value().dump();
-				payloadSize = payload.size();
-
-				while ( it2 != it1.value().end() ) {
-
-					//std::cout << it2.key() << "\n";
-					if ( it2.key() == "busdata" ) {
-
-						//std::cout << it2.key() << " : " << it2.value() << "\n";
-						//consumer = it1.value();
-					}
-
-					it2++;
-				}
-
-				if ( mapDER.find( it1.key() ) != mapDER.end() ) {
-
-					packet_insert = "phy" + std::to_string( nameMap[mapDER[it1.key()]] ) + "/" + mapDER[it1.key()] + "/data/" + device + " " + std::to_string( consumer ) +  " " + payload;
-				} else {
-
-					packet_insert = "data/" + device + " " + std::to_string( consumer ) +  " " + payload;
-				}
-
-				packetNames.push_back( packet_insert );
-				it1++;
-			}
-		}
-
-		it++;
-	}
-
-}*/
-
-//Process Json file from ReDis-PV, creating needed packets as well.
-//Input: jf; the recived json file from ReDis-PV.
-/*void
-SyncSocket::processRPVJson( json jf ) {
-
-	json::iterator it = jf.begin();
-
-	while ( it !=  jf.end() ) {
-
-		leads++;
-		std::string device;
-		std::string payload;
-		int payloadSize;
-		std::string packet_insert;
-		json::iterator it1 = it.value().begin();
-
-		while ( it1 !=  it.value().end() ) {
-
-			if ( it1.key() == "Lead_DER" ) {
-				device = "phy" + std::to_string( nameMap[it1.value()] ) + "/";
-				device += it1.value();
-			} else {
-				payload = it1.value().dump();
-				payloadSize = payload.size();
-			}
-
-			it1++;
-		}
-		packet_insert = device + " " + std::to_string( PVNode ) +  " " + payload;
-		if ( DEBUG )   std::cout << packet_insert << std::endl;
-		packetNames.push_back( packet_insert );
-		it++;
-	}
-
-	std::string send = to_string( leads );
-	ret = write( client_socket[OpenDSS],&send[0],send.size() );
-}
-*/
 
 
 // Process Json file from Lead DER ( openDSS ) and create appropriate packets.

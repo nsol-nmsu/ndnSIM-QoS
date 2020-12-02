@@ -1,21 +1,21 @@
-/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
-/**
- * Copyright (c) 2011-2015  Regents of the University of California.
+/*
+ * Copyright ( C ) 2020 New Mexico State University
  *
- * This file is part of ndnSIM. See AUTHORS for complete list of ndnSIM authors and
- * contributors.
+ * George Torres, Anju Kunnumpurathu James
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * ( at your option ) any later version.
+
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * ndnSIM is free software: you can redistribute it and/or modify it under the terms
- * of the GNU General Public License as published by the Free Software Foundation,
- * either version 3 of the License, or (at your option) any later version.
- *
- * ndnSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
- * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- * PURPOSE.  See the GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License along with
- * ndnSIM, e.g., in COPYING.md file.  If not, see <http://www.gnu.org/licenses/>.
- **/
+ */
 
 #ifndef NDN_TOKEN_H
 #define NDN_TOKEN_H
@@ -33,29 +33,36 @@ namespace ndn {
 
 /**
  * @ingroup ndn-apps
- * @brief A simple Interest-sink applia simple Interest-sink application
- *
- * A simple Interest-sink applia simple Interest-sink application,
- * which replying every incoming Interest with Data packet with a specified
- * size and name same as in Interest.cation, which replying every incoming Interest
- * with Data packet with a specified size and name same as in Interest.
+ * @brief A simple app meant to produce tokens
+ * Generates tokesn at a given frequency and updates the 
+ * appropriate token buckets
  */
 class TBucket : public App {
+
 public:
+
   static TypeId
   GetTypeId(void);
 
   TBucket();
 
-  // inherited from NdnApp
+  /** \brief Schedule the next instance of token generation for the indicated bucket.
+   *  \param bucket the bucket we are scheduling token generation for.
+   */
   void
-  ScheduleNextToken(int bucket);
+  ScheduleNextToken( int bucket );
+
+  /** \brief Generate a new token for the indicated bucket.
+   *  \param bucket the bucket we are generating the token for.
+   */
   void
-  UpdateBucket(int bucket);
+  UpdateBucket( int bucket );
 
 protected:
+
   EventId m_sendEvent; ///< @brief EventId of pending "send packet" event
-  // inherited from Application base class.
+
+  // Inherited from Application base class.
   virtual void
   StartApplication(); // Called at time specified by Start
 
