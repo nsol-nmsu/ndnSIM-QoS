@@ -1,0 +1,8 @@
+<map id="nfd::fw::UnsolicitedDataPolicy" name="nfd::fw::UnsolicitedDataPolicy">
+<area shape="rect" id="node1" title="determines how to process an unsolicited Data" alt="" coords="148,104,311,145"/>
+<area shape="rect" id="node3" href="$classnfd_1_1fw_1_1AdmitAllUnsolicitedDataPolicy.html" title="admits all unsolicited Data" alt="" coords="376,5,560,47"/>
+<area shape="rect" id="node4" href="$classnfd_1_1fw_1_1AdmitLocalUnsolicitedDataPolicy.html" title="admits unsolicited Data from local faces" alt="" coords="368,71,568,112"/>
+<area shape="rect" id="node5" href="$classnfd_1_1fw_1_1AdmitNetworkUnsolicitedDataPolicy.html" title="admits unsolicited Data from non&#45;local faces" alt="" coords="359,136,577,177"/>
+<area shape="rect" id="node6" href="$classnfd_1_1fw_1_1DropAllUnsolicitedDataPolicy.html" title="drops all unsolicited Data" alt="" coords="379,201,557,243"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,111,100,138"/>
+</map>

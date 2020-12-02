@@ -754,13 +754,8 @@ WARN_LOGFILE           = doxygen.warnings.log
 # spaces.
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ../model \
-                         ../helper \
-                         ../utils \
-                         ../apps \
-                         ../NFD \
-                         ../ndn-cxx \
-                         introspected-doxygen.hpp \
+INPUT                  = ../apps \
+                         ../NFD/daemon/fw \
                          doxygen.hpp
 
 # For example:
@@ -1034,7 +1029,7 @@ GENERATE_HTML          = YES
 # The default directory is: html.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-HTML_OUTPUT            = build/html/doxygen
+HTML_OUTPUT            = html
 
 # The HTML_FILE_EXTENSION tag can be used to specify the file extension for each
 # generated HTML page (for example: .htm, .php, .asp).

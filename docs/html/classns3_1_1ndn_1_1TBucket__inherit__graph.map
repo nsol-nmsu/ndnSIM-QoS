@@ -1,0 +1,5 @@
+<map id="ns3::ndn::TBucket" name="ns3::ndn::TBucket">
+<area shape="rect" id="node1" title="A simple app meant to produce tokens Generates tokesn at a given frequency and updates the appropriat..." alt="" coords="5,155,135,181"/>
+<area shape="rect" id="node2" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="19,80,121,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="27,5,113,32"/>
+</map>

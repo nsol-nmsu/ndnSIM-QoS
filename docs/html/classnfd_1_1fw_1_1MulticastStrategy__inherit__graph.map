@@ -1,0 +1,8 @@
+<map id="nfd::fw::MulticastStrategy" name="nfd::fw::MulticastStrategy">
+<area shape="rect" id="node1" title="a forwarding strategy that forwards Interest to all FIB nexthops" alt="" coords="5,363,177,389"/>
+<area shape="rect" id="node2" href="$classnfd_1_1fw_1_1Strategy.html" title="represents a forwarding strategy" alt="" coords="16,132,135,159"/>
+<area shape="rect" id="node3" title=" " alt="" coords="44,5,139,32"/>
+<area shape="rect" id="node5" href="$classnfd_1_1fw_1_1ProcessNackTraitsBase.html" title="provides a common procedure for processing Nacks" alt="" coords="112,81,324,108"/>
+<area shape="rect" id="node4" href="$classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="113,272,296,313"/>
+<area shape="rect" id="node6" href="$classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="219,183,433,209"/>
+</map>

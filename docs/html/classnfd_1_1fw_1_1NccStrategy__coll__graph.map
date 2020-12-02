@@ -1,0 +1,5 @@
+<map id="nfd::fw::NccStrategy" name="nfd::fw::NccStrategy">
+<area shape="rect" id="node1" title="a forwarding strategy similar to CCNx 0.7.2" alt="" coords="5,155,148,181"/>
+<area shape="rect" id="node2" href="$classnfd_1_1fw_1_1Strategy.html" title="represents a forwarding strategy" alt="" coords="17,80,136,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="29,5,124,32"/>
+</map>

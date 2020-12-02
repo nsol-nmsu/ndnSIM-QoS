@@ -1,0 +1,13 @@
+<map id="nfd::fw::Strategy" name="nfd::fw::Strategy">
+<area shape="rect" id="node1" title="represents a forwarding strategy" alt="" coords="148,183,267,209"/>
+<area shape="rect" id="node3" href="$classnfd_1_1fw_1_1AccessStrategy.html" title="Access Router Strategy version 1." alt="" coords="339,5,501,32"/>
+<area shape="rect" id="node4" href="$classnfd_1_1fw_1_1asf_1_1AsfStrategy.html" title="Adaptive SRTT&#45;based Forwarding Strategy." alt="" coords="337,56,503,83"/>
+<area shape="rect" id="node5" href="$classnfd_1_1fw_1_1BestRouteStrategy2.html" title="Best Route strategy version 4." alt="" coords="326,107,514,133"/>
+<area shape="rect" id="node6" href="$classnfd_1_1fw_1_1BestRouteStrategyBase.html" title=" " alt="" coords="315,157,525,184"/>
+<area shape="rect" id="node8" href="$classnfd_1_1fw_1_1MulticastStrategy.html" title="a forwarding strategy that forwards Interest to all FIB nexthops" alt="" coords="334,208,506,235"/>
+<area shape="rect" id="node9" href="$classnfd_1_1fw_1_1NccStrategy.html" title="a forwarding strategy similar to CCNx 0.7.2" alt="" coords="349,259,491,285"/>
+<area shape="rect" id="node10" href="$classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="349,309,491,336"/>
+<area shape="rect" id="node11" href="$classnfd_1_1fw_1_1SelfLearningStrategy.html" title="Self&#45;learning strategy." alt="" coords="325,360,515,387"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,183,100,209"/>
+<area shape="rect" id="node7" href="$classnfd_1_1fw_1_1BestRouteStrategy.html" title="Best Route strategy version 1." alt="" coords="573,157,755,184"/>
+</map>

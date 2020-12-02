@@ -1,0 +1,8 @@
+<map id="ns3::ndn::Aggregator" name="ns3::ndn::Aggregator">
+<area shape="rect" id="node1" title="An application that concatenates payloaded interests at the aggregation of the Smart Grid architectur..." alt="" coords="5,349,148,376"/>
+<area shape="rect" id="node2" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="25,273,128,300"/>
+<area shape="rect" id="node3" title=" " alt="" coords="12,184,99,211"/>
+<area shape="rect" id="node4" title=" " alt="" coords="123,184,286,211"/>
+<area shape="rect" id="node5" title="STL class." alt="" coords="134,95,275,121"/>
+<area shape="rect" id="node6" title=" " alt="" coords="185,5,224,32"/>
+</map>

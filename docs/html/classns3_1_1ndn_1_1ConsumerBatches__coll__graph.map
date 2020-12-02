@@ -1,0 +1,9 @@
+<map id="ns3::ndn::ConsumerBatches" name="ns3::ndn::ConsumerBatches">
+<area shape="rect" id="node1" title="Ndn application for sending out Interest packets in batches." alt="" coords="5,425,193,452"/>
+<area shape="rect" id="node2" href="$classns3_1_1ndn_1_1Consumer.html" title="NDN application for sending out Interest packets." alt="" coords="29,349,169,376"/>
+<area shape="rect" id="node3" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="48,273,151,300"/>
+<area shape="rect" id="node4" title=" " alt="" coords="35,184,121,211"/>
+<area shape="rect" id="node5" title=" " alt="" coords="146,184,309,211"/>
+<area shape="rect" id="node6" title="STL class." alt="" coords="157,95,298,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="208,5,247,32"/>
+</map>

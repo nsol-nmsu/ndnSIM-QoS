@@ -1,0 +1,11 @@
+<map id="ns3::ndn::ConsumerCbr" name="ns3::ndn::ConsumerCbr">
+<area shape="rect" id="node1" title="Ndn application for sending out Interest packets at a &quot;constant&quot; rate (Poisson process)" alt="" coords="61,453,223,480"/>
+<area shape="rect" id="node2" href="$classns3_1_1ndn_1_1Consumer.html" title="NDN application for sending out Interest packets." alt="" coords="5,364,145,391"/>
+<area shape="rect" id="node3" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="21,281,124,307"/>
+<area shape="rect" id="node4" title=" " alt="" coords="8,184,95,211"/>
+<area shape="rect" id="node5" title=" " alt="" coords="119,184,282,211"/>
+<area shape="rect" id="node6" title="STL class." alt="" coords="130,95,271,121"/>
+<area shape="rect" id="node7" title=" " alt="" coords="181,5,220,32"/>
+<area shape="rect" id="node8" title="STL class." alt="" coords="171,364,251,391"/>
+<area shape="rect" id="node9" title="STL class." alt="" coords="148,273,275,315"/>
+</map>

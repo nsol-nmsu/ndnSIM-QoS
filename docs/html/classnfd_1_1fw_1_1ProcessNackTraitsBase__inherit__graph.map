@@ -1,0 +1,11 @@
+<map id="nfd::fw::ProcessNackTraitsBase" name="nfd::fw::ProcessNackTraitsBase">
+<area shape="rect" id="node1" title="provides a common procedure for processing Nacks" alt="" coords="149,119,361,146"/>
+<area shape="rect" id="node3" href="$classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="411,93,625,119"/>
+<area shape="rect" id="node4" href="$classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="820,5,1003,47"/>
+<area shape="rect" id="node6" href="$classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="820,84,1003,125"/>
+<area shape="rect" id="node8" href="$classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="820,176,1003,217"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,119,100,146"/>
+<area shape="rect" id="node5" href="$classnfd_1_1fw_1_1MulticastStrategy.html" title="a forwarding strategy that forwards Interest to all FIB nexthops" alt="" coords="1060,13,1232,39"/>
+<area shape="rect" id="node7" href="$classnfd_1_1fw_1_1BestRouteStrategy2.html" title="Best Route strategy version 4." alt="" coords="1052,91,1240,118"/>
+<area shape="rect" id="node9" href="$classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="1075,183,1217,210"/>
+</map>

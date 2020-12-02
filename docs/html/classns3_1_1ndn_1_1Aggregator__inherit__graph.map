@@ -1,0 +1,5 @@
+<map id="ns3::ndn::Aggregator" name="ns3::ndn::Aggregator">
+<area shape="rect" id="node1" title="An application that concatenates payloaded interests at the aggregation of the Smart Grid architectur..." alt="" coords="5,155,148,181"/>
+<area shape="rect" id="node2" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="25,80,128,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="33,5,120,32"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="ns3::ndn::ConsumerCbr" name="ns3::ndn::ConsumerCbr">
+<area shape="rect" id="node1" title="Ndn application for sending out Interest packets at a &quot;constant&quot; rate (Poisson process)" alt="" coords="38,229,199,256"/>
+<area shape="rect" id="node5" href="$classns3_1_1ndn_1_1ConsumerZipfMandelbrot.html" title="NDN app requesting contents following Zipf&#45;Mandelbrot Distbituion." alt="" coords="5,304,232,331"/>
+<area shape="rect" id="node2" href="$classns3_1_1ndn_1_1Consumer.html" title="NDN application for sending out Interest packets." alt="" coords="49,155,189,181"/>
+<area shape="rect" id="node3" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="67,80,170,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="75,5,162,32"/>
+</map>

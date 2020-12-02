@@ -1,0 +1,7 @@
+<map id="ns3::ndn::ConsumerWindow" name="ns3::ndn::ConsumerWindow">
+<area shape="rect" id="node1" title="Ndn application for sending out Interest packets (window&#45;based)" alt="" coords="5,229,192,256"/>
+<area shape="rect" id="node5" href="$classns3_1_1ndn_1_1ConsumerPcon.html" title="NDN consumer application with more advanced congestion control options." alt="" coords="13,304,184,331"/>
+<area shape="rect" id="node2" href="$classns3_1_1ndn_1_1Consumer.html" title="NDN application for sending out Interest packets." alt="" coords="29,155,169,181"/>
+<area shape="rect" id="node3" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="47,80,150,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="55,5,142,32"/>
+</map>

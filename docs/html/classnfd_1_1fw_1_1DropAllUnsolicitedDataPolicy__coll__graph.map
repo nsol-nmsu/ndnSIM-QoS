@@ -1,0 +1,7 @@
+<map id="nfd::fw::DropAllUnsolicitedDataPolicy" name="nfd::fw::DropAllUnsolicitedDataPolicy">
+<area shape="rect" id="node1" title="drops all unsolicited Data" alt="" coords="69,200,248,241"/>
+<area shape="rect" id="node2" href="$classnfd_1_1fw_1_1UnsolicitedDataPolicy.html" title="determines how to process an unsolicited Data" alt="" coords="5,96,168,137"/>
+<area shape="rect" id="node3" title=" " alt="" coords="39,13,134,39"/>
+<area shape="rect" id="node4" title="STL class." alt="" coords="192,103,272,130"/>
+<area shape="rect" id="node5" title="STL class." alt="" coords="169,5,295,47"/>
+</map>

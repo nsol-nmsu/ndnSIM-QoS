@@ -1,0 +1,9 @@
+<map id="nfd::fw::StrategyInfo" name="nfd::fw::StrategyInfo">
+<area shape="rect" id="node1" title="contains arbitrary information forwarding strategy places on table entries" alt="" coords="5,163,147,189"/>
+<area shape="rect" id="node2" href="$classnfd_1_1fw_1_1asf_1_1NamespaceInfo.html" title="stores stategy information about each face in this namespace" alt="" coords="196,5,384,32"/>
+<area shape="rect" id="node3" href="$classnfd_1_1fw_1_1NccStrategy_1_1MeasurementsEntryInfo.html" title="StrategyInfo on measurements::Entry." alt="" coords="205,57,375,98"/>
+<area shape="rect" id="node4" href="$classnfd_1_1fw_1_1NccStrategy_1_1PitEntryInfo.html" title="StrategyInfo on pit::Entry." alt="" coords="219,122,361,163"/>
+<area shape="rect" id="node5" href="$classnfd_1_1fw_1_1RetxSuppressionExponential_1_1PitInfo.html" title=" " alt="" coords="205,187,375,229"/>
+<area shape="rect" id="node6" href="$classnfd_1_1fw_1_1SelfLearningStrategy_1_1InRecordInfo.html" title="StrategyInfo on pit::InRecord." alt="" coords="195,253,385,294"/>
+<area shape="rect" id="node7" href="$classnfd_1_1fw_1_1SelfLearningStrategy_1_1OutRecordInfo.html" title="StrategyInfo on pit::OutRecord." alt="" coords="195,318,385,359"/>
+</map>
