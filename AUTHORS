@@ -20,3 +20,11 @@ people who have reported bugs, submitted patches,and  implemented new features o
   * Mohammad Sabet              <mhasabet@gmail.com>
   * Xinyu Ma                    <bitmxy@gmail.com>
   * Chavoosh Ghasemi            <chghasemi@cs.arizona.edu>
+
+
+QoS contributors who added Quality of Service features (priority queues and token bucket) to ndnSIM.
+(New Mexico State University)
+
+  * George Torres			    <gtorresz@nmsu.edu>
+  * Anju K. James               <anju@nmsu.edu>
+  * Dan Ameme	                <danameme@nmsu.edu>
