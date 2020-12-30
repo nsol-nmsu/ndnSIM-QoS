@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: nfd::fw::ProcessNackTraitsBase Class Reference</title>
+<title>ndnSIM QoS: nfd::fw::ProcessNackTraitsBase Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -108,7 +111,7 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1ProcessNackTraitsBas
 Inheritance diagram for nfd::fw::ProcessNackTraitsBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnfd_1_1fw_1_1ProcessNackTraitsBase__inherit__graph.png" border="0" usemap="#anfd_1_1fw_1_1ProcessNackTraitsBase_inherit__map" alt="Inheritance graph"/></div>
-<map name="anfd_1_1fw_1_1ProcessNackTraitsBase_inherit__map" id="anfd_1_1fw_1_1ProcessNackTraitsBase_inherit__map">
+<map name="nfd_1_1fw_1_1ProcessNackTraitsBase_inherit__map" id="nfd_1_1fw_1_1ProcessNackTraitsBase_inherit__map">
 <area shape="rect" title="provides a common procedure for processing Nacks" alt="" coords="149,119,361,146"/>
 <area shape="rect" href="classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="411,93,625,119"/>
 <area shape="rect" href="classnfd_1_1fw_1_1ProcessNackTraits.html" title=" " alt="" coords="820,5,1003,47"/>
@@ -117,14 +120,14 @@ Inheritance diagram for nfd::fw::ProcessNackTraitsBase:</div>
 <area shape="rect" title=" " alt="" coords="5,119,100,146"/>
 <area shape="rect" href="classnfd_1_1fw_1_1MulticastStrategy.html" title="a forwarding strategy that forwards Interest to all FIB nexthops" alt="" coords="1060,13,1232,39"/>
 <area shape="rect" href="classnfd_1_1fw_1_1BestRouteStrategy2.html" title="Best Route strategy version 4." alt="" coords="1052,91,1240,118"/>
-<area shape="rect" href="classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="1075,183,1217,210"/>
+<area shape="rect" href="classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS." alt="" coords="1075,183,1217,210"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for nfd::fw::ProcessNackTraitsBase:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnfd_1_1fw_1_1ProcessNackTraitsBase__coll__graph.png" border="0" usemap="#anfd_1_1fw_1_1ProcessNackTraitsBase_coll__map" alt="Collaboration graph"/></div>
-<map name="anfd_1_1fw_1_1ProcessNackTraitsBase_coll__map" id="anfd_1_1fw_1_1ProcessNackTraitsBase_coll__map">
+<map name="nfd_1_1fw_1_1ProcessNackTraitsBase_coll__map" id="nfd_1_1fw_1_1ProcessNackTraitsBase_coll__map">
 <area shape="rect" title="provides a common procedure for processing Nacks" alt="" coords="5,80,217,107"/>
 <area shape="rect" title=" " alt="" coords="64,5,159,32"/>
 </map>
@@ -216,7 +219,7 @@ Protected Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="process-nack-traits_8cpp_source.html#l00035">35</a> of file <a class="el" href="process-nack-traits_8cpp_source.html">process-nack-traits.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="best-route-strategy2_8cpp_source.html#l00197">nfd::fw::BestRouteStrategy2::afterReceiveNack()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00115">nfd::fw::MulticastStrategy::afterReceiveNack()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00304">nfd::fw::QosStrategy::afterReceiveNack()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00477">nfd::fw::QosStrategy::prioritySendNack()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="best-route-strategy2_8cpp_source.html#l00197">nfd::fw::BestRouteStrategy2::afterReceiveNack()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00115">nfd::fw::MulticastStrategy::afterReceiveNack()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00299">nfd::fw::QosStrategy::afterReceiveNack()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00472">nfd::fw::QosStrategy::prioritySendNack()</a>.</p>
 
 </div>
 </div>
@@ -230,7 +233,7 @@ Protected Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacenfd.html">nfd</a></li><li class="navelem"><a class="el" href="namespacenfd_1_1fw.html">fw</a></li><li class="navelem"><a class="el" href="classnfd_1_1fw_1_1ProcessNackTraitsBase.html">ProcessNackTraitsBase</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

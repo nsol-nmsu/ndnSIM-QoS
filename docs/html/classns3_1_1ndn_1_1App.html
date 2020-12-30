@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ns3::ndn::App Class Reference</title>
+<title>ndnSIM QoS: ns3::ndn::App Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -112,15 +115,15 @@ $(document).ready(function(){initNavTree('classns3_1_1ndn_1_1App.html',''); init
 Inheritance diagram for ns3::ndn::App:</div>
 <div class="dyncontent">
 <div class="center"><img src="classns3_1_1ndn_1_1App__inherit__graph.png" border="0" usemap="#ans3_1_1ndn_1_1App_inherit__map" alt="Inheritance graph"/></div>
-<map name="ans3_1_1ndn_1_1App_inherit__map" id="ans3_1_1ndn_1_1App_inherit__map">
+<map name="ns3_1_1ndn_1_1App_inherit__map" id="ns3_1_1ndn_1_1App_inherit__map">
 <area shape="rect" title="Base class that all NDN applications should be derived from." alt="" coords="140,157,243,184"/>
 <area shape="rect" href="classns3_1_1ndn_1_1Aggregator.html" title="An application that concatenates payloaded interests at the aggregation of the Smart Grid architectur..." alt="" coords="323,5,466,32"/>
 <area shape="rect" href="classns3_1_1ndn_1_1Consumer.html" title="NDN application for sending out Interest packets." alt="" coords="325,56,465,83"/>
-<area shape="rect" href="classns3_1_1ndn_1_1ConsumerQos.html" title="NDN application for sending out Interest packets." alt="" coords="313,107,477,133"/>
+<area shape="rect" href="classns3_1_1ndn_1_1ConsumerSync.html" title="NDN application meant to be used with experimental project PowerSys&#45;Cosim." alt="" coords="309,107,480,133"/>
 <area shape="rect" href="classns3_1_1ndn_1_1Producer.html" title="A simple Interest&#45;sink applia simple Interest&#45;sink application." alt="" coords="329,157,461,184"/>
 <area shape="rect" href="classns3_1_1ndn_1_1SpontaneousProducer.html" title="A producer which publishes updates of its data at a fixed frequency." alt="" coords="291,208,499,235"/>
-<area shape="rect" href="classns3_1_1ndn_1_1Subscriber.html" title="NDN application for sending out Interest packets." alt="" coords="323,259,466,285"/>
-<area shape="rect" href="classns3_1_1ndn_1_1TBucket.html" title="A simple app meant to produce tokens Generates tokesn at a given frequency and updates the appropriat..." alt="" coords="330,309,459,336"/>
+<area shape="rect" href="classns3_1_1ndn_1_1Subscriber.html" title="NDN application for sending out payloaded Interest packets." alt="" coords="323,259,466,285"/>
+<area shape="rect" href="classns3_1_1ndn_1_1TBDriver.html" title="App meant to define and drive token generation for traffic control." alt="" coords="329,309,461,336"/>
 <area shape="rect" title=" " alt="" coords="5,157,92,184"/>
 <area shape="rect" href="classns3_1_1ndn_1_1ConsumerBatches.html" title="Ndn application for sending out Interest packets in batches." alt="" coords="547,5,735,32"/>
 <area shape="rect" href="classns3_1_1ndn_1_1ConsumerCbr.html" title="Ndn application for sending out Interest packets at a &quot;constant&quot; rate (Poisson process)" alt="" coords="560,56,721,83"/>
@@ -133,7 +136,7 @@ Inheritance diagram for ns3::ndn::App:</div>
 Collaboration diagram for ns3::ndn::App:</div>
 <div class="dyncontent">
 <div class="center"><img src="classns3_1_1ndn_1_1App__coll__graph.png" border="0" usemap="#ans3_1_1ndn_1_1App_coll__map" alt="Collaboration graph"/></div>
-<map name="ans3_1_1ndn_1_1App_coll__map" id="ans3_1_1ndn_1_1App_coll__map">
+<map name="ns3_1_1ndn_1_1App_coll__map" id="ns3_1_1ndn_1_1App_coll__map">
 <area shape="rect" title="Base class that all NDN applications should be derived from." alt="" coords="19,273,121,300"/>
 <area shape="rect" title=" " alt="" coords="5,184,92,211"/>
 <area shape="rect" title=" " alt="" coords="117,184,279,211"/>
@@ -374,7 +377,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="ndn-app_8hpp_source.html#l00107">m_appId</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00312">ns3::ndn::Aggregator::OnData()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00327">ns3::ndn::ConsumerQos::OnData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">ns3::ndn::Subscriber::OnData()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00140">ns3::ndn::Aggregator::OnInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00114">ns3::ndn::SpontaneousProducer::OnInterest()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00165">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">ns3::ndn::Subscriber::SendPacket()</a>, and <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00210">ns3::ndn::ConsumerQos::SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00314">ns3::ndn::Aggregator::OnData()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00328">ns3::ndn::ConsumerSync::OnData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">ns3::ndn::Subscriber::OnData()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00142">ns3::ndn::Aggregator::OnInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00115">ns3::ndn::SpontaneousProducer::OnInterest()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00166">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">ns3::ndn::Subscriber::SendPacket()</a>, and <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00211">ns3::ndn::ConsumerSync::SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -410,7 +413,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="reference">References <a class="el" href="ndn-app_8hpp_source.html#l00104">m_face</a>, and <a class="el" href="ndn-app_8hpp_source.html#l00110">m_receivedInterests</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00140">ns3::ndn::Aggregator::OnInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00114">ns3::ndn::SpontaneousProducer::OnInterest()</a>, and <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00142">ns3::ndn::Aggregator::OnInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00115">ns3::ndn::SpontaneousProducer::OnInterest()</a>, and <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>.</p>
 
 </div>
 </div>
@@ -440,13 +443,13 @@ Protected Attributes</h2></td></tr>
 
 <p>Method that will be called every time new Data arrives. </p>
 
-<p>Reimplemented in <a class="el" href="classns3_1_1ndn_1_1ConsumerPcon.html#a924ff5f4cfc90730fee40319e481e042">ns3::ndn::ConsumerPcon</a>, <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a72abe1eed4b4b2cdc4fe04f453492f49">ns3::ndn::Subscriber</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a5a5152d290658d74096c39b0569c2a00">ns3::ndn::ConsumerQos</a>, <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a1d32a655a013ce7404a1ce7fe4eb2dad">ns3::ndn::Consumer</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerWindow.html#a2a1df9fda4576e100d7d04658fd0311e">ns3::ndn::ConsumerWindow</a>, and <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#ad9d72ff664a7dd9483abca9050bb78b7">ns3::ndn::Aggregator</a>.</p>
+<p>Reimplemented in <a class="el" href="classns3_1_1ndn_1_1ConsumerPcon.html#a924ff5f4cfc90730fee40319e481e042">ns3::ndn::ConsumerPcon</a>, <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a72abe1eed4b4b2cdc4fe04f453492f49">ns3::ndn::Subscriber</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#aaf2b29adf496623ca8bb90273f80230c">ns3::ndn::ConsumerSync</a>, <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a1d32a655a013ce7404a1ce7fe4eb2dad">ns3::ndn::Consumer</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerWindow.html#a2a1df9fda4576e100d7d04658fd0311e">ns3::ndn::ConsumerWindow</a>, and <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#ad9d72ff664a7dd9483abca9050bb78b7">ns3::ndn::Aggregator</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8cpp_source.html#l00121">121</a> of file <a class="el" href="ndn-app_8cpp_source.html">ndn-app.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-app_8hpp_source.html#l00104">m_face</a>, and <a class="el" href="ndn-app_8hpp_source.html#l00113">m_receivedDatas</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00312">ns3::ndn::Aggregator::OnData()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00224">ns3::ndn::Consumer::OnData()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00327">ns3::ndn::ConsumerQos::OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">ns3::ndn::Subscriber::OnData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00314">ns3::ndn::Aggregator::OnData()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00224">ns3::ndn::Consumer::OnData()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00328">ns3::ndn::ConsumerSync::OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">ns3::ndn::Subscriber::OnData()</a>.</p>
 
 </div>
 </div>
@@ -568,13 +571,13 @@ Protected Attributes</h2></td></tr>
 
 <p>Called at time specified by Start. </p>
 
-<p>Reimplemented in <a class="el" href="classns3_1_1ndn_1_1TBucket.html#a8e611c662e4e6c4749e2aed366b92c9d">ns3::ndn::TBucket</a>, <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#aeb069ea76d7203c8206066746775d8c8">ns3::ndn::Subscriber</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a25fb2b8f77d8bfd5f876361e000655f2">ns3::ndn::ConsumerQos</a>, <a class="el" href="classns3_1_1ndn_1_1Producer.html#a2b2bbfe6920ef8f3e67296398287d5f9">ns3::ndn::Producer</a>, <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#a6788586e0dd8a1183a5d174c69e2f687">ns3::ndn::SpontaneousProducer</a>, <a class="el" href="classns3_1_1ndn_1_1Consumer.html#aa04fb7a2f442560aab260e9756672e33">ns3::ndn::Consumer</a>, and <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#a938d6e0b6e8b725b167e2a82d5a1a751">ns3::ndn::Aggregator</a>.</p>
+<p>Reimplemented in <a class="el" href="classns3_1_1ndn_1_1TBDriver.html#a690ffb4db92f8f9acd14a949bbd2a3fd">ns3::ndn::TBDriver</a>, <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#aeb069ea76d7203c8206066746775d8c8">ns3::ndn::Subscriber</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a0e8238a80245436b70c42aceb0288c08">ns3::ndn::ConsumerSync</a>, <a class="el" href="classns3_1_1ndn_1_1Producer.html#a2b2bbfe6920ef8f3e67296398287d5f9">ns3::ndn::Producer</a>, <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#a6788586e0dd8a1183a5d174c69e2f687">ns3::ndn::SpontaneousProducer</a>, <a class="el" href="classns3_1_1ndn_1_1Consumer.html#aa04fb7a2f442560aab260e9756672e33">ns3::ndn::Consumer</a>, and <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#a938d6e0b6e8b725b167e2a82d5a1a751">ns3::ndn::Aggregator</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8cpp_source.html#l00138">138</a> of file <a class="el" href="ndn-app_8cpp_source.html">ndn-app.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-app_8hpp_source.html#l00103">m_active</a>, <a class="el" href="ndn-app_8hpp_source.html#l00105">m_appLink</a>, and <a class="el" href="ndn-app_8hpp_source.html#l00104">m_face</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00121">ns3::ndn::Aggregator::StartApplication()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00137">ns3::ndn::Consumer::StartApplication()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00094">ns3::ndn::SpontaneousProducer::StartApplication()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00077">ns3::ndn::Producer::StartApplication()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00194">ns3::ndn::ConsumerQos::StartApplication()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00200">ns3::ndn::Subscriber::StartApplication()</a>, and <a class="el" href="token-bucket_8cpp_source.html#l00080">ns3::ndn::TBucket::StartApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00123">ns3::ndn::Aggregator::StartApplication()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00137">ns3::ndn::Consumer::StartApplication()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00095">ns3::ndn::SpontaneousProducer::StartApplication()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00077">ns3::ndn::Producer::StartApplication()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00195">ns3::ndn::ConsumerSync::StartApplication()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00202">ns3::ndn::Subscriber::StartApplication()</a>, and <a class="el" href="tokenBucketDriver_8cpp_source.html#l00082">ns3::ndn::TBDriver::StartApplication()</a>.</p>
 
 </div>
 </div>
@@ -603,13 +606,13 @@ Protected Attributes</h2></td></tr>
 
 <p>Called at time specified by Stop. </p>
 
-<p>Reimplemented in <a class="el" href="classns3_1_1ndn_1_1TBucket.html#af3768fa4d1c587b7c1ff7186246cf529">ns3::ndn::TBucket</a>, <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a03abd87c94d4e545abf70e545cb5e51d">ns3::ndn::Subscriber</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a782e9b619d76244deb4d4930f2c57b3d">ns3::ndn::ConsumerQos</a>, <a class="el" href="classns3_1_1ndn_1_1Producer.html#afff9238cb079fde2dea5c39231fe0e15">ns3::ndn::Producer</a>, <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#acb375ea412bb978754393fca0416a3fa">ns3::ndn::SpontaneousProducer</a>, <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a6cbdd3e814e7cb00645292e52dc0b1f2">ns3::ndn::Consumer</a>, and <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#af91381e96cde6ad48cad75794e1b9734">ns3::ndn::Aggregator</a>.</p>
+<p>Reimplemented in <a class="el" href="classns3_1_1ndn_1_1TBDriver.html#ad2f9c22cb906755f35f260269bde284a">ns3::ndn::TBDriver</a>, <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a03abd87c94d4e545abf70e545cb5e51d">ns3::ndn::Subscriber</a>, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a200ab46d2e9d85e93f609fcd1210f211">ns3::ndn::ConsumerSync</a>, <a class="el" href="classns3_1_1ndn_1_1Producer.html#afff9238cb079fde2dea5c39231fe0e15">ns3::ndn::Producer</a>, <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#acb375ea412bb978754393fca0416a3fa">ns3::ndn::SpontaneousProducer</a>, <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a6cbdd3e814e7cb00645292e52dc0b1f2">ns3::ndn::Consumer</a>, and <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#af91381e96cde6ad48cad75794e1b9734">ns3::ndn::Aggregator</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8cpp_source.html#l00162">162</a> of file <a class="el" href="ndn-app_8cpp_source.html">ndn-app.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-app_8hpp_source.html#l00103">m_active</a>, and <a class="el" href="ndn-app_8hpp_source.html#l00104">m_face</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00132">ns3::ndn::Aggregator::StopApplication()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00148">ns3::ndn::Consumer::StopApplication()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00107">ns3::ndn::SpontaneousProducer::StopApplication()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00086">ns3::ndn::Producer::StopApplication()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00202">ns3::ndn::ConsumerQos::StopApplication()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00208">ns3::ndn::Subscriber::StopApplication()</a>, and <a class="el" href="token-bucket_8cpp_source.html#l00091">ns3::ndn::TBucket::StopApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00134">ns3::ndn::Aggregator::StopApplication()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00148">ns3::ndn::Consumer::StopApplication()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00108">ns3::ndn::SpontaneousProducer::StopApplication()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00086">ns3::ndn::Producer::StopApplication()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00203">ns3::ndn::ConsumerSync::StopApplication()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00210">ns3::ndn::Subscriber::StopApplication()</a>, and <a class="el" href="tokenBucketDriver_8cpp_source.html#l00093">ns3::ndn::TBDriver::StopApplication()</a>.</p>
 
 </div>
 </div>
@@ -638,7 +641,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8hpp_source.html#l00103">103</a> of file <a class="el" href="ndn-app_8hpp_source.html">ndn-app.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00312">ns3::ndn::Aggregator::OnData()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00224">ns3::ndn::Consumer::OnData()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00327">ns3::ndn::ConsumerQos::OnData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">ns3::ndn::Subscriber::OnData()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00114">ns3::ndn::SpontaneousProducer::OnInterest()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00165">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">ns3::ndn::Subscriber::SendPacket()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00210">ns3::ndn::ConsumerQos::SendPacket()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00138">StartApplication()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00162">StopApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00314">ns3::ndn::Aggregator::OnData()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00224">ns3::ndn::Consumer::OnData()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00328">ns3::ndn::ConsumerSync::OnData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">ns3::ndn::Subscriber::OnData()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00115">ns3::ndn::SpontaneousProducer::OnInterest()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00166">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">ns3::ndn::Subscriber::SendPacket()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00211">ns3::ndn::ConsumerSync::SendPacket()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00138">StartApplication()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00162">StopApplication()</a>.</p>
 
 </div>
 </div>
@@ -664,7 +667,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8hpp_source.html#l00104">104</a> of file <a class="el" href="ndn-app_8hpp_source.html">ndn-app.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-app_8cpp_source.html#l00121">OnData()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00114">OnInterest()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00128">OnNack()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00165">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">ns3::ndn::Subscriber::SendPacket()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00210">ns3::ndn::ConsumerQos::SendPacket()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00121">ns3::ndn::Aggregator::StartApplication()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00138">StartApplication()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00094">ns3::ndn::SpontaneousProducer::StartApplication()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00077">ns3::ndn::Producer::StartApplication()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00162">StopApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-app_8cpp_source.html#l00121">OnData()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00114">OnInterest()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00128">OnNack()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00166">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">ns3::ndn::Subscriber::SendPacket()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00211">ns3::ndn::ConsumerSync::SendPacket()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00123">ns3::ndn::Aggregator::StartApplication()</a>, <a class="el" href="ndn-app_8cpp_source.html#l00138">StartApplication()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00095">ns3::ndn::SpontaneousProducer::StartApplication()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00077">ns3::ndn::Producer::StartApplication()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00162">StopApplication()</a>.</p>
 
 </div>
 </div>
@@ -690,7 +693,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8hpp_source.html#l00105">105</a> of file <a class="el" href="ndn-app_8hpp_source.html">ndn-app.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00165">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">ns3::ndn::Subscriber::SendPacket()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00210">ns3::ndn::ConsumerQos::SendPacket()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00138">StartApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00166">ns3::ndn::SpontaneousProducer::SendData()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">ns3::ndn::Subscriber::SendPacket()</a>, <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00211">ns3::ndn::ConsumerSync::SendPacket()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00138">StartApplication()</a>.</p>
 
 </div>
 </div>
@@ -828,7 +831,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8hpp_source.html#l00119">119</a> of file <a class="el" href="ndn-app_8hpp_source.html">ndn-app.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-app_8cpp_source.html#l00037">GetTypeId()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">ns3::ndn::Subscriber::SendPacket()</a>, and <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00210">ns3::ndn::ConsumerQos::SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-app_8cpp_source.html#l00037">GetTypeId()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">ns3::ndn::Aggregator::SendAggInterest()</a>, <a class="el" href="ndn-consumer-zipf-mandelbrot_8cpp_source.html#l00126">ns3::ndn::ConsumerZipfMandelbrot::SendPacket()</a>, <a class="el" href="ndn-consumer_8cpp_source.html#l00160">ns3::ndn::Consumer::SendPacket()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">ns3::ndn::Subscriber::SendPacket()</a>, and <a class="el" href="ndn-subscriber-sync_8cpp_source.html#l00211">ns3::ndn::ConsumerSync::SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -856,7 +859,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-app_8hpp_source.html#l00122">122</a> of file <a class="el" href="ndn-app_8hpp_source.html">ndn-app.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-app_8cpp_source.html#l00037">GetTypeId()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, and <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00165">ns3::ndn::SpontaneousProducer::SendData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-app_8cpp_source.html#l00037">GetTypeId()</a>, <a class="el" href="ndn-producer_8cpp_source.html#l00094">ns3::ndn::Producer::OnInterest()</a>, and <a class="el" href="ndn-producer-spontaneous_8cpp_source.html#l00166">ns3::ndn::SpontaneousProducer::SendData()</a>.</p>
 
 </div>
 </div>
@@ -898,7 +901,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacens3.html">ns3</a></li><li class="navelem"><a class="el" href="namespacens3_1_1ndn.html">ndn</a></li><li class="navelem"><a class="el" href="classns3_1_1ndn_1_1App.html">App</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

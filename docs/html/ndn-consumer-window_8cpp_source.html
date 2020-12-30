@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/apps/ndn-consumer-window.cpp Source File</title>
+<title>ndnSIM QoS: ndnSIM/apps/ndn-consumer-window.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -304,7 +307,7 @@ $(document).ready(function(){initNavTree('ndn-consumer-window_8cpp_source.html',
 <div class="ttc" id="aclassns3_1_1ndn_1_1ConsumerWindow_html_afec658d2d37faecb20f61ea138226e85"><div class="ttname"><a href="classns3_1_1ndn_1_1ConsumerWindow.html#afec658d2d37faecb20f61ea138226e85">ns3::ndn::ConsumerWindow::GetTypeId</a></div><div class="ttdeci">static TypeId GetTypeId()</div><div class="ttdef"><b>Definition:</b> <a href="ndn-consumer-window_8cpp_source.html#l00039">ndn-consumer-window.cpp:39</a></div></div>
 <div class="ttc" id="aclassns3_1_1ndn_1_1ConsumerWindow_html_a241615a95550a117c8e273f52b55e0e1"><div class="ttname"><a href="classns3_1_1ndn_1_1ConsumerWindow.html#a241615a95550a117c8e273f52b55e0e1">ns3::ndn::ConsumerWindow::m_initialWindow</a></div><div class="ttdeci">uint32_t m_initialWindow</div><div class="ttdef"><b>Definition:</b> <a href="ndn-consumer-window_8hpp_source.html#l00099">ndn-consumer-window.hpp:99</a></div></div>
 <div class="ttc" id="aclassns3_1_1ndn_1_1ConsumerWindow_html_a57988b04fc69efff8025d998b8ed4635"><div class="ttname"><a href="classns3_1_1ndn_1_1ConsumerWindow.html#a57988b04fc69efff8025d998b8ed4635">ns3::ndn::ConsumerWindow::m_payloadSize</a></div><div class="ttdeci">uint32_t m_payloadSize</div><div class="ttdef"><b>Definition:</b> <a href="ndn-consumer-window_8hpp_source.html#l00096">ndn-consumer-window.hpp:96</a></div></div>
-<div class="ttc" id="anamespacens3_html"><div class="ttname"><a href="namespacens3.html">ns3</a></div><div class="ttdoc">Copyright (c) 2011-2015 Regents of the University of California.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-aggregator_8cpp_source.html#l00043">ndn-aggregator.cpp:43</a></div></div>
+<div class="ttc" id="anamespacens3_html"><div class="ttname"><a href="namespacens3.html">ns3</a></div><div class="ttdoc">Copyright (c) 2011-2015 Regents of the University of California.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-aggregator_8cpp_source.html#l00045">ndn-aggregator.cpp:45</a></div></div>
 <div class="ttc" id="aclassns3_1_1ndn_1_1ConsumerWindow_html_a452f74b42d22567a4b367ac3fc70dcc8"><div class="ttname"><a href="classns3_1_1ndn_1_1ConsumerWindow.html#a452f74b42d22567a4b367ac3fc70dcc8">ns3::ndn::ConsumerWindow::m_setInitialWindowOnTimeout</a></div><div class="ttdeci">bool m_setInitialWindowOnTimeout</div><div class="ttdef"><b>Definition:</b> <a href="ndn-consumer-window_8hpp_source.html#l00100">ndn-consumer-window.hpp:100</a></div></div>
 <div class="ttc" id="aclassns3_1_1ndn_1_1Consumer_html_aabbe248f1788c85c0a7be9c682605dee"><div class="ttname"><a href="classns3_1_1ndn_1_1Consumer.html#aabbe248f1788c85c0a7be9c682605dee">ns3::ndn::Consumer::m_sendEvent</a></div><div class="ttdeci">EventId m_sendEvent</div><div class="ttdoc">EventId of pending &quot;send packet&quot; event.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-consumer_8hpp_source.html#l00139">ndn-consumer.hpp:139</a></div></div>
 <div class="ttc" id="aclassns3_1_1ndn_1_1ConsumerWindow_html_aca4a5a8e5fdb321126cb6e235ce59d65"><div class="ttname"><a href="classns3_1_1ndn_1_1ConsumerWindow.html#aca4a5a8e5fdb321126cb6e235ce59d65">ns3::ndn::ConsumerWindow::ConsumerWindow</a></div><div class="ttdeci">ConsumerWindow()</div><div class="ttdoc">Default constructor.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-consumer-window_8cpp_source.html#l00086">ndn-consumer-window.cpp:86</a></div></div>
@@ -328,7 +331,7 @@ $(document).ready(function(){initNavTree('ndn-consumer-window_8cpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_0a0ea3b9bde683678fc3a0b2a2c2ca6e.html">apps</a></li><li class="navelem"><a class="el" href="ndn-consumer-window_8cpp.html">ndn-consumer-window.cpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

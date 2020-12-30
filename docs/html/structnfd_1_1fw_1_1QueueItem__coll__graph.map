@@ -1,5 +1,5 @@
 <map id="nfd::fw::QueueItem" name="nfd::fw::QueueItem">
-<area shape="rect" id="node1" title=" " alt="" coords="9,288,143,315"/>
+<area shape="rect" id="node1" title="Defines queue item for use qos queues." alt="" coords="9,288,143,315"/>
 <area shape="rect" id="node2" title=" " alt="" coords="9,184,143,225"/>
 <area shape="rect" id="node3" title="STL class." alt="" coords="5,95,147,121"/>
 <area shape="rect" id="node4" title=" " alt="" coords="57,5,95,32"/>

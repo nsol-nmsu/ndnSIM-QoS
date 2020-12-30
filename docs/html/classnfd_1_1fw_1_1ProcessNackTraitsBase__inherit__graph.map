@@ -7,5 +7,5 @@
 <area shape="rect" id="node2" title=" " alt="" coords="5,119,100,146"/>
 <area shape="rect" id="node5" href="$classnfd_1_1fw_1_1MulticastStrategy.html" title="a forwarding strategy that forwards Interest to all FIB nexthops" alt="" coords="1060,13,1232,39"/>
 <area shape="rect" id="node7" href="$classnfd_1_1fw_1_1BestRouteStrategy2.html" title="Best Route strategy version 4." alt="" coords="1052,91,1240,118"/>
-<area shape="rect" id="node9" href="$classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="1075,183,1217,210"/>
+<area shape="rect" id="node9" href="$classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS." alt="" coords="1075,183,1217,210"/>
 </map>

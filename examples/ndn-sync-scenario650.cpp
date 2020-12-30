@@ -137,7 +137,7 @@ main( int argc, char* argv[] )
   std::string strcallback;
 
   ndn::AppHelper producerHelper( "ns3::ndn::SpontaneousProducer" );
-  ndn::AppHelper consumerHelper( "ns3::ndn::ConsumerQos" );
+  ndn::AppHelper consumerHelper( "ns3::ndn::ConsumerSync" );
 
   flowfile.open( "ndn_all_flows.csv", std::ios::out );
 
@@ -244,7 +244,7 @@ main( int argc, char* argv[] )
           //strcallback = "/NodeList/" + netParams[1] + "/ApplicationList/" + "*/SentInterest";
           //Config::ConnectWithoutContext( strcallback, MakeCallback( &SentInterestCallbackPhy ) );
           usedS[std::stoi( netParams[1] )] = 1;
-          auto apps = nodes.Get( std::stoi( netParams[1] ) )->GetApplication( 0 )->GetObject<ns3::ndn::ConsumerQos>();
+          auto apps = nodes.Get( std::stoi( netParams[1] ) )->GetApplication( 0 )->GetObject<ns3::ndn::ConsumerSync>();
           sync.addSender( std::stoi( netParams[1] ),apps );
         }
 

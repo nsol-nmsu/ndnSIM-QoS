@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: Class Members - Variables</title>
+<title>ndnSIM QoS: Class Members - Variables</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -107,9 +110,6 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>afterAddFace
 : <a class="el" href="classnfd_1_1fw_1_1Strategy.html#ac00a6f0d83b04317f262446cbaaad622">nfd::fw::Strategy</a>
 </li>
-<li>arrivedPackets
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#a226d27f22346b2c06d69539b403aa631">ns3::ndn::Synchronizer</a>
-</li>
 </ul>
 
 
@@ -179,7 +179,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#ab781e335cdd696b891a769fa1da60a86">nfd::fw::TokenBucket</a>
 </li>
 <li>hasSender
-: <a class="el" href="structnfd_1_1fw_1_1Consumed.html#a3318aaf12e62875ed6ac681635792359">nfd::fw::Consumed</a>
+: <a class="el" href="structnfd_1_1fw_1_1TBRef.html#ac2b6da437623cbaeeb459f2743b7205e">nfd::fw::TBRef</a>
 </li>
 <li>HRecv
 : <a class="el" href="structBucket.html#a7bb5229c35b038f9e3eaf0853818d39a">Bucket</a>
@@ -206,7 +206,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 <h3><a id="index_l"></a>- l -</h3><ul>
 <li>leadMeasurements
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a0df6d58e68d8f40beed2adc5a16beff0">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#ad4d7a4836989dee2821b80717aa28bba">ns3::ndn::ConsumerSync</a>
 </li>
 <li>LRecv
 : <a class="el" href="structBucket.html#a947c24f63d96ddb55b5479a0df1b7736">Bucket</a>
@@ -231,19 +231,19 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">nfd::fw::TokenBucket</a>
 </li>
 <li>m_doRetransmission
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a5fb21fb694317d53c5cb46f065f1966c">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a1add88499f560184b16d462f860fd8b8">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ac3eafab1c9499248664280ea811cfe7d">ns3::ndn::Subscriber</a>
 </li>
 <li>m_face
 : <a class="el" href="classns3_1_1ndn_1_1App.html#a203a6a6676b4283c9ece79523407fbeb">ns3::ndn::App</a>
 </li>
 <li>m_firstInterestDataDelay
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a91cbcc319b1c9e8a7dda4ca70378fd78">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a2fe9fcd53b1c7b217d4c01576b931749">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a63dbd29971ccfb811ce12a063c02f071">ns3::ndn::Subscriber</a>
 </li>
 <li>m_firstTime
 : <a class="el" href="classns3_1_1ndn_1_1ConsumerCbr.html#a814639309e9e302ec0d3e00c123019bf">ns3::ndn::ConsumerCbr</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a4abb3d55062961eb2446e299c0ac36a8">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a88e223ff8e39f57bd1873f2af99e59d6">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a01a5146e8ac0bab2d8e6676d442dce8c">ns3::ndn::Subscriber</a>
 </li>
 <li>m_frequency
@@ -260,16 +260,16 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </li>
 <li>m_interestLifeTime
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#adad8e55fa1027e4c9850538e1e8622a7">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a93763763f72d70bcbbf414a17b2e7238">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#ae45188760fd585ca6a719d5639e95cb1">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ad164ef812873c4f61823527f29ed835a">ns3::ndn::Subscriber</a>
 </li>
 <li>m_interestName
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a11d6716730a853a7cb2ead9c50bbefbc">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#ad574df75b318e002840e9ef13eb9f3c6">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a01e2e7eae3be3f37ed24a51550b617b8">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a61a25e6264a43f40772619a47402fdce">ns3::ndn::Subscriber</a>
 </li>
 <li>m_lastRetransmittedInterestDataDelay
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a9a07f7480f18474fb786f34ec98e05d1">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a87cc8e80fe38f31ae317d3afdb2074d8">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a9567a1960a661a1fadd1bf485316ee89">ns3::ndn::Subscriber</a>
 </li>
 <li>m_lowPriorityQueue
@@ -282,25 +282,25 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html#ab17d24a7dd39f894ba81c1096ec3658c">nfd::fw::NdnPriorityTxQueue</a>
 </li>
 <li>m_need
-: <a class="el" href="structnfd_1_1fw_1_1Consumed.html#a9484cd48727239a5985420576bbfac98">nfd::fw::Consumed</a>
+: <a class="el" href="structnfd_1_1fw_1_1TBRef.html#ae768cbd0adcd11a3be29a1e919729e01">nfd::fw::TBRef</a>
 , <a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#a29d179db920239157916f7b977ccbebf">nfd::fw::TokenBucket</a>
 </li>
 <li>m_offset
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#ab9957657e8d7fded05e899094337a910">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a893b841d03bd1a1aebc649b8bd6642f8">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a49e208e6096c5f1252aa06a10faac9d4">ns3::ndn::Subscriber</a>
 </li>
 <li>m_offTime
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#adfdf8893787c66d7c89b4fc87abfba36">ns3::ndn::Consumer</a>
 </li>
 <li>m_payloads
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a5044c6115ae12a5b50bf660620c3ac29">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a5f3364ee8075ba9788920103d955fa56">ns3::ndn::ConsumerSync</a>
 </li>
 <li>m_payloadSize
 : <a class="el" href="classns3_1_1ndn_1_1ConsumerWindow.html#a57988b04fc69efff8025d998b8ed4635">ns3::ndn::ConsumerWindow</a>
 </li>
 <li>m_rand
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#aab4d16bd9a89ab5a0543c50ebb3d74c8">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#aa4b129888418bca08f728918b547a54d">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#abad6c414f7b32989b3ec8b9f27a9d1aa">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a6e1211634925b991222ec302aef42e3d">ns3::ndn::Subscriber</a>
 </li>
 <li>m_random
@@ -310,7 +310,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classns3_1_1ndn_1_1ConsumerCbr.html#ab52fb6a1d6b6114a8e5feae9ca5764e9">ns3::ndn::ConsumerCbr</a>
 </li>
 <li>m_receivedData
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#aec8057d1b59939635a72fbbfc4c75bba">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a2df5e99e62db8a2b6a9882693d944c42">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a1aac97698bae88bd9707cc84e3764dcd">ns3::ndn::Subscriber</a>
 </li>
 <li>m_receivedDatas
@@ -328,68 +328,68 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </li>
 <li>m_retxEvent
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a49bf33baf2cb0254736a11dbaf9fcf03">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a65f3d2f84004e05c163203d21e2b54fc">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a1540e3b8413768ed970b40724c2d04ff">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a11afb56a7bcfff8053b8d70e97f9d548">ns3::ndn::Subscriber</a>
 </li>
 <li>m_retxTimer
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a3cf54d87887280fe9ccf973a45634b62">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a2b80b295a543564e817e25deee12bb9e">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#af0ec29c6e85808e8874a43c52a396a43">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a396207bf0eb311c18d375a7df717da7d">ns3::ndn::Subscriber</a>
 </li>
 <li>m_rtt
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a150cdf24ed67d6aeeb24be58e1262b59">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a816cdf084bc40f1dfb4522f82b018863">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#ad8b14514c836330a33ff6523fcab5ad3">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a5bfb96edbd1a6dab7e132bdbdd3fa9e5">ns3::ndn::Subscriber</a>
 </li>
 <li>m_sendEvent
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#aabbe248f1788c85c0a7be9c682605dee">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a76b0608cde2db32ba1d4c062c0715dc8">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#adae0c7c99bdc1ab93a5ebd06c2ccb9e9">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a660f56f69bed601435b1264388a9feee">ns3::ndn::Subscriber</a>
-, <a class="el" href="classns3_1_1ndn_1_1TBucket.html#a5bfc4a0aace4090e102af33d8ab9a2ba">ns3::ndn::TBucket</a>
+, <a class="el" href="classns3_1_1ndn_1_1TBDriver.html#a19583fa566a9d23188e82dca2c29fd8d">ns3::ndn::TBDriver</a>
 </li>
 <li>m_sentData
 : <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#ad43f146c7effa5de8c4b2fdd3832060c">ns3::ndn::SpontaneousProducer</a>
 </li>
 <li>m_sentInterest
 : <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#a350cfe270049c914eee947803b11503f">ns3::ndn::Aggregator</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a43718f30f42d8269f884b2784ed2a0f6">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#afc7c5cd27c67d0ab40b214eceb122ddb">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ac6113d109a830bf5ad51999db193ea44">ns3::ndn::Subscriber</a>
 </li>
 <li>m_seq
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#af98abc4aa7b47b1d87863dd81f15e991">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#ab8fcce417156c30202d1103be929632e">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#ae01ad2fc20c72eb8d2e39910aa924feb">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a2463400a9d405c40e53e76f5c89c25f4">ns3::ndn::Subscriber</a>
 </li>
 <li>m_seqFullDelay
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a0aac0d63177dbfc6cf156b0499e2cd33">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a72dcd2c88607faaf90d9cf16de9e86a3">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a6099ad374944c1904dfbf53df0e62f56">ns3::ndn::Subscriber</a>
 </li>
 <li>m_seqLastDelay
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#aa527bd5506674f6beb26162d96ddeae7">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a090eaa6829504dcb9505dc6c7d107dd7">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ada178bfb81493913a37c3a825a803ad7">ns3::ndn::Subscriber</a>
 </li>
 <li>m_seqMax
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#ab21d74e8ef2fd4e40eeebaee4f446731">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#ab801c43069e202955f88890dba656854">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a9b482a84a6ee03f1bc4e5d66c39e7adc">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ad7bfdbbf64b30afeb916a46dc7344303">ns3::ndn::Subscriber</a>
 </li>
 <li>m_seqRetxCounts
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a083e57c7760d8b68c047be72449fa62d">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a517c45e14270bd2939cb110deda2c657">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ada864cb826bca471b0593f7e9b41602e">ns3::ndn::Subscriber</a>
 </li>
 <li>m_seqTimeouts
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#adc6567c2965aeccdce5f1c1563564aef">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#afe09c4fe398cf02b4a4db6e5875c52d4">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a3e847de0d67441368d93a207278c4df3">ns3::ndn::Subscriber</a>
 </li>
 <li>m_setInitialWindowOnTimeout
 : <a class="el" href="classns3_1_1ndn_1_1ConsumerWindow.html#a452f74b42d22567a4b367ac3fc70dcc8">ns3::ndn::ConsumerWindow</a>
 </li>
 <li>m_subscription
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#aef78214d29573cc68d36f643834a92b3">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a6fc4d9423ba8dfd1b6a98c431be2e520">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#aa36c66f276ebe6e6188dac28977d1499">ns3::ndn::Subscriber</a>
 </li>
 <li>m_tokens
-: <a class="el" href="structnfd_1_1fw_1_1Consumed.html#a466c617627e6d46c57b2cb4bf000a31b">nfd::fw::Consumed</a>
+: <a class="el" href="structnfd_1_1fw_1_1TBRef.html#a0999a702ebfb08630f4e442d503b96f5">nfd::fw::TBRef</a>
 , <a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">nfd::fw::TokenBucket</a>
 </li>
 <li>m_transmittedDatas
@@ -402,18 +402,15 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classns3_1_1ndn_1_1App.html#a8c7a10139c4f46a60510be0b50642dca">ns3::ndn::App</a>
 </li>
 <li>m_txInterval
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a3205bc6ff37d62a963f70005a0a9adc3">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#aa47fba031f2fd0890c3a60bb221c7b0b">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ac8b6e246ff574a42b171bee41b5bec3a">ns3::ndn::Subscriber</a>
 </li>
 <li>m_virtualPayloadSize
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a43afd26ffc3b73525e4d7bcae5d4f507">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a1b8c62a84cadbd6e5bee9383f6251075">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a4ea7ed933b5a95c9eb2b762b64e2e07b">ns3::ndn::Subscriber</a>
 </li>
 <li>m_window
 : <a class="el" href="classns3_1_1ndn_1_1ConsumerWindow.html#a87910bbd3ed953032f7401b66acb19e9">ns3::ndn::ConsumerWindow</a>
-</li>
-<li>mapDER
-: <a class="el" href="classns3_1_1ndn_1_1ParserOpenDSS.html#a014f3afa1ad677dec62d27ddab0d9396">ns3::ndn::ParserOpenDSS</a>
 </li>
 <li>MAX_PREDICTION
 : <a class="el" href="classnfd_1_1fw_1_1NccStrategy_1_1MeasurementsEntryInfo.html#acd20ecb727553618567091b7675c667c">nfd::fw::NccStrategy::MeasurementsEntryInfo</a>
@@ -441,9 +438,6 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_n"></a>- n -</h3><ul>
-<li>nameMap
-: <a class="el" href="classns3_1_1ndn_1_1ParserOpenDSS.html#a315dd3a84464f2b2d92646d1aa0ae1f4">ns3::ndn::ParserOpenDSS</a>
-</li>
 <li>nCsHits
 : <a class="el" href="classnfd_1_1ForwarderCounters.html#a85a17dbd09e619db0775aceb81f567f8">nfd::ForwarderCounters</a>
 </li>
@@ -485,12 +479,6 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 
 
 <h3><a id="index_p"></a>- p -</h3><ul>
-<li>packetNames
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#a2a44ac52d1351337ce99211d2b8d760a">ns3::ndn::Synchronizer</a>
-</li>
-<li>packetsToSend
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a806aac33c0b77c17e0f67e8e7a1372b0">ns3::ndn::ConsumerQos</a>
-</li>
 <li>packetType
 : <a class="el" href="structnfd_1_1fw_1_1QueueItem.html#a141c85f4e39e5aa92a8fc8d7df9f63cb">nfd::fw::QueueItem</a>
 </li>
@@ -536,16 +524,13 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">nfd::fw::TokenBucket</a>
 </li>
 <li>sender1
-: <a class="el" href="structnfd_1_1fw_1_1Consumed.html#ac4e51f3f151b1005cd57731eb830a5ad">nfd::fw::Consumed</a>
+: <a class="el" href="structnfd_1_1fw_1_1TBRef.html#a69d30a15a964d5911794625dca879109">nfd::fw::TBRef</a>
 </li>
 <li>sender2
-: <a class="el" href="structnfd_1_1fw_1_1Consumed.html#a3cf8798ab162e389a19f57fafd6be349">nfd::fw::Consumed</a>
+: <a class="el" href="structnfd_1_1fw_1_1TBRef.html#aaa3696a570aecd8b9707cb65be2d0a21">nfd::fw::TBRef</a>
 </li>
 <li>sender3
-: <a class="el" href="structnfd_1_1fw_1_1Consumed.html#a336b5070df512e24d63ce9045a05d624">nfd::fw::Consumed</a>
-</li>
-<li>senders
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#a639a337a442a963157b22421e748a8ca">ns3::ndn::Synchronizer</a>
+: <a class="el" href="structnfd_1_1fw_1_1TBRef.html#a805b273129a334b182092fef602fed05">nfd::fw::TBRef</a>
 </li>
 <li>srtt
 : <a class="el" href="structnfd_1_1fw_1_1asf_1_1FaceStats.html#acac7866f525dd705ce5cbf487cc918aa">nfd::fw::asf::FaceStats</a>
@@ -555,13 +540,6 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </li>
 <li>suppressionInterval
 : <a class="el" href="classnfd_1_1fw_1_1RetxSuppressionExponential_1_1PitInfo.html#a185ba88d6e79ed489a6dcbba7672c27b">nfd::fw::RetxSuppressionExponential::PitInfo</a>
-</li>
-</ul>
-
-
-<h3><a id="index_t"></a>- t -</h3><ul>
-<li>timestep
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#aa4379156f6c26ca24ddf8b86281fade7">ns3::ndn::Synchronizer</a>
 </li>
 </ul>
 
@@ -590,7 +568,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

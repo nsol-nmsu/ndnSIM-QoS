@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ns3::ndn::Subscriber Class Reference</title>
+<title>ndnSIM QoS: ns3::ndn::Subscriber Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -100,11 +103,11 @@ $(document).ready(function(){initNavTree('classns3_1_1ndn_1_1Subscriber.html',''
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classns3_1_1ndn_1_1Subscriber-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ns3::ndn::Subscriber Class Reference<div class="ingroups"><a class="el" href="group__ndn-apps.html">NDN applications</a></div></div>  </div>
+<div class="title">ns3::ndn::Subscriber Class Reference<div class="ingroups"><a class="el" href="group__ndnQoS.html">ndnQoS apps and classes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>NDN application for sending out Interest packets.  
+<p>NDN application for sending out payloaded Interest packets.  
  <a href="classns3_1_1ndn_1_1Subscriber.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>&gt;</code></p>
@@ -112,8 +115,8 @@ $(document).ready(function(){initNavTree('classns3_1_1ndn_1_1Subscriber.html',''
 Inheritance diagram for ns3::ndn::Subscriber:</div>
 <div class="dyncontent">
 <div class="center"><img src="classns3_1_1ndn_1_1Subscriber__inherit__graph.png" border="0" usemap="#ans3_1_1ndn_1_1Subscriber_inherit__map" alt="Inheritance graph"/></div>
-<map name="ans3_1_1ndn_1_1Subscriber_inherit__map" id="ans3_1_1ndn_1_1Subscriber_inherit__map">
-<area shape="rect" title="NDN application for sending out Interest packets." alt="" coords="5,155,148,181"/>
+<map name="ns3_1_1ndn_1_1Subscriber_inherit__map" id="ns3_1_1ndn_1_1Subscriber_inherit__map">
+<area shape="rect" title="NDN application for sending out payloaded Interest packets." alt="" coords="5,155,148,181"/>
 <area shape="rect" href="classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="25,80,128,107"/>
 <area shape="rect" title=" " alt="" coords="33,5,120,32"/>
 </map>
@@ -122,8 +125,8 @@ Inheritance diagram for ns3::ndn::Subscriber:</div>
 Collaboration diagram for ns3::ndn::Subscriber:</div>
 <div class="dyncontent">
 <div class="center"><img src="classns3_1_1ndn_1_1Subscriber__coll__graph.png" border="0" usemap="#ans3_1_1ndn_1_1Subscriber_coll__map" alt="Collaboration graph"/></div>
-<map name="ans3_1_1ndn_1_1Subscriber_coll__map" id="ans3_1_1ndn_1_1Subscriber_coll__map">
-<area shape="rect" title="NDN application for sending out Interest packets." alt="" coords="184,376,327,403"/>
+<map name="ns3_1_1ndn_1_1Subscriber_coll__map" id="ns3_1_1ndn_1_1Subscriber_coll__map">
+<area shape="rect" title="NDN application for sending out payloaded Interest packets." alt="" coords="184,376,327,403"/>
 <area shape="rect" href="classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="147,300,249,327"/>
 <area shape="rect" title=" " alt="" coords="5,184,92,211"/>
 <area shape="rect" title=" " alt="" coords="117,184,279,211"/>
@@ -306,8 +309,7 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a8c7a10139c4f46a60510be0b50642dca inherit pro_attribs_classns3_1_1ndn_1_1App"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>NDN application for sending out Interest packets. </p>
-<p>Installed on nodes at physical layer (prosumers) of the Smart Grid architecture (iCenS) </p>
+<div class="textblock"><p>NDN application for sending out payloaded Interest packets. </p>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00050">50</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
@@ -361,7 +363,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Default constructor Sets up randomizer function and packet sequence number. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00109">109</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00111">111</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">m_rtt</a>.</p>
 
@@ -390,7 +392,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00121">121</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00123">123</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
 </div>
 </div>
@@ -419,9 +421,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">49</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">51</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-subscriber_8cpp_source.html#l00164">GetRetxTimer()</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00150">m_doRetransmission</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00219">m_firstInterestDataDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00146">m_interestLifeTime</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00145">m_interestName</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00217">m_lastRetransmittedInterestDataDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00151">m_offset</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00222">m_receivedData</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00221">m_sentInterest</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00138">m_seq</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00148">m_subscription</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00144">m_txInterval</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00149">m_virtualPayloadSize</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00143">SetRetxTimer()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-subscriber_8cpp_source.html#l00166">GetRetxTimer()</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00150">m_doRetransmission</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00219">m_firstInterestDataDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00146">m_interestLifeTime</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00145">m_interestName</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00217">m_lastRetransmittedInterestDataDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00151">m_offset</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00222">m_receivedData</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00221">m_sentInterest</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00138">m_seq</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00148">m_subscription</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00144">m_txInterval</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00149">m_virtualPayloadSize</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00145">SetRetxTimer()</a>.</p>
 
 </div>
 </div>
@@ -453,7 +455,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classns3_1_1ndn_1_1App.html#a3f6f593a1557aa22c01bfbab6590b240">ns3::ndn::App</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">282</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">284</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-app_8hpp_source.html#l00103">ns3::ndn::App::m_active</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00219">m_firstInterestDataDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00217">m_lastRetransmittedInterestDataDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00222">m_receivedData</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">m_rtt</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00211">m_seqFullDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00210">m_seqLastDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00213">m_seqRetxCounts</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00208">m_seqTimeouts</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00148">m_subscription</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00121">ns3::ndn::App::OnData()</a>.</p>
 
@@ -491,11 +493,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00341">341</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00343">343</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">m_rtt</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">m_rtt</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00170">CheckRetxTimeout()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00172">CheckRetxTimeout()</a>.</p>
 
 </div>
 </div>
@@ -517,11 +519,11 @@ Protected Attributes</h2></td></tr>
 <p>Actually send packet. </p>
 <p>Subscription interests do not carry payload information </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">216</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">218</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-app_8hpp_source.html#l00103">ns3::ndn::App::m_active</a>, <a class="el" href="ndn-app_8hpp_source.html#l00105">ns3::ndn::App::m_appLink</a>, <a class="el" href="ndn-app_8hpp_source.html#l00104">ns3::ndn::App::m_face</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00146">m_interestLifeTime</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00145">m_interestName</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00137">m_rand</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00221">m_sentInterest</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00138">m_seq</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00139">m_seqMax</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00148">m_subscription</a>, <a class="el" href="ndn-app_8hpp_source.html#l00119">ns3::ndn::App::m_transmittedInterests</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00149">m_virtualPayloadSize</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00354">WillSendOutInterest()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-app_8hpp_source.html#l00103">ns3::ndn::App::m_active</a>, <a class="el" href="ndn-app_8hpp_source.html#l00105">ns3::ndn::App::m_appLink</a>, <a class="el" href="ndn-app_8hpp_source.html#l00104">ns3::ndn::App::m_face</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00146">m_interestLifeTime</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00145">m_interestName</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00137">m_rand</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00221">m_sentInterest</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00138">m_seq</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00139">m_seqMax</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00148">m_subscription</a>, <a class="el" href="ndn-app_8hpp_source.html#l00119">ns3::ndn::App::m_transmittedInterests</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00149">m_virtualPayloadSize</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00356">WillSendOutInterest()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>.</p>
 
 </div>
 </div>
@@ -552,11 +554,11 @@ Protected Attributes</h2></td></tr>
 <p>An event that is fired just before an Interest packet is actually send out (send is inevitable) </p>
 <p>The reason for "before" even is that in certain cases (when it is possible to satisfy from the local cache), the send call will immediately return data, and if "after" even was used, this after would be called after all processing of incoming data, potentially producing unexpected results. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00354">354</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00356">356</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">m_rtt</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00211">m_seqFullDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00210">m_seqLastDelay</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00213">m_seqRetxCounts</a>, and <a class="el" href="ndn-subscriber_8hpp_source.html#l00208">m_seqTimeouts</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -587,9 +589,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classns3_1_1ndn_1_1App.html#a20fd3ef630b6d05dc139911d1ef1b17f">ns3::ndn::App</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00200">200</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00202">202</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00138">ns3::ndn::App::StartApplication()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00138">ns3::ndn::App::StartApplication()</a>.</p>
 
 </div>
 </div>
@@ -620,7 +622,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classns3_1_1ndn_1_1App.html#af1efb7281aa29014eb4574ce452dc705">ns3::ndn::App</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00208">208</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00210">210</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00140">m_sendEvent</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00162">ns3::ndn::App::StopApplication()</a>.</p>
 
@@ -651,11 +653,11 @@ Protected Attributes</h2></td></tr>
 
 <p>Constructs the Interest packet and sends it using a callback to the underlying NDN protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">127</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">129</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00147">m_firstTime</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00151">m_offset</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00140">m_sendEvent</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00144">m_txInterval</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00147">m_firstTime</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00151">m_offset</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00140">m_sendEvent</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00144">m_txInterval</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00341">OnTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00200">StartApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00343">OnTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00202">StartApplication()</a>.</p>
 
 </div>
 </div>
@@ -684,11 +686,11 @@ Protected Attributes</h2></td></tr>
 
 <p>Checks if the packet need to be retransmitted becuase of retransmission timer expiration. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00170">170</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00172">172</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00142">m_retxEvent</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00141">m_retxTimer</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">m_rtt</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00208">m_seqTimeouts</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00341">OnTimeout()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00142">m_retxEvent</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00141">m_retxTimer</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">m_rtt</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00208">m_seqTimeouts</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00343">OnTimeout()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00143">SetRetxTimer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00145">SetRetxTimer()</a>.</p>
 
 </div>
 </div>
@@ -724,11 +726,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00143">143</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00145">145</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-subscriber_8cpp_source.html#l00170">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00150">m_doRetransmission</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00142">m_retxEvent</a>, and <a class="el" href="ndn-subscriber_8hpp_source.html#l00141">m_retxTimer</a>.</p>
+<p class="reference">References <a class="el" href="ndn-subscriber_8cpp_source.html#l00172">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00150">m_doRetransmission</a>, <a class="el" href="ndn-subscriber_8hpp_source.html#l00142">m_retxEvent</a>, and <a class="el" href="ndn-subscriber_8hpp_source.html#l00141">m_retxTimer</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>.</p>
 
 </div>
 </div>
@@ -758,11 +760,11 @@ Protected Attributes</h2></td></tr>
 <p>Returns the frequency of checking the retransmission timeouts. </p>
 <dl class="section return"><dt>Returns</dt><dd>Timeout defining how frequent retransmission timeouts should be checked </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00164">164</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-subscriber_8cpp_source.html#l00166">166</a> of file <a class="el" href="ndn-subscriber_8cpp_source.html">ndn-subscriber.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-subscriber_8hpp_source.html#l00141">m_retxTimer</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>.</p>
 
 </div>
 </div>
@@ -791,7 +793,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00137">137</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -819,7 +821,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00138">138</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -847,7 +849,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00139">139</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -875,7 +877,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00140">140</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00208">StopApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00210">StopApplication()</a>.</p>
 
 </div>
 </div>
@@ -903,7 +905,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00141">141</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00170">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00164">GetRetxTimer()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00143">SetRetxTimer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00172">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00166">GetRetxTimer()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00145">SetRetxTimer()</a>.</p>
 
 </div>
 </div>
@@ -931,7 +933,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00142">142</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00170">CheckRetxTimeout()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00143">SetRetxTimer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00172">CheckRetxTimeout()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00145">SetRetxTimer()</a>.</p>
 
 </div>
 </div>
@@ -957,7 +959,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00144">144</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>.</p>
 
 </div>
 </div>
@@ -985,7 +987,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00145">145</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -1013,7 +1015,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00146">146</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -1039,7 +1041,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00147">147</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>.</p>
 
 </div>
 </div>
@@ -1065,7 +1067,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00148">148</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -1091,7 +1093,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00149">149</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -1117,7 +1119,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00150">150</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00143">SetRetxTimer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00145">SetRetxTimer()</a>.</p>
 
 </div>
 </div>
@@ -1143,7 +1145,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00151">151</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00127">ScheduleNextPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00129">ScheduleNextPacket()</a>.</p>
 
 </div>
 </div>
@@ -1171,7 +1173,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00153">153</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00170">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00341">OnTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00109">Subscriber()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00354">WillSendOutInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00172">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00343">OnTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00111">Subscriber()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00356">WillSendOutInterest()</a>.</p>
 
 </div>
 </div>
@@ -1199,7 +1201,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00208">208</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00170">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00354">WillSendOutInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00172">CheckRetxTimeout()</a>, <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00356">WillSendOutInterest()</a>.</p>
 
 </div>
 </div>
@@ -1225,7 +1227,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00210">210</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00354">WillSendOutInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00356">WillSendOutInterest()</a>.</p>
 
 </div>
 </div>
@@ -1251,7 +1253,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00211">211</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00354">WillSendOutInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00356">WillSendOutInterest()</a>.</p>
 
 </div>
 </div>
@@ -1277,7 +1279,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00213">213</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00354">WillSendOutInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00356">WillSendOutInterest()</a>.</p>
 
 </div>
 </div>
@@ -1303,7 +1305,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00217">217</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>.</p>
 
 </div>
 </div>
@@ -1329,7 +1331,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00219">219</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>.</p>
 
 </div>
 </div>
@@ -1355,7 +1357,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00221">221</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00216">SendPacket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00218">SendPacket()</a>.</p>
 
 </div>
 </div>
@@ -1381,7 +1383,7 @@ Protected Attributes</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="ndn-subscriber_8hpp_source.html#l00222">222</a> of file <a class="el" href="ndn-subscriber_8hpp_source.html">ndn-subscriber.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00282">OnData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-subscriber_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-subscriber_8cpp_source.html#l00284">OnData()</a>.</p>
 
 </div>
 </div>
@@ -1395,7 +1397,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacens3.html">ns3</a></li><li class="navelem"><a class="el" href="namespacens3_1_1ndn.html">ndn</a></li><li class="navelem"><a class="el" href="classns3_1_1ndn_1_1Subscriber.html">Subscriber</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

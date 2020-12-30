@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: File Members</title>
+<title>ndnSIM QoS: File Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -93,18 +96,8 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
 
 <div class="contents">
 &#160;<ul>
-<li>BUFFER_SIZE
-: <a class="el" href="ndn-synchronizer-socket_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">ndn-synchronizer-socket.hpp</a>
-, <a class="el" href="parser-OpenDSS_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">parser-OpenDSS.hpp</a>
-, <a class="el" href="parser-ReDisPv_8hpp.html#a6b20d41d6252e9871430c242cb1a56e7">parser-ReDisPv.hpp</a>
-</li>
-<li>CONNECTIONS
-: <a class="el" href="ndn-synchronizer-socket_8cpp.html#ab5e65a957b83d792bcaf547766f49ac7">ndn-synchronizer-socket.cpp</a>
-</li>
 <li>DEBUG
 : <a class="el" href="ndn-subscriber-sync_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83">ndn-subscriber-sync.cpp</a>
-, <a class="el" href="ndn-synchronizer-socket_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83">ndn-synchronizer-socket.cpp</a>
-, <a class="el" href="parser-ReDisPv_8cpp.html#ad72dbcf6d0153db1b8d8a58001feed83">parser-ReDisPv.cpp</a>
 </li>
 <li>NFD_REGISTER_STRATEGY
 : <a class="el" href="strategy_8hpp.html#acf08f106f9f14b6fb16dac265d175c93">strategy.hpp</a>
@@ -118,9 +111,6 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
 <li>QUEUE_SIZE
 : <a class="el" href="ndn-qos-queue_8hpp.html#a142810068f1b99cd93d3fc9f0e160e02">ndn-qos-queue.hpp</a>
 </li>
-<li>SERVER_PORT
-: <a class="el" href="ndn-synchronizer-socket_8cpp.html#ac42367fe5c999ec6650de83e9d72fe8c">ndn-synchronizer-socket.cpp</a>
-</li>
 <li>TOTAL_QUEUES
 : <a class="el" href="ndn-priority-tx-queue_8hpp.html#a96e388d5ec326fa3294365f65c6d4dbe">ndn-priority-tx-queue.hpp</a>
 </li>
@@ -130,7 +120,7 @@ $(document).ready(function(){initNavTree('globals_defs.html',''); initResizable(
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:35 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

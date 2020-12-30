@@ -36,7 +36,7 @@
 
 #include <boost/lexical_cast.hpp>
 #include <boost/ref.hpp>
-#include "../NFD/daemon/fw/TBucket.cpp"
+#include "../NFD/daemon/fw/TBucketDebug.cpp"
 
 NS_LOG_COMPONENT_DEFINE("ndn.Consumer");
 

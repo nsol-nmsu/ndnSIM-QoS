@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: Member List</title>
+<title>ndnSIM QoS: Member List</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -100,7 +103,7 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1NdnPriorityTxQueue.h
 <p>This is the complete list of members for <a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html">nfd::fw::NdnPriorityTxQueue</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a78b05c79e696384d11544a2eca0e850b">DoDequeue</a>(int choice)</td><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html">nfd::fw::NdnPriorityTxQueue</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a457c9ebcf55314518e710611e4cbe17e">DoEnqueue</a>(QueueItem item, uint32_t dscp_value)</td><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html">nfd::fw::NdnPriorityTxQueue</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a48f2d738894213fab444e1c4a8c477ae">DoEnqueue</a>(QueueItem item, uint32_t pr_level)</td><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html">nfd::fw::NdnPriorityTxQueue</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a3d70668638dc33ca1b0b2e60f9bf5443">GetFlowRate</a>(QosQueue *queue)</td><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html">nfd::fw::NdnPriorityTxQueue</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a72ce3435cb357544d221b2634402eb4f">IsEmpty</a>()</td><td class="entry"><a class="el" href="classnfd_1_1fw_1_1NdnPriorityTxQueue.html">nfd::fw::NdnPriorityTxQueue</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classnfd_1_1fw_1_1QosQueue.html#a6eeb77999cccc6cb8e15cb921744e224">nfd::fw::QosQueue::IsEmpty</a>() const</td><td class="entry"><a class="el" href="classnfd_1_1fw_1_1QosQueue.html">nfd::fw::QosQueue</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
@@ -118,7 +121,7 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1NdnPriorityTxQueue.h
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

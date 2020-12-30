@@ -1,5 +1,5 @@
 <map id="ns3::ndn::Subscriber" name="ns3::ndn::Subscriber">
-<area shape="rect" id="node1" title="NDN application for sending out Interest packets." alt="" coords="184,376,327,403"/>
+<area shape="rect" id="node1" title="NDN application for sending out payloaded Interest packets." alt="" coords="184,376,327,403"/>
 <area shape="rect" id="node2" href="$classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="147,300,249,327"/>
 <area shape="rect" id="node3" title=" " alt="" coords="5,184,92,211"/>
 <area shape="rect" id="node4" title=" " alt="" coords="117,184,279,211"/>

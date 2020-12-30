@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: Class Members</title>
+<title>ndnSIM QoS: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -101,10 +104,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <li>add()
 : <a class="el" href="classnfd_1_1FaceTable.html#aa3c99356cabcb953d813539995917973">nfd::FaceTable</a>
 </li>
-<li>addArrivedPackets()
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#a09c8d3d8380901e3a4019710664e2f51">ns3::ndn::Synchronizer</a>
-, <a class="el" href="classns3_1_1ndn_1_1SyncSocket.html#aa68069e4f15e8381360e784e83526e4d">ns3::ndn::SyncSocket</a>
-</li>
 <li>addFace()
 : <a class="el" href="classnfd_1_1Forwarder.html#a625af8804bc0fece52a6dcb341998152">nfd::Forwarder</a>
 </li>
@@ -113,9 +112,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>addRttMeasurement()
 : <a class="el" href="classnfd_1_1fw_1_1asf_1_1RttStats.html#a5ceebbe584d4d2e9e5d2e631ebb0b880">nfd::fw::asf::RttStats</a>
-</li>
-<li>addSender()
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#af8c548570eff58c7651a7183c64146ba">ns3::ndn::Synchronizer</a>
 </li>
 <li>addToken()
 : <a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">nfd::fw::TokenBucket</a>
@@ -165,9 +161,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 , <a class="el" href="classnfd_1_1fw_1_1SelfLearningStrategy.html#a71162f9e2d41a6c54e7df16a244b6014">nfd::fw::SelfLearningStrategy</a>
 , <a class="el" href="classnfd_1_1fw_1_1Strategy.html#a1107a973f05e2fdfcf75fccc27fa8dce">nfd::fw::Strategy</a>
 </li>
-<li>aggDER()
-: <a class="el" href="classns3_1_1ndn_1_1SyncSocket.html#a2575b3b81cfefa2b9c4aee10df7d51f0">ns3::ndn::SyncSocket</a>
-</li>
 <li>Aggregator()
 : <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#ab12a6c08361fb3912be6700ab6314246">ns3::ndn::Aggregator</a>
 </li>
@@ -176,9 +169,6 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 </li>
 <li>areSameType()
 : <a class="el" href="classnfd_1_1fw_1_1Strategy.html#af2188af043eac0fd32b700d4a40c1cc4">nfd::fw::Strategy</a>
-</li>
-<li>arrivedPackets
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#a226d27f22346b2c06d69539b403aa631">ns3::ndn::Synchronizer</a>
 </li>
 <li>AsfMeasurements()
 : <a class="el" href="classnfd_1_1fw_1_1asf_1_1AsfMeasurements.html#a376840465264998f72eeec3a02d14cea">nfd::fw::asf::AsfMeasurements</a>
@@ -192,7 +182,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

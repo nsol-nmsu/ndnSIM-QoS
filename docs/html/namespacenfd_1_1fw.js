@@ -8,7 +8,6 @@ var namespacenfd_1_1fw =
     [ "BestRouteStrategy", "classnfd_1_1fw_1_1BestRouteStrategy.html", "classnfd_1_1fw_1_1BestRouteStrategy" ],
     [ "BestRouteStrategy2", "classnfd_1_1fw_1_1BestRouteStrategy2.html", "classnfd_1_1fw_1_1BestRouteStrategy2" ],
     [ "BestRouteStrategyBase", "classnfd_1_1fw_1_1BestRouteStrategyBase.html", "classnfd_1_1fw_1_1BestRouteStrategyBase" ],
-    [ "Consumed", "structnfd_1_1fw_1_1Consumed.html", "structnfd_1_1fw_1_1Consumed" ],
     [ "DropAllUnsolicitedDataPolicy", "classnfd_1_1fw_1_1DropAllUnsolicitedDataPolicy.html", "classnfd_1_1fw_1_1DropAllUnsolicitedDataPolicy" ],
     [ "MulticastStrategy", "classnfd_1_1fw_1_1MulticastStrategy.html", "classnfd_1_1fw_1_1MulticastStrategy" ],
     [ "NccStrategy", "classnfd_1_1fw_1_1NccStrategy.html", "classnfd_1_1fw_1_1NccStrategy" ],
@@ -23,6 +22,7 @@ var namespacenfd_1_1fw =
     [ "SelfLearningStrategy", "classnfd_1_1fw_1_1SelfLearningStrategy.html", "classnfd_1_1fw_1_1SelfLearningStrategy" ],
     [ "Strategy", "classnfd_1_1fw_1_1Strategy.html", "classnfd_1_1fw_1_1Strategy" ],
     [ "StrategyInfo", "classnfd_1_1fw_1_1StrategyInfo.html", "classnfd_1_1fw_1_1StrategyInfo" ],
+    [ "TBRef", "structnfd_1_1fw_1_1TBRef.html", "structnfd_1_1fw_1_1TBRef" ],
     [ "TokenBucket", "classnfd_1_1fw_1_1TokenBucket.html", "classnfd_1_1fw_1_1TokenBucket" ],
     [ "UnsolicitedDataPolicy", "classnfd_1_1fw_1_1UnsolicitedDataPolicy.html", "classnfd_1_1fw_1_1UnsolicitedDataPolicy" ]
 ];

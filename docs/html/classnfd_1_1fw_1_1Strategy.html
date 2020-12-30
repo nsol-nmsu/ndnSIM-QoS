@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: nfd::fw::Strategy Class Reference</title>
+<title>ndnSIM QoS: nfd::fw::Strategy Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -113,7 +116,7 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1Strategy.html',''); 
 Inheritance diagram for nfd::fw::Strategy:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnfd_1_1fw_1_1Strategy__inherit__graph.png" border="0" usemap="#anfd_1_1fw_1_1Strategy_inherit__map" alt="Inheritance graph"/></div>
-<map name="anfd_1_1fw_1_1Strategy_inherit__map" id="anfd_1_1fw_1_1Strategy_inherit__map">
+<map name="nfd_1_1fw_1_1Strategy_inherit__map" id="nfd_1_1fw_1_1Strategy_inherit__map">
 <area shape="rect" title="represents a forwarding strategy" alt="" coords="148,183,267,209"/>
 <area shape="rect" href="classnfd_1_1fw_1_1AccessStrategy.html" title="Access Router Strategy version 1." alt="" coords="339,5,501,32"/>
 <area shape="rect" href="classnfd_1_1fw_1_1asf_1_1AsfStrategy.html" title="Adaptive SRTT&#45;based Forwarding Strategy." alt="" coords="337,56,503,83"/>
@@ -121,7 +124,7 @@ Inheritance diagram for nfd::fw::Strategy:</div>
 <area shape="rect" href="classnfd_1_1fw_1_1BestRouteStrategyBase.html" title=" " alt="" coords="315,157,525,184"/>
 <area shape="rect" href="classnfd_1_1fw_1_1MulticastStrategy.html" title="a forwarding strategy that forwards Interest to all FIB nexthops" alt="" coords="334,208,506,235"/>
 <area shape="rect" href="classnfd_1_1fw_1_1NccStrategy.html" title="a forwarding strategy similar to CCNx 0.7.2" alt="" coords="349,259,491,285"/>
-<area shape="rect" href="classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="349,309,491,336"/>
+<area shape="rect" href="classnfd_1_1fw_1_1QosStrategy.html" title="A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS." alt="" coords="349,309,491,336"/>
 <area shape="rect" href="classnfd_1_1fw_1_1SelfLearningStrategy.html" title="Self&#45;learning strategy." alt="" coords="325,360,515,387"/>
 <area shape="rect" title=" " alt="" coords="5,183,100,209"/>
 <area shape="rect" href="classnfd_1_1fw_1_1BestRouteStrategy.html" title="Best Route strategy version 1." alt="" coords="573,157,755,184"/>
@@ -131,7 +134,7 @@ Inheritance diagram for nfd::fw::Strategy:</div>
 Collaboration diagram for nfd::fw::Strategy:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnfd_1_1fw_1_1Strategy__coll__graph.png" border="0" usemap="#anfd_1_1fw_1_1Strategy_coll__map" alt="Collaboration graph"/></div>
-<map name="anfd_1_1fw_1_1Strategy_coll__map" id="anfd_1_1fw_1_1Strategy_coll__map">
+<map name="nfd_1_1fw_1_1Strategy_coll__map" id="nfd_1_1fw_1_1Strategy_coll__map">
 <area shape="rect" title="represents a forwarding strategy" alt="" coords="5,80,124,107"/>
 <area shape="rect" title=" " alt="" coords="17,5,112,32"/>
 </map>
@@ -671,7 +674,7 @@ template&lt;typename S &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="strategy_8cpp_source.html#l00153">153</a> of file <a class="el" href="strategy_8cpp_source.html">strategy.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00333">nfd::fw::QosStrategy::afterReceiveData()</a>, and <a class="el" href="strategy_8cpp_source.html#l00171">afterReceiveData()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00328">nfd::fw::QosStrategy::afterReceiveData()</a>, and <a class="el" href="strategy_8cpp_source.html#l00171">afterReceiveData()</a>.</p>
 
 </div>
 </div>
@@ -933,7 +936,7 @@ template&lt;typename S &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="strategy_8hpp_source.html#l00241">241</a> of file <a class="el" href="strategy_8hpp_source.html">strategy.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="best-route-strategy_8cpp_source.html#l00038">nfd::fw::BestRouteStrategyBase::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00061">nfd::fw::NccStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00135">nfd::fw::NccStrategy::doPropagate()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00484">nfd::fw::QosStrategy::prioritySendInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="best-route-strategy_8cpp_source.html#l00038">nfd::fw::BestRouteStrategyBase::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00061">nfd::fw::NccStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00135">nfd::fw::NccStrategy::doPropagate()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00479">nfd::fw::QosStrategy::prioritySendInterest()</a>.</p>
 
 </div>
 </div>
@@ -989,7 +992,7 @@ template&lt;typename S &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="strategy_8cpp_source.html#l00197">197</a> of file <a class="el" href="strategy_8cpp_source.html">strategy.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="strategy_8cpp_source.html#l00161">afterContentStoreHit()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00470">nfd::fw::QosStrategy::prioritySendData()</a>, and <a class="el" href="strategy_8cpp_source.html#l00209">sendDataToAll()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="strategy_8cpp_source.html#l00161">afterContentStoreHit()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00465">nfd::fw::QosStrategy::prioritySendData()</a>, and <a class="el" href="strategy_8cpp_source.html#l00209">sendDataToAll()</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1086,7 @@ template&lt;typename S &gt; </div>
 
 <p class="reference">References <a class="el" href="strategy_8hpp_source.html#l00306">setExpiryTimer()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00110">nfd::fw::asf::AsfStrategy::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00038">nfd::fw::BestRouteStrategyBase::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00061">nfd::fw::NccStrategy::afterReceiveInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00148">nfd::fw::QosStrategy::afterReceiveInterest()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00069">nfd::fw::SelfLearningStrategy::afterReceiveInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00110">nfd::fw::asf::AsfStrategy::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00038">nfd::fw::BestRouteStrategyBase::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00061">nfd::fw::NccStrategy::afterReceiveInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00143">nfd::fw::QosStrategy::afterReceiveInterest()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00069">nfd::fw::SelfLearningStrategy::afterReceiveInterest()</a>.</p>
 
 </div>
 </div>
@@ -1140,7 +1143,7 @@ template&lt;typename S &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="strategy_8hpp_source.html#l00286">286</a> of file <a class="el" href="strategy_8hpp_source.html">strategy.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00148">nfd::fw::QosStrategy::afterReceiveInterest()</a>, <a class="el" href="self-learning-strategy_8cpp_source.html#l00069">nfd::fw::SelfLearningStrategy::afterReceiveInterest()</a>, and <a class="el" href="strategy_8cpp_source.html#l00231">sendNacks()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00143">nfd::fw::QosStrategy::afterReceiveInterest()</a>, <a class="el" href="self-learning-strategy_8cpp_source.html#l00069">nfd::fw::SelfLearningStrategy::afterReceiveInterest()</a>, and <a class="el" href="strategy_8cpp_source.html#l00231">sendNacks()</a>.</p>
 
 </div>
 </div>
@@ -1275,7 +1278,7 @@ template&lt;typename S &gt; </div>
 
 <p class="reference">References <a class="el" href="forwarder_8hpp_source.html#l00146">nfd::Forwarder::getFib()</a>, and <a class="el" href="forwarder_8hpp_source.html#l00182">nfd::Forwarder::getNetworkRegionTable()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00110">nfd::fw::asf::AsfStrategy::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00038">nfd::fw::BestRouteStrategyBase::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00061">nfd::fw::NccStrategy::afterReceiveInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00148">nfd::fw::QosStrategy::afterReceiveInterest()</a>, <a class="el" href="self-learning-strategy_8cpp_source.html#l00069">nfd::fw::SelfLearningStrategy::afterReceiveInterest()</a>, <a class="el" href="self-learning-strategy_8cpp_source.html#l00127">nfd::fw::SelfLearningStrategy::afterReceiveNack()</a>, and <a class="el" href="ncc-strategy_8cpp_source.html#l00135">nfd::fw::NccStrategy::doPropagate()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00110">nfd::fw::asf::AsfStrategy::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00038">nfd::fw::BestRouteStrategyBase::afterReceiveInterest()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00130">nfd::fw::BestRouteStrategy2::afterReceiveInterest()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00066">nfd::fw::MulticastStrategy::afterReceiveInterest()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00061">nfd::fw::NccStrategy::afterReceiveInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00143">nfd::fw::QosStrategy::afterReceiveInterest()</a>, <a class="el" href="self-learning-strategy_8cpp_source.html#l00069">nfd::fw::SelfLearningStrategy::afterReceiveInterest()</a>, <a class="el" href="self-learning-strategy_8cpp_source.html#l00127">nfd::fw::SelfLearningStrategy::afterReceiveNack()</a>, and <a class="el" href="ncc-strategy_8cpp_source.html#l00135">nfd::fw::NccStrategy::doPropagate()</a>.</p>
 
 </div>
 </div>
@@ -1409,7 +1412,7 @@ template&lt;typename S &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="strategy_8cpp_source.html#l00122">122</a> of file <a class="el" href="strategy_8cpp_source.html">strategy.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00040">nfd::fw::asf::AsfStrategy::AsfStrategy()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00061">nfd::fw::BestRouteStrategy::BestRouteStrategy()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00042">nfd::fw::BestRouteStrategy2::BestRouteStrategy2()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00040">nfd::fw::MulticastStrategy::MulticastStrategy()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00039">nfd::fw::NccStrategy::NccStrategy()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00047">nfd::fw::QosStrategy::QosStrategy()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00047">nfd::fw::SelfLearningStrategy::SelfLearningStrategy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00040">nfd::fw::asf::AsfStrategy::AsfStrategy()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00061">nfd::fw::BestRouteStrategy::BestRouteStrategy()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00042">nfd::fw::BestRouteStrategy2::BestRouteStrategy2()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00040">nfd::fw::MulticastStrategy::MulticastStrategy()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00039">nfd::fw::NccStrategy::NccStrategy()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00042">nfd::fw::QosStrategy::QosStrategy()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00047">nfd::fw::SelfLearningStrategy::SelfLearningStrategy()</a>.</p>
 
 </div>
 </div>
@@ -1459,7 +1462,7 @@ template&lt;typename S &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="strategy_8cpp_source.html#l00133">133</a> of file <a class="el" href="strategy_8cpp_source.html">strategy.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00040">nfd::fw::asf::AsfStrategy::AsfStrategy()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00061">nfd::fw::BestRouteStrategy::BestRouteStrategy()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00042">nfd::fw::BestRouteStrategy2::BestRouteStrategy2()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00040">nfd::fw::MulticastStrategy::MulticastStrategy()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00039">nfd::fw::NccStrategy::NccStrategy()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00047">nfd::fw::QosStrategy::QosStrategy()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00047">nfd::fw::SelfLearningStrategy::SelfLearningStrategy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00040">nfd::fw::asf::AsfStrategy::AsfStrategy()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00061">nfd::fw::BestRouteStrategy::BestRouteStrategy()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00042">nfd::fw::BestRouteStrategy2::BestRouteStrategy2()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00040">nfd::fw::MulticastStrategy::MulticastStrategy()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00039">nfd::fw::NccStrategy::NccStrategy()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00042">nfd::fw::QosStrategy::QosStrategy()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00047">nfd::fw::SelfLearningStrategy::SelfLearningStrategy()</a>.</p>
 
 </div>
 </div>
@@ -1492,7 +1495,7 @@ template&lt;typename S &gt; </div>
 
 <p class="definition">Definition at line <a class="el" href="strategy_8hpp_source.html#l00367">367</a> of file <a class="el" href="strategy_8hpp_source.html">strategy.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00040">nfd::fw::asf::AsfStrategy::AsfStrategy()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00061">nfd::fw::BestRouteStrategy::BestRouteStrategy()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00042">nfd::fw::BestRouteStrategy2::BestRouteStrategy2()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00040">nfd::fw::MulticastStrategy::MulticastStrategy()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00039">nfd::fw::NccStrategy::NccStrategy()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00047">nfd::fw::QosStrategy::QosStrategy()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00047">nfd::fw::SelfLearningStrategy::SelfLearningStrategy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="asf-strategy_8cpp_source.html#l00040">nfd::fw::asf::AsfStrategy::AsfStrategy()</a>, <a class="el" href="best-route-strategy_8cpp_source.html#l00061">nfd::fw::BestRouteStrategy::BestRouteStrategy()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00042">nfd::fw::BestRouteStrategy2::BestRouteStrategy2()</a>, <a class="el" href="multicast-strategy_8cpp_source.html#l00040">nfd::fw::MulticastStrategy::MulticastStrategy()</a>, <a class="el" href="ncc-strategy_8cpp_source.html#l00039">nfd::fw::NccStrategy::NccStrategy()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00042">nfd::fw::QosStrategy::QosStrategy()</a>, and <a class="el" href="self-learning-strategy_8cpp_source.html#l00047">nfd::fw::SelfLearningStrategy::SelfLearningStrategy()</a>.</p>
 
 </div>
 </div>
@@ -1555,7 +1558,7 @@ template&lt;typename S &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacenfd.html">nfd</a></li><li class="navelem"><a class="el" href="namespacenfd_1_1fw.html">fw</a></li><li class="navelem"><a class="el" href="classnfd_1_1fw_1_1Strategy.html">Strategy</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

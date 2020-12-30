@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM documentation</title>
+<title>ndnSIM QoS: ndnQoS documentation (NMSU extension of ndnSIM v2.7)</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -93,21 +96,23 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">ndnSIM documentation </div>  </div>
+<div class="title">ndnQoS documentation (NMSU extension of ndnSIM v2.7) </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>Copyright (c) 2011-2015 Regents of the University of California.This file is part of ndnSIM. See AUTHORS for complete list of ndnSIM authors and contributors.</p>
+<div class="textblock"><p>We implement a Quality of Service (QoS) aware network architecture that aims to satisfy low latency, high bandwidth, and high reliability requirements of communications by extending the features of NDN. In this architecture, we categorize traffic into three priority classes (high, medium, and low priority) to enable preferential treatment of traffic flows. The three classes were identified for a smart grid application, but can be generalized to increase or decrease the number of classes. For the smart grid application, the three classes correspond to: (i) protection traffic, which requires low latency and high reliability; (ii) control traffic, which needs high reliability; and (iii) best-effort traffic, which has no requirement constraints.</p>
+<p>This code extends the ndnSIM codebase which was developed by University of California, Los Angeles (see AUTHORS for list of new code contributors).</p>
+<p>Copyright (c) 2011-2020 Regents of the University of California and New Mexico State University. This file is part of ndnSIM. See AUTHORS for complete list of ndnSIM authors and contributors.</p>
+<p>This file is part of ndnSIM. See AUTHORS for complete list of ndnSIM authors and contributors.</p>
 <p>ndnSIM is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
 <p>ndnSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
-<p>You should have received a copy of the GNU General Public License along with ndnSIM, e.g., in COPYING.md file. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>.</p>
-<p>Please refer to <a href="../index.html">ndnSIM documentation page</a> </p>
+<p>You should have received a copy of the GNU General Public License along with ndnSIM, e.g., in COPYING.md file. If not, see <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</a>. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

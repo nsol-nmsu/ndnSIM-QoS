@@ -119,7 +119,7 @@ def build(bld):
                                      'NFD/daemon/face/*udp*',
                                      'NFD/daemon/face/unix-stream*',
                                      'NFD/daemon/face/websocket*',
-                                     'NFD/daemon/fw/TBucket.cpp'])
+                                     'NFD/daemon/fw/TBucketDebug.cpp'])
 
     module = bld.create_ns3_module('ndnSIM', deps)
     module.module = 'ndnSIM'
@@ -138,13 +138,13 @@ def build(bld):
         bld.env['MODULES_NOT_BUILT'].append('ndnSIM')
         return
 
-    module_dirs = ['apps', 'helper', 'model', 'utils', 'bindings']
+    module_dirs = ['apps', 'co-simulation', 'helper', 'model', 'utils', 'bindings']
     module.source = bld.path.ant_glob(['%s/**/*.cpp' % dir for dir in module_dirs],
                                       excl=[
                                           'model/ip-faces/*',
-                                          'apps/ConsumedTokens.cpp']) + ndnCxxSrc + nfdSrc
+                                          'apps/TBucketRef.cpp']) + ndnCxxSrc + nfdSrc
 
-    module_dirs = ['NFD/core', 'NFD/daemon', 'NFD/rib', 'apps', 'helper', 'model', 'utils', 'bindings']
+    module_dirs = ['NFD/core', 'NFD/daemon', 'NFD/rib', 'apps', 'co-simulation', 'helper', 'model', 'utils', 'bindings']
     module.full_headers = bld.path.ant_glob(['%s/**/*.hpp' % dir for dir in module_dirs])
     module.full_headers += bld.path.ant_glob('NFD/common.hpp')
 

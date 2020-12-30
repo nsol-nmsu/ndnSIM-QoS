@@ -1,5 +1,5 @@
 <map id="nfd::fw::TokenBucket" name="nfd::fw::TokenBucket">
-<area shape="rect" id="node1" title="Helps os&#45;stratagey keep track of token operations." alt="" coords="5,317,152,344"/>
+<area shape="rect" id="node1" title="Defines token bucket for use in QoS&#45;strategy." alt="" coords="5,317,152,344"/>
 <area shape="rect" id="node2" title=" " alt="" coords="9,199,148,240"/>
 <area shape="rect" id="node3" title="STL class." alt="" coords="10,95,147,136"/>
 <area shape="rect" id="node4" title=" " alt="" coords="27,5,66,32"/>

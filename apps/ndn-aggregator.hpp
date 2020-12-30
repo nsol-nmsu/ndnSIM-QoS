@@ -1,7 +1,7 @@
 /*
  * Copyright ( C ) 2020 New Mexico State University
  *
- * Dan Ameme, George Torres, Anju Kunnumpurathu James
+ * Dan Ameme
  * See AUTHORS.md for complete list of authors and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -37,7 +37,7 @@ namespace ns3 {
 namespace ndn {
 
 /**
- * @ingroup ndn-apps
+ * @ingroup ndnQoS
  * @brief An application that concatenates payloaded interests at the aggregation
  * of the Smart Grid architecture. At specified intervals (configurable by user), a single payload interest
  * is sent upstream to the compute layer. The size of the payload equals the total

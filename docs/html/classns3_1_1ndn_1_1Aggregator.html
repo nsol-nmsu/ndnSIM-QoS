@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ns3::ndn::Aggregator Class Reference</title>
+<title>ndnSIM QoS: ns3::ndn::Aggregator Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -100,7 +103,7 @@ $(document).ready(function(){initNavTree('classns3_1_1ndn_1_1Aggregator.html',''
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classns3_1_1ndn_1_1Aggregator-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">ns3::ndn::Aggregator Class Reference<div class="ingroups"><a class="el" href="group__ndn-apps.html">NDN applications</a></div></div>  </div>
+<div class="title">ns3::ndn::Aggregator Class Reference<div class="ingroups"><a class="el" href="group__ndnQoS.html">ndnQoS apps and classes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -112,7 +115,7 @@ $(document).ready(function(){initNavTree('classns3_1_1ndn_1_1Aggregator.html',''
 Inheritance diagram for ns3::ndn::Aggregator:</div>
 <div class="dyncontent">
 <div class="center"><img src="classns3_1_1ndn_1_1Aggregator__inherit__graph.png" border="0" usemap="#ans3_1_1ndn_1_1Aggregator_inherit__map" alt="Inheritance graph"/></div>
-<map name="ans3_1_1ndn_1_1Aggregator_inherit__map" id="ans3_1_1ndn_1_1Aggregator_inherit__map">
+<map name="ns3_1_1ndn_1_1Aggregator_inherit__map" id="ns3_1_1ndn_1_1Aggregator_inherit__map">
 <area shape="rect" title="An application that concatenates payloaded interests at the aggregation of the Smart Grid architectur..." alt="" coords="5,155,148,181"/>
 <area shape="rect" href="classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="25,80,128,107"/>
 <area shape="rect" title=" " alt="" coords="33,5,120,32"/>
@@ -122,7 +125,7 @@ Inheritance diagram for ns3::ndn::Aggregator:</div>
 Collaboration diagram for ns3::ndn::Aggregator:</div>
 <div class="dyncontent">
 <div class="center"><img src="classns3_1_1ndn_1_1Aggregator__coll__graph.png" border="0" usemap="#ans3_1_1ndn_1_1Aggregator_coll__map" alt="Collaboration graph"/></div>
-<map name="ans3_1_1ndn_1_1Aggregator_coll__map" id="ans3_1_1ndn_1_1Aggregator_coll__map">
+<map name="ns3_1_1ndn_1_1Aggregator_coll__map" id="ns3_1_1ndn_1_1Aggregator_coll__map">
 <area shape="rect" title="An application that concatenates payloaded interests at the aggregation of the Smart Grid architectur..." alt="" coords="5,349,148,376"/>
 <area shape="rect" href="classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from." alt="" coords="25,273,128,300"/>
 <area shape="rect" title=" " alt="" coords="12,184,99,211"/>
@@ -251,7 +254,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>An application that concatenates payloaded interests at the aggregation of the Smart Grid architecture. </p>
 <p>At specified intervals (configurable by user), a single payload interest is sent upstream to the compute layer. The size of the payload equals the total bytes received within the configured wait interval. Install on nodes at the aggregation layer of the Smart Grid architecture (iCenS) </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00045">45</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00047">47</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="a8c8be4a5741cb3134650caff3294d3ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c8be4a5741cb3134650caff3294d3ab">&#9670;&nbsp;</a></span>ReceivedInterestTraceCallback</h2>
@@ -265,7 +268,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00094">94</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00096">96</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
 
 </div>
 </div>
@@ -281,7 +284,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00095">95</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00097">97</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
 
 </div>
 </div>
@@ -301,7 +304,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00107">107</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00109">109</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
 </div>
 </div>
@@ -330,9 +333,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00049">49</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00051">51</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00255">GetRetxTimer()</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00210">m_receivedInterest</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00211">m_sentInterest</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00261">SetRetxTimer()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00257">GetRetxTimer()</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00212">m_receivedInterest</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00213">m_sentInterest</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00263">SetRetxTimer()</a>.</p>
 
 </div>
 </div>
@@ -364,9 +367,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classns3_1_1ndn_1_1App.html#a7aab3dd5e62169430795a2d6e1060f95">ns3::ndn::App</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00140">140</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00142">142</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00210">m_receivedInterest</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00114">ns3::ndn::App::OnInterest()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00212">m_receivedInterest</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00114">ns3::ndn::App::OnInterest()</a>.</p>
 
 </div>
 </div>
@@ -398,7 +401,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classns3_1_1ndn_1_1App.html#a3f6f593a1557aa22c01bfbab6590b240">ns3::ndn::App</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00312">312</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00314">314</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-app_8hpp_source.html#l00103">ns3::ndn::App::m_active</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00121">ns3::ndn::App::OnData()</a>.</p>
 
@@ -421,11 +424,11 @@ Protected Attributes</h2></td></tr>
 
 <p>Aggregate payloads from all received interests and forward upstream. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00155">155</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00157">157</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">SendAggInterest()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">SendAggInterest()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00300">OnTimeout()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">SendAggInterest()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00121">StartApplication()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00302">OnTimeout()</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">SendAggInterest()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00123">StartApplication()</a>.</p>
 
 </div>
 </div>
@@ -447,11 +450,11 @@ Protected Attributes</h2></td></tr>
 <p>Actually send aggregated payloaded interest. </p>
 <p>The payload size is the total bytes received in the configured time interval </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">173</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">175</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-app_8hpp_source.html#l00103">ns3::ndn::App::m_active</a>, <a class="el" href="ndn-app_8hpp_source.html#l00105">ns3::ndn::App::m_appLink</a>, <a class="el" href="ndn-app_8hpp_source.html#l00104">ns3::ndn::App::m_face</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00211">m_sentInterest</a>, <a class="el" href="ndn-app_8hpp_source.html#l00119">ns3::ndn::App::m_transmittedInterests</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00155">ScheduleAggPackets()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00238">WillSendOutInterest()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00108">ns3::ndn::App::GetId()</a>, <a class="el" href="ndn-app_8hpp_source.html#l00103">ns3::ndn::App::m_active</a>, <a class="el" href="ndn-app_8hpp_source.html#l00105">ns3::ndn::App::m_appLink</a>, <a class="el" href="ndn-app_8hpp_source.html#l00104">ns3::ndn::App::m_face</a>, <a class="el" href="ndn-aggregator_8hpp_source.html#l00213">m_sentInterest</a>, <a class="el" href="ndn-app_8hpp_source.html#l00119">ns3::ndn::App::m_transmittedInterests</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00157">ScheduleAggPackets()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00240">WillSendOutInterest()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00155">ScheduleAggPackets()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00157">ScheduleAggPackets()</a>.</p>
 
 </div>
 </div>
@@ -482,9 +485,9 @@ Protected Attributes</h2></td></tr>
 <p>An event that is fired just before an Interest packet is actually send out (send is inevitable) </p>
 <p>The reason for "before" even is that in certain cases (when it is possible to satisfy from the local cache), the send call will immediately return data, and if "after" even was used, this after would be called after all processing of incoming data, potentially producing unexpected results. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00238">238</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00240">240</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">SendAggInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">SendAggInterest()</a>.</p>
 
 </div>
 </div>
@@ -520,11 +523,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00300">300</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00302">302</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00155">ScheduleAggPackets()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00157">ScheduleAggPackets()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00275">CheckRetxTimeout()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00277">CheckRetxTimeout()</a>.</p>
 
 </div>
 </div>
@@ -555,9 +558,9 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classns3_1_1ndn_1_1App.html#a20fd3ef630b6d05dc139911d1ef1b17f">ns3::ndn::App</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00121">121</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00123">123</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-app_8hpp_source.html#l00104">ns3::ndn::App::m_face</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00155">ScheduleAggPackets()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00138">ns3::ndn::App::StartApplication()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-app_8hpp_source.html#l00104">ns3::ndn::App::m_face</a>, <a class="el" href="ndn-aggregator_8cpp_source.html#l00157">ScheduleAggPackets()</a>, and <a class="el" href="ndn-app_8cpp_source.html#l00138">ns3::ndn::App::StartApplication()</a>.</p>
 
 </div>
 </div>
@@ -588,7 +591,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classns3_1_1ndn_1_1App.html#af1efb7281aa29014eb4574ce452dc705">ns3::ndn::App</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00132">132</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00134">134</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="ndn-app_8cpp_source.html#l00162">ns3::ndn::App::StopApplication()</a>.</p>
 
@@ -619,11 +622,11 @@ Protected Attributes</h2></td></tr>
 
 <p>Checks if the packet need to be retransmitted becuase of retransmission timer expiration. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00275">275</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00277">277</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00300">OnTimeout()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00302">OnTimeout()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00261">SetRetxTimer()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00263">SetRetxTimer()</a>.</p>
 
 </div>
 </div>
@@ -659,11 +662,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00261">261</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00263">263</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00275">CheckRetxTimeout()</a>.</p>
+<p class="reference">References <a class="el" href="ndn-aggregator_8cpp_source.html#l00277">CheckRetxTimeout()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00049">GetTypeId()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00051">GetTypeId()</a>.</p>
 
 </div>
 </div>
@@ -693,9 +696,9 @@ Protected Attributes</h2></td></tr>
 <p>Returns the frequency of checking the retransmission timeouts. </p>
 <dl class="section return"><dt>Returns</dt><dd>Timeout defining how frequent retransmission timeouts should be checked </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00255">255</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8cpp_source.html#l00257">257</a> of file <a class="el" href="ndn-aggregator_8cpp_source.html">ndn-aggregator.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00049">GetTypeId()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00051">GetTypeId()</a>.</p>
 
 </div>
 </div>
@@ -720,9 +723,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00210">210</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00212">212</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00140">OnInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00142">OnInterest()</a>.</p>
 
 </div>
 </div>
@@ -746,9 +749,9 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00211">211</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-aggregator_8hpp_source.html#l00213">213</a> of file <a class="el" href="ndn-aggregator_8hpp_source.html">ndn-aggregator.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00049">GetTypeId()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00173">SendAggInterest()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-aggregator_8cpp_source.html#l00051">GetTypeId()</a>, and <a class="el" href="ndn-aggregator_8cpp_source.html#l00175">SendAggInterest()</a>.</p>
 
 </div>
 </div>
@@ -762,7 +765,7 @@ Protected Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacens3.html">ns3</a></li><li class="navelem"><a class="el" href="namespacens3_1_1ndn.html">ndn</a></li><li class="navelem"><a class="el" href="classns3_1_1ndn_1_1Aggregator.html">Aggregator</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

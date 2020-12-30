@@ -1,7 +1,6 @@
 /*
  * Copyright ( C ) 2020 New Mexico State University
  *
- * George Torres, Anju Kunnumpurathu James
  * See AUTHORS.md for complete list of authors and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -45,9 +44,8 @@ namespace ns3 {
 namespace ndn {
 
 /**
- * @ingroup ndn-apps
- * \brief NDN application for sending out Interest packets. Installed on nodes at physical layer (prosumers)
- * of the Smart Grid architecture (iCenS)
+ * @ingroup ndnQoS
+ * \brief NDN application for sending out payloaded Interest packets.
  */
 class Subscriber : public App {
 public:

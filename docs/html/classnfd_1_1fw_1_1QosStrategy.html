@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: nfd::fw::QosStrategy Class Reference</title>
+<title>ndnSIM QoS: nfd::fw::QosStrategy Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -97,11 +100,11 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1QosStrategy.html',''
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="classnfd_1_1fw_1_1QosStrategy-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">nfd::fw::QosStrategy Class Reference</div>  </div>
+<div class="title">nfd::fw::QosStrategy Class Reference<div class="ingroups"><a class="el" href="group__ndnQoS.html">ndnQoS apps and classes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>A forwarding strategy that forwards Interest to all FIB nexthops.  
+<p>A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS.  
  <a href="classnfd_1_1fw_1_1QosStrategy.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="qos-strategy_8hpp_source.html">qos-strategy.hpp</a>&gt;</code></p>
@@ -109,8 +112,8 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1QosStrategy.html',''
 Inheritance diagram for nfd::fw::QosStrategy:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnfd_1_1fw_1_1QosStrategy__inherit__graph.png" border="0" usemap="#anfd_1_1fw_1_1QosStrategy_inherit__map" alt="Inheritance graph"/></div>
-<map name="anfd_1_1fw_1_1QosStrategy_inherit__map" id="anfd_1_1fw_1_1QosStrategy_inherit__map">
-<area shape="rect" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="9,363,152,389"/>
+<map name="nfd_1_1fw_1_1QosStrategy_inherit__map" id="nfd_1_1fw_1_1QosStrategy_inherit__map">
+<area shape="rect" title="A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS." alt="" coords="9,363,152,389"/>
 <area shape="rect" href="classnfd_1_1fw_1_1Strategy.html" title="represents a forwarding strategy" alt="" coords="5,132,124,159"/>
 <area shape="rect" title=" " alt="" coords="33,5,128,32"/>
 <area shape="rect" href="classnfd_1_1fw_1_1ProcessNackTraitsBase.html" title="provides a common procedure for processing Nacks" alt="" coords="101,81,313,108"/>
@@ -122,8 +125,8 @@ Inheritance diagram for nfd::fw::QosStrategy:</div>
 Collaboration diagram for nfd::fw::QosStrategy:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnfd_1_1fw_1_1QosStrategy__coll__graph.png" border="0" usemap="#anfd_1_1fw_1_1QosStrategy_coll__map" alt="Collaboration graph"/></div>
-<map name="anfd_1_1fw_1_1QosStrategy_coll__map" id="anfd_1_1fw_1_1QosStrategy_coll__map">
-<area shape="rect" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="9,363,152,389"/>
+<map name="nfd_1_1fw_1_1QosStrategy_coll__map" id="nfd_1_1fw_1_1QosStrategy_coll__map">
+<area shape="rect" title="A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS." alt="" coords="9,363,152,389"/>
 <area shape="rect" href="classnfd_1_1fw_1_1Strategy.html" title="represents a forwarding strategy" alt="" coords="5,132,124,159"/>
 <area shape="rect" title=" " alt="" coords="33,5,128,32"/>
 <area shape="rect" href="classnfd_1_1fw_1_1ProcessNackTraitsBase.html" title="provides a common procedure for processing Nacks" alt="" coords="101,81,313,108"/>
@@ -155,7 +158,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:add6bcf535010655c77a553c081b6771d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send the given interest packet.  <a href="classnfd_1_1fw_1_1QosStrategy.html#add6bcf535010655c77a553c081b6771d">More...</a><br /></td></tr>
 <tr class="separator:add6bcf535010655c77a553c081b6771d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1d9775dd8f783463c769ce3d8f48e47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1QosStrategy.html#ac1d9775dd8f783463c769ce3d8f48e47">prioritySend</a> ()</td></tr>
-<tr class="memdesc:ac1d9775dd8f783463c769ce3d8f48e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dequeue all eligible packets from thier respective queues and forward them.  <a href="classnfd_1_1fw_1_1QosStrategy.html#ac1d9775dd8f783463c769ce3d8f48e47">More...</a><br /></td></tr>
+<tr class="memdesc:ac1d9775dd8f783463c769ce3d8f48e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dequeue all eligible packets from respective queues and forward them.  <a href="classnfd_1_1fw_1_1QosStrategy.html#ac1d9775dd8f783463c769ce3d8f48e47">More...</a><br /></td></tr>
 <tr class="separator:ac1d9775dd8f783463c769ce3d8f48e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classnfd_1_1fw_1_1Strategy"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classnfd_1_1fw_1_1Strategy')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classnfd_1_1fw_1_1Strategy.html">nfd::fw::Strategy</a></td></tr>
 <tr class="memitem:a597f3c2fa4154a1784fd20c31a58c498 inherit pub_methods_classnfd_1_1fw_1_1Strategy"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1Strategy.html#a597f3c2fa4154a1784fd20c31a58c498">Strategy</a> (<a class="el" href="classnfd_1_1Forwarder.html">Forwarder</a> &amp;forwarder)</td></tr>
@@ -253,9 +256,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:ac424c921c51ee9eb13ac7e57ca78e5d3 inherit pro_attribs_classnfd_1_1fw_1_1Strategy"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A forwarding strategy that forwards Interest to all FIB nexthops. </p>
+<div class="textblock"><p>A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS. </p>
+<p>Packets uses a hybrid approach, where high and medium priority packets are multicasted, while low priority level packets are unicasted. Each interface has three queues, one for each priority level. As packets arrive they are enqueued onto the corresponding queue based on priority at the outgoing interface. </p>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8hpp_source.html#l00058">58</a> of file <a class="el" href="qos-strategy_8hpp_source.html">qos-strategy.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8hpp_source.html#l00059">59</a> of file <a class="el" href="qos-strategy_8hpp_source.html">qos-strategy.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a22b3fd900469ad18cc75db2883e9253a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a22b3fd900469ad18cc75db2883e9253a">&#9670;&nbsp;</a></span>QosStrategy()</h2>
@@ -291,9 +295,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00047">47</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00042">42</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ConsumedTokens_8cpp_source.html#l00026">nfd::fw::CT</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00086">getStrategyName()</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00039">nfd::fw::Consumed::hasSender</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00037">nfd::fw::Consumed::m_tokens</a>, <a class="el" href="strategy_8cpp_source.html#l00133">nfd::fw::Strategy::makeInstanceName()</a>, <a class="el" href="strategy_8hpp_source.html#l00340">nfd::fw::Strategy::ParsedInstanceName::parameters</a>, <a class="el" href="strategy_8cpp_source.html#l00122">nfd::fw::Strategy::parseInstanceName()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00385">prioritySend()</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00041">nfd::fw::Consumed::sender1</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00042">nfd::fw::Consumed::sender2</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00043">nfd::fw::Consumed::sender3</a>, <a class="el" href="strategy_8hpp_source.html#l00367">nfd::fw::Strategy::setInstanceName()</a>, and <a class="el" href="strategy_8hpp_source.html#l00339">nfd::fw::Strategy::ParsedInstanceName::version</a>.</p>
+<p class="reference">References <a class="el" href="TBucketRef_8cpp_source.html#l00028">nfd::fw::CT</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00081">getStrategyName()</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00042">nfd::fw::TBRef::hasSender</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00040">nfd::fw::TBRef::m_tokens</a>, <a class="el" href="strategy_8cpp_source.html#l00133">nfd::fw::Strategy::makeInstanceName()</a>, <a class="el" href="strategy_8hpp_source.html#l00340">nfd::fw::Strategy::ParsedInstanceName::parameters</a>, <a class="el" href="strategy_8cpp_source.html#l00122">nfd::fw::Strategy::parseInstanceName()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00380">prioritySend()</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00044">nfd::fw::TBRef::sender1</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00045">nfd::fw::TBRef::sender2</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00046">nfd::fw::TBRef::sender3</a>, <a class="el" href="strategy_8hpp_source.html#l00367">nfd::fw::Strategy::setInstanceName()</a>, and <a class="el" href="strategy_8hpp_source.html#l00339">nfd::fw::Strategy::ParsedInstanceName::version</a>.</p>
 
 </div>
 </div>
@@ -321,9 +325,9 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00086">86</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00081">81</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00047">QosStrategy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00042">QosStrategy()</a>.</p>
 
 </div>
 </div>
@@ -384,9 +388,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classnfd_1_1fw_1_1Strategy.html#a7a7cda0019bbaa542572bc4933bf26ab">nfd::fw::Strategy</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00148">148</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00143">143</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="retx-suppression-exponential_8cpp_source.html#l00070">nfd::fw::RetxSuppressionExponential::decidePerPitEntry()</a>, <a class="el" href="retx-suppression-exponential_8cpp_source.html#l00095">nfd::fw::RetxSuppressionExponential::decidePerUpstream()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00107">nfd::fw::findEligibleNextHopWithEarliestOutRecord()</a>, <a class="el" href="namespacenfd_1_1fw.html#a07d36464269de1bb0e08abb115641c09abfec72bb37910c61f36b6c29a1f7ec31">nfd::fw::FORWARD</a>, <a class="el" href="retx-suppression-exponential_8cpp_source.html#l00119">nfd::fw::RetxSuppressionExponential::incrementIntervalForOutRecord()</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00050">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00040">nfd::fw::INTEREST</a>, <a class="el" href="strategy_8cpp_source.html#l00253">nfd::fw::Strategy::lookupFib()</a>, <a class="el" href="namespacenfd_1_1fw.html#a07d36464269de1bb0e08abb115641c09a24d459a81449d7210c8f9a86c2913034">nfd::fw::NEW</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00051">nfd::fw::QueueItem::outface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00048">nfd::fw::QueueItem::packetType</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00385">prioritySend()</a>, <a class="el" href="strategy_8hpp_source.html#l00273">nfd::fw::Strategy::rejectPendingInterest()</a>, <a class="el" href="strategy_8hpp_source.html#l00286">nfd::fw::Strategy::sendNack()</a>, <a class="el" href="namespacenfd_1_1fw.html#a07d36464269de1bb0e08abb115641c09a21d2a826848f521959c2968970954a25">nfd::fw::SUPPRESS</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00047">nfd::fw::QueueItem::wireEncode</a>, and <a class="el" href="algorithm_8cpp_source.html#l00032">nfd::fw::wouldViolateScope()</a>.</p>
+<p class="reference">References <a class="el" href="retx-suppression-exponential_8cpp_source.html#l00070">nfd::fw::RetxSuppressionExponential::decidePerPitEntry()</a>, <a class="el" href="retx-suppression-exponential_8cpp_source.html#l00095">nfd::fw::RetxSuppressionExponential::decidePerUpstream()</a>, <a class="el" href="best-route-strategy2_8cpp_source.html#l00107">nfd::fw::findEligibleNextHopWithEarliestOutRecord()</a>, <a class="el" href="namespacenfd_1_1fw.html#a07d36464269de1bb0e08abb115641c09abfec72bb37910c61f36b6c29a1f7ec31">nfd::fw::FORWARD</a>, <a class="el" href="retx-suppression-exponential_8cpp_source.html#l00119">nfd::fw::RetxSuppressionExponential::incrementIntervalForOutRecord()</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00065">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00047">nfd::fw::INTEREST</a>, <a class="el" href="strategy_8cpp_source.html#l00253">nfd::fw::Strategy::lookupFib()</a>, <a class="el" href="namespacenfd_1_1fw.html#a07d36464269de1bb0e08abb115641c09a24d459a81449d7210c8f9a86c2913034">nfd::fw::NEW</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00066">nfd::fw::QueueItem::outface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00063">nfd::fw::QueueItem::packetType</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00380">prioritySend()</a>, <a class="el" href="strategy_8hpp_source.html#l00273">nfd::fw::Strategy::rejectPendingInterest()</a>, <a class="el" href="strategy_8hpp_source.html#l00286">nfd::fw::Strategy::sendNack()</a>, <a class="el" href="namespacenfd_1_1fw.html#a07d36464269de1bb0e08abb115641c09a21d2a826848f521959c2968970954a25">nfd::fw::SUPPRESS</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00062">nfd::fw::QueueItem::wireEncode</a>, and <a class="el" href="algorithm_8cpp_source.html#l00032">nfd::fw::wouldViolateScope()</a>.</p>
 
 </div>
 </div>
@@ -439,9 +443,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classnfd_1_1fw_1_1Strategy.html#a1107a973f05e2fdfcf75fccc27fa8dce">nfd::fw::Strategy</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00304">304</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00299">299</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-qos-queue_8hpp_source.html#l00050">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00042">nfd::fw::NACK</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00048">nfd::fw::QueueItem::packetType</a>, <a class="el" href="process-nack-traits_8cpp_source.html#l00035">nfd::fw::ProcessNackTraitsBase::processNack()</a>, and <a class="el" href="ndn-qos-queue_8hpp_source.html#l00047">nfd::fw::QueueItem::wireEncode</a>.</p>
+<p class="reference">References <a class="el" href="ndn-qos-queue_8hpp_source.html#l00065">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00049">nfd::fw::NACK</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00063">nfd::fw::QueueItem::packetType</a>, <a class="el" href="process-nack-traits_8cpp_source.html#l00035">nfd::fw::ProcessNackTraitsBase::processNack()</a>, and <a class="el" href="ndn-qos-queue_8hpp_source.html#l00062">nfd::fw::QueueItem::wireEncode</a>.</p>
 
 </div>
 </div>
@@ -502,9 +506,9 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classnfd_1_1fw_1_1Strategy.html#a8119478d5acfd24fcfb7d0140885e9f2">nfd::fw::Strategy</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00333">333</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00328">328</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="strategy_8cpp_source.html#l00153">nfd::fw::Strategy::beforeSatisfyInterest()</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00041">nfd::fw::DATA</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00050">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00051">nfd::fw::QueueItem::outface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00048">nfd::fw::QueueItem::packetType</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00385">prioritySend()</a>, and <a class="el" href="ndn-qos-queue_8hpp_source.html#l00047">nfd::fw::QueueItem::wireEncode</a>.</p>
+<p class="reference">References <a class="el" href="strategy_8cpp_source.html#l00153">nfd::fw::Strategy::beforeSatisfyInterest()</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00048">nfd::fw::DATA</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00065">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00066">nfd::fw::QueueItem::outface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00063">nfd::fw::QueueItem::packetType</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00380">prioritySend()</a>, and <a class="el" href="ndn-qos-queue_8hpp_source.html#l00062">nfd::fw::QueueItem::wireEncode</a>.</p>
 
 </div>
 </div>
@@ -549,19 +553,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Send the given data packet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pitEntry</td><td>the corresponding pit entry for the packet. </td></tr>
-    <tr><td class="paramname">inface</td><td>the incoming interface. </td></tr>
-    <tr><td class="paramname">data</td><td>the data packet we will be forwarding. </td></tr>
-    <tr><td class="paramname">outFace</td><td>the outgoing interface. </td></tr>
+    <tr><td class="paramname">pitEntry</td><td>The corresponding pit entry for the packet. </td></tr>
+    <tr><td class="paramname">inface</td><td>The incoming interface. </td></tr>
+    <tr><td class="paramname">data</td><td>The data packet we will be forwarding. </td></tr>
+    <tr><td class="paramname">outFace</td><td>The outgoing interface. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00470">470</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00465">465</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="strategy_8cpp_source.html#l00197">nfd::fw::Strategy::sendData()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00385">prioritySend()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00380">prioritySend()</a>.</p>
 
 </div>
 </div>
@@ -600,18 +604,18 @@ Additional Inherited Members</h2></td></tr>
 <p>Send the given nack packet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pitEntry</td><td>the corresponding pit entry for the packet. </td></tr>
-    <tr><td class="paramname">inface</td><td>the incoming interface. </td></tr>
-    <tr><td class="paramname">nack</td><td>the nack packet we will be forwarding. </td></tr>
+    <tr><td class="paramname">pitEntry</td><td>The corresponding pit entry for the packet. </td></tr>
+    <tr><td class="paramname">inface</td><td>The incoming interface. </td></tr>
+    <tr><td class="paramname">nack</td><td>The nack packet we will be forwarding. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00477">477</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00472">472</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="process-nack-traits_8cpp_source.html#l00035">nfd::fw::ProcessNackTraitsBase::processNack()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00385">prioritySend()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00380">prioritySend()</a>.</p>
 
 </div>
 </div>
@@ -656,19 +660,19 @@ Additional Inherited Members</h2></td></tr>
 <p>Send the given interest packet. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pitEntry</td><td>the corresponding pit entry for the packet. </td></tr>
-    <tr><td class="paramname">inface</td><td>the incoming interface. </td></tr>
-    <tr><td class="paramname">interest</td><td>the interest packet we will be forwarding. </td></tr>
-    <tr><td class="paramname">outFace</td><td>the outgoing interface. </td></tr>
+    <tr><td class="paramname">pitEntry</td><td>The corresponding pit entry for the packet. </td></tr>
+    <tr><td class="paramname">inface</td><td>The incoming interface. </td></tr>
+    <tr><td class="paramname">interest</td><td>The interest packet we will be forwarding. </td></tr>
+    <tr><td class="paramname">outFace</td><td>The outgoing interface. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00484">484</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00479">479</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
 <p class="reference">References <a class="el" href="strategy_8hpp_source.html#l00241">nfd::fw::Strategy::sendInterest()</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00385">prioritySend()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00380">prioritySend()</a>.</p>
 
 </div>
 </div>
@@ -687,13 +691,13 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Dequeue all eligible packets from thier respective queues and forward them. </p>
+<p>Dequeue all eligible packets from respective queues and forward them. </p>
 
-<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00385">385</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="qos-strategy_8cpp_source.html#l00380">380</a> of file <a class="el" href="qos-strategy_8cpp_source.html">qos-strategy.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-token-bucket_8cpp_source.html#l00054">nfd::fw::TokenBucket::consumeToken()</a>, <a class="el" href="ConsumedTokens_8cpp_source.html#l00026">nfd::fw::CT</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00041">nfd::fw::DATA</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00055">nfd::fw::TokenBucket::hasFaces</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00050">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00040">nfd::fw::INTEREST</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00057">nfd::fw::TokenBucket::m_need</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00042">nfd::fw::NACK</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00051">nfd::fw::QueueItem::outface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00048">nfd::fw::QueueItem::packetType</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00049">nfd::fw::QueueItem::pitEntry</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00470">prioritySendData()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00484">prioritySendInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00477">prioritySendNack()</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00041">nfd::fw::Consumed::sender1</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00042">nfd::fw::Consumed::sender2</a>, <a class="el" href="ConsumedTokens_8hpp_source.html#l00043">nfd::fw::Consumed::sender3</a>, and <a class="el" href="ndn-qos-queue_8hpp_source.html#l00047">nfd::fw::QueueItem::wireEncode</a>.</p>
+<p class="reference">References <a class="el" href="ndn-token-bucket_8cpp_source.html#l00056">nfd::fw::TokenBucket::consumeToken()</a>, <a class="el" href="TBucketRef_8cpp_source.html#l00028">nfd::fw::CT</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00048">nfd::fw::DATA</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00059">nfd::fw::TokenBucket::hasFaces</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00065">nfd::fw::QueueItem::inface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00047">nfd::fw::INTEREST</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00061">nfd::fw::TokenBucket::m_need</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00049">nfd::fw::NACK</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00066">nfd::fw::QueueItem::outface</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00063">nfd::fw::QueueItem::packetType</a>, <a class="el" href="ndn-qos-queue_8hpp_source.html#l00064">nfd::fw::QueueItem::pitEntry</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00465">prioritySendData()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00479">prioritySendInterest()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00472">prioritySendNack()</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00044">nfd::fw::TBRef::sender1</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00045">nfd::fw::TBRef::sender2</a>, <a class="el" href="TBucketRef_8hpp_source.html#l00046">nfd::fw::TBRef::sender3</a>, and <a class="el" href="ndn-qos-queue_8hpp_source.html#l00062">nfd::fw::QueueItem::wireEncode</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00333">afterReceiveData()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00148">afterReceiveInterest()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00047">QosStrategy()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00328">afterReceiveData()</a>, <a class="el" href="qos-strategy_8cpp_source.html#l00143">afterReceiveInterest()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00042">QosStrategy()</a>.</p>
 
 </div>
 </div>
@@ -707,7 +711,7 @@ Additional Inherited Members</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacenfd.html">nfd</a></li><li class="navelem"><a class="el" href="namespacenfd_1_1fw.html">fw</a></li><li class="navelem"><a class="el" href="classnfd_1_1fw_1_1QosStrategy.html">QosStrategy</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

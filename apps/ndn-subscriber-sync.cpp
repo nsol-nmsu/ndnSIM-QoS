@@ -44,75 +44,75 @@ using json = nlohmann::json;
 
 #define DEBUG 0
 
-NS_LOG_COMPONENT_DEFINE( "ndn.ConsumerQos" );
+NS_LOG_COMPONENT_DEFINE( "ndn.ConsumerSync" );
 
 namespace ns3 {
 namespace ndn {
 
-NS_OBJECT_ENSURE_REGISTERED( ConsumerQos );
+NS_OBJECT_ENSURE_REGISTERED( ConsumerSync );
 
 TypeId
-ConsumerQos::GetTypeId( void )
+ConsumerSync::GetTypeId( void )
 {
   static TypeId tid =
-    TypeId( "ns3::ndn::ConsumerQos" )
+    TypeId( "ns3::ndn::ConsumerSync" )
       .SetGroupName( "Ndn" )
       .SetParent<App>()
-      .AddConstructor<ConsumerQos>()
+      .AddConstructor<ConsumerSync>()
 
       .AddAttribute( "StartSeq", "Initial sequence number", IntegerValue( 0 ),
-                    MakeIntegerAccessor( &ConsumerQos::m_seq ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &ConsumerSync::m_seq ), MakeIntegerChecker<int32_t>() )
       .AddAttribute( "Prefix", "Name of the Interest", StringValue( "/" ),
-                    MakeNameAccessor( &ConsumerQos::m_interestName ), MakeNameChecker() )
+                    MakeNameAccessor( &ConsumerSync::m_interestName ), MakeNameChecker() )
       .AddAttribute( "LifeTime", "LifeTime for subscription packet", StringValue( "5400s" ),
-                    MakeTimeAccessor( &ConsumerQos::m_interestLifeTime ), MakeTimeChecker() )
+                    MakeTimeAccessor( &ConsumerSync::m_interestLifeTime ), MakeTimeChecker() )
       .AddAttribute( "Frequency",
                     "Timeout defining how frequently subscription should be reinforced",
 		    TimeValue( Seconds( 60 ) ),
-                    MakeTimeAccessor( &ConsumerQos::m_txInterval ), MakeTimeChecker() )
+                    MakeTimeAccessor( &ConsumerSync::m_txInterval ), MakeTimeChecker() )
 
       .AddAttribute( "RetxTimer",
                     "Timeout defining how frequent retransmission timeouts should be checked",
                     StringValue( "50s" ),
-                    MakeTimeAccessor( &ConsumerQos::GetRetxTimer, &ConsumerQos::SetRetxTimer ),
+                    MakeTimeAccessor( &ConsumerSync::GetRetxTimer, &ConsumerSync::SetRetxTimer ),
                     MakeTimeChecker() )
 
       .AddAttribute( "RetransmitPackets", "Retransmit lost packets if set to 1, otherwise do not perform retransmission", IntegerValue( 1 ),
-                    MakeIntegerAccessor( &ConsumerQos::m_doRetransmission ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &ConsumerSync::m_doRetransmission ), MakeIntegerChecker<int32_t>() )
 
       .AddAttribute( "Subscription", "Subscription value for the interest. 0-normal interest, 1-soft subscribe, 2-hard subscriber, 3-unsubsribe", IntegerValue( 2 ),
-                    MakeIntegerAccessor( &ConsumerQos::m_subscription ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &ConsumerSync::m_subscription ), MakeIntegerChecker<int32_t>() )
 
       .AddAttribute( "Offset", "Random offset to randomize sending of interests", IntegerValue( 0 ),
-                    MakeIntegerAccessor( &ConsumerQos::m_offset ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &ConsumerSync::m_offset ), MakeIntegerChecker<int32_t>() )
 
       .AddAttribute( "PayloadSize", "Virtual payload size for interest packets", UintegerValue( 0 ),
-                    MakeUintegerAccessor( &ConsumerQos::m_virtualPayloadSize ),
+                    MakeUintegerAccessor( &ConsumerSync::m_virtualPayloadSize ),
                     MakeUintegerChecker<uint32_t>() )
 
       .AddTraceSource( "LastRetransmittedInterestDataDelay",
                       "Delay between last retransmitted Interest and received Data",
-                      MakeTraceSourceAccessor( &ConsumerQos::m_lastRetransmittedInterestDataDelay ),
+                      MakeTraceSourceAccessor( &ConsumerSync::m_lastRetransmittedInterestDataDelay ),
                       "ns3::ndn::Subscriber::LastRetransmittedInterestDataDelayCallback" )
 
       .AddTraceSource( "FirstInterestDataDelay",
                       "Delay between first transmitted Interest and received Data",
-                      MakeTraceSourceAccessor( &ConsumerQos::m_firstInterestDataDelay ),
+                      MakeTraceSourceAccessor( &ConsumerSync::m_firstInterestDataDelay ),
                       "ns3::ndn::Subscriber::FirstInterestDataDelayCallback" )
 
       .AddTraceSource( "ReceivedData", "ReceivedData",
-                      MakeTraceSourceAccessor( &ConsumerQos::m_receivedData ),
+                      MakeTraceSourceAccessor( &ConsumerSync::m_receivedData ),
                       "ns3::ndn::Subscriber::ReceivedDataTraceCallback" )
 
       .AddTraceSource( "SentInterest", "SentInterest",
-                      MakeTraceSourceAccessor( &ConsumerQos::m_sentInterest ),
+                      MakeTraceSourceAccessor( &ConsumerSync::m_sentInterest ),
                       "ns3::ndn::Subscriber::SentInterestTraceCallback" );
       ;
 
 	  return tid;
 }
 
-ConsumerQos::ConsumerQos()
+ConsumerSync::ConsumerSync()
     : m_rand( CreateObject<UniformRandomVariable>() )
     , m_seq( 0 )
     , m_seqMax( std::numeric_limits<uint32_t>::max() ) // set to max value on uint32
@@ -125,13 +125,13 @@ ConsumerQos::ConsumerQos()
 }
 
 
-ConsumerQos::~ConsumerQos()
+ConsumerSync::~ConsumerSync()
 {
 }
 
 
 void
-ConsumerQos::SetRetxTimer( Time retxTimer )
+ConsumerSync::SetRetxTimer( Time retxTimer )
 {
 
 	// Do not restranmit lost packets, if set to 0
@@ -146,20 +146,20 @@ ConsumerQos::SetRetxTimer( Time retxTimer )
 		}
 
 		// Schedule even with new timeout
-		m_retxEvent = Simulator::Schedule( m_retxTimer, &ConsumerQos::CheckRetxTimeout, this );
+		m_retxEvent = Simulator::Schedule( m_retxTimer, &ConsumerSync::CheckRetxTimeout, this );
 	}
 }
 
 
 Time
-ConsumerQos::GetRetxTimer() const
+ConsumerSync::GetRetxTimer() const
 {
 	return m_retxTimer;
 }
 
 
 void
-ConsumerQos::CheckRetxTimeout()
+ConsumerSync::CheckRetxTimeout()
 {
 
 	Time now = Simulator::Now();
@@ -185,14 +185,14 @@ ConsumerQos::CheckRetxTimeout()
 		}
 	}
 
-	m_retxEvent = Simulator::Schedule( m_retxTimer, &ConsumerQos::CheckRetxTimeout, this );
+	m_retxEvent = Simulator::Schedule( m_retxTimer, &ConsumerSync::CheckRetxTimeout, this );
 }
 
 
 
 // Application methods
 void
-ConsumerQos::StartApplication()
+ConsumerSync::StartApplication()
 {
 	NS_LOG_FUNCTION_NOARGS();
 	App::StartApplication();
@@ -200,7 +200,7 @@ ConsumerQos::StartApplication()
 }
 
 void
-ConsumerQos::StopApplication() // Called at time specified by Stop
+ConsumerSync::StopApplication() // Called at time specified by Stop
 {
 	NS_LOG_FUNCTION_NOARGS();
 	Simulator::Cancel( m_sendEvent );
@@ -208,7 +208,7 @@ ConsumerQos::StopApplication() // Called at time specified by Stop
 }
 
 void
-ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg )
+ConsumerSync::SendPacket( std::string deviceName, std::string payload, bool agg )
 {
 	shared_ptr<Name> DName = make_shared<Name>( deviceName );
 	m_payloads[DName->getSubName( -1, 1 ).toUri()] = payload;
@@ -307,7 +307,7 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg )
 
 
 void
-ConsumerQos::ScheduleNextPacket(std::string deviceName, std::string payload, bool agg)
+ConsumerSync::ScheduleNextPacket(std::string deviceName, std::string payload, bool agg)
 {
 
 	//if ( m_firstTime ) {
@@ -315,7 +315,7 @@ ConsumerQos::ScheduleNextPacket(std::string deviceName, std::string payload, boo
 	//	m_firstTime = false;
 	//} else
 	if ( !m_sendEvent.IsRunning() ) {
-		m_sendEvent = Simulator::Schedule( Seconds(0.1), &ConsumerQos::SendPacket, this, deviceName, payload, agg );
+		m_sendEvent = Simulator::Schedule( Seconds(0.1), &ConsumerSync::SendPacket, this, deviceName, payload, agg );
 	}
 }
 
@@ -325,7 +325,7 @@ ConsumerQos::ScheduleNextPacket(std::string deviceName, std::string payload, boo
 ///////////////////////////////////////////////////
 
 void
-ConsumerQos::OnData( shared_ptr<const Data> data )
+ConsumerSync::OnData( shared_ptr<const Data> data )
 {
 
 	if ( !m_active ) {
@@ -384,7 +384,7 @@ ConsumerQos::OnData( shared_ptr<const Data> data )
 
 
 void
-ConsumerQos::OnTimeout( uint32_t sequenceNumber )
+ConsumerSync::OnTimeout( uint32_t sequenceNumber )
 {
 	//NS_LOG_FUNCTION( sequenceNumber );
 	// std::cout << Simulator::Now () << ", TO: " << sequenceNumber << ", current RTO: " <<
@@ -400,7 +400,7 @@ ConsumerQos::OnTimeout( uint32_t sequenceNumber )
 
 
 void
-ConsumerQos::WillSendOutInterest( uint32_t sequenceNumber )
+ConsumerSync::WillSendOutInterest( uint32_t sequenceNumber )
 {
 	NS_LOG_DEBUG( "Trying to add " << sequenceNumber << " with " << Simulator::Now() << ". already "
 			<< m_seqTimeouts.size() << " items" );

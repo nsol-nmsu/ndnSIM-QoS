@@ -4,7 +4,7 @@ var classnfd_1_1fw_1_1NdnPriorityTxQueue =
     [ "GetFlowRate", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a3d70668638dc33ca1b0b2e60f9bf5443", null ],
     [ "UpdateTime", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#ae6f5ca85cf4dc1fef0b481b9dff3f02e", null ],
     [ "SelectQueueToSend", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#abf9224c87f8cc829077a74fa7791529b", null ],
-    [ "DoEnqueue", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a457c9ebcf55314518e710611e4cbe17e", null ],
+    [ "DoEnqueue", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a48f2d738894213fab444e1c4a8c477ae", null ],
     [ "DoDequeue", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a78b05c79e696384d11544a2eca0e850b", null ],
     [ "IsEmpty", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#a72ce3435cb357544d221b2634402eb4f", null ],
     [ "tokenReqHig", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html#ac2c7ff3e92011464375707d2afc0fc14", null ],

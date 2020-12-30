@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/NFD/daemon/fw/strategy.hpp Source File</title>
+<title>ndnSIM QoS: ndnSIM/NFD/daemon/fw/strategy.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -334,7 +337,7 @@ $(document).ready(function(){initNavTree('strategy_8hpp_source.html',''); initRe
 <div class="ttc" id="aclassnfd_1_1fw_1_1Strategy_html_aa31c22879ef6f9215af979fb2926740d"><div class="ttname"><a href="classnfd_1_1fw_1_1Strategy.html#aa31c22879ef6f9215af979fb2926740d">nfd::fw::Strategy::getInstanceName</a></div><div class="ttdeci">const Name &amp; getInstanceName() const</div><div class="ttdef"><b>Definition:</b> <a href="strategy_8hpp_source.html#l00110">strategy.hpp:110</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1Strategy_html_a4a2411fd28c18505847c5434c487539b"><div class="ttname"><a href="classnfd_1_1fw_1_1Strategy.html#a4a2411fd28c18505847c5434c487539b">nfd::fw::Strategy::sendData</a></div><div class="ttdeci">void sendData(const shared_ptr&lt; pit::Entry &gt; &amp;pitEntry, const Data &amp;data, const Face &amp;outFace)</div><div class="ttdoc">send data to outFace</div><div class="ttdef"><b>Definition:</b> <a href="strategy_8cpp_source.html#l00197">strategy.cpp:197</a></div></div>
 <div class="ttc" id="aclassnfd_1_1Forwarder_html_a3b6da0b4c54070dd31e9473a2bedf424"><div class="ttname"><a href="classnfd_1_1Forwarder.html#a3b6da0b4c54070dd31e9473a2bedf424">nfd::Forwarder::getFace</a></div><div class="ttdeci">Face * getFace(FaceId id) const</div><div class="ttdoc">get existing Face</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8hpp_source.html#l00080">forwarder.hpp:80</a></div></div>
-<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="ConsumedTokens_8cpp_source.html#l00024">ConsumedTokens.cpp:24</a></div></div>
+<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="TBucketRef_8cpp_source.html#l00026">TBucketRef.cpp:26</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1Strategy_html_adfcf38eb7b8c5166b2d04d5611b9d245"><div class="ttname"><a href="classnfd_1_1fw_1_1Strategy.html#adfcf38eb7b8c5166b2d04d5611b9d245">nfd::fw::Strategy::listRegistered</a></div><div class="ttdeci">static std::set&lt; Name &gt; listRegistered()</div><div class="ttdef"><b>Definition:</b> <a href="strategy_8cpp_source.html#l00113">strategy.cpp:113</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1Strategy_html_a3260e79667739a54ee6ad23a06eabddb"><div class="ttname"><a href="classnfd_1_1fw_1_1Strategy.html#a3260e79667739a54ee6ad23a06eabddb">nfd::fw::Strategy::setInstanceName</a></div><div class="ttdeci">void setInstanceName(const Name &amp;name)</div><div class="ttdoc">set strategy instance name</div><div class="ttdef"><b>Definition:</b> <a href="strategy_8hpp_source.html#l00367">strategy.hpp:367</a></div></div>
 <div class="ttc" id="aclassnfd_1_1FaceTable_html"><div class="ttname"><a href="classnfd_1_1FaceTable.html">nfd::FaceTable</a></div><div class="ttdoc">container of all faces</div><div class="ttdef"><b>Definition:</b> <a href="face-table_8hpp_source.html#l00037">face-table.hpp:38</a></div></div>
@@ -361,7 +364,7 @@ $(document).ready(function(){initNavTree('strategy_8hpp_source.html',''); initRe
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_a33e1b909c4367284ea68eb443929cdf.html">NFD</a></li><li class="navelem"><a class="el" href="dir_40ea591da35ce2661aadd5d70172d5e9.html">daemon</a></li><li class="navelem"><a class="el" href="dir_5e15bd910bc0a4639d1012667e3b813f.html">fw</a></li><li class="navelem"><a class="el" href="strategy_8hpp.html">strategy.hpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

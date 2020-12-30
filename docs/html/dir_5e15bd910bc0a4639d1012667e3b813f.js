@@ -51,9 +51,7 @@ var dir_5e15bd910bc0a4639d1012667e3b813f =
     [ "ndn-qos-queue.cpp", "ndn-qos-queue_8cpp.html", "ndn-qos-queue_8cpp" ],
     [ "ndn-qos-queue.hpp", "ndn-qos-queue_8hpp.html", "ndn-qos-queue_8hpp" ],
     [ "ndn-token-bucket.cpp", "ndn-token-bucket_8cpp.html", null ],
-    [ "ndn-token-bucket.hpp", "ndn-token-bucket_8hpp.html", [
-      [ "TokenBucket", "classnfd_1_1fw_1_1TokenBucket.html", "classnfd_1_1fw_1_1TokenBucket" ]
-    ] ],
+    [ "ndn-token-bucket.hpp", "ndn-token-bucket_8hpp.html", null ],
     [ "process-nack-traits.cpp", "process-nack-traits_8cpp.html", "process-nack-traits_8cpp" ],
     [ "process-nack-traits.hpp", "process-nack-traits_8hpp.html", [
       [ "ProcessNackTraitsBase", "classnfd_1_1fw_1_1ProcessNackTraitsBase.html", "classnfd_1_1fw_1_1ProcessNackTraitsBase" ],
@@ -83,8 +81,8 @@ var dir_5e15bd910bc0a4639d1012667e3b813f =
     ] ],
     [ "strategy.cpp", "strategy_8cpp.html", "strategy_8cpp" ],
     [ "strategy.hpp", "strategy_8hpp.html", "strategy_8hpp" ],
-    [ "TBucket.cpp", "TBucket_8cpp.html", "TBucket_8cpp" ],
-    [ "TBucket.hpp", "TBucket_8hpp.html", "TBucket_8hpp" ],
+    [ "TBucketDebug.cpp", "TBucketDebug_8cpp.html", "TBucketDebug_8cpp" ],
+    [ "TBucketDebug.hpp", "TBucketDebug_8hpp.html", "TBucketDebug_8hpp" ],
     [ "unsolicited-data-policy.cpp", "unsolicited-data-policy_8cpp.html", "unsolicited-data-policy_8cpp" ],
     [ "unsolicited-data-policy.hpp", "unsolicited-data-policy_8hpp.html", "unsolicited-data-policy_8hpp" ]
 ];

@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['retx_2dsuppression_2dexponential_2ecpp_657',['retx-suppression-exponential.cpp',['../retx-suppression-exponential_8cpp.html',1,'']]],
-  ['retx_2dsuppression_2dexponential_2ehpp_658',['retx-suppression-exponential.hpp',['../retx-suppression-exponential_8hpp.html',1,'']]],
-  ['retx_2dsuppression_2dfixed_2ecpp_659',['retx-suppression-fixed.cpp',['../retx-suppression-fixed_8cpp.html',1,'']]],
-  ['retx_2dsuppression_2dfixed_2ehpp_660',['retx-suppression-fixed.hpp',['../retx-suppression-fixed_8hpp.html',1,'']]],
-  ['retx_2dsuppression_2ehpp_661',['retx-suppression.hpp',['../retx-suppression_8hpp.html',1,'']]]
+  ['self_2dlearning_2dstrategy_2ecpp_609',['self-learning-strategy.cpp',['../self-learning-strategy_8cpp.html',1,'']]],
+  ['self_2dlearning_2dstrategy_2ehpp_610',['self-learning-strategy.hpp',['../self-learning-strategy_8hpp.html',1,'']]],
+  ['strategy_2dinfo_2ehpp_611',['strategy-info.hpp',['../strategy-info_8hpp.html',1,'']]],
+  ['strategy_2ecpp_612',['strategy.cpp',['../strategy_8cpp.html',1,'']]],
+  ['strategy_2ehpp_613',['strategy.hpp',['../strategy_8hpp.html',1,'']]]
 ];

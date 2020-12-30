@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dropallunsoliciteddatapolicy_542',['DropAllUnsolicitedDataPolicy',['../classnfd_1_1fw_1_1DropAllUnsolicitedDataPolicy.html',1,'nfd::fw']]]
+  ['dropallunsoliciteddatapolicy_502',['DropAllUnsolicitedDataPolicy',['../classnfd_1_1fw_1_1DropAllUnsolicitedDataPolicy.html',1,'nfd::fw']]]
 ];

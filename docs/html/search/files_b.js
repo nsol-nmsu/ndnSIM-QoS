@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['tbucket_2ecpp_667',['TBucket.cpp',['../TBucket_8cpp.html',1,'']]],
-  ['tbucket_2ehpp_668',['TBucket.hpp',['../TBucket_8hpp.html',1,'']]],
-  ['token_2dbucket_2ecpp_669',['token-bucket.cpp',['../token-bucket_8cpp.html',1,'']]],
-  ['token_2dbucket_2ehpp_670',['token-bucket.hpp',['../token-bucket_8hpp.html',1,'']]]
+  ['unsolicited_2ddata_2dpolicy_2ecpp_620',['unsolicited-data-policy.cpp',['../unsolicited-data-policy_8cpp.html',1,'']]],
+  ['unsolicited_2ddata_2dpolicy_2ehpp_621',['unsolicited-data-policy.hpp',['../unsolicited-data-policy_8hpp.html',1,'']]]
 ];

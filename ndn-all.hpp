@@ -40,7 +40,7 @@
 // #include "ns3/ndnSIM/model/ndn-net-device-face.hpp"
 
 // #include "ns3/ndnSIM/apps/ndn-app.hpp"
-#include "ns3/ndnSIM/apps/ndn-synchronizer-socket.hpp"
+#include "ns3/ndnSIM/co-simulation/ndn-synchronizer-socket.hpp"
 #include "ns3/ndnSIM/NFD/daemon/fw/forwarder.hpp"
 #include "ns3/ndnSIM/NFD/daemon/table/fib.hpp"
 

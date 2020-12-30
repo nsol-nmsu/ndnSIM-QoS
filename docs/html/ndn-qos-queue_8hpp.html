@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/NFD/daemon/fw/ndn-qos-queue.hpp File Reference</title>
+<title>ndnSIM QoS: ndnSIM/NFD/daemon/fw/ndn-qos-queue.hpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -110,7 +113,7 @@ $(document).ready(function(){initNavTree('ndn-qos-queue_8hpp.html',''); initResi
 Include dependency graph for ndn-qos-queue.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="ndn-qos-queue_8hpp__incl.png" border="0" usemap="#andnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hpp" alt=""/></div>
-<map name="andnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hpp" id="andnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hpp">
+<map name="ndnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hpp" id="ndnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hpp">
 <area shape="rect" title=" " alt="" coords="269,5,436,47"/>
 <area shape="rect" title=" " alt="" coords="5,102,44,129"/>
 <area shape="rect" title=" " alt="" coords="69,102,253,129"/>
@@ -123,7 +126,7 @@ Include dependency graph for ndn-qos-queue.hpp:</div>
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="ndn-qos-queue_8hpp__dep__incl.png" border="0" usemap="#andnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hppdep" alt=""/></div>
-<map name="andnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hppdep" id="andnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hppdep">
+<map name="ndnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hppdep" id="ndnSIM_2NFD_2daemon_2fw_2ndn-qos-queue_8hppdep">
 <area shape="rect" title=" " alt="" coords="199,5,365,47"/>
 <area shape="rect" href="ndn-priority-tx-queue_8hpp.html" title=" " alt="" coords="101,95,271,136"/>
 <area shape="rect" href="ndn-qos-queue_8cpp.html" title=" " alt="" coords="295,95,461,136"/>
@@ -138,8 +141,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structnfd_1_1fw_1_1QueueItem.html">nfd::fw::QueueItem</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines queue item for use qos queues.  <a href="structnfd_1_1fw_1_1QueueItem.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1QosQueue.html">nfd::fw::QosQueue</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class that implements QoS queue for ndn packets.  <a href="classnfd_1_1fw_1_1QosQueue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -162,6 +167,7 @@ Enumerations</h2></td></tr>
 <a class="el" href="namespacenfd_1_1fw.html#aa0dd38a48370fbd686322e3aa275f4daafc7c5fb0a328ca6cfd04429f5f775d58">nfd::fw::DATA</a>, 
 <a class="el" href="namespacenfd_1_1fw.html#aa0dd38a48370fbd686322e3aa275f4daa9c0724cff6a80de49100b62c4cfe679f">nfd::fw::NACK</a>
  }</td></tr>
+<tr class="memdesc:aa0dd38a48370fbd686322e3aa275f4da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerator used to describe packet type.  <a href="namespacenfd_1_1fw.html#aa0dd38a48370fbd686322e3aa275f4da">More...</a><br /></td></tr>
 <tr class="separator:aa0dd38a48370fbd686322e3aa275f4da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -177,7 +183,7 @@ Enumerations</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-qos-queue_8hpp_source.html#l00030">30</a> of file <a class="el" href="ndn-qos-queue_8hpp_source.html">ndn-qos-queue.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-qos-queue_8hpp_source.html#l00032">32</a> of file <a class="el" href="ndn-qos-queue_8hpp_source.html">ndn-qos-queue.hpp</a>.</p>
 
 </div>
 </div>
@@ -187,7 +193,7 @@ Enumerations</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_a33e1b909c4367284ea68eb443929cdf.html">NFD</a></li><li class="navelem"><a class="el" href="dir_40ea591da35ce2661aadd5d70172d5e9.html">daemon</a></li><li class="navelem"><a class="el" href="dir_5e15bd910bc0a4639d1012667e3b813f.html">fw</a></li><li class="navelem"><a class="el" href="ndn-qos-queue_8hpp.html">ndn-qos-queue.hpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

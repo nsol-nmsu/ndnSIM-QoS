@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: nfd::fw::TokenBucket Class Reference</title>
+<title>ndnSIM QoS: nfd::fw::TokenBucket Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -97,11 +100,11 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1TokenBucket.html',''
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classnfd_1_1fw_1_1TokenBucket-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">nfd::fw::TokenBucket Class Reference</div>  </div>
+<div class="title">nfd::fw::TokenBucket Class Reference<div class="ingroups"><a class="el" href="group__ndnQoS.html">ndnQoS apps and classes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Helps os-stratagey keep track of token operations.  
+<p>Defines token bucket for use in QoS-strategy.  
  <a href="classnfd_1_1fw_1_1TokenBucket.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>&gt;</code></p>
@@ -109,8 +112,8 @@ $(document).ready(function(){initNavTree('classnfd_1_1fw_1_1TokenBucket.html',''
 Collaboration diagram for nfd::fw::TokenBucket:</div>
 <div class="dyncontent">
 <div class="center"><img src="classnfd_1_1fw_1_1TokenBucket__coll__graph.png" border="0" usemap="#anfd_1_1fw_1_1TokenBucket_coll__map" alt="Collaboration graph"/></div>
-<map name="anfd_1_1fw_1_1TokenBucket_coll__map" id="anfd_1_1fw_1_1TokenBucket_coll__map">
-<area shape="rect" title="Helps os&#45;stratagey keep track of token operations." alt="" coords="5,317,152,344"/>
+<map name="nfd_1_1fw_1_1TokenBucket_coll__map" id="nfd_1_1fw_1_1TokenBucket_coll__map">
+<area shape="rect" title="Defines token bucket for use in QoS&#45;strategy." alt="" coords="5,317,152,344"/>
 <area shape="rect" title=" " alt="" coords="9,199,148,240"/>
 <area shape="rect" title="STL class." alt="" coords="10,95,147,136"/>
 <area shape="rect" title=" " alt="" coords="27,5,66,32"/>
@@ -123,7 +126,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af3250a12869c1deff69cbcf147a2179b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#af3250a12869c1deff69cbcf147a2179b">TokenBucket</a> ()</td></tr>
 <tr class="separator:af3250a12869c1deff69cbcf147a2179b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc95a446f07f5f122f4d5cc9c6d6b8da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">addToken</a> ()</td></tr>
-<tr class="memdesc:adc95a446f07f5f122f4d5cc9c6d6b8da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment token counts in buckets if they are not currently at capacity.  <a href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">More...</a><br /></td></tr>
+<tr class="memdesc:adc95a446f07f5f122f4d5cc9c6d6b8da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment token count in buckets if they are not currently at capacity.  <a href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">More...</a><br /></td></tr>
 <tr class="separator:adc95a446f07f5f122f4d5cc9c6d6b8da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c368736754620c6e848bae29f796a5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">consumeToken</a> (double tokens, uint32_t face)</td></tr>
 <tr class="memdesc:a2c368736754620c6e848bae29f796a5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove tokens from token bucket for the given interface.  <a href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">More...</a><br /></td></tr>
@@ -132,7 +135,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a6b201212c2defcd909f7607b988779d7"><td class="memItemLeft" align="right" valign="top">signal::Signal&lt; <a class="el" href="classnfd_1_1fw_1_1TokenBucket.html">TokenBucket</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">send</a></td></tr>
-<tr class="memdesc:a6b201212c2defcd909f7607b988779d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update strategy that token bucket has refilled.  <a href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">More...</a><br /></td></tr>
+<tr class="memdesc:a6b201212c2defcd909f7607b988779d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inform strategy that token bucket has refilled.  <a href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">More...</a><br /></td></tr>
 <tr class="separator:a6b201212c2defcd909f7607b988779d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab781e335cdd696b891a769fa1da60a86"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classnfd_1_1fw_1_1TokenBucket.html#ab781e335cdd696b891a769fa1da60a86">hasFaces</a></td></tr>
 <tr class="separator:ab781e335cdd696b891a769fa1da60a86"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,9 +147,9 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a4506144ceb9d14247603539f375ace79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Helps os-stratagey keep track of token operations. </p>
+<div class="textblock"><p>Defines token bucket for use in QoS-strategy. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00032">32</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00036">36</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af3250a12869c1deff69cbcf147a2179b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3250a12869c1deff69cbcf147a2179b">&#9670;&nbsp;</a></span>TokenBucket()</h2>
@@ -163,9 +166,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8cpp_source.html#l00026">26</a> of file <a class="el" href="ndn-token-bucket_8cpp_source.html">ndn-token-bucket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8cpp_source.html#l00028">28</a> of file <a class="el" href="ndn-token-bucket_8cpp_source.html">ndn-token-bucket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-token-bucket_8hpp_source.html#l00055">hasFaces</a>, and <a class="el" href="ndn-token-bucket_8hpp_source.html#l00058">m_capacity</a>.</p>
+<p class="reference">References <a class="el" href="ndn-token-bucket_8hpp_source.html#l00059">hasFaces</a>, and <a class="el" href="ndn-token-bucket_8hpp_source.html#l00062">m_capacity</a>.</p>
 
 </div>
 </div>
@@ -185,13 +188,13 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Increment token counts in buckets if they are not currently at capacity. </p>
+<p>Increment token count in buckets if they are not currently at capacity. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8cpp_source.html#l00033">33</a> of file <a class="el" href="ndn-token-bucket_8cpp_source.html">ndn-token-bucket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8cpp_source.html#l00035">35</a> of file <a class="el" href="ndn-token-bucket_8cpp_source.html">ndn-token-bucket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-token-bucket_8hpp_source.html#l00058">m_capacity</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00057">m_need</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00056">m_tokens</a>, and <a class="el" href="ndn-token-bucket_8hpp_source.html#l00041">send</a>.</p>
+<p class="reference">References <a class="el" href="ndn-token-bucket_8hpp_source.html#l00062">m_capacity</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00061">m_need</a>, <a class="el" href="ndn-token-bucket_8hpp_source.html#l00060">m_tokens</a>, and <a class="el" href="ndn-token-bucket_8hpp_source.html#l00045">send</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="token-bucket_8cpp_source.html#l00125">ns3::ndn::TBucket::UpdateBucket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="tokenBucketDriver_8cpp_source.html#l00127">ns3::ndn::TBDriver::UpdateBucket()</a>.</p>
 
 </div>
 </div>
@@ -224,17 +227,17 @@ Public Attributes</h2></td></tr>
 <p>Remove tokens from token bucket for the given interface. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tokens</td><td>amount of tokens to remove. </td></tr>
-    <tr><td class="paramname">face</td><td>interface on which to remove tokens from. </td></tr>
+    <tr><td class="paramname">tokens</td><td>Amount of tokens to remove. </td></tr>
+    <tr><td class="paramname">face</td><td>Interface on which to remove tokens from. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8cpp_source.html#l00054">54</a> of file <a class="el" href="ndn-token-bucket_8cpp_source.html">ndn-token-bucket.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8cpp_source.html#l00056">56</a> of file <a class="el" href="ndn-token-bucket_8cpp_source.html">ndn-token-bucket.cpp</a>.</p>
 
-<p class="reference">References <a class="el" href="ndn-token-bucket_8hpp_source.html#l00058">m_capacity</a>, and <a class="el" href="ndn-token-bucket_8hpp_source.html#l00056">m_tokens</a>.</p>
+<p class="reference">References <a class="el" href="ndn-token-bucket_8hpp_source.html#l00062">m_capacity</a>, and <a class="el" href="ndn-token-bucket_8hpp_source.html#l00060">m_tokens</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00385">nfd::fw::QosStrategy::prioritySend()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00380">nfd::fw::QosStrategy::prioritySend()</a>.</p>
 
 </div>
 </div>
@@ -251,11 +254,11 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update strategy that token bucket has refilled. </p>
+<p>Inform strategy that token bucket has refilled. </p>
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00041">41</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00045">45</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00033">addToken()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00035">addToken()</a>.</p>
 
 </div>
 </div>
@@ -271,9 +274,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00055">55</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00059">59</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00385">nfd::fw::QosStrategy::prioritySend()</a>, and <a class="el" href="ndn-token-bucket_8cpp_source.html#l00026">TokenBucket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="qos-strategy_8cpp_source.html#l00380">nfd::fw::QosStrategy::prioritySend()</a>, and <a class="el" href="ndn-token-bucket_8cpp_source.html#l00028">TokenBucket()</a>.</p>
 
 </div>
 </div>
@@ -289,9 +292,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00056">56</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00060">60</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00033">addToken()</a>, and <a class="el" href="ndn-token-bucket_8cpp_source.html#l00054">consumeToken()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00035">addToken()</a>, and <a class="el" href="ndn-token-bucket_8cpp_source.html#l00056">consumeToken()</a>.</p>
 
 </div>
 </div>
@@ -307,9 +310,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00057">57</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00061">61</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00033">addToken()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00385">nfd::fw::QosStrategy::prioritySend()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00035">addToken()</a>, and <a class="el" href="qos-strategy_8cpp_source.html#l00380">nfd::fw::QosStrategy::prioritySend()</a>.</p>
 
 </div>
 </div>
@@ -325,9 +328,9 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00058">58</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ndn-token-bucket_8hpp_source.html#l00062">62</a> of file <a class="el" href="ndn-token-bucket_8hpp_source.html">ndn-token-bucket.hpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00033">addToken()</a>, <a class="el" href="ndn-token-bucket_8cpp_source.html#l00054">consumeToken()</a>, <a class="el" href="ndn-token-bucket_8cpp_source.html#l00026">TokenBucket()</a>, and <a class="el" href="token-bucket_8cpp_source.html#l00125">ns3::ndn::TBucket::UpdateBucket()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="ndn-token-bucket_8cpp_source.html#l00035">addToken()</a>, <a class="el" href="ndn-token-bucket_8cpp_source.html#l00056">consumeToken()</a>, <a class="el" href="ndn-token-bucket_8cpp_source.html#l00028">TokenBucket()</a>, and <a class="el" href="tokenBucketDriver_8cpp_source.html#l00127">ns3::ndn::TBDriver::UpdateBucket()</a>.</p>
 
 </div>
 </div>
@@ -341,7 +344,7 @@ Public Attributes</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacenfd.html">nfd</a></li><li class="navelem"><a class="el" href="namespacenfd_1_1fw.html">fw</a></li><li class="navelem"><a class="el" href="classnfd_1_1fw_1_1TokenBucket.html">TokenBucket</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

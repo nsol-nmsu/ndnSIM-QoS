@@ -24,9 +24,8 @@
 */
 var NAVTREE =
 [
-  [ "ndnSIM", "index.html", [
-    [ "ndnSIM documentation", "index.html", null ],
-    [ "Todo List", "todo.html", null ],
+  [ "ndnSIM QoS", "index.html", [
+    [ "ndnQoS documentation (NMSU extension of ndnSIM v2.7)", "index.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
@@ -65,10 +64,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ConsumedTokens_8cpp.html",
+"TBucketDebug_8cpp.html",
 "classnfd_1_1fw_1_1SelfLearningStrategy_1_1InRecordInfo.html",
-"classns3_1_1ndn_1_1ConsumerQos.html#ac2247160df5d6189d772e47699a79b49",
-"ndn-app_8cpp.html#a8de2ba9c8605528db9fcffec0b8ae555"
+"classns3_1_1ndn_1_1ConsumerSync.html#adae0c7c99bdc1ab93a5ebd06c2ccb9e9",
+"ndn-consumer-zipf-mandelbrot_8hpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

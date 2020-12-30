@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/NFD/daemon/fw/algorithm.cpp Source File</title>
+<title>ndnSIM QoS: ndnSIM/NFD/daemon/fw/algorithm.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -231,13 +234,13 @@ $(document).ready(function(){initNavTree('algorithm_8cpp_source.html',''); initR
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <div class="ttc" id="aalgorithm_8hpp_html"><div class="ttname"><a href="algorithm_8hpp.html">algorithm.hpp</a></div><div class="ttdoc">This file contains common algorithms used by forwarding strategies.</div></div>
-<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5">nfd::fw::DUPLICATE_NONCE_IN_SAME</a></div><div class="ttdeci">@ DUPLICATE_NONCE_IN_SAME</div><div class="ttdoc">in-record of same face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00062">algorithm.hpp:62</a></div></div>
+<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5">nfd::fw::DUPLICATE_NONCE_IN_SAME</a></div><div class="ttdeci">@ DUPLICATE_NONCE_IN_SAME</div><div class="ttdoc">in-record of same face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00061">algorithm.hpp:61</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_a7427c7d1c038b58103af82ec0c15995c"><div class="ttname"><a href="namespacenfd_1_1fw.html#a7427c7d1c038b58103af82ec0c15995c">nfd::fw::canForwardToLegacy</a></div><div class="ttdeci">bool canForwardToLegacy(const pit::Entry &amp;pitEntry, const Face &amp;face)</div><div class="ttdoc">decide whether Interest can be forwarded to face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8cpp_source.html#l00054">algorithm.cpp:54</a></div></div>
-<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d">nfd::fw::DUPLICATE_NONCE_NONE</a></div><div class="ttdeci">@ DUPLICATE_NONCE_NONE</div><div class="ttdoc">no duplicate Nonce is found</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00061">algorithm.hpp:61</a></div></div>
-<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525a1e6d0e61f8ba577dba1766736f806d7c"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525a1e6d0e61f8ba577dba1766736f806d7c">nfd::fw::DUPLICATE_NONCE_OUT_SAME</a></div><div class="ttdeci">@ DUPLICATE_NONCE_OUT_SAME</div><div class="ttdoc">out-record of same face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00064">algorithm.hpp:64</a></div></div>
-<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525afcee2ed24843f98f4ae2d686d1794dde"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525afcee2ed24843f98f4ae2d686d1794dde">nfd::fw::DUPLICATE_NONCE_IN_OTHER</a></div><div class="ttdeci">@ DUPLICATE_NONCE_IN_OTHER</div><div class="ttdoc">in-record of other face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00063">algorithm.hpp:63</a></div></div>
-<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="ConsumedTokens_8cpp_source.html#l00024">ConsumedTokens.cpp:24</a></div></div>
-<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525addd11943e6b9339bf324af0868633a92"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525addd11943e6b9339bf324af0868633a92">nfd::fw::DUPLICATE_NONCE_OUT_OTHER</a></div><div class="ttdeci">@ DUPLICATE_NONCE_OUT_OTHER</div><div class="ttdoc">out-record of other face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00066">algorithm.hpp:65</a></div></div>
+<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d">nfd::fw::DUPLICATE_NONCE_NONE</a></div><div class="ttdeci">@ DUPLICATE_NONCE_NONE</div><div class="ttdoc">no duplicate Nonce is found</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00060">algorithm.hpp:60</a></div></div>
+<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525a1e6d0e61f8ba577dba1766736f806d7c"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525a1e6d0e61f8ba577dba1766736f806d7c">nfd::fw::DUPLICATE_NONCE_OUT_SAME</a></div><div class="ttdeci">@ DUPLICATE_NONCE_OUT_SAME</div><div class="ttdoc">out-record of same face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00063">algorithm.hpp:63</a></div></div>
+<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525afcee2ed24843f98f4ae2d686d1794dde"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525afcee2ed24843f98f4ae2d686d1794dde">nfd::fw::DUPLICATE_NONCE_IN_OTHER</a></div><div class="ttdeci">@ DUPLICATE_NONCE_IN_OTHER</div><div class="ttdoc">in-record of other face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00062">algorithm.hpp:62</a></div></div>
+<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="TBucketRef_8cpp_source.html#l00026">TBucketRef.cpp:26</a></div></div>
+<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525addd11943e6b9339bf324af0868633a92"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525addd11943e6b9339bf324af0868633a92">nfd::fw::DUPLICATE_NONCE_OUT_OTHER</a></div><div class="ttdeci">@ DUPLICATE_NONCE_OUT_OTHER</div><div class="ttdoc">out-record of other face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00065">algorithm.hpp:64</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_aec676de4a68d2df6409b6cd259f79be6"><div class="ttname"><a href="namespacenfd_1_1fw.html#aec676de4a68d2df6409b6cd259f79be6">nfd::fw::wouldViolateScope</a></div><div class="ttdeci">bool wouldViolateScope(const Face &amp;inFace, const Interest &amp;interest, const Face &amp;outFace)</div><div class="ttdoc">determine whether forwarding the Interest in pitEntry to outFace would violate scope</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8cpp_source.html#l00032">algorithm.cpp:32</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_a6f729840c19ed69e04c9a16d8a63ea0e"><div class="ttname"><a href="namespacenfd_1_1fw.html#a6f729840c19ed69e04c9a16d8a63ea0e">nfd::fw::getLastOutgoing</a></div><div class="ttdeci">time::steady_clock::TimePoint getLastOutgoing(const pit::Entry &amp;pitEntry)</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8cpp_source.html#l00119">algorithm.cpp:119</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_ab180fba428de834322cdc6cb4d4634eb"><div class="ttname"><a href="namespacenfd_1_1fw.html#ab180fba428de834322cdc6cb4d4634eb">nfd::fw::hasPendingOutRecords</a></div><div class="ttdeci">bool hasPendingOutRecords(const pit::Entry &amp;pitEntry)</div><div class="ttdoc">determine whether pitEntry has any pending out-records</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8cpp_source.html#l00108">algorithm.cpp:108</a></div></div>
@@ -246,7 +249,7 @@ $(document).ready(function(){initNavTree('algorithm_8cpp_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_a33e1b909c4367284ea68eb443929cdf.html">NFD</a></li><li class="navelem"><a class="el" href="dir_40ea591da35ce2661aadd5d70172d5e9.html">daemon</a></li><li class="navelem"><a class="el" href="dir_5e15bd910bc0a4639d1012667e3b813f.html">fw</a></li><li class="navelem"><a class="el" href="algorithm_8cpp.html">algorithm.cpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

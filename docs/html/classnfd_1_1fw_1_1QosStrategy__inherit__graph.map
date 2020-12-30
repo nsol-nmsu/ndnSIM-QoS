@@ -1,5 +1,5 @@
 <map id="nfd::fw::QosStrategy" name="nfd::fw::QosStrategy">
-<area shape="rect" id="node1" title="A forwarding strategy that forwards Interest to all FIB nexthops." alt="" coords="9,363,152,389"/>
+<area shape="rect" id="node1" title="A forwarding strategy that uses WFQ to forward packets based on priority to enable QoS." alt="" coords="9,363,152,389"/>
 <area shape="rect" id="node2" href="$classnfd_1_1fw_1_1Strategy.html" title="represents a forwarding strategy" alt="" coords="5,132,124,159"/>
 <area shape="rect" id="node3" title=" " alt="" coords="33,5,128,32"/>
 <area shape="rect" id="node5" href="$classnfd_1_1fw_1_1ProcessNackTraitsBase.html" title="provides a common procedure for processing Nacks" alt="" coords="101,81,313,108"/>

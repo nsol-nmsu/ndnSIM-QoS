@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: Class Members - Functions</title>
+<title>ndnSIM QoS: Class Members - Functions</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -102,13 +105,13 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#aafd577489ed42242050b2040692a83fa">ns3::ndn::Consumer</a>
 , <a class="el" href="classns3_1_1ndn_1_1ConsumerBatches.html#ad4c174d128fa77f899e209c675d6f7e0">ns3::ndn::ConsumerBatches</a>
 , <a class="el" href="classns3_1_1ndn_1_1ConsumerCbr.html#ab64b723e571debefced5abe3bd492080">ns3::ndn::ConsumerCbr</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a7f0a2f656f74e8bfeeae76193ea917b0">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a3d0c4454badfd478f47de63ad61fe84f">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1ConsumerWindow.html#a6f70ff23627a90c3b6ad044447a46636">ns3::ndn::ConsumerWindow</a>
 , <a class="el" href="classns3_1_1ndn_1_1ConsumerZipfMandelbrot.html#a1a80fa8278626f694ec5ea48fcfa866e">ns3::ndn::ConsumerZipfMandelbrot</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#ac327c79bcec09c054a79ed0eafaaa701">ns3::ndn::Subscriber</a>
 </li>
 <li>ScheduleNextToken()
-: <a class="el" href="classns3_1_1ndn_1_1TBucket.html#a86a8e514c11a42d4eb8740716cee90cf">ns3::ndn::TBucket</a>
+: <a class="el" href="classns3_1_1ndn_1_1TBDriver.html#a83a8275dc84066bde6d632ae8cbc1a03">ns3::ndn::TBDriver</a>
 </li>
 <li>scheduleProbe()
 : <a class="el" href="classnfd_1_1fw_1_1asf_1_1ProbingModule.html#a58a40dfd2dd60a549b42074e3a75324f">nfd::fw::asf::ProbingModule</a>
@@ -128,14 +131,8 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 <li>SendData()
 : <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#a668ac607529bc65ac75aaf7fb17932ea">ns3::ndn::SpontaneousProducer</a>
 </li>
-<li>sendData()
-: <a class="el" href="classns3_1_1ndn_1_1SyncSocket.html#ad9195bb6214f075cfec151d2cab29620">ns3::ndn::SyncSocket</a>
-</li>
 <li>sendDataToAll()
 : <a class="el" href="classnfd_1_1fw_1_1Strategy.html#aa46c8acb1e0afde883fdf30daf2c26fe">nfd::fw::Strategy</a>
-</li>
-<li>sendDirect()
-: <a class="el" href="classns3_1_1ndn_1_1SyncSocket.html#a9e3b1588545113e0b643cbf3ae962aff">ns3::ndn::SyncSocket</a>
 </li>
 <li>sendInterest()
 : <a class="el" href="classnfd_1_1fw_1_1Strategy.html#a0dde2b219fd22a5d6146f5da67be356e">nfd::fw::Strategy</a>
@@ -148,19 +145,15 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 </li>
 <li>SendPacket()
 : <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a82bc08b788c5e168774664806729c4f4">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#ac1c099c6c5ab0f8467be8b3d5604c167">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#adc7c2e06c81a1c91479f1b2e8c24d008">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1ConsumerZipfMandelbrot.html#acc29540414473c1d1f355454ff544091">ns3::ndn::ConsumerZipfMandelbrot</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a84f920b3ada70761dee3e6da1e548004">ns3::ndn::Subscriber</a>
-</li>
-<li>sendSync()
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#a47b67d9471aa6b91897c50d860d738a4">ns3::ndn::Synchronizer</a>
-, <a class="el" href="classns3_1_1ndn_1_1SyncSocket.html#a4411220715199d994f944275f9da1837">ns3::ndn::SyncSocket</a>
 </li>
 <li>SendTimeout()
 : <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#a4d80deeb9820e921b45a93f11184e991">ns3::ndn::SpontaneousProducer</a>
 </li>
 <li>setAsLead()
-: <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a86d720615424f3224ee71a17f857388e">ns3::ndn::ConsumerQos</a>
+: <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a1a7ad4a5c1b1edf718a59bbebd5287d4">ns3::ndn::ConsumerSync</a>
 </li>
 <li>setCsFromNdnSim()
 : <a class="el" href="classnfd_1_1Forwarder.html#af3822ea4b71b42f391d046e3991c087d">nfd::Forwarder</a>
@@ -192,28 +185,17 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 <li>setProbingInterval()
 : <a class="el" href="classnfd_1_1fw_1_1asf_1_1ProbingModule.html#a9d089d7c9d55b49a9375b5b98fe7baf8">nfd::fw::asf::ProbingModule</a>
 </li>
-<li>setPVNode()
-: <a class="el" href="classns3_1_1ndn_1_1ParserReDisPv.html#a21e02cedaf67d2d6e5a0181761da597b">ns3::ndn::ParserReDisPv</a>
-, <a class="el" href="classns3_1_1ndn_1_1SyncSocket.html#a75459d7c1f36fd71c3086f0721c1b996">ns3::ndn::SyncSocket</a>
-</li>
 <li>SetRandomize()
 : <a class="el" href="classns3_1_1ndn_1_1ConsumerCbr.html#a437caf4ce25094b75e2c9103d9882e8a">ns3::ndn::ConsumerCbr</a>
-</li>
-<li>setRefs()
-: <a class="el" href="classns3_1_1ndn_1_1ParserOpenDSS.html#aaa84bf5f8374c2850c572e5b2f51bc5e">ns3::ndn::ParserOpenDSS</a>
-, <a class="el" href="classns3_1_1ndn_1_1ParserReDisPv.html#aa0596063ae1c46f3cab19f6f9ab2fc40">ns3::ndn::ParserReDisPv</a>
 </li>
 <li>SetRetxTimer()
 : <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#a23c3235319dd497a4b75575ad4044cf5">ns3::ndn::Aggregator</a>
 , <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a94455b1375651162ac0898a8625af94e">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a1ee87c7329bb67e48a0bbababd3c8261">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#ab1e098a1d30cd0a0d74e6a3192e2b8ae">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a7a1eb7cc21e8a395d2339198ffa8fb25">ns3::ndn::Subscriber</a>
 </li>
 <li>setTimeoutEvent()
 : <a class="el" href="classnfd_1_1fw_1_1asf_1_1FaceInfo.html#a9d102a94734db5bfa6be6d0940b22223">nfd::fw::asf::FaceInfo</a>
-</li>
-<li>setTimeStep()
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#ac9c3fe87b4f296dfa2b2631a7d536045">ns3::ndn::Synchronizer</a>
 </li>
 <li>setUnsolicitedDataPolicy()
 : <a class="el" href="classnfd_1_1Forwarder.html#ac7f1331bfc56ded0d5609877e020391c">nfd::Forwarder</a>
@@ -224,9 +206,6 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 <li>size()
 : <a class="el" href="classnfd_1_1FaceTable.html#a8e9a16831062403ba6e52bef6972cad6">nfd::FaceTable</a>
 </li>
-<li>SplitString()
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#a28cfce662c8205324bf610df8a769465">ns3::ndn::Synchronizer</a>
-</li>
 <li>SpontaneousProducer()
 : <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#aa2dc345680754e9732858c71538b3abc">ns3::ndn::SpontaneousProducer</a>
 </li>
@@ -234,11 +213,11 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 : <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#a938d6e0b6e8b725b167e2a82d5a1a751">ns3::ndn::Aggregator</a>
 , <a class="el" href="classns3_1_1ndn_1_1App.html#a20fd3ef630b6d05dc139911d1ef1b17f">ns3::ndn::App</a>
 , <a class="el" href="classns3_1_1ndn_1_1Consumer.html#aa04fb7a2f442560aab260e9756672e33">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a25fb2b8f77d8bfd5f876361e000655f2">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a0e8238a80245436b70c42aceb0288c08">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Producer.html#a2b2bbfe6920ef8f3e67296398287d5f9">ns3::ndn::Producer</a>
 , <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#a6788586e0dd8a1183a5d174c69e2f687">ns3::ndn::SpontaneousProducer</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#aeb069ea76d7203c8206066746775d8c8">ns3::ndn::Subscriber</a>
-, <a class="el" href="classns3_1_1ndn_1_1TBucket.html#a8e611c662e4e6c4749e2aed366b92c9d">ns3::ndn::TBucket</a>
+, <a class="el" href="classns3_1_1ndn_1_1TBDriver.html#a690ffb4db92f8f9acd14a949bbd2a3fd">ns3::ndn::TBDriver</a>
 </li>
 <li>startProcessData()
 : <a class="el" href="classnfd_1_1Forwarder.html#a229d76dc02d09ac2b9f098733d7e4671">nfd::Forwarder</a>
@@ -253,11 +232,11 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 : <a class="el" href="classns3_1_1ndn_1_1Aggregator.html#af91381e96cde6ad48cad75794e1b9734">ns3::ndn::Aggregator</a>
 , <a class="el" href="classns3_1_1ndn_1_1App.html#af1efb7281aa29014eb4574ce452dc705">ns3::ndn::App</a>
 , <a class="el" href="classns3_1_1ndn_1_1Consumer.html#a6cbdd3e814e7cb00645292e52dc0b1f2">ns3::ndn::Consumer</a>
-, <a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html#a782e9b619d76244deb4d4930f2c57b3d">ns3::ndn::ConsumerQos</a>
+, <a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html#a200ab46d2e9d85e93f609fcd1210f211">ns3::ndn::ConsumerSync</a>
 , <a class="el" href="classns3_1_1ndn_1_1Producer.html#afff9238cb079fde2dea5c39231fe0e15">ns3::ndn::Producer</a>
 , <a class="el" href="classns3_1_1ndn_1_1SpontaneousProducer.html#acb375ea412bb978754393fca0416a3fa">ns3::ndn::SpontaneousProducer</a>
 , <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a03abd87c94d4e545abf70e545cb5e51d">ns3::ndn::Subscriber</a>
-, <a class="el" href="classns3_1_1ndn_1_1TBucket.html#af3768fa4d1c587b7c1ff7186246cf529">ns3::ndn::TBucket</a>
+, <a class="el" href="classns3_1_1ndn_1_1TBDriver.html#ad2f9c22cb906755f35f260269bde284a">ns3::ndn::TBDriver</a>
 </li>
 <li>Strategy()
 : <a class="el" href="classnfd_1_1fw_1_1Strategy.html#a597f3c2fa4154a1784fd20c31a58c498">nfd::fw::Strategy</a>
@@ -268,22 +247,13 @@ $(document).ready(function(){initNavTree('functions_func_s.html',''); initResiza
 <li>Subscriber()
 : <a class="el" href="classns3_1_1ndn_1_1Subscriber.html#a75cc9a8a2f5c908b0168973c5bad7b36">ns3::ndn::Subscriber</a>
 </li>
-<li>syncEvent()
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#aec70da481b6e925c95e227e41b608f2d">ns3::ndn::Synchronizer</a>
-</li>
-<li>Synchronizer()
-: <a class="el" href="classns3_1_1ndn_1_1Synchronizer.html#ae5c180cf341db4460208af6b6484e032">ns3::ndn::Synchronizer</a>
-</li>
-<li>SyncSocket()
-: <a class="el" href="classns3_1_1ndn_1_1SyncSocket.html#a16c74e44b815138741ca3f171a5f2d35">ns3::ndn::SyncSocket</a>
-</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

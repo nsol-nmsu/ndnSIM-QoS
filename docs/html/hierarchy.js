@@ -12,11 +12,11 @@ var hierarchy =
             [ "ns3::ndn::ConsumerPcon", "classns3_1_1ndn_1_1ConsumerPcon.html", null ]
           ] ]
         ] ],
-        [ "ns3::ndn::ConsumerQos", "classns3_1_1ndn_1_1ConsumerQos.html", null ],
+        [ "ns3::ndn::ConsumerSync", "classns3_1_1ndn_1_1ConsumerSync.html", null ],
         [ "ns3::ndn::Producer", "classns3_1_1ndn_1_1Producer.html", null ],
         [ "ns3::ndn::SpontaneousProducer", "classns3_1_1ndn_1_1SpontaneousProducer.html", null ],
         [ "ns3::ndn::Subscriber", "classns3_1_1ndn_1_1Subscriber.html", null ],
-        [ "ns3::ndn::TBucket", "classns3_1_1ndn_1_1TBucket.html", null ]
+        [ "ns3::ndn::TBDriver", "classns3_1_1ndn_1_1TBDriver.html", null ]
       ] ]
     ] ],
     [ "Bucket", "structBucket.html", null ],
@@ -26,7 +26,6 @@ var hierarchy =
     [ "nfd::fw::asf::FaceStats", "structnfd_1_1fw_1_1asf_1_1FaceStats.html", null ],
     [ "nfd::fw::asf::ProbingModule", "classnfd_1_1fw_1_1asf_1_1ProbingModule.html", null ],
     [ "nfd::fw::asf::RttStats", "classnfd_1_1fw_1_1asf_1_1RttStats.html", null ],
-    [ "nfd::fw::Consumed", "structnfd_1_1fw_1_1Consumed.html", null ],
     [ "nfd::fw::QosQueue", "classnfd_1_1fw_1_1QosQueue.html", [
       [ "nfd::fw::NdnPriorityTxQueue", "classnfd_1_1fw_1_1NdnPriorityTxQueue.html", null ]
     ] ],
@@ -42,6 +41,7 @@ var hierarchy =
       [ "nfd::fw::SelfLearningStrategy::InRecordInfo", "classnfd_1_1fw_1_1SelfLearningStrategy_1_1InRecordInfo.html", null ],
       [ "nfd::fw::SelfLearningStrategy::OutRecordInfo", "classnfd_1_1fw_1_1SelfLearningStrategy_1_1OutRecordInfo.html", null ]
     ] ],
+    [ "nfd::fw::TBRef", "structnfd_1_1fw_1_1TBRef.html", null ],
     [ "nfd::fw::TokenBucket", "classnfd_1_1fw_1_1TokenBucket.html", null ],
     [ "noncopyable", null, [
       [ "nfd::FaceTable", "classnfd_1_1FaceTable.html", null ],
@@ -76,11 +76,6 @@ var hierarchy =
         [ "nfd::fw::AdmitNetworkUnsolicitedDataPolicy", "classnfd_1_1fw_1_1AdmitNetworkUnsolicitedDataPolicy.html", null ],
         [ "nfd::fw::DropAllUnsolicitedDataPolicy", "classnfd_1_1fw_1_1DropAllUnsolicitedDataPolicy.html", null ]
       ] ]
-    ] ],
-    [ "ns3::ndn::ParserOpenDSS", "classns3_1_1ndn_1_1ParserOpenDSS.html", null ],
-    [ "ns3::ndn::ParserReDisPv", "classns3_1_1ndn_1_1ParserReDisPv.html", null ],
-    [ "ns3::ndn::Synchronizer", "classns3_1_1ndn_1_1Synchronizer.html", [
-      [ "ns3::ndn::SyncSocket", "classns3_1_1ndn_1_1SyncSocket.html", null ]
     ] ],
     [ "std::exception", null, [
       [ "std::runtime_error", null, [

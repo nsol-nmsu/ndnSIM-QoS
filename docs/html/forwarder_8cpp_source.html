@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/NFD/daemon/fw/forwarder.cpp Source File</title>
+<title>ndnSIM QoS: ndnSIM/NFD/daemon/fw/forwarder.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -692,7 +695,7 @@ $(document).ready(function(){initNavTree('forwarder_8cpp_source.html',''); initR
 <div class="ttc" id="aclassnfd_1_1Forwarder_html_a229d76dc02d09ac2b9f098733d7e4671"><div class="ttname"><a href="classnfd_1_1Forwarder.html#a229d76dc02d09ac2b9f098733d7e4671">nfd::Forwarder::startProcessData</a></div><div class="ttdeci">void startProcessData(Face &amp;face, const Data &amp;data)</div><div class="ttdoc">start incoming Data processing</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8hpp_source.html#l00124">forwarder.hpp:124</a></div></div>
 <div class="ttc" id="aalgorithm_8hpp_html"><div class="ttname"><a href="algorithm_8hpp.html">algorithm.hpp</a></div><div class="ttdoc">This file contains common algorithms used by forwarding strategies.</div></div>
 <div class="ttc" id="aclassnfd_1_1Forwarder_html_a7e2f5b00f3146356077d84cd107a1394"><div class="ttname"><a href="classnfd_1_1Forwarder.html#a7e2f5b00f3146356077d84cd107a1394">nfd::Forwarder::beforeExpirePendingInterest</a></div><div class="ttdeci">signal::Signal&lt; Forwarder, pit::Entry &gt; beforeExpirePendingInterest</div><div class="ttdoc">trigger before PIT entry expires</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8hpp_source.html#l00203">forwarder.hpp:203</a></div></div>
-<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5">nfd::fw::DUPLICATE_NONCE_IN_SAME</a></div><div class="ttdeci">@ DUPLICATE_NONCE_IN_SAME</div><div class="ttdoc">in-record of same face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00062">algorithm.hpp:62</a></div></div>
+<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525ad5d470416f365c937b3d178b89d30ed5">nfd::fw::DUPLICATE_NONCE_IN_SAME</a></div><div class="ttdeci">@ DUPLICATE_NONCE_IN_SAME</div><div class="ttdoc">in-record of same face</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00061">algorithm.hpp:61</a></div></div>
 <div class="ttc" id="aclassnfd_1_1ForwarderCounters_html_a9dbb798708f6258fa5624b2ec5b4e863"><div class="ttname"><a href="classnfd_1_1ForwarderCounters.html#a9dbb798708f6258fa5624b2ec5b4e863">nfd::ForwarderCounters::nUnsatisfiedInterests</a></div><div class="ttdeci">PacketCounter nUnsatisfiedInterests</div><div class="ttdef"><b>Definition:</b> <a href="forwarder-counters_8hpp_source.html#l00045">forwarder-counters.hpp:45</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1BestRouteStrategy2_html_ac657a26e993478103cb0deb5433fe673"><div class="ttname"><a href="classnfd_1_1fw_1_1BestRouteStrategy2.html#ac657a26e993478103cb0deb5433fe673">nfd::fw::BestRouteStrategy2::getStrategyName</a></div><div class="ttdeci">static const Name &amp; getStrategyName()</div><div class="ttdef"><b>Definition:</b> <a href="best-route-strategy2_8cpp_source.html#l00061">best-route-strategy2.cpp:61</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_a5af7c3f37e8b795b921151e59680d134"><div class="ttname"><a href="namespacenfd_1_1fw.html#a5af7c3f37e8b795b921151e59680d134">nfd::fw::UnsolicitedDataDecision</a></div><div class="ttdeci">UnsolicitedDataDecision</div><div class="ttdoc">a decision made by UnsolicitedDataPolicy</div><div class="ttdef"><b>Definition:</b> <a href="unsolicited-data-policy_8hpp_source.html#l00036">unsolicited-data-policy.hpp:36</a></div></div>
@@ -704,12 +707,12 @@ $(document).ready(function(){initNavTree('forwarder_8cpp_source.html',''); initR
 <div class="ttc" id="aforwarder_8hpp_html"><div class="ttname"><a href="forwarder_8hpp.html">forwarder.hpp</a></div></div>
 <div class="ttc" id="aclassnfd_1_1ForwarderCounters_html_ac3f0af61a0db13ce383af0fe777aa047"><div class="ttname"><a href="classnfd_1_1ForwarderCounters.html#ac3f0af61a0db13ce383af0fe777aa047">nfd::ForwarderCounters::nInData</a></div><div class="ttdeci">PacketCounter nInData</div><div class="ttdef"><b>Definition:</b> <a href="forwarder-counters_8hpp_source.html#l00040">forwarder-counters.hpp:40</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_a5af7c3f37e8b795b921151e59680d134a08e1be4b785493d9fc2ae52c5ba9ab2e"><div class="ttname"><a href="namespacenfd_1_1fw.html#a5af7c3f37e8b795b921151e59680d134a08e1be4b785493d9fc2ae52c5ba9ab2e">nfd::fw::UnsolicitedDataDecision::CACHE</a></div><div class="ttdeci">@ CACHE</div><div class="ttdoc">the Data should be cached in the ContentStore</div></div>
-<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d">nfd::fw::DUPLICATE_NONCE_NONE</a></div><div class="ttdeci">@ DUPLICATE_NONCE_NONE</div><div class="ttdoc">no duplicate Nonce is found</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00061">algorithm.hpp:61</a></div></div>
+<div class="ttc" id="anamespacenfd_1_1fw_html_a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d"><div class="ttname"><a href="namespacenfd_1_1fw.html#a915b9469513d27a5e945e2e2a5cdd525a1f319ed5e923f7e588eae196d3f0400d">nfd::fw::DUPLICATE_NONCE_NONE</a></div><div class="ttdeci">@ DUPLICATE_NONCE_NONE</div><div class="ttdoc">no duplicate Nonce is found</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8hpp_source.html#l00060">algorithm.hpp:60</a></div></div>
 <div class="ttc" id="abest-route-strategy2_8hpp_html"><div class="ttname"><a href="best-route-strategy2_8hpp.html">best-route-strategy2.hpp</a></div></div>
 <div class="ttc" id="anamespacenfd_html_a55f3e9a635ec5990af56dc811398733a"><div class="ttname"><a href="namespacenfd.html#a55f3e9a635ec5990af56dc811398733a">nfd::compare_InRecord_expiry</a></div><div class="ttdeci">static bool compare_InRecord_expiry(const pit::InRecord &amp;a, const pit::InRecord &amp;b)</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8cpp_source.html#l00182">forwarder.cpp:182</a></div></div>
 <div class="ttc" id="aclassnfd_1_1ForwarderCounters_html_a4894ed41b2eb6a9e96d09fbea8f2e2e9"><div class="ttname"><a href="classnfd_1_1ForwarderCounters.html#a4894ed41b2eb6a9e96d09fbea8f2e2e9">nfd::ForwarderCounters::nOutNacks</a></div><div class="ttdeci">PacketCounter nOutNacks</div><div class="ttdef"><b>Definition:</b> <a href="forwarder-counters_8hpp_source.html#l00043">forwarder-counters.hpp:43</a></div></div>
 <div class="ttc" id="aclassnfd_1_1Forwarder_html_a93c01be574dce9401cf6c95c836ae56e"><div class="ttname"><a href="classnfd_1_1Forwarder.html#a93c01be574dce9401cf6c95c836ae56e">nfd::Forwarder::startProcessNack</a></div><div class="ttdeci">void startProcessNack(Face &amp;face, const lp::Nack &amp;nack)</div><div class="ttdoc">start incoming Nack processing</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8hpp_source.html#l00134">forwarder.hpp:134</a></div></div>
-<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="ConsumedTokens_8cpp_source.html#l00024">ConsumedTokens.cpp:24</a></div></div>
+<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="TBucketRef_8cpp_source.html#l00026">TBucketRef.cpp:26</a></div></div>
 <div class="ttc" id="aclassnfd_1_1Forwarder_html_a7428e32186d3d5db9e9b34296ce8756e"><div class="ttname"><a href="classnfd_1_1Forwarder.html#a7428e32186d3d5db9e9b34296ce8756e">nfd::Forwarder::~Forwarder</a></div><div class="ttdeci">~Forwarder()</div></div>
 <div class="ttc" id="anamespacenfd_html_a65651341d33ee7455745d27a4e1f9929"><div class="ttname"><a href="namespacenfd.html#a65651341d33ee7455745d27a4e1f9929">nfd::getDefaultStrategyName</a></div><div class="ttdeci">static Name getDefaultStrategyName()</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8cpp_source.html#l00043">forwarder.cpp:43</a></div></div>
 <div class="ttc" id="aclassnfd_1_1Forwarder_html_a24ec361cd95bd2389aaf0a12b8289e4f"><div class="ttname"><a href="classnfd_1_1Forwarder.html#a24ec361cd95bd2389aaf0a12b8289e4f">nfd::Forwarder::Forwarder</a></div><div class="ttdeci">Forwarder()</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8cpp_source.html#l00048">forwarder.cpp:48</a></div></div>
@@ -732,7 +735,7 @@ $(document).ready(function(){initNavTree('forwarder_8cpp_source.html',''); initR
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_a33e1b909c4367284ea68eb443929cdf.html">NFD</a></li><li class="navelem"><a class="el" href="dir_40ea591da35ce2661aadd5d70172d5e9.html">daemon</a></li><li class="navelem"><a class="el" href="dir_5e15bd910bc0a4639d1012667e3b813f.html">fw</a></li><li class="navelem"><a class="el" href="forwarder_8cpp.html">forwarder.cpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

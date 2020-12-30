@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/NFD/daemon/fw/ndn-token-bucket.cpp Source File</title>
+<title>ndnSIM QoS: ndnSIM/NFD/daemon/fw/ndn-token-bucket.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -101,83 +104,85 @@ $(document).ready(function(){initNavTree('ndn-token-bucket_8cpp_source.html','')
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * Copyright (C) 2020 New Mexico State University</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * George Torres, Anju Kunnumpurathu James</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * it under the terms of the GNU General Public License as published by</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * (at your option) any later version.</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * This program is distributed in the hope that it will be useful,</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * GNU General Public License for more details.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * You should have received a copy of the GNU General Public License</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ndn-token-bucket_8hpp.html">ndn-token-bucket.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * See AUTHORS.md for complete list of authors and contributors.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * (at your option) any later version.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> * This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacenfd.html">nfd</a> {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>fw {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classnfd_1_1fw_1_1TokenBucket.html#af3250a12869c1deff69cbcf147a2179b">   26</a></span>&#160;<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#af3250a12869c1deff69cbcf147a2179b">TokenBucket::TokenBucket</a>()</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">m_capacity</a> = 0;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#ab781e335cdd696b891a769fa1da60a86">hasFaces</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">   33</a></span>&#160;<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">TokenBucket::addToken</a>()</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{ </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  std::unordered_map&lt;uint32_t,double &gt;::iterator itt = <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.begin();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keywordtype">bool</span> callsend = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">while</span>(itt != <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.end()) {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="ndn-token-bucket_8hpp.html">ndn-token-bucket.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacenfd.html">nfd</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span>fw {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classnfd_1_1fw_1_1TokenBucket.html#af3250a12869c1deff69cbcf147a2179b">   28</a></span>&#160;<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#af3250a12869c1deff69cbcf147a2179b">TokenBucket::TokenBucket</a>()</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">m_capacity</a> = 0;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#ab781e335cdd696b891a769fa1da60a86">hasFaces</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">   35</a></span>&#160;<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">TokenBucket::addToken</a>()</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{ </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  std::unordered_map&lt;uint32_t,double &gt;::iterator itt = <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.begin();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordtype">bool</span> callsend = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (itt-&gt;second &lt; <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">m_capacity</a>) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;      <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[itt-&gt;first]++;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a29d179db920239157916f7b977ccbebf">m_need</a>[itt-&gt;first] != 0 &amp;&amp; <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[itt-&gt;first] &gt;= <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a29d179db920239157916f7b977ccbebf">m_need</a>[itt-&gt;first]) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;      callsend = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    itt++;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">send</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">   54</a></span>&#160;<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">TokenBucket::consumeToken</a>(<span class="keywordtype">double</span> tokens, uint32_t face)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.find(face) == <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.end()) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[face] = <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">m_capacity</a>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[face] = <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[face] - tokens;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// namespace fw</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// namespace nfd</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  <span class="keywordflow">while</span>(itt != <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.end()) {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> (itt-&gt;second &lt; <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">m_capacity</a>) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;      <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[itt-&gt;first]++;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a29d179db920239157916f7b977ccbebf">m_need</a>[itt-&gt;first] != 0 &amp;&amp; <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[itt-&gt;first] &gt;= <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a29d179db920239157916f7b977ccbebf">m_need</a>[itt-&gt;first]) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;      callsend = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    itt++;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">send</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">   56</a></span>&#160;<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">TokenBucket::consumeToken</a>(<span class="keywordtype">double</span> tokens, uint32_t face)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.find(face) == <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>.end()) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[face] = <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">m_capacity</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[face] = <a class="code" href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">m_tokens</a>[face] - tokens;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// namespace fw</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;} <span class="comment">// namespace nfd</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a2c368736754620c6e848bae29f796a5f"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">nfd::fw::TokenBucket::consumeToken</a></div><div class="ttdeci">void consumeToken(double tokens, uint32_t face)</div><div class="ttdoc">Remove tokens from token bucket for the given interface.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8cpp_source.html#l00054">ndn-token-bucket.cpp:54</a></div></div>
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a4506144ceb9d14247603539f375ace79"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">nfd::fw::TokenBucket::m_capacity</a></div><div class="ttdeci">int m_capacity</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00058">ndn-token-bucket.hpp:58</a></div></div>
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_af3250a12869c1deff69cbcf147a2179b"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#af3250a12869c1deff69cbcf147a2179b">nfd::fw::TokenBucket::TokenBucket</a></div><div class="ttdeci">TokenBucket()</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8cpp_source.html#l00026">ndn-token-bucket.cpp:26</a></div></div>
-<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="ConsumedTokens_8cpp_source.html#l00024">ConsumedTokens.cpp:24</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a2c368736754620c6e848bae29f796a5f"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a2c368736754620c6e848bae29f796a5f">nfd::fw::TokenBucket::consumeToken</a></div><div class="ttdeci">void consumeToken(double tokens, uint32_t face)</div><div class="ttdoc">Remove tokens from token bucket for the given interface.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8cpp_source.html#l00056">ndn-token-bucket.cpp:56</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a4506144ceb9d14247603539f375ace79"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a4506144ceb9d14247603539f375ace79">nfd::fw::TokenBucket::m_capacity</a></div><div class="ttdeci">int m_capacity</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00062">ndn-token-bucket.hpp:62</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_af3250a12869c1deff69cbcf147a2179b"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#af3250a12869c1deff69cbcf147a2179b">nfd::fw::TokenBucket::TokenBucket</a></div><div class="ttdeci">TokenBucket()</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8cpp_source.html#l00028">ndn-token-bucket.cpp:28</a></div></div>
+<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="TBucketRef_8cpp_source.html#l00026">TBucketRef.cpp:26</a></div></div>
 <div class="ttc" id="andn-token-bucket_8hpp_html"><div class="ttname"><a href="ndn-token-bucket_8hpp.html">ndn-token-bucket.hpp</a></div></div>
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_adc95a446f07f5f122f4d5cc9c6d6b8da"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">nfd::fw::TokenBucket::addToken</a></div><div class="ttdeci">void addToken()</div><div class="ttdoc">Increment token counts in buckets if they are not currently at capacity.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8cpp_source.html#l00033">ndn-token-bucket.cpp:33</a></div></div>
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a2118a1e25011a984bc0cd76e0117cb12"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">nfd::fw::TokenBucket::m_tokens</a></div><div class="ttdeci">std::unordered_map&lt; uint32_t, double &gt; m_tokens</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00056">ndn-token-bucket.hpp:56</a></div></div>
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_ab781e335cdd696b891a769fa1da60a86"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#ab781e335cdd696b891a769fa1da60a86">nfd::fw::TokenBucket::hasFaces</a></div><div class="ttdeci">bool hasFaces</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00055">ndn-token-bucket.hpp:55</a></div></div>
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a6b201212c2defcd909f7607b988779d7"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">nfd::fw::TokenBucket::send</a></div><div class="ttdeci">signal::Signal&lt; TokenBucket &gt; send</div><div class="ttdoc">Update strategy that token bucket has refilled.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00041">ndn-token-bucket.hpp:41</a></div></div>
-<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a29d179db920239157916f7b977ccbebf"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a29d179db920239157916f7b977ccbebf">nfd::fw::TokenBucket::m_need</a></div><div class="ttdeci">std::unordered_map&lt; uint32_t, double &gt; m_need</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00057">ndn-token-bucket.hpp:57</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_adc95a446f07f5f122f4d5cc9c6d6b8da"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#adc95a446f07f5f122f4d5cc9c6d6b8da">nfd::fw::TokenBucket::addToken</a></div><div class="ttdeci">void addToken()</div><div class="ttdoc">Increment token count in buckets if they are not currently at capacity.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8cpp_source.html#l00035">ndn-token-bucket.cpp:35</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a2118a1e25011a984bc0cd76e0117cb12"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a2118a1e25011a984bc0cd76e0117cb12">nfd::fw::TokenBucket::m_tokens</a></div><div class="ttdeci">std::unordered_map&lt; uint32_t, double &gt; m_tokens</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00060">ndn-token-bucket.hpp:60</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_ab781e335cdd696b891a769fa1da60a86"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#ab781e335cdd696b891a769fa1da60a86">nfd::fw::TokenBucket::hasFaces</a></div><div class="ttdeci">bool hasFaces</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00059">ndn-token-bucket.hpp:59</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a6b201212c2defcd909f7607b988779d7"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a6b201212c2defcd909f7607b988779d7">nfd::fw::TokenBucket::send</a></div><div class="ttdeci">signal::Signal&lt; TokenBucket &gt; send</div><div class="ttdoc">Inform strategy that token bucket has refilled.</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00045">ndn-token-bucket.hpp:45</a></div></div>
+<div class="ttc" id="aclassnfd_1_1fw_1_1TokenBucket_html_a29d179db920239157916f7b977ccbebf"><div class="ttname"><a href="classnfd_1_1fw_1_1TokenBucket.html#a29d179db920239157916f7b977ccbebf">nfd::fw::TokenBucket::m_need</a></div><div class="ttdeci">std::unordered_map&lt; uint32_t, double &gt; m_need</div><div class="ttdef"><b>Definition:</b> <a href="ndn-token-bucket_8hpp_source.html#l00061">ndn-token-bucket.hpp:61</a></div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_a33e1b909c4367284ea68eb443929cdf.html">NFD</a></li><li class="navelem"><a class="el" href="dir_40ea591da35ce2661aadd5d70172d5e9.html">daemon</a></li><li class="navelem"><a class="el" href="dir_5e15bd910bc0a4639d1012667e3b813f.html">fw</a></li><li class="navelem"><a class="el" href="ndn-token-bucket_8cpp.html">ndn-token-bucket.cpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

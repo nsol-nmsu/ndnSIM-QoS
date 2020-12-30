@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/NFD/daemon/fw/best-route-strategy.cpp Source File</title>
+<title>ndnSIM QoS: ndnSIM/NFD/daemon/fw/best-route-strategy.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -188,7 +191,7 @@ $(document).ready(function(){initNavTree('best-route-strategy_8cpp_source.html',
 <div class="ttc" id="aclassnfd_1_1fw_1_1Strategy_html_a0dde2b219fd22a5d6146f5da67be356e"><div class="ttname"><a href="classnfd_1_1fw_1_1Strategy.html#a0dde2b219fd22a5d6146f5da67be356e">nfd::fw::Strategy::sendInterest</a></div><div class="ttdeci">void sendInterest(const shared_ptr&lt; pit::Entry &gt; &amp;pitEntry, Face &amp;outFace, const Interest &amp;interest)</div><div class="ttdoc">send Interest to outFace</div><div class="ttdef"><b>Definition:</b> <a href="strategy_8hpp_source.html#l00241">strategy.hpp:241</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_a243f59ab52dd7257e3f12b080d45d204"><div class="ttname"><a href="namespacenfd_1_1fw.html#a243f59ab52dd7257e3f12b080d45d204">nfd::fw::NFD_REGISTER_STRATEGY</a></div><div class="ttdeci">NFD_REGISTER_STRATEGY(AccessStrategy)</div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1BestRouteStrategy_html"><div class="ttname"><a href="classnfd_1_1fw_1_1BestRouteStrategy.html">nfd::fw::BestRouteStrategy</a></div><div class="ttdoc">Best Route strategy version 1.</div><div class="ttdef"><b>Definition:</b> <a href="best-route-strategy_8hpp_source.html#l00056">best-route-strategy.hpp:57</a></div></div>
-<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="ConsumedTokens_8cpp_source.html#l00024">ConsumedTokens.cpp:24</a></div></div>
+<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="TBucketRef_8cpp_source.html#l00026">TBucketRef.cpp:26</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1Strategy_html_a3260e79667739a54ee6ad23a06eabddb"><div class="ttname"><a href="classnfd_1_1fw_1_1Strategy.html#a3260e79667739a54ee6ad23a06eabddb">nfd::fw::Strategy::setInstanceName</a></div><div class="ttdeci">void setInstanceName(const Name &amp;name)</div><div class="ttdoc">set strategy instance name</div><div class="ttdef"><b>Definition:</b> <a href="strategy_8hpp_source.html#l00367">strategy.hpp:367</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1BestRouteStrategy_html_aec53d0a0a44c8a3424ce53be19a8f2bb"><div class="ttname"><a href="classnfd_1_1fw_1_1BestRouteStrategy.html#aec53d0a0a44c8a3424ce53be19a8f2bb">nfd::fw::BestRouteStrategy::getStrategyName</a></div><div class="ttdeci">static const Name &amp; getStrategyName()</div><div class="ttdef"><b>Definition:</b> <a href="best-route-strategy_8cpp_source.html#l00076">best-route-strategy.cpp:76</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_html_aec676de4a68d2df6409b6cd259f79be6"><div class="ttname"><a href="namespacenfd_1_1fw.html#aec676de4a68d2df6409b6cd259f79be6">nfd::fw::wouldViolateScope</a></div><div class="ttdeci">bool wouldViolateScope(const Face &amp;inFace, const Interest &amp;interest, const Face &amp;outFace)</div><div class="ttdoc">determine whether forwarding the Interest in pitEntry to outFace would violate scope</div><div class="ttdef"><b>Definition:</b> <a href="algorithm_8cpp_source.html#l00032">algorithm.cpp:32</a></div></div>
@@ -209,7 +212,7 @@ $(document).ready(function(){initNavTree('best-route-strategy_8cpp_source.html',
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_a33e1b909c4367284ea68eb443929cdf.html">NFD</a></li><li class="navelem"><a class="el" href="dir_40ea591da35ce2661aadd5d70172d5e9.html">daemon</a></li><li class="navelem"><a class="el" href="dir_5e15bd910bc0a4639d1012667e3b813f.html">fw</a></li><li class="navelem"><a class="el" href="best-route-strategy_8cpp.html">best-route-strategy.cpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

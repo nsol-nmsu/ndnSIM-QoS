@@ -19,8 +19,8 @@
  *
  */
 
-#ifndef NDN_CONSUMER_QOS_H
-#define NDN_CONSUMER_QOS_H
+#ifndef NDN_CONSUMER_SYNC_H
+#define NDN_CONSUMER_SYNC_H
 
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
@@ -46,35 +46,48 @@ namespace ns3 {
 namespace ndn {
 
 /**
- * @ingroup ndn-apps
- * \brief NDN application for sending out Interest packets. Installed on nodes at physical layer (prosumers)
- * of the Smart Grid architecture (iCenS)
+ * \ingroup ndn
+ * \defgroup ndnQoS ndnQoS apps and classes
  */
-class ConsumerQos : public App {
+
+/**
+ * @ingroup ndnQoS
+ * \brief NDN application meant to be used with experimental project PowerSys-Cosim.
+ *
+ * This app injects payloaded Interest packets at node location. 
+ * Does not schedule any packets on its own, completely relies on ndn-synchronizer 
+ * class for scehduling packets and defining payloads.
+ */
+class ConsumerSync : public App {
 public:
   static TypeId
   GetTypeId();
 
   /**
-   * \brief Default constructor
-   * Sets up randomizer function and packet sequence number
+   * \brief Default constructor.
+   * Sets up randomizer function and packet sequence number.
    */
-  ConsumerQos();
-  virtual ~ConsumerQos();
+  ConsumerSync();
+  virtual ~ConsumerSync();
 
   // From App
   virtual void
   OnData(shared_ptr<const Data> contentObject);
  
   /**
-   * @brief Timeout event
-   * @param sequenceNumber time outed sequence number
+   * @brief Timeout event.
+   * @param sequenceNumber time outed sequence number.
    */
   virtual void
   OnTimeout(uint32_t sequenceNumber);
 
   /**
-   * @brief Actually send packet. Subscription interests do not carry payload information
+   * @brief Creates and sends out packet as described by parameters.
+   * \param deviceName Name to be used as prefix for interest.
+   * \param payload The data that will be attached to the interest.
+   * \param agg If true the payload is appended to a json object that
+   * aggregates said payload with previous ones, and combines them into
+   * one large payload for sending.
    */
   void
   SendPacket(std::string deviceName, std::string payload, bool agg);
@@ -91,13 +104,32 @@ public:
   virtual void
   WillSendOutInterest(uint32_t sequenceNumber);
 
+  /**
+   * @brief Schedules packets for sending, passing on relevent parameters.
+   * \param deviceName Name to be used as prefix for interest.
+   * \param payload The data that will be attached to the interest.
+   * \param agg If true the payload is appended to a json object that
+   * aggregates said payload with previous ones, and combines them into 
+   * one large payload for sending.
+   */
   void
   ScheduleNextPacket(std::string deviceName, std::string payload, bool agg);
+
+    /**
+   * @brief Aggregates payloads from follower DERs.
+   *
+   * Only Used if node in question is currently a LeadDER. Payloads from 
+   * followers are appended to our orginal payload.
+   */
 
   void
   updateLeadMeasurements(std::string newM, std::string device){
      leadMeasurements[device] = newM;
   }
+
+  /**
+   * @brief Node is set as a Lead DER, and resets payload.
+   */
 
   void
   setAsLead(std::string Name){
@@ -109,6 +141,9 @@ public:
      }
   }
 
+    /**
+   * @brief Removes lead statues from node and resets payload.
+   */
   void
   resetLead(){
      leadMeasurements.clear();
@@ -171,10 +206,10 @@ protected:
   uint32_t m_doRetransmission; //retransmit lost interest packets if set to 1
   uint32_t m_offset; //random offset
 
-  nlohmann::json leadMeasurements;
-  std::unordered_map<std::string, std::string> m_payloads;
+  nlohmann::json leadMeasurements; ///< @brief Json object that aggreates all recieved payloads for Lead DERs.
+  std::unordered_map<std::string, std::string> m_payloads; ///< @brief Maps payloads to followers in order to prevent the inclusion of multiple  measurements for the same device. 
   Ptr<RttEstimator> m_rtt; ///< @brief RTT estimator
-  int packetsToSend = 3;
+  //int packetsToSend = 3;
 
   /// @cond include_hidden
   /**

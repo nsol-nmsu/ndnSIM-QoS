@@ -1,0 +1,10 @@
+<map id="nfd::fw::TBRef" name="nfd::fw::TBRef">
+<area shape="rect" id="node1" title="Links application layer to strategy layer for the token bucket." alt="" coords="221,552,329,579"/>
+<area shape="rect" id="node2" title=" " alt="" coords="105,419,307,460"/>
+<area shape="rect" id="node3" href="$classnfd_1_1fw_1_1TokenBucket.html" title="Defines token bucket for use in QoS&#45;strategy." alt="" coords="137,329,283,356"/>
+<area shape="rect" id="node4" title=" " alt="" coords="133,199,271,240"/>
+<area shape="rect" id="node5" title="STL class." alt="" coords="124,95,261,136"/>
+<area shape="rect" id="node8" title=" " alt="" coords="276,264,413,305"/>
+<area shape="rect" id="node6" title=" " alt="" coords="141,5,180,32"/>
+<area shape="rect" id="node7" title=" " alt="" coords="205,5,244,32"/>
+</map>

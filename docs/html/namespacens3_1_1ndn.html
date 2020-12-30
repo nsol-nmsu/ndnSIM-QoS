@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ns3::ndn Namespace Reference</title>
+<title>ndnSIM QoS: ns3::ndn Namespace Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -94,7 +97,6 @@ $(document).ready(function(){initNavTree('namespacens3_1_1ndn.html',''); initRes
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -122,18 +124,14 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1ConsumerPcon.html">ConsumerPcon</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">NDN consumer application with more advanced congestion control options.  <a href="classns3_1_1ndn_1_1ConsumerPcon.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html">ConsumerQos</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">NDN application for sending out Interest packets.  <a href="classns3_1_1ndn_1_1ConsumerQos.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html">ConsumerSync</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">NDN application meant to be used with experimental project PowerSys-Cosim.  <a href="classns3_1_1ndn_1_1ConsumerSync.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1ConsumerWindow.html">ConsumerWindow</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ndn application for sending out Interest packets (window-based)  <a href="classns3_1_1ndn_1_1ConsumerWindow.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1ConsumerZipfMandelbrot.html">ConsumerZipfMandelbrot</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">NDN app requesting contents following Zipf-Mandelbrot Distbituion.  <a href="classns3_1_1ndn_1_1ConsumerZipfMandelbrot.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1ParserOpenDSS.html">ParserOpenDSS</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1ParserReDisPv.html">ParserReDisPv</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1Producer.html">Producer</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple Interest-sink applia simple Interest-sink application.  <a href="classns3_1_1ndn_1_1Producer.html#details">More...</a><br /></td></tr>
@@ -142,20 +140,11 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A producer which publishes updates of its data at a fixed frequency.  <a href="classns3_1_1ndn_1_1SpontaneousProducer.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1Subscriber.html">Subscriber</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">NDN application for sending out Interest packets.  <a href="classns3_1_1ndn_1_1Subscriber.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">NDN application for sending out payloaded Interest packets.  <a href="classns3_1_1ndn_1_1Subscriber.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1Synchronizer.html">Synchronizer</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1TBDriver.html">TBDriver</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classns3_1_1ndn_1_1App.html" title="Base class that all NDN applications should be derived from.">App</a> meant to define and drive token generation for traffic control.  <a href="classns3_1_1ndn_1_1TBDriver.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1SyncSocket.html">SyncSocket</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classns3_1_1ndn_1_1TBucket.html">TBucket</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A simple app meant to produce tokens Generates tokesn at a given frequency and updates the appropriate token buckets.  <a href="classns3_1_1ndn_1_1TBucket.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:add1971548e53af0a75674b33d1d085aa"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens3_1_1ndn.html#add1971548e53af0a75674b33d1d085aa">json</a> = nlohmann::json</td></tr>
-<tr class="separator:add1971548e53af0a75674b33d1d085aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -187,30 +176,13 @@ Functions</h2></td></tr>
 <tr class="separator:a4f09329cb19fb71137bf95085671aa2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50dc425b4502976b864e834ecd3e91e1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens3_1_1ndn.html#a50dc425b4502976b864e834ecd3e91e1">NS_OBJECT_ENSURE_REGISTERED</a> (<a class="el" href="classns3_1_1ndn_1_1Producer.html">Producer</a>)</td></tr>
 <tr class="separator:a50dc425b4502976b864e834ecd3e91e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c1b8b5301ec0d3109d235c38025aad0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens3_1_1ndn.html#a5c1b8b5301ec0d3109d235c38025aad0">NS_OBJECT_ENSURE_REGISTERED</a> (<a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html">ConsumerQos</a>)</td></tr>
-<tr class="separator:a5c1b8b5301ec0d3109d235c38025aad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a286d35845041d88757ca6142926a2f0d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens3_1_1ndn.html#a286d35845041d88757ca6142926a2f0d">NS_OBJECT_ENSURE_REGISTERED</a> (<a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html">ConsumerSync</a>)</td></tr>
+<tr class="separator:a286d35845041d88757ca6142926a2f0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a490aa70a57556d12652d803d068e0822"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens3_1_1ndn.html#a490aa70a57556d12652d803d068e0822">NS_OBJECT_ENSURE_REGISTERED</a> (<a class="el" href="classns3_1_1ndn_1_1Subscriber.html">Subscriber</a>)</td></tr>
 <tr class="separator:a490aa70a57556d12652d803d068e0822"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad92f640f390f95c0523e03ba9a00ccff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens3_1_1ndn.html#ad92f640f390f95c0523e03ba9a00ccff">NS_OBJECT_ENSURE_REGISTERED</a> (<a class="el" href="classns3_1_1ndn_1_1TBucket.html">TBucket</a>)</td></tr>
-<tr class="separator:ad92f640f390f95c0523e03ba9a00ccff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34264ba7af8643fc5b974905d228bb69"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacens3_1_1ndn.html#a34264ba7af8643fc5b974905d228bb69">NS_OBJECT_ENSURE_REGISTERED</a> (<a class="el" href="classns3_1_1ndn_1_1TBDriver.html">TBDriver</a>)</td></tr>
+<tr class="separator:a34264ba7af8643fc5b974905d228bb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="add1971548e53af0a75674b33d1d085aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add1971548e53af0a75674b33d1d085aa">&#9670;&nbsp;</a></span>json</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef nlohmann::json <a class="el" href="namespacens3_1_1ndn.html#add1971548e53af0a75674b33d1d085aa">ns3::ndn::json</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="ndn-synchronizer-socket_8cpp_source.html#l00052">52</a> of file <a class="el" href="ndn-synchronizer-socket_8cpp_source.html">ndn-synchronizer-socket.cpp</a>.</p>
-
-</div>
-</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a63b9e0c3443e58a22ccb12ec646d726b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a63b9e0c3443e58a22ccb12ec646d726b">&#9670;&nbsp;</a></span>CcAlgorithm</h2>
@@ -414,8 +386,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5c1b8b5301ec0d3109d235c38025aad0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5c1b8b5301ec0d3109d235c38025aad0">&#9670;&nbsp;</a></span>NS_OBJECT_ENSURE_REGISTERED() <span class="overload">[11/13]</span></h2>
+<a id="a286d35845041d88757ca6142926a2f0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a286d35845041d88757ca6142926a2f0d">&#9670;&nbsp;</a></span>NS_OBJECT_ENSURE_REGISTERED() <span class="overload">[11/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -423,7 +395,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">ns3::ndn::NS_OBJECT_ENSURE_REGISTERED </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classns3_1_1ndn_1_1ConsumerQos.html">ConsumerQos</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classns3_1_1ndn_1_1ConsumerSync.html">ConsumerSync</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -450,8 +422,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad92f640f390f95c0523e03ba9a00ccff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad92f640f390f95c0523e03ba9a00ccff">&#9670;&nbsp;</a></span>NS_OBJECT_ENSURE_REGISTERED() <span class="overload">[13/13]</span></h2>
+<a id="a34264ba7af8643fc5b974905d228bb69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34264ba7af8643fc5b974905d228bb69">&#9670;&nbsp;</a></span>NS_OBJECT_ENSURE_REGISTERED() <span class="overload">[13/13]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,7 +431,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">ns3::ndn::NS_OBJECT_ENSURE_REGISTERED </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classns3_1_1ndn_1_1TBucket.html">TBucket</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="classns3_1_1ndn_1_1TBDriver.html">TBDriver</a>&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -474,7 +446,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacens3.html">ns3</a></li><li class="navelem"><a class="el" href="namespacens3_1_1ndn.html">ndn</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

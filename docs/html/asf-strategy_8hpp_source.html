@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>ndnSIM: ndnSIM/NFD/daemon/fw/asf-strategy.hpp Source File</title>
+<title>ndnSIM QoS: ndnSIM/NFD/daemon/fw/asf-strategy.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,14 +26,17 @@
  <tr style="height: 56px;">
   <td id="projectlogo">
 	<a href="http://ndnSIM.net/">
-	<img alt="ndnSIM Logo" src="../_static/ndn-logo.png"/>
+	<img alt="ndnSIM QoS Logo" src="../_static/ndn-logo.png"/>
         </a>
 	<a href="http://irl.cs.ucla.edu/">
 	<img alt="IRL Logo" src="../_static/irl-logo.png"/>
         </a>
+	<a href="http://nmsu.edu/">
+	<img alt="NMSU Logo" src="../_static/nmsu-logo.png"/>
+        </a>
   </td>
   <td id="projecttext">
-   <div id="projectbrief">NS-3 based Named Data Networking (NDN) simulator</div>
+   <div id="projectbrief">NS-3 based Named Data Networking (NDN) QoS simulator</div>
    <span id="projectnumber">ndnSIM 2.5: NDN, CCN, CCNx, content centric networks</span>
   </td>
   <td id="projectsection">
@@ -207,7 +210,7 @@ $(document).ready(function(){initNavTree('asf-strategy_8hpp_source.html',''); in
 <div class="ttc" id="aclassnfd_1_1fw_1_1asf_1_1AsfStrategy_html_ae5eb779c900b4580b68419d172b26574"><div class="ttname"><a href="classnfd_1_1fw_1_1asf_1_1AsfStrategy.html#ae5eb779c900b4580b68419d172b26574">nfd::fw::asf::AsfStrategy::beforeSatisfyInterest</a></div><div class="ttdeci">void beforeSatisfyInterest(const shared_ptr&lt; pit::Entry &gt; &amp;pitEntry, const Face &amp;inFace, const Data &amp;data) override</div><div class="ttdoc">trigger before PIT entry is satisfied</div><div class="ttdef"><b>Definition:</b> <a href="asf-strategy_8cpp_source.html#l00159">asf-strategy.cpp:159</a></div></div>
 <div class="ttc" id="anamespacenfd_1_1fw_1_1asf_html_af5846aa36fd1633d32c93af8ae5237a3"><div class="ttname"><a href="namespacenfd_1_1fw_1_1asf.html#af5846aa36fd1633d32c93af8ae5237a3">nfd::fw::asf::AsfStrategy</a></div><div class="ttdeci">AsfStrategy</div><div class="ttdef"><b>Definition:</b> <a href="asf-strategy_8cpp_source.html#l00034">asf-strategy.cpp:34</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1RetxSuppressionExponential_html"><div class="ttname"><a href="classnfd_1_1fw_1_1RetxSuppressionExponential.html">nfd::fw::RetxSuppressionExponential</a></div><div class="ttdoc">a retransmission suppression decision algorithm that suppresses retransmissions using exponential bac...</div><div class="ttdef"><b>Definition:</b> <a href="retx-suppression-exponential_8hpp_source.html#l00041">retx-suppression-exponential.hpp:42</a></div></div>
-<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="ConsumedTokens_8cpp_source.html#l00024">ConsumedTokens.cpp:24</a></div></div>
+<div class="ttc" id="anamespacenfd_html"><div class="ttname"><a href="namespacenfd.html">nfd</a></div><div class="ttdoc">Copyright (c) 2014-2016, Regents of the University of California, Arizona Board of Regents,...</div><div class="ttdef"><b>Definition:</b> <a href="TBucketRef_8cpp_source.html#l00026">TBucketRef.cpp:26</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1asf_1_1AsfStrategy_html_a25b495c174d7af3ad4565684c1df2b5a"><div class="ttname"><a href="classnfd_1_1fw_1_1asf_1_1AsfStrategy.html#a25b495c174d7af3ad4565684c1df2b5a">nfd::fw::asf::AsfStrategy::afterReceiveInterest</a></div><div class="ttdeci">void afterReceiveInterest(const Face &amp;inFace, const Interest &amp;interest, const shared_ptr&lt; pit::Entry &gt; &amp;pitEntry) override</div><div class="ttdoc">trigger after Interest is received</div><div class="ttdef"><b>Definition:</b> <a href="asf-strategy_8cpp_source.html#l00110">asf-strategy.cpp:110</a></div></div>
 <div class="ttc" id="aclassnfd_1_1fw_1_1Strategy_html"><div class="ttname"><a href="classnfd_1_1fw_1_1Strategy.html">nfd::fw::Strategy</a></div><div class="ttdoc">represents a forwarding strategy</div><div class="ttdef"><b>Definition:</b> <a href="strategy_8hpp_source.html#l00037">strategy.hpp:38</a></div></div>
 <div class="ttc" id="aclassnfd_1_1Forwarder_html"><div class="ttname"><a href="classnfd_1_1Forwarder.html">nfd::Forwarder</a></div><div class="ttdoc">main class of NFD</div><div class="ttdef"><b>Definition:</b> <a href="forwarder_8hpp_source.html#l00054">forwarder.hpp:55</a></div></div>
@@ -221,7 +224,7 @@ $(document).ready(function(){initNavTree('asf-strategy_8hpp_source.html',''); in
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_e9ed9e4c2a9be74cf2edea2a86d169c7.html">ndnSIM</a></li><li class="navelem"><a class="el" href="dir_a33e1b909c4367284ea68eb443929cdf.html">NFD</a></li><li class="navelem"><a class="el" href="dir_40ea591da35ce2661aadd5d70172d5e9.html">daemon</a></li><li class="navelem"><a class="el" href="dir_5e15bd910bc0a4639d1012667e3b813f.html">fw</a></li><li class="navelem"><a class="el" href="asf-strategy_8hpp.html">asf-strategy.hpp</a></li>
-    <li class="footer">Generated on Tue Dec 1 2020 23:29:49 for ndnSIM by
+    <li class="footer">Generated on Wed Dec 30 2020 13:47:34 for ndnSIM QoS by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.9.0 </li>
   </ul>

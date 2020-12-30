@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['total_5fqueues_1119',['TOTAL_QUEUES',['../ndn-priority-tx-queue_8hpp.html#a96e388d5ec326fa3294365f65c6d4dbe',1,'ndn-priority-tx-queue.hpp']]]
+  ['total_5fqueues_1120',['TOTAL_QUEUES',['../ndn-priority-tx-queue_8hpp.html#a96e388d5ec326fa3294365f65c6d4dbe',1,'ndn-priority-tx-queue.hpp']]]
 ];

@@ -1,7 +1,6 @@
 /*
  * Copyright ( C ) 2020 New Mexico State University
  *
- * George Torres, Anju Kunnumpurathu James
  * See AUTHORS.md for complete list of authors and contributors.
  *
  * This program is free software: you can redistribute it and/or modify
