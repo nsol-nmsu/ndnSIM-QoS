@@ -1,5 +1,5 @@
 /*
- * Copyright ( C ) 2020 New Mexico State University
+ * Copyright ( C ) 2020 New Mexico State University- Board of Regents
  *
  * See AUTHORS.md for complete list of authors and contributors.
  *
@@ -18,7 +18,7 @@
  *
  */
 
-#include "ndn-producer-spontaneous.hpp"
+#include "ndn-QoS-producer.hpp"
 #include "ns3/log.h"
 #include "ns3/string.h"
 #include "ns3/uinteger.h"
@@ -31,57 +31,57 @@
 #include <memory>
 #include <fstream>
 
-NS_LOG_COMPONENT_DEFINE("ndn.SpontaneousProducer");
+NS_LOG_COMPONENT_DEFINE("ndn.QoSProducer");
 
 namespace ns3 {
 namespace ndn {
 
-NS_OBJECT_ENSURE_REGISTERED(SpontaneousProducer);
+NS_OBJECT_ENSURE_REGISTERED(QoSProducer);
 
 TypeId
-SpontaneousProducer::GetTypeId(void)
+QoSProducer::GetTypeId(void)
 {
   static TypeId tid =
-    TypeId("ns3::ndn::SpontaneousProducer")
+    TypeId("ns3::ndn::QoSProducer")
       .SetGroupName("Ndn")
       .SetParent<App>()
-      .AddConstructor<SpontaneousProducer>()
+      .AddConstructor<QoSProducer>()
       .AddAttribute("Prefix", "Prefix, for which producer has the data", StringValue("/"),
-                    MakeNameAccessor(&SpontaneousProducer::m_prefix), MakeNameChecker())
+                    MakeNameAccessor(&QoSProducer::m_prefix), MakeNameChecker())
       .AddAttribute(
          "Postfix",
          "Postfix that is added to the output data (e.g., for adding producer-uniqueness)",
-         StringValue("/"), MakeNameAccessor(&SpontaneousProducer::m_postfix), MakeNameChecker())
+         StringValue("/"), MakeNameAccessor(&QoSProducer::m_postfix), MakeNameChecker())
       .AddAttribute("PayloadSize", "Virtual payload size for Content packets", UintegerValue(1024),
-                    MakeUintegerAccessor(&SpontaneousProducer::m_virtualPayloadSize),
+                    MakeUintegerAccessor(&QoSProducer::m_virtualPayloadSize),
                     MakeUintegerChecker<uint32_t>())
       .AddAttribute("Freshness", "Freshness of data packets, if 0, then unlimited freshness",
-                    TimeValue(Seconds(0)), MakeTimeAccessor(&SpontaneousProducer::m_freshness),
+                    TimeValue(Seconds(0)), MakeTimeAccessor(&QoSProducer::m_freshness),
                     MakeTimeChecker())
       .AddAttribute("Frequency", "Frequency of data packets, if 0, then no spontaneous publish",
-                    TimeValue(Seconds(5)), MakeTimeAccessor(&SpontaneousProducer::m_frequency),
+                    TimeValue(Seconds(5)), MakeTimeAccessor(&QoSProducer::m_frequency),
                     MakeTimeChecker())
       .AddAttribute(
          "Signature",
          "Fake signature, 0 valid signature (default), other values application-specific",
-         UintegerValue(0), MakeUintegerAccessor(&SpontaneousProducer::m_signature),
+         UintegerValue(0), MakeUintegerAccessor(&QoSProducer::m_signature),
          MakeUintegerChecker<uint32_t>())
       .AddAttribute("KeyLocator",
                     "Name to be used for key locator.  If root, then key locator is not used",
-                    NameValue(), MakeNameAccessor(&SpontaneousProducer::m_keyLocator), MakeNameChecker())
+                    NameValue(), MakeNameAccessor(&QoSProducer::m_keyLocator), MakeNameChecker())
 
       .AddTraceSource("SentData", "SentData",
-                      MakeTraceSourceAccessor(&SpontaneousProducer::m_sentData),
-                      "ns3::ndn::SpontaneousProducer::SentDataTraceCallback")
+                      MakeTraceSourceAccessor(&QoSProducer::m_sentData),
+                      "ns3::ndn::QoSProducer::SentDataTraceCallback")
 
       .AddTraceSource("ReceivedInterest", "ReceivedInterest",
-                      MakeTraceSourceAccessor(&SpontaneousProducer::m_receivedInterest),
-                      "ns3::ndn::SpontaneousProducer::ReceivedInterestTraceCallback");
+                      MakeTraceSourceAccessor(&QoSProducer::m_receivedInterest),
+                      "ns3::ndn::QoSProducer::ReceivedInterestTraceCallback");
 
   return tid;
 }
 
-SpontaneousProducer::SpontaneousProducer()
+QoSProducer::QoSProducer()
   :m_firstTime(true)
   , m_subscription(0)
   , m_receivedpayload(0)
@@ -92,7 +92,7 @@ SpontaneousProducer::SpontaneousProducer()
 
 // inherited from Application base class.
 void
-SpontaneousProducer::StartApplication()
+QoSProducer::StartApplication()
 {
     NS_LOG_FUNCTION_NOARGS();
     App::StartApplication();
@@ -105,14 +105,14 @@ SpontaneousProducer::StartApplication()
 }
 
 void
-SpontaneousProducer::StopApplication()
+QoSProducer::StopApplication()
 {
     NS_LOG_FUNCTION_NOARGS();
     App::StopApplication();
 }
 
 void
-SpontaneousProducer::OnInterest(shared_ptr<const Interest> interest)
+QoSProducer::OnInterest(shared_ptr<const Interest> interest)
 {
     NS_LOG_INFO("SUBSCRIPTION value = " << interest->getSubscription() << " & PAYLOAD = " << interest->getPayloadLength() << " TIME: " << Simulator::Now());
     App::OnInterest(interest); // tracing inside
@@ -138,7 +138,7 @@ SpontaneousProducer::OnInterest(shared_ptr<const Interest> interest)
 }
 
 void
-SpontaneousProducer::SendTimeout(){
+QoSProducer::SendTimeout(){
 	
     double send_delay = 0.0; //(double)((Simulator::Now().GetNanoSeconds())/1000000000);
 
@@ -151,19 +151,19 @@ SpontaneousProducer::SendTimeout(){
             //Send multiple chunks of 1Kbyte (1024bytes) data to physical node
             for (int i=0; i<(int)m_subDataSize; i++) {
                 //SendData(m_prefix);
-                Simulator::Schedule(Seconds(send_delay), &SpontaneousProducer::SendData, this, m_prefix);
+                Simulator::Schedule(Seconds(send_delay), &QoSProducer::SendData, this, m_prefix);
                 send_delay = send_delay + 0.03;
             }
         }
     }
 
     if(m_frequency != 0) {
-        m_txEvent = Simulator::Schedule(m_frequency, &SpontaneousProducer::SendTimeout, this);
+        m_txEvent = Simulator::Schedule(m_frequency, &QoSProducer::SendTimeout, this);
     }
 }
 
 void
-SpontaneousProducer::SendData(const Name &dataName)
+QoSProducer::SendData(const Name &dataName)
 {
     if (!m_active)
         return;

@@ -1,5 +1,5 @@
 /*
- * Copyright ( C ) 2020 New Mexico State University
+ * Copyright ( C ) 2020 New Mexico State University- Board of Regents
  *
  * See AUTHORS.md for complete list of authors and contributors.
  *
@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef NDN_PRODUCER_SPONTANEOUS_H
-#define NDN_PRODUCER_SPONTANEOUS_H
+#ifndef NDN_QOS_PRODUCER_H
+#define NDN_QOS_PRODUCER_H
 
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
@@ -34,24 +34,29 @@ namespace ndn {
 
 /**
  * @ingroup ndnQoS
- * @brief A producer which publishes updates of its data at a fixed frequency.
- * These updates are sent regardless of whether an interest was received
- * or not and nodes which subscribe to the data will receive it. 
+ * @brief A producer which can receive and process payloaded interests.
+ *
+ * When the producer receives a payloaded interest, it will only respond
+ * with an ack. 
+ *
+ * It also has the ability to publish content at a given frequency to 
+ * consmers that have subscribed to it. This published content will be 
+ * sent out to consumers without needing a corresponding interest.
  */
-class SpontaneousProducer : public App {
+class QoSProducer : public App {
 public:
   static TypeId
   GetTypeId(void);
 
   /// Default constructor for the class
-  SpontaneousProducer();
+  QoSProducer();
 
   // inherited from NdnApp
   virtual void
   OnInterest(shared_ptr<const Interest> interest);
 
   /**
-   * @brief Send data to subscribed nodes (typically prosumers at the physical layer)
+   * @brief Send data to subscribed nodes or send out ack.
    */
   void
   SendData(const Name &dataName);

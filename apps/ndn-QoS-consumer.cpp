@@ -1,5 +1,5 @@
 /*
- * Copyright ( C ) 2020 New Mexico State University
+ * Copyright ( C ) 2020 New Mexico State University- Board of Regents
  *
  * See AUTHORS.md for complete list of authors and contributors.
  *
@@ -18,7 +18,7 @@
  *
  */
 
-#include "ndn-subscriber.hpp"
+#include "ndn-QoS-consumer.hpp"
 #include "ns3/ptr.h"
 #include "ns3/log.h"
 #include "ns3/simulator.h"
@@ -40,75 +40,75 @@
 
 #include <fstream>
 
-NS_LOG_COMPONENT_DEFINE( "ndn.Subscriber" );
+NS_LOG_COMPONENT_DEFINE( "ndn.QoSConsumer" );
 
 namespace ns3 {
 namespace ndn {
 
-NS_OBJECT_ENSURE_REGISTERED( Subscriber );
+NS_OBJECT_ENSURE_REGISTERED( QoSConsumer );
 
 TypeId
-Subscriber::GetTypeId( void )
+QoSConsumer::GetTypeId( void )
 {
   static TypeId tid =
-    TypeId( "ns3::ndn::Subscriber" )
+    TypeId( "ns3::ndn::QoSConsumer" )
       .SetGroupName( "Ndn" )
       .SetParent<App>()
-      .AddConstructor<Subscriber>()
+      .AddConstructor<QoSConsumer>()
 
       .AddAttribute( "StartSeq", "Initial sequence number", IntegerValue( 0 ),
-                    MakeIntegerAccessor( &Subscriber::m_seq ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &QoSConsumer::m_seq ), MakeIntegerChecker<int32_t>() )
       .AddAttribute( "Prefix", "Name of the Interest", StringValue( "/" ),
-                    MakeNameAccessor( &Subscriber::m_interestName ), MakeNameChecker() )
+                    MakeNameAccessor( &QoSConsumer::m_interestName ), MakeNameChecker() )
       .AddAttribute( "LifeTime", "LifeTime for subscription packet", StringValue( "5400s" ),
-                    MakeTimeAccessor( &Subscriber::m_interestLifeTime ), MakeTimeChecker() )
+                    MakeTimeAccessor( &QoSConsumer::m_interestLifeTime ), MakeTimeChecker() )
       .AddAttribute( "Frequency",
                     "Timeout defining how frequently subscription should be reinforced",
 		    TimeValue( Seconds( 60 ) ),
-                    MakeTimeAccessor( &Subscriber::m_txInterval ), MakeTimeChecker() )
+                    MakeTimeAccessor( &QoSConsumer::m_txInterval ), MakeTimeChecker() )
 
       .AddAttribute( "RetxTimer",
                     "Timeout defining how frequent retransmission timeouts should be checked",
                     StringValue( "50s" ),
-                    MakeTimeAccessor( &Subscriber::GetRetxTimer, &Subscriber::SetRetxTimer ),
+                    MakeTimeAccessor( &QoSConsumer::GetRetxTimer, &QoSConsumer::SetRetxTimer ),
                     MakeTimeChecker() )
 
       .AddAttribute( "RetransmitPackets", "Retransmit lost packets if set to 1, otherwise do not perform retransmission", IntegerValue( 1 ),
-                    MakeIntegerAccessor( &Subscriber::m_doRetransmission ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &QoSConsumer::m_doRetransmission ), MakeIntegerChecker<int32_t>() )
 
       .AddAttribute( "Subscription", "Subscription value for the interest. 0-normal interest, 1-soft subscribe, 2-hard subscriber, 3-unsubsribe", IntegerValue( 2 ),
-                    MakeIntegerAccessor( &Subscriber::m_subscription ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &QoSConsumer::m_subscription ), MakeIntegerChecker<int32_t>() )
 
       .AddAttribute( "Offset", "Random offset to randomize sending of interests", IntegerValue( 0 ),
-                    MakeIntegerAccessor( &Subscriber::m_offset ), MakeIntegerChecker<int32_t>() )
+                    MakeIntegerAccessor( &QoSConsumer::m_offset ), MakeIntegerChecker<int32_t>() )
 
       .AddAttribute( "PayloadSize", "Virtual payload size for interest packets", UintegerValue( 0 ),
-                    MakeUintegerAccessor( &Subscriber::m_virtualPayloadSize ),
+                    MakeUintegerAccessor( &QoSConsumer::m_virtualPayloadSize ),
                     MakeUintegerChecker<uint32_t>() )
 
       .AddTraceSource( "LastRetransmittedInterestDataDelay",
                       "Delay between last retransmitted Interest and received Data",
-                      MakeTraceSourceAccessor( &Subscriber::m_lastRetransmittedInterestDataDelay ),
-                      "ns3::ndn::Subscriber::LastRetransmittedInterestDataDelayCallback" )
+                      MakeTraceSourceAccessor( &QoSConsumer::m_lastRetransmittedInterestDataDelay ),
+                      "ns3::ndn::QoSConsumer::LastRetransmittedInterestDataDelayCallback" )
 
       .AddTraceSource( "FirstInterestDataDelay",
                       "Delay between first transmitted Interest and received Data",
-                      MakeTraceSourceAccessor( &Subscriber::m_firstInterestDataDelay ),
-                      "ns3::ndn::Subscriber::FirstInterestDataDelayCallback" )
+                      MakeTraceSourceAccessor( &QoSConsumer::m_firstInterestDataDelay ),
+                      "ns3::ndn::QoSConsumer::FirstInterestDataDelayCallback" )
 
       .AddTraceSource( "ReceivedData", "ReceivedData",
-                      MakeTraceSourceAccessor( &Subscriber::m_receivedData ),
-                      "ns3::ndn::Subscriber::ReceivedDataTraceCallback" )
+                      MakeTraceSourceAccessor( &QoSConsumer::m_receivedData ),
+                      "ns3::ndn::QoSConsumer::ReceivedDataTraceCallback" )
 
       .AddTraceSource( "SentInterest", "SentInterest",
-                      MakeTraceSourceAccessor( &Subscriber::m_sentInterest ),
-                      "ns3::ndn::Subscriber::SentInterestTraceCallback" );
+                      MakeTraceSourceAccessor( &QoSConsumer::m_sentInterest ),
+                      "ns3::ndn::QoSConsumer::SentInterestTraceCallback" );
       ;
 
 	  return tid;
 }
 
-Subscriber::Subscriber()
+QoSConsumer::QoSConsumer()
     : m_rand( CreateObject<UniformRandomVariable>() )
     , m_seq( 0 )
     , m_seqMax( std::numeric_limits<uint32_t>::max() ) // set to max value on uint32
@@ -120,29 +120,29 @@ Subscriber::Subscriber()
 }
 
 
-Subscriber::~Subscriber()
+QoSConsumer::~QoSConsumer()
 {
 }
 
 
 void
-Subscriber::ScheduleNextPacket()
+QoSConsumer::ScheduleNextPacket()
 {
 	if ( m_firstTime ) {
 
-		m_sendEvent = Simulator::Schedule( Seconds( double( m_offset ) ), &Subscriber::SendPacket, this );
+		m_sendEvent = Simulator::Schedule( Seconds( double( m_offset ) ), &QoSConsumer::SendPacket, this );
 		m_firstTime = false;
 
 	} else if ( !m_sendEvent.IsRunning() ) {
 
-		m_sendEvent = Simulator::Schedule( m_txInterval, &Subscriber::SendPacket, this );
+		m_sendEvent = Simulator::Schedule( m_txInterval, &QoSConsumer::SendPacket, this );
 
 	}
 }
 
 
 void
-Subscriber::SetRetxTimer( Time retxTimer )
+QoSConsumer::SetRetxTimer( Time retxTimer )
 {
 
 	// Do not restranmit lost packets, if set to 0
@@ -157,19 +157,19 @@ Subscriber::SetRetxTimer( Time retxTimer )
 		}
 
 		// Schedule even with new timeout
-		m_retxEvent = Simulator::Schedule( m_retxTimer, &Subscriber::CheckRetxTimeout, this );
+		m_retxEvent = Simulator::Schedule( m_retxTimer, &QoSConsumer::CheckRetxTimeout, this );
 	}
 }
 
 
 Time
-Subscriber::GetRetxTimer() const
+QoSConsumer::GetRetxTimer() const
 {
 	return m_retxTimer;
 }
 
 void
-Subscriber::CheckRetxTimeout()
+QoSConsumer::CheckRetxTimeout()
 {
 	Time now = Simulator::Now();
 
@@ -192,14 +192,14 @@ Subscriber::CheckRetxTimeout()
 		}
 	}
 
-	m_retxEvent = Simulator::Schedule( m_retxTimer, &Subscriber::CheckRetxTimeout, this );
+	m_retxEvent = Simulator::Schedule( m_retxTimer, &QoSConsumer::CheckRetxTimeout, this );
 }
 
 
 
 // Application methods
 void
-Subscriber::StartApplication()
+QoSConsumer::StartApplication()
 {
 	NS_LOG_FUNCTION_NOARGS();
 	App::StartApplication();
@@ -207,7 +207,7 @@ Subscriber::StartApplication()
 }
 
 void
-Subscriber::StopApplication() // Called at time specified by Stop
+QoSConsumer::StopApplication() // Called at time specified by Stop
 {
 	NS_LOG_FUNCTION_NOARGS();
 	Simulator::Cancel( m_sendEvent );
@@ -215,7 +215,7 @@ Subscriber::StopApplication() // Called at time specified by Stop
 }
 
 void
-Subscriber::SendPacket()
+QoSConsumer::SendPacket()
 {
 	// Set default size for payload interets
 	if ( m_subscription == 0 && m_virtualPayloadSize == 0 ) {
@@ -281,7 +281,7 @@ Subscriber::SendPacket()
 ///////////////////////////////////////////////////
 
 void
-Subscriber::OnData( shared_ptr<const Data> data )
+QoSConsumer::OnData( shared_ptr<const Data> data )
 {
 
 	if ( !m_active ) {
@@ -340,7 +340,7 @@ Subscriber::OnData( shared_ptr<const Data> data )
 }
 
 void
-Subscriber::OnTimeout( uint32_t sequenceNumber )
+QoSConsumer::OnTimeout( uint32_t sequenceNumber )
 {
 	//NS_LOG_FUNCTION( sequenceNumber );
 	//std::cout << Simulator::Now () << ", TO: " << sequenceNumber << ", current RTO: " <<
@@ -353,7 +353,7 @@ Subscriber::OnTimeout( uint32_t sequenceNumber )
 }
 
 void
-Subscriber::WillSendOutInterest( uint32_t sequenceNumber )
+QoSConsumer::WillSendOutInterest( uint32_t sequenceNumber )
 {
 	NS_LOG_DEBUG( "Trying to add " << sequenceNumber << " with " << Simulator::Now() << ". already "
 			<< m_seqTimeouts.size() << " items" );
