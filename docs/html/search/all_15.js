@@ -1,7 +1,15 @@
 var searchData=
 [
-  ['willsendoutinterest_466',['WillSendOutInterest',['../classns3_1_1ndn_1_1Aggregator.html#ac488c3a7b4a9d163b4713a0ffe77406a',1,'ns3::ndn::Aggregator::WillSendOutInterest()'],['../classns3_1_1ndn_1_1ConsumerWindow.html#ae3a121e015d5470dc26d756ec620c111',1,'ns3::ndn::ConsumerWindow::WillSendOutInterest()'],['../classns3_1_1ndn_1_1Consumer.html#a61f73750ef40b39a7f4f15cd952bb36a',1,'ns3::ndn::Consumer::WillSendOutInterest()'],['../classns3_1_1ndn_1_1ConsumerSync.html#a500606ca283c39d75b3bedd31914ec78',1,'ns3::ndn::ConsumerSync::WillSendOutInterest()'],['../classns3_1_1ndn_1_1Subscriber.html#aa8356a7d2bb6129d34efb0aa8aa11bc7',1,'ns3::ndn::Subscriber::WillSendOutInterest()']]],
-  ['windowtracecallback_467',['WindowTraceCallback',['../classns3_1_1ndn_1_1ConsumerWindow.html#a6196d2a0b87bae4a062a3d5cf3472d4c',1,'ns3::ndn::ConsumerWindow']]],
-  ['wireencode_468',['wireEncode',['../structnfd_1_1fw_1_1QueueItem.html#a7271523aafec3b1e7c3bd00bd6af2e57',1,'nfd::fw::QueueItem']]],
-  ['wouldviolatescope_469',['wouldViolateScope',['../namespacenfd_1_1fw.html#aec676de4a68d2df6409b6cd259f79be6',1,'nfd::fw']]]
+  ['_7eapp_454',['~App',['../classns3_1_1ndn_1_1App.html#a1c97da3f12f2c6604a5e373622633e9a',1,'ns3::ndn::App']]],
+  ['_7econsumer_455',['~Consumer',['../classns3_1_1ndn_1_1Consumer.html#ac455ab61ad7bb1843aea0f8853106e2e',1,'ns3::ndn::Consumer']]],
+  ['_7econsumercbr_456',['~ConsumerCbr',['../classns3_1_1ndn_1_1ConsumerCbr.html#a4b062bbd9bb4fb14d344cbfb9e3023eb',1,'ns3::ndn::ConsumerCbr']]],
+  ['_7econsumerzipfmandelbrot_457',['~ConsumerZipfMandelbrot',['../classns3_1_1ndn_1_1ConsumerZipfMandelbrot.html#ad5d8b466e19adaf1f0d44ebe0e7ab7f8',1,'ns3::ndn::ConsumerZipfMandelbrot']]],
+  ['_7efaceinfo_458',['~FaceInfo',['../classnfd_1_1fw_1_1asf_1_1FaceInfo.html#a0592ed04fa4fb907f34d12ff2954f614',1,'nfd::fw::asf::FaceInfo']]],
+  ['_7eforwarder_459',['~Forwarder',['../classnfd_1_1Forwarder.html#a7428e32186d3d5db9e9b34296ce8756e',1,'nfd::Forwarder']]],
+  ['_7epitentryinfo_460',['~PitEntryInfo',['../classnfd_1_1fw_1_1NccStrategy_1_1PitEntryInfo.html#a68f90bc9a0ed89367fb7deac56c38501',1,'nfd::fw::NccStrategy::PitEntryInfo']]],
+  ['_7eprocessnacktraitsbase_461',['~ProcessNackTraitsBase',['../classnfd_1_1fw_1_1ProcessNackTraitsBase.html#a904f5f433f965cadbeeba6489db822e1',1,'nfd::fw::ProcessNackTraitsBase']]],
+  ['_7eqosconsumer_462',['~QoSConsumer',['../classns3_1_1ndn_1_1QoSConsumer.html#a3e481c391417b9eada6ae6a7b0c20352',1,'ns3::ndn::QoSConsumer']]],
+  ['_7estrategy_463',['~Strategy',['../classnfd_1_1fw_1_1Strategy.html#ac949aca1560ec3d123c773008ac1455c',1,'nfd::fw::Strategy']]],
+  ['_7estrategyinfo_464',['~StrategyInfo',['../classnfd_1_1fw_1_1StrategyInfo.html#a636995fab607280fe9b5526929dd55db',1,'nfd::fw::StrategyInfo']]],
+  ['_7eunsoliciteddatapolicy_465',['~UnsolicitedDataPolicy',['../classnfd_1_1fw_1_1UnsolicitedDataPolicy.html#a9948f07c344a2fa520196a570ee737eb',1,'nfd::fw::UnsolicitedDataPolicy']]]
 ];

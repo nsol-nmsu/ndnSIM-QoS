@@ -355,7 +355,7 @@ main( int argc, char* argv[] )
   ndn::StrategyChoiceHelper::InstallAll( "/power/be", "/localhost/nfd/strategy/best-route" );
   //ndn::StrategyChoiceHelper::InstallAll( "/", "/localhost/nfd/strategy/qos" );
 
-  ndn::AppHelper tokenHelper( "ns3::ndn::TokenBucket" );
+  ndn::AppHelper tokenHelper( "ns3::ndn::TokenBucketDriver" );
   tokenHelper.SetAttribute( "FillRate1", StringValue( "250" ) ); // 10 interests a second
   tokenHelper.SetAttribute( "Capacity1", StringValue( "50" ) ); // 10 interests a second
   tokenHelper.SetAttribute( "FillRate2", StringValue( "200" ) ); // 10 interests a second

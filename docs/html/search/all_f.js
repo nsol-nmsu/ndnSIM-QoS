@@ -1,11 +1,22 @@
 var searchData=
 [
-  ['qos_2dstrategy_2ecpp_358',['qos-strategy.cpp',['../qos-strategy_8cpp.html',1,'']]],
-  ['qos_2dstrategy_2ehpp_359',['qos-strategy.hpp',['../qos-strategy_8hpp.html',1,'']]],
-  ['qospackettype_360',['QosPacketType',['../namespacenfd_1_1fw.html#aa0dd38a48370fbd686322e3aa275f4da',1,'nfd::fw']]],
-  ['qosqueue_361',['QosQueue',['../classnfd_1_1fw_1_1QosQueue.html',1,'nfd::fw::QosQueue'],['../classnfd_1_1fw_1_1QosQueue.html#af87b520647ef472ec6403b3454b3d61e',1,'nfd::fw::QosQueue::QosQueue()'],['../ndn-qos-queue_8cpp.html#a79bb502b961aaf2668986f95218f9fde',1,'QosQueue():&#160;ndn-qos-queue.cpp']]],
-  ['qosstrategy_362',['QosStrategy',['../classnfd_1_1fw_1_1QosStrategy.html',1,'nfd::fw::QosStrategy'],['../classnfd_1_1fw_1_1QosStrategy.html#a22b3fd900469ad18cc75db2883e9253a',1,'nfd::fw::QosStrategy::QosStrategy()'],['../namespacenfd_1_1fw.html#aab5892bd3afb3e52c96aab2d9fe1dfee',1,'nfd::fw::QosStrategy()']]],
-  ['queue_363',['Queue',['../classnfd_1_1fw_1_1QosQueue.html#a3781471f80d51b2730e5bf518cd4ae45',1,'nfd::fw::QosQueue']]],
-  ['queue_5fsize_364',['QUEUE_SIZE',['../ndn-qos-queue_8hpp.html#a142810068f1b99cd93d3fc9f0e160e02',1,'ndn-qos-queue.hpp']]],
-  ['queueitem_365',['QueueItem',['../structnfd_1_1fw_1_1QueueItem.html',1,'nfd::fw::QueueItem'],['../structnfd_1_1fw_1_1QueueItem.html#a706bb9f03c2781654a07ef1bb5373c9e',1,'nfd::fw::QueueItem::QueueItem()'],['../structnfd_1_1fw_1_1QueueItem.html#add86d66d5f78818e7cea25354d4a7522',1,'nfd::fw::QueueItem::QueueItem(const shared_ptr&lt; pit::Entry &gt; *pe)']]]
+  ['receiveddatatracecallback_357',['ReceivedDataTraceCallback',['../classns3_1_1ndn_1_1QoSConsumer.html#a8a639638b4a5bce5e99f407bec384140',1,'ns3::ndn::QoSConsumer']]],
+  ['receivedinteresttracecallback_358',['ReceivedInterestTraceCallback',['../classns3_1_1ndn_1_1QoSProducer.html#ad1a6d38c8b2d56d8e32c2d3bb7417dfc',1,'ns3::ndn::QoSProducer']]],
+  ['recordrtt_359',['recordRtt',['../classnfd_1_1fw_1_1asf_1_1FaceInfo.html#a6f6ef938739721a476a4b4dfe2235827',1,'nfd::fw::asf::FaceInfo']]],
+  ['recordtimeout_360',['recordTimeout',['../classnfd_1_1fw_1_1asf_1_1RttStats.html#a9fa27a2d45344cf75958b624197aef48',1,'nfd::fw::asf::RttStats::recordTimeout()'],['../classnfd_1_1fw_1_1asf_1_1FaceInfo.html#ac6328399cfaf4971bb3226af29f539b2',1,'nfd::fw::asf::FaceInfo::recordTimeout()']]],
+  ['registerpolicy_361',['registerPolicy',['../classnfd_1_1fw_1_1UnsolicitedDataPolicy.html#a22bebbe58925aa7b1e72596df7572ebc',1,'nfd::fw::UnsolicitedDataPolicy']]],
+  ['registertype_362',['registerType',['../classnfd_1_1fw_1_1Strategy.html#a2a6e90340e5b7572b78189b89d262601',1,'nfd::fw::Strategy']]],
+  ['rejectpendinginterest_363',['rejectPendingInterest',['../classnfd_1_1fw_1_1Strategy.html#a457e37cd06a0c784b1ed4978640ed962',1,'nfd::fw::Strategy']]],
+  ['retx_2dsuppression_2dexponential_2ecpp_364',['retx-suppression-exponential.cpp',['../retx-suppression-exponential_8cpp.html',1,'']]],
+  ['retx_2dsuppression_2dexponential_2ehpp_365',['retx-suppression-exponential.hpp',['../retx-suppression-exponential_8hpp.html',1,'']]],
+  ['retx_2dsuppression_2dfixed_2ecpp_366',['retx-suppression-fixed.cpp',['../retx-suppression-fixed_8cpp.html',1,'']]],
+  ['retx_2dsuppression_2dfixed_2ehpp_367',['retx-suppression-fixed.hpp',['../retx-suppression-fixed_8hpp.html',1,'']]],
+  ['retx_2dsuppression_2ehpp_368',['retx-suppression.hpp',['../retx-suppression_8hpp.html',1,'']]],
+  ['retxsuppressionexponential_369',['RetxSuppressionExponential',['../classnfd_1_1fw_1_1RetxSuppressionExponential.html',1,'nfd::fw::RetxSuppressionExponential'],['../classnfd_1_1fw_1_1RetxSuppressionExponential.html#a7db9fb5c4c5eb8f71c6cc9d71ed119a9',1,'nfd::fw::RetxSuppressionExponential::RetxSuppressionExponential()']]],
+  ['retxsuppressionfixed_370',['RetxSuppressionFixed',['../classnfd_1_1fw_1_1RetxSuppressionFixed.html',1,'nfd::fw::RetxSuppressionFixed'],['../classnfd_1_1fw_1_1RetxSuppressionFixed.html#aa84f6650feb3259a0b66aafce723f15b',1,'nfd::fw::RetxSuppressionFixed::RetxSuppressionFixed()']]],
+  ['retxsuppressionresult_371',['RetxSuppressionResult',['../namespacenfd_1_1fw.html#a07d36464269de1bb0e08abb115641c09',1,'nfd::fw']]],
+  ['rtt_372',['rtt',['../structnfd_1_1fw_1_1asf_1_1FaceStats.html#a7d080bd1a9c9e1daa630566c2a2faf37',1,'nfd::fw::asf::FaceStats::rtt()'],['../classnfd_1_1fw_1_1asf_1_1RttStats.html#a8e751671db1db9a2a5b3c5abb1838440',1,'nfd::fw::asf::RttStats::Rtt()']]],
+  ['rtt_5fno_5fmeasurement_373',['RTT_NO_MEASUREMENT',['../classnfd_1_1fw_1_1asf_1_1RttStats.html#ac3af1d922effaa18f491d820bcd5ed22',1,'nfd::fw::asf::RttStats']]],
+  ['rtt_5ftimeout_374',['RTT_TIMEOUT',['../classnfd_1_1fw_1_1asf_1_1RttStats.html#a48f0a4c1b6e88286cf34c460c4d01e6d',1,'nfd::fw::asf::RttStats']]],
+  ['rttstats_375',['RttStats',['../classnfd_1_1fw_1_1asf_1_1RttStats.html',1,'nfd::fw::asf::RttStats'],['../classnfd_1_1fw_1_1asf_1_1RttStats.html#ab3319d10fc997a8a11af3299662a8aed',1,'nfd::fw::asf::RttStats::RttStats()']]]
 ];

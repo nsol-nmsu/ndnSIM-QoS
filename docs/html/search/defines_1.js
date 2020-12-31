@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['nfd_5fregister_5fstrategy_1033',['NFD_REGISTER_STRATEGY',['../strategy_8hpp.html#acf08f106f9f14b6fb16dac265d175c93',1,'strategy.hpp']]],
-  ['nfd_5fregister_5funsolicited_5fdata_5fpolicy_1034',['NFD_REGISTER_UNSOLICITED_DATA_POLICY',['../unsolicited-data-policy_8hpp.html#a41e3389b074215c11038414936c70901',1,'unsolicited-data-policy.hpp']]]
+  ['packet_5fsize_998',['PACKET_SIZE',['../ndn-priority-tx-queue_8hpp.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b',1,'ndn-priority-tx-queue.hpp']]]
 ];

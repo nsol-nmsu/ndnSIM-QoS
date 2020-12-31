@@ -1,4 +1,4 @@
 <map id="nfd::fw::NdnPriorityTxQueue" name="nfd::fw::NdnPriorityTxQueue">
 <area shape="rect" id="node1" title="Class defines priority queue." alt="" coords="5,124,193,151"/>
-<area shape="rect" id="node2" href="$classnfd_1_1fw_1_1QosQueue.html" title="Class that implements QoS queue for ndn packets." alt="" coords="33,5,165,32"/>
+<area shape="rect" id="node2" href="$classnfd_1_1fw_1_1QosQueue.html" title="Class that implements QoS queue for NDN packets." alt="" coords="33,5,165,32"/>
 </map>

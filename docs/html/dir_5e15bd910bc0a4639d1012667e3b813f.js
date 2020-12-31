@@ -51,7 +51,9 @@ var dir_5e15bd910bc0a4639d1012667e3b813f =
     [ "ndn-qos-queue.cpp", "ndn-qos-queue_8cpp.html", "ndn-qos-queue_8cpp" ],
     [ "ndn-qos-queue.hpp", "ndn-qos-queue_8hpp.html", "ndn-qos-queue_8hpp" ],
     [ "ndn-token-bucket.cpp", "ndn-token-bucket_8cpp.html", null ],
-    [ "ndn-token-bucket.hpp", "ndn-token-bucket_8hpp.html", null ],
+    [ "ndn-token-bucket.hpp", "ndn-token-bucket_8hpp.html", [
+      [ "TokenBucket", "classnfd_1_1fw_1_1TokenBucket.html", "classnfd_1_1fw_1_1TokenBucket" ]
+    ] ],
     [ "process-nack-traits.cpp", "process-nack-traits_8cpp.html", "process-nack-traits_8cpp" ],
     [ "process-nack-traits.hpp", "process-nack-traits_8hpp.html", [
       [ "ProcessNackTraitsBase", "classnfd_1_1fw_1_1ProcessNackTraitsBase.html", "classnfd_1_1fw_1_1ProcessNackTraitsBase" ],

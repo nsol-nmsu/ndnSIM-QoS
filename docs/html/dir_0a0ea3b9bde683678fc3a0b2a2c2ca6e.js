@@ -1,7 +1,5 @@
 var dir_0a0ea3b9bde683678fc3a0b2a2c2ca6e =
 [
-    [ "ndn-aggregator.cpp", "ndn-aggregator_8cpp.html", "ndn-aggregator_8cpp" ],
-    [ "ndn-aggregator.hpp", "ndn-aggregator_8hpp.html", null ],
     [ "ndn-app.cpp", "ndn-app_8cpp.html", "ndn-app_8cpp" ],
     [ "ndn-app.hpp", "ndn-app_8hpp.html", null ],
     [ "ndn-consumer-batches.cpp", "ndn-consumer-batches_8cpp.html", "ndn-consumer-batches_8cpp" ],
@@ -16,16 +14,22 @@ var dir_0a0ea3b9bde683678fc3a0b2a2c2ca6e =
     [ "ndn-consumer-zipf-mandelbrot.hpp", "ndn-consumer-zipf-mandelbrot_8hpp.html", null ],
     [ "ndn-consumer.cpp", "ndn-consumer_8cpp.html", "ndn-consumer_8cpp" ],
     [ "ndn-consumer.hpp", "ndn-consumer_8hpp.html", null ],
-    [ "ndn-producer-spontaneous.cpp", "ndn-producer-spontaneous_8cpp.html", "ndn-producer-spontaneous_8cpp" ],
-    [ "ndn-producer-spontaneous.hpp", "ndn-producer-spontaneous_8hpp.html", null ],
     [ "ndn-producer.cpp", "ndn-producer_8cpp.html", "ndn-producer_8cpp" ],
     [ "ndn-producer.hpp", "ndn-producer_8hpp.html", null ],
-    [ "ndn-subscriber-sync.cpp", "ndn-subscriber-sync_8cpp.html", "ndn-subscriber-sync_8cpp" ],
-    [ "ndn-subscriber-sync.hpp", "ndn-subscriber-sync_8hpp.html", null ],
-    [ "ndn-subscriber.cpp", "ndn-subscriber_8cpp.html", "ndn-subscriber_8cpp" ],
-    [ "ndn-subscriber.hpp", "ndn-subscriber_8hpp.html", null ],
+    [ "ndn-QoS-consumer.cpp", "ndn-QoS-consumer_8cpp.html", "ndn-QoS-consumer_8cpp" ],
+    [ "ndn-QoS-consumer.hpp", "ndn-QoS-consumer_8hpp.html", [
+      [ "QoSConsumer", "classns3_1_1ndn_1_1QoSConsumer.html", "classns3_1_1ndn_1_1QoSConsumer" ]
+    ] ],
+    [ "ndn-QoS-producer.cpp", "ndn-QoS-producer_8cpp.html", "ndn-QoS-producer_8cpp" ],
+    [ "ndn-QoS-producer.hpp", "ndn-QoS-producer_8hpp.html", [
+      [ "QoSProducer", "classns3_1_1ndn_1_1QoSProducer.html", "classns3_1_1ndn_1_1QoSProducer" ]
+    ] ],
     [ "TBucketRef.cpp", "TBucketRef_8cpp.html", "TBucketRef_8cpp" ],
-    [ "TBucketRef.hpp", "TBucketRef_8hpp.html", null ],
+    [ "TBucketRef.hpp", "TBucketRef_8hpp.html", [
+      [ "TBRef", "structnfd_1_1fw_1_1TBRef.html", "structnfd_1_1fw_1_1TBRef" ]
+    ] ],
     [ "tokenBucketDriver.cpp", "tokenBucketDriver_8cpp.html", "tokenBucketDriver_8cpp" ],
-    [ "tokenBucketDriver.hpp", "tokenBucketDriver_8hpp.html", null ]
+    [ "tokenBucketDriver.hpp", "tokenBucketDriver_8hpp.html", [
+      [ "TBDriver", "classns3_1_1ndn_1_1TBDriver.html", "classns3_1_1ndn_1_1TBDriver" ]
+    ] ]
 ];

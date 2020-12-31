@@ -2,7 +2,6 @@ var hierarchy =
 [
     [ "Application", null, [
       [ "ns3::ndn::App", "classns3_1_1ndn_1_1App.html", [
-        [ "ns3::ndn::Aggregator", "classns3_1_1ndn_1_1Aggregator.html", null ],
         [ "ns3::ndn::Consumer", "classns3_1_1ndn_1_1Consumer.html", [
           [ "ns3::ndn::ConsumerBatches", "classns3_1_1ndn_1_1ConsumerBatches.html", null ],
           [ "ns3::ndn::ConsumerCbr", "classns3_1_1ndn_1_1ConsumerCbr.html", [
@@ -12,10 +11,9 @@ var hierarchy =
             [ "ns3::ndn::ConsumerPcon", "classns3_1_1ndn_1_1ConsumerPcon.html", null ]
           ] ]
         ] ],
-        [ "ns3::ndn::ConsumerSync", "classns3_1_1ndn_1_1ConsumerSync.html", null ],
         [ "ns3::ndn::Producer", "classns3_1_1ndn_1_1Producer.html", null ],
-        [ "ns3::ndn::SpontaneousProducer", "classns3_1_1ndn_1_1SpontaneousProducer.html", null ],
-        [ "ns3::ndn::Subscriber", "classns3_1_1ndn_1_1Subscriber.html", null ],
+        [ "ns3::ndn::QoSConsumer", "classns3_1_1ndn_1_1QoSConsumer.html", null ],
+        [ "ns3::ndn::QoSProducer", "classns3_1_1ndn_1_1QoSProducer.html", null ],
         [ "ns3::ndn::TBDriver", "classns3_1_1ndn_1_1TBDriver.html", null ]
       ] ]
     ] ],

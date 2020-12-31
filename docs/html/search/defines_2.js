@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['packet_5fsize_1035',['PACKET_SIZE',['../ndn-priority-tx-queue_8hpp.html#aebdc7d8ca8e25ed8efc90bb88ef7ef5b',1,'ndn-priority-tx-queue.hpp']]]
+  ['queue_5fsize_999',['QUEUE_SIZE',['../ndn-qos-queue_8hpp.html#a142810068f1b99cd93d3fc9f0e160e02',1,'ndn-qos-queue.hpp']]]
 ];

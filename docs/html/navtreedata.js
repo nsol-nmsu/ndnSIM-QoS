@@ -55,7 +55,6 @@ var NAVTREE =
       [ "File Members", "globals.html", [
         [ "All", "globals.html", null ],
         [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
     ] ]
@@ -66,8 +65,8 @@ var NAVTREEINDEX =
 [
 "TBucketDebug_8cpp.html",
 "classnfd_1_1fw_1_1SelfLearningStrategy_1_1InRecordInfo.html",
-"classns3_1_1ndn_1_1ConsumerSync.html#adae0c7c99bdc1ab93a5ebd06c2ccb9e9",
-"ndn-consumer-zipf-mandelbrot_8hpp_source.html"
+"classns3_1_1ndn_1_1QoSConsumer.html#aa36c300bf5b1664799f5e9c78d95a20a",
+"retx-suppression-fixed_8cpp_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
