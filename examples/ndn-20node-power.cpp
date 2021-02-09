@@ -96,7 +96,7 @@ main( int argc, char* argv[] )
   cmd.Parse( argc, argv );
 
   // Open the configuration file for reading
-  ifstream configFile ( "../topology/Topo20-power.txt", std::ios::in );
+  ifstream configFile ( "../topology/interface/case123.txt", std::ios::in );
   std::string strLine;
   bool gettingNodeCount = false, buildingNetworkTopo = false, attachingWACs = false, attachingPMUs = false, attachingLCs = false, TypeI = false, TypeII = false;
   bool failLinks = false, injectData = false;
