@@ -19,8 +19,8 @@
  *
  */
 
-#ifndef NDN_TOKEN_H
-#define NDN_TOKEN_H
+#ifndef NDN_TOKEN2_H
+#define NDN_TOKEN2_H
 
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
@@ -44,14 +44,14 @@ namespace ndn {
  * Uses references provided by TBucketRef class in order to communicate with the 
  * token buckets that reside at the strategy level.
  */
-class TBDriver : public App {
+class TBDriver2 : public App {
 
 public:
 
   static TypeId
   GetTypeId(void);
 
-  TBDriver();
+  TBDriver2();
 
   /** \brief Schedule the next instance of token generation for the indicated bucket.
    *  \param bucket The token bucket that we are scheduling for.

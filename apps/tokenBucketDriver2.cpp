@@ -37,38 +37,38 @@
 
 #include <memory>
 
-NS_LOG_COMPONENT_DEFINE( "ndn.TBDriver" );
+NS_LOG_COMPONENT_DEFINE( "ndn.TBDriver2" );
 
 namespace ns3 {
 namespace ndn {
 
-NS_OBJECT_ENSURE_REGISTERED( TBDriver );
+NS_OBJECT_ENSURE_REGISTERED( TBDriver2 );
 
 TypeId
-TBDriver::GetTypeId( void )
+TBDriver2::GetTypeId( void )
 {
   static TypeId tid =
-    TypeId( "ns3::ndn::TokenBucketDriver" )
+    TypeId( "ns3::ndn::TokenBucketDriver2" )
       .SetGroupName( "Ndn" )
       .SetParent<App>()
-      .AddConstructor<TBDriver>()
+      .AddConstructor<TBDriver2>()
       .AddAttribute( "FillRate1", "Fill rate of token bucket", StringValue( "1.0" ),
-                    MakeDoubleAccessor( &TBDriver::m_fillRate1 ), MakeDoubleChecker<double>() )
+                    MakeDoubleAccessor( &TBDriver2::m_fillRate1 ), MakeDoubleChecker<double>() )
       .AddAttribute( "Capacity1", "Capacity of token bucket", StringValue( "80" ),
-                    MakeDoubleAccessor( &TBDriver::m_capacity1 ), MakeDoubleChecker<double>() )
+                    MakeDoubleAccessor( &TBDriver2::m_capacity1 ), MakeDoubleChecker<double>() )
       .AddAttribute( "FillRate2", "Fill rate of token bucket", StringValue( "1.0" ),
-                    MakeDoubleAccessor( &TBDriver::m_fillRate2 ), MakeDoubleChecker<double>() )
+                    MakeDoubleAccessor( &TBDriver2::m_fillRate2 ), MakeDoubleChecker<double>() )
       .AddAttribute( "Capacity2", "Capacity of token bucket", StringValue( "80" ),
-                    MakeDoubleAccessor( &TBDriver::m_capacity2 ), MakeDoubleChecker<double>() )
+                    MakeDoubleAccessor( &TBDriver2::m_capacity2 ), MakeDoubleChecker<double>() )
       .AddAttribute( "FillRate3", "Fill rate of token bucket", StringValue( "1.0" ),
-                    MakeDoubleAccessor( &TBDriver::m_fillRate3 ), MakeDoubleChecker<double>() )
+                    MakeDoubleAccessor( &TBDriver2::m_fillRate3 ), MakeDoubleChecker<double>() )
       .AddAttribute( "Capacity3", "Capacity of token bucket", StringValue( "80" ),
-                    MakeDoubleAccessor( &TBDriver::m_capacity3 ), MakeDoubleChecker<double>() );
+                    MakeDoubleAccessor( &TBDriver2::m_capacity3 ), MakeDoubleChecker<double>() );
 
   return tid;
 }
 
-TBDriver::TBDriver()
+TBDriver2::TBDriver2()
   :m_first1( true ),
    m_first2( true ),
    m_first3( true ),
@@ -79,7 +79,7 @@ TBDriver::TBDriver()
 
 // Inherited from Application base class.
 void
-TBDriver::StartApplication()
+TBDriver2::StartApplication()
 {
   NS_LOG_FUNCTION_NOARGS();
   App::StartApplication();
@@ -90,14 +90,14 @@ TBDriver::StartApplication()
 }
 
 void
-TBDriver::StopApplication()
+TBDriver2::StopApplication()
 {
   NS_LOG_FUNCTION_NOARGS();
   App::StopApplication();
 }
 
 void
-TBDriver::ScheduleNextToken( int bucket )
+TBDriver2::ScheduleNextToken( int bucket )
 {
   ns3::Ptr<ns3::Node> node= ns3::NodeContainer::GetGlobal().Get( ns3::Simulator::GetContext() );
 
@@ -116,15 +116,15 @@ TBDriver::ScheduleNextToken( int bucket )
   }
 
   if ( first ) {
-    m_sendEvent = Simulator::Schedule( Seconds( 0.0 ), &TBDriver::UpdateBucket, this, bucket );
+    m_sendEvent = Simulator::Schedule( Seconds( 0.0 ), &TBDriver2::UpdateBucket, this, bucket );
   } else {
     m_sendEvent = Simulator::Schedule( Seconds( 1.0 /fillRate ),
-        &TBDriver::UpdateBucket, this, bucket );
+        &TBDriver2::UpdateBucket, this, bucket );
   }
 }
 
 void
-TBDriver::UpdateBucket( int bucket )
+TBDriver2::UpdateBucket( int bucket )
 { 
   bool first;
   double capacity;
