@@ -85,7 +85,7 @@ namespace ns3 {
 
 
        //Set token bucket values
-       ndn::AppHelper tokenHelper("ns3::ndn::TokenBucket");
+       ndn::AppHelper tokenHelper("ns3::ndn::TokenBucketDriver");
        tokenHelper.SetAttribute("FillRate1", StringValue("75")); // 10 interests a second
        tokenHelper.SetAttribute("Capacity1", StringValue("80")); // 10 interests a second
        tokenHelper.SetAttribute("FillRate2", StringValue("75")); // 10 interests a second

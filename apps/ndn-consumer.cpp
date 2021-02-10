@@ -236,7 +236,6 @@ Consumer::OnData(shared_ptr<const Data> data)
       TB.MRecv++;
   } else {
       TB.LRecv++;
-      std::cout << data->getName() << std::endl;
   }
 
   //std::cout << "***Stats***\n" << TB.HSent << "\n" << TB.MSent << "\n" << TB.LSent << "\n" << TB.HRecv << "\n" << TB.MRecv << "\n" << TB.LRecv << "\n\n\n";
