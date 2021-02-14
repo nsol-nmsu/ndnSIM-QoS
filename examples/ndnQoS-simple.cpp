@@ -94,8 +94,6 @@ namespace ns3 {
        tokenHelper.SetAttribute("Capacity3", StringValue("80")); // 10 interests a second
        //consumerHelper.Install(nodes.Get(0));                        // first node
        apps = tokenHelper.Install(nodes.Get(3));
-       tokenHelper.SetAttribute("FillRate1", StringValue("105")); // 10 interests a second
-       tokenHelper.SetAttribute("Capacity1", StringValue("120")); // 10 interests
 
        // Producer
        ndn::AppHelper producerHelper("ns3::ndn::Producer");
@@ -104,6 +102,7 @@ namespace ns3 {
        producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
        producerHelper.Install(nodes.Get(4)); // last node
 
+       ndnGlobalRoutingHelper.AddOrigin("/prefix", nodes.Get(4));
        ndn::GlobalRoutingHelper::CalculateAllPossibleRoutes();
 
        Simulator::Stop(Seconds(1.0));
