@@ -74,14 +74,41 @@ public:
    void
   injectInterests(bool agg, bool set);
 
+  void
+  DDoSMode(bool set){
+     m_dos = set;
+     if(!m_dos)
+    	 for ( auto it = attackers.begin(); it != attackers.end(); ++it ){
+    	    	   it->second->setTarget("/");
+    	    	   it->second->setAttackRate(0);
+    	    }
+  };
+
+  void
+  StartAttack(double sec) {
+     Simulator::Schedule( Seconds( sec), &Synchronizer::DDoSMode, this, true );
+  };
+
+  void
+  EndAttack(double sec) {
+     Simulator::Schedule( Seconds( sec), &Synchronizer::DDoSMode, this, false );
+  };
+
   std::vector<std::string>
   SplitString(std::string strLine, int limit);
+
+
+  void
+  addAttackers(int node, Ptr<ConsumerQos> attacker);
 
   virtual void
   sendSync()=0;
 
-  virtual void 
+  virtual void
   receiveSync()=0;
+
+  virtual void
+  injectAttack()=0;
 
 private:  
 
@@ -92,11 +119,17 @@ protected:
 
   std::unordered_map<int,Ptr<ConsumerQos>> senders;
 
+  std::unordered_map<int,Ptr<ConsumerQos>> attackers;
+
   std::vector<std::string> arrivedPackets;
 
   std::vector<std::string> packetNames;
 
   double timestep;
+
+  bool m_dos = false;
+  int m_dosRate = 1000; //Packets per seconds
+  double m_leadRate = 0.5; //Percentage of leads targeted
 };
 
 }
