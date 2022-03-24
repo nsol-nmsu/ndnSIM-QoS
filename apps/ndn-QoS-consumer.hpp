@@ -1,25 +1,24 @@
-/*
- * Copyright ( C ) 2020 New Mexico State University- Board of Regents
+/* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
+/**
+ * Copyright (c) 2011-2015  Regents of the University of California.
  *
- * See AUTHORS.md for complete list of authors and contributors.
+ * This file is part of ndnSIM. See AUTHORS for complete list of ndnSIM authors and
+ * contributors.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * ( at your option ) any later version.
-
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
-
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * ndnSIM is free software: you can redistribute it and/or modify it under the terms
+ * of the GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or (at your option) any later version.
  *
- */
+ * ndnSIM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ * PURPOSE.  See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * ndnSIM, e.g., in COPYING.md file.  If not, see <http://www.gnu.org/licenses/>.
+ **/
 
-#ifndef NDN_SUBSCRIBER_H
-#define NDN_SUBSCRIBER_H
+#ifndef NDN_CONSUMER_QOS_H
+#define NDN_CONSUMER_QOS_H
 
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 
@@ -32,29 +31,22 @@
 #include "ns3/ndnSIM/model/ndn-common.hpp"
 #include "ns3/ndnSIM/utils/ndn-rtt-estimator.hpp"
 
-#include <set>
-#include <map>
-
+#include <unordered_map>
 #include <boost/multi_index_container.hpp>
 #include <boost/multi_index/tag.hpp>
 #include <boost/multi_index/ordered_index.hpp>
 #include <boost/multi_index/member.hpp>
+#include "nlohmann/json.hpp"
 
 namespace ns3 {
 namespace ndn {
 
 /**
- * @ingroup ndnQoS
- * \brief NDN application for sending out payloaded Interest packets.
- *
- * The application will send data to a specific producer in the form of 
- * a payloaded interest.
- *
- * It can also be used as a subscriber which can subscribe to data updates
- * from a QoS-producer. Doing this will enable the Q0S-coonsumer to recieve
- * updates in the form of data packets, without having to send out an interest. 
+ * @ingroup ndn-apps
+ * \brief NDN application for sending out Interest packets. Installed on nodes at physical layer (prosumers)
+ * of the Smart Grid architecture (iCenS)
  */
-class QoSConsumer : public App {
+class ConsumerQos : public App {
 public:
   static TypeId
   GetTypeId();
@@ -63,8 +55,8 @@ public:
    * \brief Default constructor
    * Sets up randomizer function and packet sequence number
    */
-  QoSConsumer();
-  virtual ~QoSConsumer();
+  ConsumerQos();
+  virtual ~ConsumerQos();
 
   // From App
   virtual void
@@ -81,8 +73,7 @@ public:
    * @brief Actually send packet. Subscription interests do not carry payload information
    */
   void
-  SendPacket();
-
+  SendPacket(std::string deviceName, std::string payload, bool agg, bool set);
    /**
    * @brief An event that is fired just before an Interest packet is actually send out (send is
    *inevitable)
@@ -96,15 +87,40 @@ public:
   virtual void
   WillSendOutInterest(uint32_t sequenceNumber);
 
-public:
+  void
+  ScheduleNextPacket(std::string deviceName, std::string payload, bool agg);
 
+ void
+  updateLeadMeasurements(std::string newM, std::string device){
+     leadMeasurements[device] = newM;
+  }
+
+  void
+  setAsLead(std::vector<std::string> names){
+     resetLead();
+     send = false;
+     //auto it = m_payloads.begin();
+     //while(it != m_payloads.end()){
+     //   leadMeasurements[it->first]=it->second;
+     //   it++;
+     //}
+     for(uint32_t i = 0; i<names.size(); i++){
+        leadMeasurements[names[i]] = m_payloads[names[i]];
+     }
+  }
+
+  void
+  resetLead(){
+     send = true;
+     leadMeasurements.clear();
+  }
+
+public:
   //typedef void (*FirstInterestDataDelayCallback)(Ptr<App> app, uint32_t seqno, Time delay, uint32_t retxCount, int32_t hopCount);
 
   typedef void (*SentInterestTraceCallback)( uint32_t, shared_ptr<const Interest> );
   typedef void (*ReceivedDataTraceCallback)( uint32_t, shared_ptr<const Data> );
-
 protected:
-
   // from App
   virtual void
   StartApplication();
@@ -116,8 +132,6 @@ protected:
    * \brief Constructs the Interest packet and sends it using a callback to the underlying NDN
    * protocol
    */
-  void
-  ScheduleNextPacket();
 
   /**
    * \brief Checks if the packet need to be retransmitted becuase of retransmission timer expiration
@@ -140,7 +154,6 @@ protected:
   GetRetxTimer() const;
 
 protected:
-
   Ptr<UniformRandomVariable> m_rand; ///< @brief nonce generator
   uint32_t m_seq;      ///< @brief currently requested sequence number
   uint32_t m_seqMax;   ///< @brief maximum number of sequence number
@@ -150,13 +163,18 @@ protected:
 
   Time m_txInterval;
   Name m_interestName;     ///< \brief NDN Name of the Interest (use Name)
+  Name m_leadName;
   Time m_interestLifeTime; ///< \brief LifeTime for interest packet
   bool m_firstTime;
   uint32_t m_subscription; //subscription value set by the application
   uint32_t m_virtualPayloadSize; //payload size for interest packet
   uint32_t m_doRetransmission; //retransmit lost interest packets if set to 1
   uint32_t m_offset; //random offset
+  bool send = true;
 
+  nlohmann::json leadMeasurements;
+  std::unordered_map<std::string, std::string> m_payloads;
+  int packetsToSend = 3;
   Ptr<RttEstimator> m_rtt; ///< @brief RTT estimator
 
   /// @cond include_hidden
@@ -221,7 +239,7 @@ protected:
 
 
   TracedCallback<Ptr<App> /* app */, uint32_t /* seqno */, Time /* delay */, int32_t /*hop count*/>
-    m_lastRetransmittedInterestDataDelay;
+  m_lastRetransmittedInterestDataDelay;
   TracedCallback<Ptr<App> /* app */, uint32_t /* seqno */, Time /* delay */,
                  uint32_t /*retx count*/, int32_t /*hop count*/> m_firstInterestDataDelay;
 

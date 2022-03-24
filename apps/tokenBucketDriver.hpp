@@ -87,7 +87,11 @@ private:
   bool m_first1; ///< @brief Boolean used to check if this is the first generated token for priority level 1. 
   bool m_first2; ///< @brief Boolean used to check if this is the first generated token for priority level 2.
   bool m_first3; ///< @brief Boolean used to check if this is the first generated token for priority level 3.
+  bool m_tokenFilledCB1;
+  bool m_tokenFilledCB2;
+  bool m_tokenFilledCB3;
   bool m_connected; ///< @brief Boolean used to check if all token bucket references are set.
+
 };
 
 } // namespace ndn

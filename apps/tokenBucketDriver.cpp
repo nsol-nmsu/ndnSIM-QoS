@@ -72,6 +72,9 @@ TBDriver::TBDriver()
   :m_first1( true ),
    m_first2( true ),
    m_first3( true ),
+   m_tokenFilledCB1(false),
+   m_tokenFilledCB2(false),
+   m_tokenFilledCB3(false),
    m_connected( false )
 {
     NS_LOG_FUNCTION_NOARGS();
@@ -139,27 +142,55 @@ TBDriver::UpdateBucket( int bucket )
   if ( bucket == 0 ) { 
     first = m_first1; 
     m_first1 = false;
+
     capacity = m_capacity1;
     sender = nfd::fw::CT.sender1[node];
+
+    if(m_connected && !m_tokenFilledCB1){
+        sender->noLongerAtCapacity.connect( [this]() {
+           this->ScheduleNextToken(0);
+        } );
+        m_tokenFilledCB1 = true;
+    }
   } else if ( bucket == 1 ) { 
     first = m_first2; 
     m_first2 = false;
+
     capacity = m_capacity2;
     sender = nfd::fw::CT.sender2[node];
+
+    if(m_connected && !m_tokenFilledCB2){
+        sender->noLongerAtCapacity.connect( [this]() {
+           this->ScheduleNextToken(1);
+        } );
+        m_tokenFilledCB2 = true;
+    }
   } else {
     first = m_first3; 
     m_first3 = false;
+
     capacity = m_capacity3;
     sender = nfd::fw::CT.sender3[node];
-  }
 
+    if(m_connected && !m_tokenFilledCB3){
+        sender->noLongerAtCapacity.connect( [this]() {
+           this->ScheduleNextToken(2);
+        } );
+        m_tokenFilledCB3 = true;
+    }
+  }
+  
+  bool paused = false;
   // Check to make sure tokens are not generated beyong specified capacity
   if ( m_connected == true ) {
+
     sender->m_capacity = capacity;
     sender->addToken();
+    paused = sender->atCapacity();
   }
-
-  ScheduleNextToken( bucket );
+  
+  if(!paused)
+     ScheduleNextToken( bucket );
 }
 
 } // namespace ndn
