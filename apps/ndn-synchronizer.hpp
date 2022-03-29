@@ -46,7 +46,7 @@ public:
   
   /** \brief Pause te simulation and perform synching operations
    */
-  void
+  virtual void
   syncEvent();
 
   /** \brief Save information on recieved packet
@@ -71,7 +71,7 @@ public:
    *  \param agg should interests at the same node be aggregated
    */
 
-   void
+  void
   injectInterests(bool agg, bool set);
 
   std::vector<std::string>
@@ -80,8 +80,9 @@ public:
   virtual void
   sendSync()=0;
 
-  virtual void 
+  virtual void
   receiveSync()=0;
+
 
 private:  
 
@@ -97,6 +98,7 @@ protected:
   std::vector<std::string> packetNames;
 
   double timestep;
+
 };
 
 }

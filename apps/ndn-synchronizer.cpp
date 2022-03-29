@@ -45,7 +45,6 @@ Synchronizer::addSender( int node, Ptr<ConsumerQos> sender ) {
 	senders[node] = sender;
 }
 
-
 void
 Synchronizer::printListAndTime() {
 
@@ -68,40 +67,34 @@ Synchronizer::addArrivedPackets( std::string str ) {
 
 void
 Synchronizer::beginSync() {
-	Simulator::Schedule( Seconds(30.0 ), &Synchronizer::syncEvent, this );
+	Simulator::Schedule( Seconds( 0.0 ), &Synchronizer::syncEvent, this );
+	//std::cout<<"finished begin event"<<std::endl;
 }
 
 
 void
 Synchronizer::syncEvent() {
-
-	std::cout << "\n\n\nSyncing at time " << Simulator::Now().GetSeconds() << std::endl;
+	
+	std::cout << "\n Syncing at time " << Simulator::Now().GetSeconds() << std::endl;
 	sendSync();
-        //std::cout << "\n\n\nRecv " << Simulator::Now().GetSeconds() << std::endl;	
 	receiveSync();
 
 	injectInterests( false, false );
 	Simulator::Schedule( Seconds( timestep ), &Synchronizer::syncEvent, this );
-
+	//std::cout<<"finished sync event"<<std::endl;
 }
 
 
 void
 Synchronizer::injectInterests( bool agg, bool set ) {
 
-	int i = 0;
 	while ( !packetNames.empty() ) {
 
 		std::vector<std::string> packetInfo = SplitString( packetNames.back(), 2 );
-		//std::cout<<"PacketInfo " <<packetInfo[1]<<" "<<packetInfo[0]<<" "<<packetInfo[2]<<packetNames.size()<<std::endl;
+		//std::cout<<"PacketInfo " <<packetInfo[1]<<" "<<packetInfo[0]<<" "<<packetInfo[2]<<std::endl;
 
 		Simulator::ScheduleWithContext( std::stoi( packetInfo[1] ), Seconds( 0.0 ), &ConsumerQos::SendPacket, senders[std::stoi( packetInfo[1] )], packetInfo[0], packetInfo[2], agg, set );
 		packetNames.pop_back();
-		i++;
-		if(i >= 100){
-	   		Simulator::Schedule( Seconds( 0.0001 ), &Synchronizer::injectInterests, this, agg, set );
-			return;
-		}
 	}
 }
 
