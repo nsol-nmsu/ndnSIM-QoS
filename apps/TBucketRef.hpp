@@ -22,7 +22,7 @@
 #ifndef NDN_TOKENBUCKETS_H
 #define NDN_TOKENBUCKETS_H
 
-#include "NFD/daemon/fw/ndn-token-bucket.hpp"
+#include "tokenBucketDriver.hpp"
 #include <unordered_map>
 
 using namespace std;
@@ -37,13 +37,7 @@ namespace fw {
  * Provides tokenBucketDriver class references to the tokenBucket objects as defined by qos-strategy instances.
  */
 struct  TBRef {
-  double m_tokens;
-  double m_need;
-  unordered_map<int,bool> hasSender;
-
-  unordered_map<int,TokenBucket*> sender1;  
-  unordered_map<int,TokenBucket*> sender2;
-  unordered_map<int,TokenBucket*> sender3;
+  unordered_map<int,ns3::ndn::TBDriver*> drivers;
 };
 
 extern TBRef CT;

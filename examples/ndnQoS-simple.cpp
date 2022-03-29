@@ -39,7 +39,7 @@ namespace ns3 {
 
        // Creating nodes
        NodeContainer nodes;
-       nodes.Create(5);
+       nodes.Create(6);
 
        // Connecting nodes using two links
        PointToPointHelper p2p;
@@ -47,6 +47,7 @@ namespace ns3 {
        p2p.Install(nodes.Get(1), nodes.Get(3));
        p2p.Install(nodes.Get(2), nodes.Get(3));
        p2p.Install(nodes.Get(3), nodes.Get(4));
+       p2p.Install(nodes.Get(3), nodes.Get(5));
 
        // Install NDN stack on all nodes
        ndn::StackHelper ndnHelper;
@@ -61,7 +62,6 @@ namespace ns3 {
        ndn::StrategyChoiceHelper::Install(nodes.Get(0), "/prefix", "/localhost/nfd/strategy/multicast");
        ndn::StrategyChoiceHelper::Install(nodes.Get(1), "/prefix", "/localhost/nfd/strategy/multicast");
        ndn::StrategyChoiceHelper::Install(nodes.Get(2), "/prefix", "/localhost/nfd/strategy/multicast");
-       ndn::StrategyChoiceHelper::Install(nodes.Get(3), "/prefix", "/localhost/nfd/strategy/qos");
        ndn::StrategyChoiceHelper::Install(nodes.Get(4), "/prefix", "/localhost/nfd/strategy/multicast");
 
        // Installing applications
@@ -93,14 +93,17 @@ namespace ns3 {
        tokenHelper.SetAttribute("FillRate3", StringValue("75")); // 10 interests a second
        tokenHelper.SetAttribute("Capacity3", StringValue("80")); // 10 interests a second
        //consumerHelper.Install(nodes.Get(0));                        // first node
+       std::cout<<"Hey there\n";
        apps = tokenHelper.Install(nodes.Get(3));
 
+       ndn::StrategyChoiceHelper::Install(nodes.Get(3), "/prefix", "/localhost/nfd/strategy/qos");
+       std::cout<<"Yes\n";
        // Producer
        ndn::AppHelper producerHelper("ns3::ndn::Producer");
        // Producer will reply to all requests starting with /prefix
        producerHelper.SetPrefix("/prefix/");
        producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
-       producerHelper.Install(nodes.Get(4)); // last node
+       producerHelper.Install(nodes.Get(1)); // last node
 
        ndnGlobalRoutingHelper.AddOrigin("/prefix", nodes.Get(4));
        ndn::GlobalRoutingHelper::CalculateAllPossibleRoutes();

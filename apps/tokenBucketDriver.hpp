@@ -26,6 +26,7 @@
 
 #include "ndn-app.hpp"
 #include "ns3/ndnSIM/model/ndn-common.hpp"
+#include "NFD/daemon/fw/ndn-token-bucket.hpp"
 
 #include "ns3/nstime.h"
 #include "ns3/ptr.h"
@@ -65,6 +66,30 @@ public:
   void
   UpdateBucket( int bucket );
 
+  void 
+  addTokenBucket(nfd::fw::TokenBucket*);
+
+  nfd::fw::TokenBucket*
+  getBucket(int b){
+	 return tbs[b];
+  };
+
+
+  bool 
+  isSet(){
+     return (m_bktsSet == m_bkts);	  
+  };
+
+  int
+  getSize(){
+     return m_bkts;
+  };
+
+  void
+  setSize(int size){
+     m_bkts = size;
+  }
+
 protected:
 
   EventId m_sendEvent; ///< @brief EventId of pending "send packet" event
@@ -78,16 +103,40 @@ protected:
 
 private:
 
-  double m_capacity1; ///< @brief Defines token bucket capacity of priority level 1.
-  double m_capacity2; ///< @brief Defines token bucket capacity of priority level 2.
-  double m_capacity3; ///< @brief Defines token bucket capacity of priority level 3.
-  double m_fillRate1; ///< @brief Defines token generation rate for priority level 1.
-  double m_fillRate2; ///< @brief Defines token generation rate for priority level 2.
-  double m_fillRate3; ///< @brief Defines token generation rate for priority level 3.
-  bool m_first1; ///< @brief Boolean used to check if this is the first generated token for priority level 1. 
-  bool m_first2; ///< @brief Boolean used to check if this is the first generated token for priority level 2.
-  bool m_first3; ///< @brief Boolean used to check if this is the first generated token for priority level 3.
+  std::string m_capacities; ///< @brief Defines token bucket capacities of priority levels, from highest to lowest.
+  std::string m_fillRates; ///< @brief Defines token generation rate for priority levels, from highest to lowest.
+  std::vector<bool> m_firsts; ///< @brief Boolean used to check if this is the first generated token for priority levels, from highest to lowest.
   bool m_connected; ///< @brief Boolean used to check if all token bucket references are set.
+  std::vector<nfd::fw::TokenBucket*> tbs;
+  int m_bktsSet = 0;
+  int m_bkts = 3;
+  int m_MaxBkts = 4;
+
+
+
+  std::vector<std::string>
+  SplitString( std::string strLine, char delimiter ) {
+     std::string str = strLine;
+     std::vector<std::string> result;
+     uint32_t i =0;
+     std::string buildStr = "";
+
+     for ( i = 0; i<str.size(); i++) {
+        if ( str[i]== delimiter ) {
+           result.push_back( buildStr );
+           buildStr = "";
+        }
+        else {
+           buildStr += str[i];
+        }
+     }
+
+     if(buildStr!="")
+        result.push_back( buildStr );
+
+     return result;
+  }
+  
 };
 
 } // namespace ndn

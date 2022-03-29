@@ -23,14 +23,14 @@
 #include "ns3/log.h"
 #include "ns3/string.h"
 #include "ns3/uinteger.h"
+#include "ns3/integer.h"
 #include "ns3/packet.h"
 #include "ns3/simulator.h"
 #include "../NFD/daemon/fw/ndn-token-bucket.hpp"
-#include "TBucketRef.hpp"
 #include "ns3/double.h"
 #include "ns3/simulator.h"
 #include "../helper/ndn-scenario-helper.hpp"
-
+#include "TBucketRef.cpp"
 
 #include "model/ndn-l3-protocol.hpp"
 #include "helper/ndn-fib-helper.hpp"
@@ -52,27 +52,18 @@ TBDriver::GetTypeId( void )
       .SetGroupName( "Ndn" )
       .SetParent<App>()
       .AddConstructor<TBDriver>()
-      .AddAttribute( "FillRate1", "Fill rate of token bucket", StringValue( "1.0" ),
-                    MakeDoubleAccessor( &TBDriver::m_fillRate1 ), MakeDoubleChecker<double>() )
-      .AddAttribute( "Capacity1", "Capacity of token bucket", StringValue( "80" ),
-                    MakeDoubleAccessor( &TBDriver::m_capacity1 ), MakeDoubleChecker<double>() )
-      .AddAttribute( "FillRate2", "Fill rate of token bucket", StringValue( "1.0" ),
-                    MakeDoubleAccessor( &TBDriver::m_fillRate2 ), MakeDoubleChecker<double>() )
-      .AddAttribute( "Capacity2", "Capacity of token bucket", StringValue( "80" ),
-                    MakeDoubleAccessor( &TBDriver::m_capacity2 ), MakeDoubleChecker<double>() )
-      .AddAttribute( "FillRate3", "Fill rate of token bucket", StringValue( "1.0" ),
-                    MakeDoubleAccessor( &TBDriver::m_fillRate3 ), MakeDoubleChecker<double>() )
-      .AddAttribute( "Capacity3", "Capacity of token bucket", StringValue( "80" ),
-                    MakeDoubleAccessor( &TBDriver::m_capacity3 ), MakeDoubleChecker<double>() );
+      .AddAttribute( "MaxBuckets", "Capacity of token bucket", StringValue( "4" ),
+                    MakeDoubleAccessor( &TBDriver::m_MaxBkts ),  MakeIntegerChecker<int32_t>() )
+      .AddAttribute( "FillRates", "The fillrates given in order, fom high to low priortiy.", StringValue( "1 1 1" ),
+                    MakeStringAccessor( &TBDriver::m_fillRates ), MakeStringChecker() )
+      .AddAttribute( "Capacities", "The fillrates given in order, fom high to low priortiy.", StringValue( "80 80 80" ),
+                    MakeStringAccessor( &TBDriver::m_capacities ), MakeStringChecker() );
 
   return tid;
 }
 
 TBDriver::TBDriver()
-  :m_first1( true ),
-   m_first2( true ),
-   m_first3( true ),
-   m_connected( false )
+  :m_connected( false )
 {
     NS_LOG_FUNCTION_NOARGS();
 }
@@ -81,12 +72,10 @@ TBDriver::TBDriver()
 void
 TBDriver::StartApplication()
 {
+
   NS_LOG_FUNCTION_NOARGS();
   App::StartApplication();
-
-  ScheduleNextToken( 0 );
-  ScheduleNextToken( 1 );
-  ScheduleNextToken( 2 );
+  nfd::fw::CT.drivers[ns3::NodeContainer::GetGlobal().Get( ns3::Simulator::GetContext())->GetId()] = this;
 }
 
 void
@@ -104,20 +93,13 @@ TBDriver::ScheduleNextToken( int bucket )
   bool first;
   double fillRate;
 
-  if ( bucket == 0 ) {
-    first = m_first1;
-    fillRate =  m_fillRate1;
-  } else if ( bucket == 1 ) {
-    first = m_first2;
-    fillRate =  m_fillRate2;
-  } else {
-    first = m_first3;
-    fillRate =  m_fillRate3;
-  }
+  first = m_firsts[bucket];
+  fillRate =  std::stod(SplitString(m_fillRates, ' ')[bucket]); 
 
   if ( first ) {
     m_sendEvent = Simulator::Schedule( Seconds( 0.0 ), &TBDriver::UpdateBucket, this, bucket );
-  } else {
+  } 
+  else {
     m_sendEvent = Simulator::Schedule( Seconds( 1.0 /fillRate ),
         &TBDriver::UpdateBucket, this, bucket );
   }
@@ -128,39 +110,39 @@ TBDriver::UpdateBucket( int bucket )
 { 
   bool first;
   double capacity;
+
   nfd::fw::TokenBucket* sender;
 
   int node= ns3::NodeContainer::GetGlobal().Get( ns3::Simulator::GetContext() )->GetId();
+  if(isSet()){
+     if ( m_connected == false) {
+        m_connected = true;
+     }
 
-  if ( m_connected == false && nfd::fw::CT.hasSender[node] == true ) {
-    m_connected = true;
+     first = m_firsts[bucket]; 
+     m_firsts[bucket] = false;
+     capacity = std::stod(SplitString(m_capacities, ' ')[bucket]);
+     sender = tbs[bucket];
+
+     // Check to make sure tokens are not generated beyong specified capacity
+     if ( m_connected == true ) {
+        sender->m_capacity = capacity;
+        sender->addToken();
+     }
   }
-
-  if ( bucket == 0 ) { 
-    first = m_first1; 
-    m_first1 = false;
-    capacity = m_capacity1;
-    sender = nfd::fw::CT.sender1[node];
-  } else if ( bucket == 1 ) { 
-    first = m_first2; 
-    m_first2 = false;
-    capacity = m_capacity2;
-    sender = nfd::fw::CT.sender2[node];
-  } else {
-    first = m_first3; 
-    m_first3 = false;
-    capacity = m_capacity3;
-    sender = nfd::fw::CT.sender3[node];
-  }
-
-  // Check to make sure tokens are not generated beyong specified capacity
-  if ( m_connected == true ) {
-    sender->m_capacity = capacity;
-    sender->addToken();
-  }
-
   ScheduleNextToken( bucket );
 }
+
+void
+TBDriver::addTokenBucket(nfd::fw::TokenBucket* tb){
+  if(m_bktsSet>=m_bkts) return;
+  
+  tbs.push_back(tb);
+  m_firsts.push_back(true);
+  ScheduleNextToken( m_bktsSet );  
+  m_bktsSet++;
+}
+
 
 } // namespace ndn
 } // namespace ns3
