@@ -103,6 +103,11 @@ public:
      parRedis.setPVNode( node );
   };
 
+  int
+  getNodeFromName(std::string name){
+     return nameMap[name];	  
+  };
+
 private:
 
   int PVNode;

@@ -115,15 +115,7 @@ SyncDDoS::injectAttack() {
 			return;
 		int t = rand() % size;
 		std::cout << it->first << std::endl;
-		std::string nodeNumber = std::to_string(nameMap[leads.at(t)]);
-
-		//Open log file for writing
-
-		logfile << "Lead Log: " << nodeNumber << " "
-				<< ns3::Simulator::Now().GetSeconds() << std::endl;
-		//std::cout << "$$ Node Number" << nodeNumber << " is in Region"
-		//		<< regionHelper::getAllRegions(nodeNumber) << std::endl;
-		//if(regionHelper::getAllRegions(nodeNumber)!="R3"){continue;}
+		std::string nodeNumber = std::to_string(getNodeFromName(leads.at(t)));
 
 		std::string target = prefix + nodeNumber + "/" + leads.at(t)
 				+ "/" + std::to_string(count++) + "/attack";
@@ -406,24 +398,24 @@ void SyncDDoS::attackRedisPV() {
 
 
   void
-  SynchDDoS::DDoSMode(bool set){
+  SyncDDoS::DDoSMode(bool set){
      m_dos = set;
      if(!m_dos)
          for ( auto it = attackers.begin(); it != attackers.end(); ++it ){
                    it->second->setTarget("/");
                    it->second->setAttackRate(0);
             }
-  };
+  }
 
   void
-  SynchDDoS::StartAttack(double sec) {
-     Simulator::Schedule( Seconds( sec), &SynchDDoS::DDoSMode, this, true );
-  };
+  SyncDDoS::StartAttack(double sec) {
+     Simulator::Schedule( Seconds( sec), &SyncDDoS::DDoSMode, this, true );
+  }
 
   void
-  SynchDDoS::EndAttack(double sec) {
-     Simulator::Schedule( Seconds( sec), &SynchDDoS::DDoSMode, this, false );
-  };
+  SyncDDoS::EndAttack(double sec) {
+     Simulator::Schedule( Seconds( sec), &SyncDDoS::DDoSMode, this, false );
+  }
 
 
 }

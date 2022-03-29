@@ -84,11 +84,43 @@ public:
    *called after
    * all processing of incoming data, potentially producing unexpected results.
    */
+
+  void
+  SendDDoSPacket();
+   /**
+   * @brief An event that is fired just before an Interest packet is actually send out (send is
+   *inevitable)
+   *
+   * The reason for "before" even is that in certain cases (when it is possible to satisfy from the
+   *local cache),
+   * the send call will immediately return data, and if "after" even was used, this after would be
+   *called after
+   * all processing of incoming data, potentially producing unexpected results.
+   */
+
+
   virtual void
   WillSendOutInterest(uint32_t sequenceNumber);
 
   void
   ScheduleNextPacket(std::string deviceName, std::string payload, bool agg);
+
+  void
+  ScheduleNextPacket();
+
+  void 
+  setTarget(Name target){
+     m_interestName = target;
+  }
+
+  void
+  setAttackRate(double attackRate){
+
+
+      if(m_txInterval == Seconds(0))
+         m_sendEvent = Simulator::Schedule( Seconds(attackRate), &ConsumerQos::SendDDoSPacket, this );	   
+      m_txInterval = Seconds(attackRate);
+  }  
 
  void
   updateLeadMeasurements(std::string newM, std::string device){
@@ -111,7 +143,6 @@ public:
 
   void
   resetLead(){
-     send = true;
      leadMeasurements.clear();
   }
 
@@ -170,7 +201,9 @@ protected:
   uint32_t m_virtualPayloadSize; //payload size for interest packet
   uint32_t m_doRetransmission; //retransmit lost interest packets if set to 1
   uint32_t m_offset; //random offset
+  int m_attacker;
   bool send = true;
+
 
   nlohmann::json leadMeasurements;
   std::unordered_map<std::string, std::string> m_payloads;

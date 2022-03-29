@@ -28,7 +28,7 @@
 #include <unordered_map>
 
 #include "apps/ndn-app.hpp"		// This header is required for Trace Sink
-#include "apps/ndn-synchronizer-socket-ddos.hpp"
+#include "apps/ndn-synchronizer-DDoS.hpp"
 #include "nlohmann/json.hpp"
 
 #define DEBUG 0

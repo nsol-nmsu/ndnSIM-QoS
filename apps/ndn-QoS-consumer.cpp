@@ -61,11 +61,11 @@ ConsumerQos::GetTypeId( void )
                     MakeNameAccessor( &ConsumerQos::m_interestName ), MakeNameChecker() )
       .AddAttribute( "LeadPrefix", "Name of the lead Interest", StringValue( "/" ),
                     MakeNameAccessor( &ConsumerQos::m_leadName ), MakeNameChecker() )
-      .AddAttribute( "LifeTime", "LifeTime for subscription packet", StringValue( "5400s" ),
+      .AddAttribute( "LifeTime", "LifeTime for subscription packet", StringValue( "1s" ),
                     MakeTimeAccessor( &ConsumerQos::m_interestLifeTime ), MakeTimeChecker() )
       .AddAttribute( "Frequency",
-                    "Timeout defining how frequently subscription should be reinforced",
-		    TimeValue( Seconds( 60 ) ),
+                    "Send rate",
+		    TimeValue( Seconds( 0 ) ),
                     MakeTimeAccessor( &ConsumerQos::m_txInterval ), MakeTimeChecker() )
 
       .AddAttribute( "RetxTimer",
@@ -73,6 +73,12 @@ ConsumerQos::GetTypeId( void )
                     StringValue( "50s" ),
                     MakeTimeAccessor( &ConsumerQos::GetRetxTimer, &ConsumerQos::SetRetxTimer ),
                     MakeTimeChecker() )
+
+      .AddAttribute( "Attacker",
+                    "Int value indicating weather application is an attacker, 1 for true, 0 for false",
+                    IntegerValue( 0 ),
+                    MakeIntegerAccessor( &ConsumerQos::m_attacker ), MakeIntegerChecker<int32_t>() )
+
 
       .AddAttribute( "RetransmitPackets", "Retransmit lost packets if set to 1, otherwise do not perform retransmission", IntegerValue( 1 ),
                     MakeIntegerAccessor( &ConsumerQos::m_doRetransmission ), MakeIntegerChecker<int32_t>() )
@@ -208,15 +214,16 @@ ConsumerQos::StopApplication() // Called at time specified by Stop
 void
 ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg, bool set )
 {
-     //std::cout<<ns3::Simulator::GetContext()<<std::endl;
-
+     std::cout<<ns3::Simulator::GetContext()<<std::endl;
+//	std::cout<<"SEND PACKETS 536"<<std::endl;
 	shared_ptr<Name> DName = make_shared<Name>( deviceName );
 	m_payloads.size();
-	std::string dev = DName->getSubName( -1, 1 ).toUri().substr(1);
-	std::unordered_map<std::string,std::string>::const_iterator got = m_payloads.find(dev);
-	if(got == m_payloads.end())
-	   m_payloads.insert(std::make_pair<std::string,std::string>(DName->getSubName( -1, 1 ).toUri().substr(1),""));	
-     	if(!set && !agg) m_payloads[dev] = payload;
+	std::string dev = DName->getSubName( -1, 1 ).toUri();
+	//std::unordered_map<std::string,std::string>::const_iterator got = m_payloads.find(dev);
+	//if(got == m_payloads.end())
+	//	m_payloads.insert(std::make_pair<std::string,std::string>(DName->getSubName( -1, 1 ).toUri(), ""));
+	//else
+	//	m_payloads[DName->getSubName( -1, 1 ).toUri()] = payload;
 
 	// Set default size for payload interets
 	if ( m_subscription == 0 && m_virtualPayloadSize == 0 ) {
@@ -231,20 +238,11 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg, 
 	}
 
         std::string leadPayload = leadMeasurements.dump();
-	bool leadM = (leadMeasurements.find( dev ) != leadMeasurements.end());
 
-	if ( !set && leadPayload.length() > 10 && leadM) {
+	if ( agg && leadPayload.length() > 10 ) {
 
-	   //std::cout << "Let us see this \n\n" << leadPayload << "\n\n\n";
-	   if(!send){
-	      
-	      Simulator::Schedule( Seconds(0.1), &ConsumerQos::SendPacket, this, deviceName, "", true, false );   
-	      send = true;
-	      return;
-	   }
-	   //std::cout<<"Agg "<<leadPayload<<std::endl;
-	   send = false;
-	   payload = leadPayload;
+		//std::cout << "Let us see this \n\n" << leadPayload << "\n\n\n";
+		payload = leadPayload;
 	}
 
 	NS_LOG_FUNCTION_NOARGS();
@@ -291,8 +289,8 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg, 
 	interest->setName( *nameWithSequence );
 	time::milliseconds interestLifeTime( m_interestLifeTime.GetMilliSeconds() );
 	interest->setInterestLifetime( interestLifeTime );
-	//std::cout << "Sending...\n";
-	//std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
+	std::cout << GetNode()->GetId() << " Sending...\n";
+	std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
 	
 	NS_LOG_INFO( "node( " << GetNode()->GetId() << " ) > sending Interest: " << interest->getName() /*m_interestName*/ << " with Payload = " << interest->getPayloadLength() << "bytes" );
 
@@ -304,19 +302,7 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg, 
 	// Callback for sent payload interests
 	m_sentInterest( GetNode()->GetId(), interest );
 
-
-	/*
-	if ( packetsToSend == 0 ) {
-		packetsToSend =2;
-		ScheduleNextPacket( deviceName, payload, agg );
-	}
-	else {
-		packetsToSend--;
-		if ( packetsToSend != 0 ) {
-			ScheduleNextPacket( deviceName, payload, agg );
-		}
-	}
-	*/
+//	std::cout << interest->getName() <<"536"<<std::endl;
 
 }
 
@@ -330,9 +316,83 @@ ConsumerQos::ScheduleNextPacket(std::string deviceName, std::string payload, boo
 	//	m_firstTime = false;
 	//} else
 	if ( !m_sendEvent.IsRunning() ) {
-		m_sendEvent = Simulator::Schedule( Seconds(0.1), &ConsumerQos::SendPacket, this, deviceName, payload, agg, false );
-	}
+	     // m_sendEvent = Simulator::Schedule( Seconds(0.1), &ConsumerQos::SendPacket, this, deviceName, payload, agg, false );
+	}  
 }
+
+
+void
+ConsumerQos::ScheduleNextPacket()
+{
+        if ( !m_sendEvent.IsRunning() ) {
+           if(m_attacker > 0 && m_txInterval != Seconds(0)){
+        	   //std::cout<<"888$ "<<m_txInterval<<std::endl;
+              m_sendEvent = Simulator::Schedule( m_txInterval, &ConsumerQos::SendDDoSPacket, this );
+           }
+        }
+}
+
+
+void
+ConsumerQos::SendDDoSPacket()
+{
+
+  if (!m_active)
+    return;
+
+  NS_LOG_FUNCTION_NOARGS();
+
+  uint32_t seq = std::numeric_limits<uint32_t>::max(); // invalid
+
+  while (m_retxSeqs.size()) {
+    seq = *m_retxSeqs.begin();
+    m_retxSeqs.erase(m_retxSeqs.begin());
+    break;
+  }
+
+  if (seq == std::numeric_limits<uint32_t>::max()) {
+    if (m_seqMax != std::numeric_limits<uint32_t>::max()) {
+      if (m_seq >= m_seqMax) {
+        return; // we are totally done
+      }
+    }
+
+    seq = m_seq++;
+  }
+
+  //
+  shared_ptr<Name> nameWithSequence = make_shared<Name>(m_interestName);
+  nameWithSequence->appendSequenceNumber(seq);
+  //
+
+  // shared_ptr<Interest> interest = make_shared<Interest> ();
+  shared_ptr<Interest> interest = make_shared<Interest>();
+  interest->setNonce(m_rand->GetValue(0, std::numeric_limits<uint32_t>::max()));
+  interest->setName(*nameWithSequence);
+  interest->setCanBePrefix(false);
+  time::milliseconds interestLifeTime(m_interestLifeTime.GetMilliSeconds());
+  interest->setInterestLifetime(interestLifeTime);
+
+  uint8_t payload[1] = {1};
+  interest->setPayload( payload, 1024 ); //add payload to interest ; was 1024
+
+  // NS_LOG_INFO ("Requesting Interest: \n" << *interest);
+  // Traces
+  NS_LOG_INFO("> Interest for " << seq);
+
+  WillSendOutInterest(seq);
+
+  m_transmittedInterests(interest, this, m_face);
+  m_appLink->onReceiveInterest(*interest);
+
+  std::cout << GetNode()->GetId() << " Attack sending...\n";
+  std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
+
+  ScheduleNextPacket();
+}
+
+
+
 
 
 ///////////////////////////////////////////////////
