@@ -114,6 +114,7 @@ TBDriver::UpdateBucket( int bucket )
   nfd::fw::TokenBucket* sender;
 
   int node= ns3::NodeContainer::GetGlobal().Get( ns3::Simulator::GetContext() )->GetId();
+  bool paused = false;
   if(isSet()){
      if ( m_connected == false) {
         m_connected = true;
@@ -124,13 +125,23 @@ TBDriver::UpdateBucket( int bucket )
      capacity = std::stod(SplitString(m_capacities, ' ')[bucket]);
      sender = tbs[bucket];
 
+    if(m_connected && !m_tokenFilled[bucket]){
+      sender->noLongerAtCapacity.connect( [this, bucket]() {
+        this->ScheduleNextToken(bucket);
+      } );
+      m_tokenFilled[bucket] = true;
+    }
+
      // Check to make sure tokens are not generated beyong specified capacity
      if ( m_connected == true ) {
         sender->m_capacity = capacity;
         sender->addToken();
+        paused = sender->atCapacity();
+
      }
-  }
-  ScheduleNextToken( bucket );
+  }  
+  if(!paused)
+     ScheduleNextToken( bucket );
 }
 
 void
@@ -139,6 +150,7 @@ TBDriver::addTokenBucket(nfd::fw::TokenBucket* tb){
   
   tbs.push_back(tb);
   m_firsts.push_back(true);
+  m_tokenFilled.push_back(false);
   ScheduleNextToken( m_bktsSet );  
   m_bktsSet++;
 }

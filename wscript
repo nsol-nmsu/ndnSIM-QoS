@@ -142,7 +142,8 @@ def build(bld):
     module.source = bld.path.ant_glob(['%s/**/*.cpp' % dir for dir in module_dirs],
                                       excl=[
                                           'model/ip-faces/*',
-                                          'apps/TBucketRef.cpp']) + ndnCxxSrc + nfdSrc
+                                          'apps/TBucketRef.cpp',
+                                          'apps/AttackerRef.cpp']) + ndnCxxSrc + nfdSrc
 
     module_dirs = ['NFD/core', 'NFD/daemon', 'NFD/rib', 'apps', 'co-simulation', 'helper', 'model', 'utils', 'bindings']
     module.full_headers = bld.path.ant_glob(['%s/**/*.hpp' % dir for dir in module_dirs])

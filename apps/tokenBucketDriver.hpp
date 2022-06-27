@@ -106,6 +106,7 @@ private:
   std::string m_capacities; ///< @brief Defines token bucket capacities of priority levels, from highest to lowest.
   std::string m_fillRates; ///< @brief Defines token generation rate for priority levels, from highest to lowest.
   std::vector<bool> m_firsts; ///< @brief Boolean used to check if this is the first generated token for priority levels, from highest to lowest.
+  std::vector<bool> m_tokenFilled;
   bool m_connected; ///< @brief Boolean used to check if all token bucket references are set.
   std::vector<nfd::fw::TokenBucket*> tbs;
   int m_bktsSet = 0;
