@@ -46,7 +46,7 @@ public:
    *  \param njf json file recieved from OpenDSS
    *  \param packetNames reference to the vector to which we will save generated packets to
    */
-  int
+  double
   processJson( json njf, std::vector<std::string>* packetNames );
 
   /** \brief Set the references need to operate parsing succesfully

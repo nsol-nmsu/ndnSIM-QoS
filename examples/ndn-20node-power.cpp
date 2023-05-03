@@ -96,7 +96,7 @@ main( int argc, char* argv[] )
   cmd.Parse( argc, argv );
 
   // Open the configuration file for reading
-  ifstream configFile ( "../topology/interface/caseTest.txt", std::ios::in );
+  ifstream configFile ( "../topology/interface/case123Ex.txt", std::ios::in );
   std::string strLine;
   bool gettingNodeCount = false, buildingNetworkTopo = false, attachingWACs = false, attachingPMUs = false, attachingLCs = false, TypeI = false, TypeII = false;
   bool failLinks = false, injectData = false;
@@ -137,17 +137,17 @@ main( int argc, char* argv[] )
         nodeCount++; // Counter increment needed because nodes start from 1 not 0
         gettingNodeCount = false;
         nodes.Create( nodeCount );
-
+        std::cout<<nodeCount<<std::endl;
         continue; 
       }
       if( strLine.substr( 0,7 ) == "BEG_001" ) { buildingNetworkTopo = true; continue; }
-      if( strLine.substr( 0,7 ) == "END_001" ) { buildingNetworkTopo = false; continue; }
-      if( strLine.substr( 0,7 ) == "BEG_002" ) { attachingWACs = true; continue; }
-      if( strLine.substr( 0,7 ) == "END_002" ) { attachingWACs = false; continue; }
-      if( strLine.substr( 0,7 ) == "BEG_003" ) { attachingPMUs = true; continue; }
-      if( strLine.substr( 0,7 ) == "END_003" ) { attachingPMUs = false; continue; }
-      if( strLine.substr( 0,7 ) == "BEG_004" ) { attachingLCs = true; continue; }
-      if( strLine.substr( 0,7 ) == "END_004" ) { 
+      if( strLine.substr( 0,7 ) == "END_001" ) { buildingNetworkTopo = false; //continue; //}
+      //if( strLine.substr( 0,7 ) == "BEG_002" ) { attachingWACs = true; continue; }
+      //if( strLine.substr( 0,7 ) == "END_002" ) { attachingWACs = false; continue; }
+      //if( strLine.substr( 0,7 ) == "BEG_003" ) { attachingPMUs = true; continue; }
+      //if( strLine.substr( 0,7 ) == "END_003" ) { attachingPMUs = false; continue; }
+      /*if( strLine.substr( 0,7 ) == "BEG_004" ) { attachingLCs = true; continue; }
+      if( strLine.substr( 0,7 ) == "END_004" ) { */
         attachingLCs = false; 
         ndn::StackHelper ndnHelper; 
         ndnHelper.InstallAll();
@@ -159,7 +159,7 @@ main( int argc, char* argv[] )
       if( strLine.substr( 0,7 ) == "BEG_005" ) { TypeI = true; continue; }
       if( strLine.substr( 0,7 ) == "END_005" ) { TypeI = false; uniquePMUs.clear(); continue; }
       if( strLine.substr( 0,7 ) == "BEG_006" ) { TypeII = true; continue; }
-      if( strLine.substr( 0,7 ) == "END_006" ) { TypeII = false; continue; }
+      if( strLine.substr( 0,7 ) == "END_006" ) { TypeII = false; uniqueWACs.clear(); continue; }
       if( strLine.substr( 0,7 ) == "BEG_100" ) { failLinks = true; continue; }
       if( strLine.substr( 0,7 ) == "END_100" ) { failLinks = false; continue; }
       if( strLine.substr( 0,7 ) == "BEG_101" ) { injectData = true; continue; }
@@ -207,6 +207,7 @@ main( int argc, char* argv[] )
 
         // Install apps on LCs and PMUs for data exchange
         netParams = SplitString( strLine );
+        //std::cout<<strLine<<" Adding\n";
 
         // Install app on unique LC WACs
         if ( IsLCAppInstalled( netParams[0] ) == false ) {
@@ -304,25 +305,25 @@ main( int argc, char* argv[] )
         Simulator::Schedule( Seconds(  ( ( double )stod( netParams[2] ) )  ), ndn::LinkControlHelper::FailLink, nodes.Get( stoi( netParams[0] ) ), nodes.Get( stoi( netParams[1] ) ) );
         Simulator::Schedule( Seconds(  ( ( double )stod( netParams[3] ) )  ), ndn::LinkControlHelper::UpLink, nodes.Get( stoi( netParams[0] ) ), nodes.Get( stoi( netParams[1] ) ) );
 
-      } else if( injectData == true ) {
+      } else if( injectData == true) {
         netParams = SplitString( strLine );
 
         // Install app on target node for data injection
         beNamePrefix = "/power/typeIII/dat" + netParams[0];
-	if ( IsWACAppInstalled( netParams[0] ) == false ) {
-        producerHelper.SetPrefix( beNamePrefix );
-        producerHelper.SetAttribute( "Frequency", StringValue( "0" ) );
-        producerHelper.Install( nodes.Get( std::stoi( netParams[0] ) ) );
-        used[std::stoi( netParams[0] )] = 1;
-        //strcallback = "/NodeList/" + netParams[0] + "/ApplicationList/" + "*/ReceivedInterest";
-        //Config::ConnectWithoutContext( strcallback, MakeCallback( &ReceivedInterestCallbackCom ) );
+	      if ( IsWACAppInstalled( netParams[0] ) == false ) {
+          producerHelper.SetPrefix( beNamePrefix );
+          producerHelper.SetAttribute( "Frequency", StringValue( "0" ) );
+          producerHelper.Install( nodes.Get( std::stoi( netParams[0] ) ) );
+          used[std::stoi( netParams[0] )] = 1;
+          //strcallback = "/NodeList/" + netParams[0] + "/ApplicationList/" + "*/ReceivedInterest";
+          //Config::ConnectWithoutContext( strcallback, MakeCallback( &ReceivedInterestCallbackCom ) );
 
-        // Setup node to originate prefixes for dynamic routing
-        ndnGlobalRoutingHelper.AddOrigin( beNamePrefix, nodes.Get( std::stoi( netParams[0] ) ) );
-	}
+          // Setup node to originate prefixes for dynamic routing
+          ndnGlobalRoutingHelper.AddOrigin( beNamePrefix, nodes.Get( std::stoi( netParams[0] ) ) );
+	      }
 
         char temp[10];
-        sprintf( temp, "%lf", 1.0/( float( rand()%40+200 ) ) );   // No type III. So 0.0 is used.
+        sprintf( temp, "%lf", 1.0/( float( rand()%40+100 ) ) );   // No type III. So 0.0 is used.
 
         consumerHelper.SetPrefix( beNamePrefix + "/phy" + netParams[1] );
         consumerHelper.SetAttribute( "Frequency", StringValue( temp ) ); //0.0002 = 5000pps
@@ -333,19 +334,22 @@ main( int argc, char* argv[] )
         consumerHelper.SetAttribute( "LifeTime", StringValue( "1s" ) );
         consumerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
 
-	//Create attacker
-	sprintf( temp, "%lf", 1.0/( float( rand()%100+700 ) ));
-	consumerHelper.SetAttribute( "Frequency", StringValue( temp ) );
-	consumerHelper.SetPrefix(  "pow/typeI/attacker/" + netParams[1] );
-	consumerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
-	consumerHelper.SetPrefix(  "pow/typeII/attacker/" + netParams[1] );
-	consumerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
-	consumerHelper.SetPrefix(  "pow/typeIII/attacker/" + netParams[1] );
-	consumerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
-	ndnGlobalRoutingHelper.AddOrigin( "pow/typeI", nodes.Get( std::stoi( netParams[0] ) ) );
-	ndnGlobalRoutingHelper.AddOrigin( "pow/typeII", nodes.Get( std::stoi( netParams[0] ) ) );
-	ndnGlobalRoutingHelper.AddOrigin( "pow/typeIII", nodes.Get( std::stoi( netParams[0] ) ) );
-        
+        if (true){
+          //Create attacker
+          sprintf( temp, "%lf", 1.0/( float( rand()%100+1200 ) ));
+          consumerHelper.SetAttribute( "PayloadSize", StringValue( "1000" ) );          
+          consumerHelper.SetAttribute( "Frequency", StringValue( temp ) );
+          consumerHelper.SetAttribute( "Privacy", StringValue( "1" ) );
+          consumerHelper.SetPrefix(  "pow/typeI/attacker/" + netParams[1] );
+          consumerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
+          consumerHelper.SetPrefix(  "pow/typeII/attacker/" + netParams[1] );
+          consumerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
+          consumerHelper.SetPrefix(  "pow/typeIII/attacker/" + netParams[1] );
+          consumerHelper.Install( nodes.Get( std::stoi( netParams[1] ) ) );
+          ndnGlobalRoutingHelper.AddOrigin( "pow/typeI", nodes.Get( std::stoi( netParams[0] ) ) );
+          ndnGlobalRoutingHelper.AddOrigin( "pow/typeII", nodes.Get( std::stoi( netParams[0] ) ) );
+          ndnGlobalRoutingHelper.AddOrigin( "pow/typeIII", nodes.Get( std::stoi( netParams[0] ) ) );
+        }
 
         used[std::stoi( netParams[1] )] = 1;
         flow_pair.first = stoi( netParams[0] );
@@ -371,22 +375,29 @@ main( int argc, char* argv[] )
   // Define the routing strategies per prefix
   //ndn::StrategyChoiceHelper::InstallAll( "/power/typeI", "/localhost/nfd/strategy/multicast" );
   //ndn::StrategyChoiceHelper::InstallAll( "/power/typeII", "/localhost/nfd/strategy/multicast" );
-  ndn::StrategyChoiceHelper::InstallAll( "/power/typeIII", "/localhost/nfd/strategy/best-route" );
+  //ndn::StrategyChoiceHelper::InstallAll( "/power/typeIII", "/localhost/nfd/strategy/best-route" );
   //ndn::StrategyChoiceHelper::InstallAll( "/", "/localhost/nfd/strategy/qos" );
 
   ndn::AppHelper tokenHelper( "ns3::ndn::TokenBucketDriver" );
-  tokenHelper.SetAttribute( "FillRates", StringValue( "600 500 2000 350" ) ); // 10 interests a second
+  tokenHelper.SetAttribute( "FillRates", StringValue( "1000 2000 1600 50" ) ); // 10 interests a second
   tokenHelper.SetAttribute( "Capacities", StringValue( "50 50 50 50" ) ); // 10 interests a second
 
   for ( int i=0; i<( int )nodes.size(); i++ ) {
     if( used[i] == 0 ){
+ /*     ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"power/typeI", "/localhost/nfd/strategy/qos" );
+      ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"power/typeII", "/localhost/nfd/strategy/qos" );
+      ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"power/typeIII", "/localhost/nfd/strategy/qos" );
+      ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"pow/typeI", "/localhost/nfd/strategy/qos" );
+      ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"pow/typeII", "/localhost/nfd/strategy/qos" );
+      ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"pow/typeIII", "/localhost/nfd/strategy/qos" );
+*/
       ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"power/typeI", "/localhost/nfd/strategy/qos-mit" );
       ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"power/typeII", "/localhost/nfd/strategy/qos-mit" );
       ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"power/typeIII", "/localhost/nfd/strategy/qos-mit" );
       ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"pow/typeI", "/localhost/nfd/strategy/qos-mit" );
       ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"pow/typeII", "/localhost/nfd/strategy/qos-mit" );
       ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"pow/typeIII", "/localhost/nfd/strategy/qos-mit" );
-
+      
       //ndn::StrategyChoiceHelper::Install( nodes.Get( i ),"/", "/localhost/nfd/strategy/qos" );
 
       tokenHelper.Install( nodes.Get( i ) );
@@ -417,7 +428,7 @@ main( int argc, char* argv[] )
     }
   }
 
-  Simulator::Stop( Seconds( 360.0 ) );
+  Simulator::Stop( Seconds( 15.0 ) );
   Simulator::Run();
   Simulator::Destroy();
 
@@ -523,7 +534,7 @@ IsWACAppInstalled( std::string WACID ) {
 // Define callbacks for writing to tracefile
 void
 SentInterestCallbackPhy( uint32_t nodeid, shared_ptr<const ndn::Interest> interest ) {
-  if ( interest->getSubscription() == 1 || interest->getSubscription() == 2 || interest->getName().getSubName(-3,1).toUri() == "/attacker") {
+  if ( interest->getName().getSubName(-3,1).toUri() == "/attacker") {
     // Do not log subscription interests from phy nodes
   } else {
     tracefile << nodeid << ", sent, " << interest->getName() << ", " << interest->getPayloadLength() << ", " << std::fixed << setprecision( 9 )

@@ -43,7 +43,8 @@
 
 using namespace std;
 
-#define SERVER_PORT htons( 5003 )
+#define SERVER_PORT htons( 5005 )
+
 #define CONNECTIONS 1
 
 namespace ns3 {
@@ -118,12 +119,12 @@ SyncSocket::sendData( std::string data, char socket ) {
   int n = ( data.size()/700 ) + 1;
   std::string chunks[n];
   if (data  == "null")
-	  chunks[i] = "{}";
+	  chunks[0] = "{}";
   else{
-  // Find nummber of chunks.
-  for ( i = 0; i<n; i++ ) {
-    chunks[i] = data.substr( i*700, 700 );
-  }
+     // Find number of chunks.
+     for ( i = 0; i<n; i++ ) {
+       chunks[i] = data.substr( i*700, 700 );
+     }
   }
 
   // Set first key in packet dictionary - total size of one timestep data.

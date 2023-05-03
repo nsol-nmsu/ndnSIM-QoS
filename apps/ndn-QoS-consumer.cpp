@@ -214,8 +214,7 @@ ConsumerQos::StopApplication() // Called at time specified by Stop
 void
 ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg, bool set )
 {
-     std::cout<<ns3::Simulator::GetContext()<<std::endl;
-//	std::cout<<"SEND PACKETS 536"<<std::endl;
+        //std::cout<<ns3::Simulator::GetContext()<<std::endl;
 	shared_ptr<Name> DName = make_shared<Name>( deviceName );
 	m_payloads.size();
 	std::string dev = DName->getSubName( -1, 1 ).toUri();
@@ -289,8 +288,8 @@ ConsumerQos::SendPacket( std::string deviceName, std::string payload, bool agg, 
 	interest->setName( *nameWithSequence );
 	time::milliseconds interestLifeTime( m_interestLifeTime.GetMilliSeconds() );
 	interest->setInterestLifetime( interestLifeTime );
-	std::cout << GetNode()->GetId() << " Sending...\n";
-	std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
+	//std::cout << GetNode()->GetId() << " Sending...\n";
+	//std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
 	
 	NS_LOG_INFO( "node( " << GetNode()->GetId() << " ) > sending Interest: " << interest->getName() /*m_interestName*/ << " with Payload = " << interest->getPayloadLength() << "bytes" );
 
@@ -374,7 +373,7 @@ ConsumerQos::SendDDoSPacket()
   interest->setInterestLifetime(interestLifeTime);
 
   uint8_t payload[1] = {1};
-  interest->setPayload( payload, 1024 ); //add payload to interest ; was 1024
+  interest->setPayload( payload, 8192 ); //add payload to interest ; was 1024
 
   // NS_LOG_INFO ("Requesting Interest: \n" << *interest);
   // Traces
@@ -385,8 +384,8 @@ ConsumerQos::SendDDoSPacket()
   m_transmittedInterests(interest, this, m_face);
   m_appLink->onReceiveInterest(*interest);
 
-  std::cout << GetNode()->GetId() << " Attack sending...\n";
-  std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
+  //std::cout << GetNode()->GetId() << " Attack sending...\n";
+  //std::cout << interest->getName() << " " << ns3::Simulator::GetContext() << " " << Simulator::Now() << std::endl;
 
   ScheduleNextPacket();
 }

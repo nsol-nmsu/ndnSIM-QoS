@@ -132,9 +132,9 @@ QoSProducer::OnInterest(shared_ptr<const Interest> interest)
     m_prefix = interest->getName();
 
     //Normal interest, without a subscription
-    if (m_subscription == 0) {
+    //if (m_subscription == 0) {
         SendData(m_prefix);
-    }
+    //}
 }
 
 void
@@ -169,9 +169,9 @@ QoSProducer::SendData(const Name &dataName)
         return;
 
     //send only ACK (payload size = 1) if payloaded interest was received
-    if (m_subscription == 0 && m_receivedpayload > 0) {
+    //if (/*m_subscription == 0 &&*/ m_receivedpayload > 0) {
         m_virtualPayloadSize = 1;
-    }
+    //}
 
     //std::cout << " ack payload= " << m_virtualPayloadSize << std::endl;
 

@@ -40,12 +40,6 @@ Synchronizer::Synchronizer() {
 
 
 void
-Synchronizer::addSender( int node, Ptr<ConsumerQos> sender ) {
-
-	senders[node] = sender;
-}
-
-void
 Synchronizer::printListAndTime() {
 
 	std::cout << "Current Time is: " << Simulator::Now() << std::endl;
@@ -71,6 +65,11 @@ Synchronizer::beginSync() {
 	//std::cout<<"finished begin event"<<std::endl;
 }
 
+void
+Synchronizer::beginSync(double seconds) {
+	Simulator::Schedule( Seconds( seconds ), &Synchronizer::syncEvent, this );
+	//std::cout<<"finished begin event"<<std::endl;
+}
 
 void
 Synchronizer::syncEvent() {
@@ -79,49 +78,33 @@ Synchronizer::syncEvent() {
 	sendSync();
 	receiveSync();
 
-	injectInterests( false, false );
+	//injectInterests( false, false );
 	Simulator::Schedule( Seconds( timestep ), &Synchronizer::syncEvent, this );
 	//std::cout<<"finished sync event"<<std::endl;
 }
 
-
-void
-Synchronizer::injectInterests( bool agg, bool set ) {
-
-	while ( !packetNames.empty() ) {
-
-		std::vector<std::string> packetInfo = SplitString( packetNames.back(), 2 );
-		//std::cout<<"PacketInfo " <<packetInfo[1]<<" "<<packetInfo[0]<<" "<<packetInfo[2]<<std::endl;
-
-		Simulator::ScheduleWithContext( std::stoi( packetInfo[1] ), Seconds( 0.0 ), &ConsumerQos::SendPacket, senders[std::stoi( packetInfo[1] )], packetInfo[0], packetInfo[2], agg, set );
-		packetNames.pop_back();
-	}
-}
-
-
 std::vector<std::string> 
 Synchronizer::SplitString( std::string strLine, int limit ) {
 
-	std::string str = strLine;
-	std::vector<std::string> result;
-	std::istringstream isstr( str );
-	int i = 0;
-	std::string finalStr = "";
+   std::string str = strLine;
+   std::vector<std::string> result;
+   std::istringstream isstr( str );
+   int i = 0;
+   std::string finalStr = "";
 
-	for ( std::string str; isstr >> str;  ) {
+   for ( std::string str; isstr >> str;  ) {
+      if ( i < limit || limit == 0 ) {
+         result.push_back( str );
+      } else { 
+         finalStr += str;
+      }
 
-		if ( i < limit || limit == 0 ) {
-			result.push_back( str );
-		} else { 
-			finalStr += str;
-		}
+      i++;
+   }
 
-		i++;
-	}
+   result.push_back( finalStr );
 
-	result.push_back( finalStr );
-
-	return result;
+   return result;
 }
 
 }	// end of namespace ndn

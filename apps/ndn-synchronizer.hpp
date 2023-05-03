@@ -25,7 +25,6 @@
 #include "ns3/point-to-point-module.h"
 #include "ns3/ndnSIM-module.h"
 
-#include "ndn-QoS-consumer.hpp"
 #include <unordered_map>
 
 namespace ns3 {
@@ -37,12 +36,6 @@ public:
     */
   Synchronizer();
 
-  /** \brief Add  a reference to the consumer application of a sending node
-   *  \param node the node to which the appliaction belongs to
-   *      \param sender reference to the appliaction instance
-   */
-  void
-  addSender(int node, Ptr<ConsumerQos> sender);
   
   /** \brief Pause te simulation and perform synching operations
    */
@@ -67,12 +60,8 @@ public:
   void
   beginSync();
 
-  /** \brief inject interests as descibed by th packetNames vector
-   *  \param agg should interests at the same node be aggregated
-   */
-
   void
-  injectInterests(bool agg, bool set);
+  beginSync(double seconds);  
 
   std::vector<std::string>
   SplitString(std::string strLine, int limit);
@@ -91,7 +80,7 @@ private:
 
 protected:
 
-  std::unordered_map<int,Ptr<ConsumerQos>> senders;
+  //std::unordered_map<int,Ptr<ConsumerQos>> senders;
 
   std::vector<std::string> arrivedPackets;
 

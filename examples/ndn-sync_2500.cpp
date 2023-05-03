@@ -43,8 +43,6 @@ void SentInterestCallbackPhy( uint32_t, shared_ptr<const ndn::Interest> );
 void ReceivedInterestCallbackPhy( uint32_t, shared_ptr<const ndn::Interest> );
 void ReceivedInterestCallbackCom( uint32_t, shared_ptr<const ndn::Interest> );
 
-bool NodeInComm( int );
-bool NodeInAgg( int );
 
 std::vector<std::string> SplitString( std::string );	// Split a line into a vector of strings
 uint32_t GetSourceNodeID ( std::string name );			// Get source node ID from which payload interest came from
@@ -107,8 +105,8 @@ main ( int argc, char* argv[] )
 	cmd.Parse( argc, argv );
 
 	// Open the configuration files for reading 
-	ifstream configFile ( "../topology/interface/case2500.txt", std::ios::in );	// Topology file
-	ifstream jsonFile ( "../topology/interface/data2500.txt", std::ios::in );	// Device - Node mapping
+	ifstream configFile ( "../topology/interface/case123.txt", std::ios::in );	// Topology file
+	ifstream jsonFile ( "../topology/interface/data123.txt", std::ios::in );	// Device - Node mapping
 	//ifstream mFile ( "../topology/interface/measurements_650bus.json", std::ios::in );	// Basic measurement json to update duting simulation.
 
 	json jf = json::parse( jsonFile );
@@ -467,13 +465,8 @@ main ( int argc, char* argv[] )
 	//ndn::StrategyChoiceHelper::InstallAll( "/", "/localhost/nfd/strategy/qos" );
 
 	ndn::AppHelper tokenHelper( "ns3::ndn::TokenBucketDriver" );
-	//tokenHelper.SetAttribute( "FillRate1", StringValue( "300" ) );	// 10 interests a second
-	tokenHelper.SetAttribute( "FillRate1", StringValue( "1000" ) );	// 10 interests a second
-	tokenHelper.SetAttribute( "Capacity1", StringValue( "200" ) );	// 10 interests a second
-	tokenHelper.SetAttribute( "FillRate2", StringValue( "9500" ) );	// 10 interests a second
-	tokenHelper.SetAttribute( "Capacity2", StringValue( "200" ) );	// 10 interests a second
-	tokenHelper.SetAttribute( "FillRate3", StringValue( "9500" ) );	// 10 interests a second
-	tokenHelper.SetAttribute( "Capacity3", StringValue( "200" ) );	// 10 interests a second
+      	tokenHelper.SetAttribute( "FillRates", StringValue( "1000 1500 1000 350" ) ); // 10 interests a second
+      	tokenHelper.SetAttribute( "Capacities", StringValue( "200 200 200 200" ) ); // 10 interests a second  
 
 	for ( int i=0; i<( int )nodes.size(); i++ ) {
 
@@ -785,41 +778,6 @@ ReceivedInterestCallbackCom( uint32_t nodeid, shared_ptr<const ndn::Interest> in
 			<< ( Simulator::Now().GetNanoSeconds( ) )/1000000000.0 << std::endl;
 		//}
 	}
-}
-
-
-void 
-GetComAggEdges() {
-
-}
-
-
-bool 
-NodeInComm( int nodeid ) {
-
-	for ( int i=0; i<( int )com_nodes.size(); i++ ) {
-
-		if ( com_nodes[i] == nodeid ) {
-
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
-bool 
-NodeInAgg( int nodeid ) {
-
-	for ( int i=0; i<( int )agg_nodes.size(); i++ ) {
-
-		if ( agg_nodes[i] == nodeid ) {
-
-			return true;
-		}
-	}
-	return false;
 }
 
 

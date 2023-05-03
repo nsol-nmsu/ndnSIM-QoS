@@ -10,8 +10,6 @@ class SyncDDoS : public SyncDOE {
 
 public:
 
-  SyncDDoS(){};
-  
   virtual void
   syncEvent() override;
 

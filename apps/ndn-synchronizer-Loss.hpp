@@ -19,8 +19,8 @@
  *
  */
 
-#ifndef NDN_SYNCHRONIZER_DOE_H
-#define NDN_SYNCHRONIZER_DOE_H
+#ifndef NDN_SYNCHRONIZER_LOSS_H
+#define NDN_SYNCHRONIZER_LOSS_H
 
 #include "ns3/core-module.h"
 #include "ns3/network-module.h"
@@ -40,13 +40,13 @@
 namespace ns3 {
 namespace ndn {
 
-class SyncDOE :  public Synchronizer {
+class SyncLoss :  public Synchronizer {
 
 public:
 
   /** \brief  On object construction create sockets and set references.
    */
-  SyncDOE();
+  SyncLoss();
 
   virtual void
   syncEvent() override;
@@ -91,7 +91,7 @@ public:
   void
   injectInterests( bool agg, bool set ) {
      double seconds = 0.0;
-     double step = 0.0005;
+     double step = 0.0006;
      while ( !packetNames.empty() ) {
         std::vector<std::string> packetInfo = SplitString( packetNames.back(), 2 );
         Simulator::ScheduleWithContext( std::stoi( packetInfo[1] ), Seconds( seconds ), &ConsumerQos::SendPacket, 
@@ -152,6 +152,9 @@ private:
     std::unordered_map<std::string,std::vector<std::string>> leadMap;
   std::unordered_map<std::string,bool> LeadDERs;
   std::unordered_map<int,Ptr<ConsumerQos>> senders;
+  std::unordered_map<int,bool> dropMap;
+  double endDrop = 0.0;
+
 
   ParserOpenDSS parOpen;
   ParserReDisPv parRedis;

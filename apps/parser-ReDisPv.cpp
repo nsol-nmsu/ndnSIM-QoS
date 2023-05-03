@@ -61,19 +61,19 @@ ParserReDisPv::processJson( json njf, std::vector<std::string>* packetNames, int
   json::iterator itp = njf.begin();
 
   while ( itp !=  njf.end() ) {
-    //json::iterator it = itp.value().begin();
+    json::iterator it = itp.value().begin();
     if (DEBUG) std::cout<<"Outer key "<<itp.key()<<std::endl;
-    //while(itp.key() ==  "cluster_setpoints" && it !=  itp.value().end() ){
+    while(itp.key() ==  "cluster_setpoints" && it !=  itp.value().end() ){
        //if (DEBUG) std::cout<<"Inner key "<<it.key()<<std::endl;
        ( *leads )++;
        std::string device;
        std::string payload;
        int payloadSize;
        std::string packet_insert;
-       json::iterator it1 = itp.value().begin();
+       json::iterator it1 = it.value().begin();
        //std::cout<<itp.value()<<std::endl;
 
-       while ( it1 !=  itp.value().end() ) {
+       while ( it1 !=  it.value().end() ) {
 
           if ( it1.key() == "Lead_DER" ) {
              device = "phy" + std::to_string( ( *nameMap )[it1.value()] ) + "/";
@@ -90,8 +90,8 @@ ParserReDisPv::processJson( json njf, std::vector<std::string>* packetNames, int
        if ( DEBUG )   std::cout << packet_insert << std::endl;
 
        packetNames->push_back( packet_insert );
-       //it++;
-    //}
+       it++;
+    }
     itp++;
   }
 }

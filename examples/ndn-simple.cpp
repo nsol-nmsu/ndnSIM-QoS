@@ -60,12 +60,14 @@ main(int argc, char* argv[])
 
   // Creating nodes
   NodeContainer nodes;
-  nodes.Create(3);
+  nodes.Create(5);
 
   // Connecting nodes using two links
   PointToPointHelper p2p;
   p2p.Install(nodes.Get(0), nodes.Get(1));
   p2p.Install(nodes.Get(1), nodes.Get(2));
+  p2p.Install(nodes.Get(3), nodes.Get(1));
+  p2p.Install(nodes.Get(1), nodes.Get(4));
 
   // Install NDN stack on all nodes
   ndn::StackHelper ndnHelper;
@@ -80,18 +82,19 @@ main(int argc, char* argv[])
   // Consumer
   ndn::AppHelper consumerHelper("ns3::ndn::ConsumerCbr");
   // Consumer will request /prefix/0, /prefix/1, ...
-  consumerHelper.SetPrefix("/prefix");
+  consumerHelper.SetPrefix("/prefix1");
   consumerHelper.SetAttribute("Frequency", StringValue("10")); // 10 interests a second
   auto apps = consumerHelper.Install(nodes.Get(0));                        // first node
   apps.Stop(Seconds(10.0)); // stop the consumer app at 10 seconds mark
 
-  // Producer
+
+ // Producer
   ndn::AppHelper producerHelper("ns3::ndn::Producer");
   // Producer will reply to all requests starting with /prefix
-  producerHelper.SetPrefix("/prefix");
+  producerHelper.SetPrefix("/prefix1");
   producerHelper.SetAttribute("PayloadSize", StringValue("1024"));
   producerHelper.Install(nodes.Get(2)); // last node
-
+  
   Simulator::Stop(Seconds(20.0));
 
   Simulator::Run();

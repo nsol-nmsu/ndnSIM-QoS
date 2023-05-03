@@ -18,7 +18,7 @@
  *
  */
 
-#include "ndn-QoS-consumer-solo.hpp"
+#include "ndn-sync-consumer.hpp"
 #include "ns3/ptr.h"
 #include "ns3/log.h"
 #include "ns3/simulator.h"
@@ -85,6 +85,9 @@ QoSConsumer::GetTypeId( void )
       .AddAttribute( "PayloadSize", "Virtual payload size for interest packets", UintegerValue( 0 ),
                     MakeUintegerAccessor( &QoSConsumer::m_virtualPayloadSize ),
                     MakeUintegerChecker<uint32_t>() )
+      .AddAttribute( "Privacy", "Privacy", UintegerValue( 0 ),
+                    MakeUintegerAccessor( &QoSConsumer::m_privacy ),
+                    MakeUintegerChecker<uint32_t>() )					
 
       .AddTraceSource( "LastRetransmittedInterestDataDelay",
                       "Delay between last retransmitted Interest and received Data",
@@ -252,6 +255,10 @@ QoSConsumer::SendPacket()
 	shared_ptr<Interest> interest = make_shared<Interest>();
 	interest->setNonce( m_rand->GetValue( 0, std::numeric_limits<uint32_t>::max() ) );
 	interest->setSubscription( m_subscription );
+	if (m_privacy){
+		std::string end = std::to_string(( rand()%10000000000 ));
+		nameWithSequence->append(end);
+	}
 	nameWithSequence->appendSequenceNumber( seq );
 
 	if ( m_subscription == 0 ) {

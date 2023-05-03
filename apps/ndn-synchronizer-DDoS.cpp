@@ -31,7 +31,7 @@ namespace ndn {
 
 void
 SyncDDoS::syncEvent(){
-   Synchronizer::syncEvent(); 
+   SyncDOE::syncEvent(); 
    if(m_dos){
       injectAttack();
    }
@@ -128,53 +128,6 @@ SyncDDoS::injectAttack() {
 
 
 
-		//attack RedisPV
-		if(true){
-       	        std::cout<<"Attack to RedisPV initiated"<<std::endl;
-	        std::vector<std::string> redisPVAttackers;
-
-		redisPVAttackers.push_back("178");
-	        redisPVAttackers.push_back("179");
-	        redisPVAttackers.push_back("183");
-   	 	redisPVAttackers.push_back("184");
-	        redisPVAttackers.push_back("189");
- 	        redisPVAttackers.push_back("190");
-        	redisPVAttackers.push_back("191");
-	        redisPVAttackers.push_back("192");
-        	redisPVAttackers.push_back("193");
-	        redisPVAttackers.push_back("197");
-        	redisPVAttackers.push_back("199");
-	        redisPVAttackers.push_back("206");
-        	redisPVAttackers.push_back("214");
-        	redisPVAttackers.push_back("215");
-        	//redisPVAttackers.push_back("216");
-        	//redisPVAttackers.push_back("225");
-        	redisPVAttackers.push_back("218");
-        	//redisPVAttackers.push_back("219");
-        	//redisPVAttackers.push_back("220");
-        	redisPVAttackers.push_back("221");
-        	int size = redisPVAttackers.size();
-	        std::string prefix = "/power/typeII/data";
-                //Randomly assign lead and rate to each attacker
-                for (auto it = attackers.begin(); it != attackers.end(); it++) {
-                        if(std::find(redisPVAttackers.begin(),redisPVAttackers.end(),std::to_string(it->first))!=redisPVAttackers.end()){continue;}
-                        if (size == 0)
-                                return;
-                        int t = rand() % size;
-                        //std::cout << it->first << std::endl;
-                        //std::string nodeNumber = std::to_string(nameMap[redisPVAttackers.at(t)]);
-                        std::cout<<"Attack to RedisPV Started"<<std::endl;
-                        std::cout << "Attacking Redispv from"<<it->first << std::endl;
-                        std::string target = prefix + "/" + redisPVAttackers.at(t)
-                                        + "/attack";
-                        it->second->setTarget(target);
-
-                        double rate = 800.0 + double(rand() % 200);
-                        rate = 1.0 / rate;
-                        it->second->setAttackRate(rate);
-
-                }
-		}
 	}
 
 }
